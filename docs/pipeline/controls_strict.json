@@ -1,0 +1,245 @@
+{
+ "pairs": {
+  "A storm 10-05->10-17 | HV | 30 m": {
+   "auc": 0.616,
+   "contrast_dB": 0.52,
+   "n_damage": 196675,
+   "n_intact": 1403209
+  },
+  "A storm 10-05->10-17 | HH | 30 m": {
+   "auc": 0.521,
+   "contrast_dB": 0.1,
+   "n_damage": 196675,
+   "n_intact": 1403209
+  },
+  "B no storm 2025-10-22->11-03 | HV | 30 m": {
+   "auc": 0.527,
+   "contrast_dB": 0.07,
+   "n_damage": 200468,
+   "n_intact": 1490200
+  },
+  "B no storm 2025-10-22->11-03 | HH | 30 m": {
+   "auc": 0.56,
+   "contrast_dB": 0.15,
+   "n_damage": 200468,
+   "n_intact": 1490200
+  },
+  "C no storm 2026-09-11->09-23 | HV | 30 m": {
+   "auc": 0.503,
+   "contrast_dB": 0.01,
+   "n_damage": 198240,
+   "n_intact": 1436504
+  },
+  "C no storm 2026-09-11->09-23 | HH | 30 m": {
+   "auc": 0.487,
+   "contrast_dB": -0.07,
+   "n_damage": 198240,
+   "n_intact": 1436504
+  },
+  "persist 10-05->10-29 | HV | 30 m": {
+   "auc": 0.611,
+   "contrast_dB": 0.47,
+   "n_damage": 196675,
+   "n_intact": 1403196
+  },
+  "persist 10-05->10-29 | HH | 30 m": {
+   "auc": 0.575,
+   "contrast_dB": 0.37,
+   "n_damage": 196675,
+   "n_intact": 1403196
+  },
+  "A storm 10-05->10-17 | HV | 100 m": {
+   "auc": 0.744,
+   "contrast_dB": 0.49,
+   "n_damage": 9222,
+   "n_intact": 79069
+  },
+  "A storm 10-05->10-17 | HH | 100 m": {
+   "auc": 0.496,
+   "contrast_dB": -0.02,
+   "n_damage": 9222,
+   "n_intact": 79069
+  },
+  "B no storm 2025-10-22->11-03 | HV | 100 m": {
+   "auc": 0.566,
+   "contrast_dB": 0.07,
+   "n_damage": 9388,
+   "n_intact": 83794
+  },
+  "B no storm 2025-10-22->11-03 | HH | 100 m": {
+   "auc": 0.64,
+   "contrast_dB": 0.14,
+   "n_damage": 9388,
+   "n_intact": 83794
+  },
+  "C no storm 2026-09-11->09-23 | HV | 100 m": {
+   "auc": 0.514,
+   "contrast_dB": 0.01,
+   "n_damage": 9289,
+   "n_intact": 80916
+  },
+  "C no storm 2026-09-11->09-23 | HH | 100 m": {
+   "auc": 0.478,
+   "contrast_dB": -0.08,
+   "n_damage": 9289,
+   "n_intact": 80916
+  },
+  "persist 10-05->10-29 | HV | 100 m": {
+   "auc": 0.721,
+   "contrast_dB": 0.41,
+   "n_damage": 9222,
+   "n_intact": 79069
+  },
+  "persist 10-05->10-29 | HH | 100 m": {
+   "auc": 0.6,
+   "contrast_dB": 0.26,
+   "n_damage": 9222,
+   "n_intact": 79069
+  }
+ },
+ "main_table": {
+  "NISAR HV stack, both tracks vs S1 VH Oct-only | 30 m": {
+   "auc_first": 0.562,
+   "auc_second": 0.589,
+   "diff": -0.027,
+   "ci95_block": [
+    -0.048,
+    -0.01
+   ],
+   "n_damage": 208572,
+   "n": 1873202
+  },
+  "NISAR HV stack, track 76 vs S1 VH Oct-only | 30 m": {
+   "auc_first": 0.634,
+   "auc_second": 0.602,
+   "diff": 0.032,
+   "ci95_block": [
+    0.013,
+    0.05
+   ],
+   "n_damage": 198240,
+   "n": 1634765
+  },
+  "NISAR HV stack, both tracks vs S1 VH Oct-only | 100 m": {
+   "auc_first": 0.618,
+   "auc_second": 0.694,
+   "diff": -0.076,
+   "ci95_block": [
+    -0.123,
+    -0.037
+   ],
+   "n_damage": 9780,
+   "n": 102023
+  },
+  "NISAR HV stack, track 76 vs S1 VH Oct-only | 100 m": {
+   "auc_first": 0.747,
+   "auc_second": 0.72,
+   "diff": 0.027,
+   "ci95_block": [
+    -0.01,
+    0.057
+   ],
+   "n_damage": 9289,
+   "n": 90205
+  }
+ },
+ "boot": {
+  "A minus B | HV | 30 m": {
+   "auc_first": 0.616,
+   "auc_second": 0.526,
+   "diff": 0.09,
+   "ci95_block": [
+    0.068,
+    0.115
+   ],
+   "n_damage": 196675,
+   "n": 1599884
+  },
+  "A minus C | HV | 30 m": {
+   "auc_first": 0.616,
+   "auc_second": 0.503,
+   "diff": 0.113,
+   "ci95_block": [
+    0.058,
+    0.15
+   ],
+   "n_damage": 196675,
+   "n": 1599863
+  },
+  "A minus B | HH | 30 m": {
+   "auc_first": 0.521,
+   "auc_second": 0.558,
+   "diff": -0.037,
+   "ci95_block": [
+    -0.077,
+    -0.003
+   ],
+   "n_damage": 196675,
+   "n": 1599884
+  },
+  "A minus C | HH | 30 m": {
+   "auc_first": 0.521,
+   "auc_second": 0.486,
+   "diff": 0.035,
+   "ci95_block": [
+    -0.011,
+    0.075
+   ],
+   "n_damage": 196675,
+   "n": 1599863
+  },
+  "A minus B | HV | 100 m": {
+   "auc_first": 0.744,
+   "auc_second": 0.564,
+   "diff": 0.18,
+   "ci95_block": [
+    0.115,
+    0.237
+   ],
+   "n_damage": 9222,
+   "n": 88291
+  },
+  "A minus C | HV | 100 m": {
+   "auc_first": 0.744,
+   "auc_second": 0.515,
+   "diff": 0.229,
+   "ci95_block": [
+    0.113,
+    0.314
+   ],
+   "n_damage": 9222,
+   "n": 88291
+  },
+  "A minus B | HH | 100 m": {
+   "auc_first": 0.496,
+   "auc_second": 0.636,
+   "diff": -0.14,
+   "ci95_block": [
+    -0.23,
+    -0.041
+   ],
+   "n_damage": 9222,
+   "n": 88291
+  },
+  "A minus C | HH | 100 m": {
+   "auc_first": 0.496,
+   "auc_second": 0.478,
+   "diff": 0.018,
+   "ci95_block": [
+    -0.077,
+    0.108
+   ],
+   "n_damage": 9222,
+   "n": 88291
+  }
+ },
+ "orbit19_raw_forest_median_shift_dB": {
+  "10-22": -0.087,
+  "11-03": 1.189
+ },
+ "orbit92_raw_forest_median_shift_dB_vs_0921": {
+  "10-03": 0.201,
+  "10-27": -0.727,
+  "11-08": -0.493
+ }
+}

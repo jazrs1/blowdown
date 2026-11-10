@@ -23,7 +23,7 @@ Qualifications:
 3. **The no-storm floor is not 0.5.** Sentinel-1 VH for the same weeks of 2025, scored against the 2026 labels, gets AUC 0.628 at 100 m (0.672 in woody wetland).
    This is not because the label uses 2025 NDVI. With a label that leaves out the 2025 term, the control rises to 0.671 (evergreen 0.597, woody wetland 0.708).
    It's a land-cover/backscatter-change pattern that tracks where the band is: damage is 48% woody wetland and intact is 20%.
-   **NISAR has no matching 2025 control.** NISAR GCOV for track 76 starts 2025-10-22, and there is no 2025 pre-storm pair (see Not verified).
+   **NISAR has no stacked 2025 control** (track 76 GCOV starts 2025-10-22). Single 12-day no-storm pairs were added later: the storm pair scores HV 0.828 at 100 m against 0.543 and 0.566 for the no-storm pairs (see [controls.md](controls.md)).
 4. **Within forest type, NISAR still leads at 100 m.**
    - Evergreen: NISAR 0.668, S1 0.615, 2025 control 0.571.
    - Woody wetland: NISAR 0.864, S1 0.813, 2025 control 0.672.
@@ -183,9 +183,7 @@ Track 55 HV goes the wrong way in evergreen pine: damaged pine shows *lower* HV 
   The thresholds (−0.10, −0.06, −0.03, −0.02) are judgment calls.
 - **What the radar responds to.** The Sentinel-1 signal fades or reverses by early November, and damage is concentrated in woody wetland. Part of both sensors' response may be moisture or flooding in bottomlands rather than structural damage. I haven't checked river gauges, rainfall or a flood product.
 - **The NISAR no-storm floor.** ASF metadata shows NISAR GCOV from 2025-10-22 on: track 76 frame 17 has 2025-10-22, 11-03 and 11-15; track 55 frame 73 starts 2025-11-26. So there is no 2025 pre-storm pair.
-  Two partial no-storm controls are possible but **not downloaded (they need your OK)**:
-  - Track 76, 2025-10-22→11-03: same weeks as the posts, about 12 GB.
-  - Track 76, 2026-09-11→09-23: pre-storm, about 6 GB plus the 09-23 scene, which would be re-downloaded because its raw file was deleted.
+  Two 12-day no-storm pairs (2025-10-22→11-03 and 2026-09-11→09-23) have since been downloaded and scored in [controls.md](controls.md). The 09-23 scene was reused from its compact file.
   Sentinel-1's floor is 0.63 at 100 m.
 - **The P05036 offset** (0.6 dB HV, 1 dB HH): calibration or environment, not resolved.
 - **Track 55 HV reversal in evergreen**, and why descending is so much weaker than ascending. Ascending passes at about 06:02 local time (possible dew) and descending at about 19:37. I didn't test this.
