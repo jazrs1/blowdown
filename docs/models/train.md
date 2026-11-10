@@ -213,7 +213,7 @@ The in-band cut is 58.4% damage-mask cells. Reliability is measured against the 
 | U-Net D | 0.310 / 0.305 | 0.227 / 0.197 |
 | U-Net E | 0.329 / 0.338 | 0.230 / 0.229 |
 
-- **v1 is badly over-confident in-band.** About 80% of in-band cells get p > 0.9, but only 63–73% of those are in the mask. That fits a model that never saw in-between cells.
+- **v1 is badly over-confident in-band.** The v1 U-Nets put 75–89% of in-band cells above p = 0.9, GBM E 73% and GBM C and D 42%. Only 63–74% of those cells are in the mask. That fits a model that never saw in-between cells.
 - **v2 GBM C and E are roughly calibrated.** GBM E v2 is close to the diagonal (ECE 0.08).
 - **The v2 U-Nets still over-predict.** Cells scored 0.75 are 36–50% damage-mask. That's expected from the BCE positive weight of 4, which the design kept.
 - **GBM D v2 spans only 0.17–0.41**, the 2–4-tree model above.
@@ -228,7 +228,7 @@ The F1 search for v2 spans the 1st–99.5th percentiles (v1 used the 50th–99.5
 **v2 time and disk:**
 - GBM 31 min; U-Net 53 min.
 - Comparison 16 min, plus a failed first run (a bug in the bootstrap's histogram AUC, fixed).
-- `data/models/v2` is 294 MB; the cached validation scores (`data/models/val_scores.npz`) are small.
+- `data/models/v2` is 294 MB, and the cached validation scores (`data/models/val_scores.npz`) are 149 MB.
 
 **Not verified (Amendment 1):**
 - The size of v2's selection optimism on the in-band cut.
