@@ -5,14 +5,14 @@
 - AUC = Mann-Whitney (rank) statistic with score = recentred difference (higher = more damage-like).
 - Combined arms: A = mean of NISAR HV over both tracks, B = mean of S1 VH over both orbits (2026); B_2025 control.
 - Paired A vs B comparison on pixels valid in both, with bootstrap CI of the AUC difference.
-Writes docs/pipeline/auc.json, docs/pipeline/auc_table.md, data/coarse_30.npz, data/coarse_100.npz, figures."""
+Writes docs/pipeline/auc.json, data/coarse_30.npz, data/coarse_100.npz, data/threshold_maps_30.npz (figures/tables: pipeline_figures.py)."""
 import json, sys, time; sys.path.insert(0, "scripts")
 import h5py, numpy as np, psutil
 from scipy.stats import rankdata
 import grid as G
 t0 = time.time()
 L = h5py.File("data/layers.h5", "r"); R = h5py.File("data/reference.h5", "r")
-ARMS = [(g, p) for g in ("nisar_076", "nisar_055") for p in ("HH", "HV")] + \
+ARMS = [(g, p) for g in ("nisar_076", "nisar_055", "nisar_076_p23", "nisar_055_p23") for p in ("HH", "HV")] + \
        [(f"s1_{o}_{y}", p) for y in (2026, 2025) for o in (19, 92) for p in ("VV", "VH")]
 ARMS = [(g, p) for g, p in ARMS if g in L]
 HB, WB = (G.H // 300) * 300, (G.W // 300) * 300      # analysis extent divisible by 30 and 100 px
@@ -54,17 +54,18 @@ for k, c in coarse.items():
     forest_blk = (c["ft"] > 0)
     for g, p in ARMS:          # recentre on forest median at this resolution
         a = c[f"{g}:{p}"]; c[f"{g}:{p}"] = a - np.nanmedian(a[forest_blk & np.isfinite(a)])
-    np.savez_compressed(f"data/coarse_{k*10}.npz", **c)
 
 def combine(d, keys):
     st = np.stack([d[k] for k in keys if k in d])
     with np.errstate(invalid="ignore"): return np.nanmean(st, 0)
 COMB = {"A: NISAR HV (both tracks)": ["nisar_076:HV", "nisar_055:HV"], "A: NISAR HH (both tracks)": ["nisar_076:HH", "nisar_055:HH"],
         "B: S1 VH (both orbits)": ["s1_19_2026:VH", "s1_92_2026:VH"], "B: S1 VV (both orbits)": ["s1_19_2026:VV", "s1_92_2026:VV"],
-        "B 2025 control: S1 VH (both orbits)": ["s1_19_2025:VH", "s1_92_2025:VH"]}
+        "B 2025 control: S1 VH (both orbits)": ["s1_19_2025:VH", "s1_92_2025:VH"],
+        "A sensitivity: NISAR HV, P05023 scenes only": ["nisar_076_p23:HV", "nisar_055_p23:HV"]}
 for name, keys in COMB.items():
     S[name] = combine(S, keys)
     for c in coarse.values(): c[name] = combine(c, keys)
+for k, c in coarse.items(): np.savez_compressed(f"data/coarse_{k*10}.npz", **c)
 
 def auc(score, y):
     ok = np.isfinite(score); s, y = score[ok], y[ok]; n1 = int(y.sum()); n0 = len(y) - n1

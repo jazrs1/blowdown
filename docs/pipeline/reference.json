@@ -1,0 +1,41 @@
+{
+ "thresholds": {
+  "dNBR_damage": -0.1,
+  "anom_damage": -0.06,
+  "dNBR_intact": -0.03,
+  "anom_intact": -0.02
+ },
+ "near_total_patches": 5131,
+ "rectangular_patches": 7,
+ "km2": {
+  "forest": 9552.7,
+  "damage": 758.3,
+  "intact": 5388.5,
+  "clearcut": 168.2,
+  "preloss": 168.1,
+  "rect": 0.1,
+  "water_in_forest": 1.6
+ },
+ "km2_by_type": {
+  "evergreen": {
+   "forest": 6159.9,
+   "damage": 348.8,
+   "intact": 3967.5
+  },
+  "deciduous": {
+   "forest": 32.7,
+   "damage": 1.6,
+   "intact": 11.6
+  },
+  "mixed": {
+   "forest": 745.9,
+   "damage": 45.9,
+   "intact": 335.3
+  },
+  "woody_wetland": {
+   "forest": 2614.2,
+   "damage": 362.1,
+   "intact": 1074.1
+  }
+ }
+}
