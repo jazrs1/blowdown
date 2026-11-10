@@ -3,10 +3,15 @@
   "forest_px": 271734,
   "drop_px": 22791,
   "nodrop_px": 190552,
+  "NISAR": {
+   "mean_in_ndvi_drop": 0.3927009701728821,
+   "mean_in_no_drop": -0.12668752670288086,
+   "pearson_r_vs_dNDVI_forest": -0.2709866404248071
+  },
   "Sentinel-1_VH": {
-   "mean_in_ndvi_drop": 0.46320345997810364,
-   "mean_in_no_drop": -0.12144887447357178,
-   "pearson_r_vs_dNDVI_forest": -0.14037145176150873
+   "mean_in_ndvi_drop": 0.4780721962451935,
+   "mean_in_no_drop": -0.10658015310764313,
+   "pearson_r_vs_dNDVI_forest": -0.14037145259566897
   },
   "Sentinel-2_NDVI": {
    "mean_in_ndvi_drop": -0.16040267050266266,
@@ -18,10 +23,15 @@
   "forest_px": 57025,
   "drop_px": 17344,
   "nodrop_px": 16859,
+  "NISAR": {
+   "mean_in_ndvi_drop": 0.07883527874946594,
+   "mean_in_no_drop": -0.16421596705913544,
+   "pearson_r_vs_dNDVI_forest": -0.11994956068280968
+  },
   "Sentinel-1_VH": {
-   "mean_in_ndvi_drop": 0.4974457919597626,
-   "mean_in_no_drop": 0.15490390360355377,
-   "pearson_r_vs_dNDVI_forest": -0.08523093176986563
+   "mean_in_ndvi_drop": 0.15653271973133087,
+   "mean_in_no_drop": -0.18600913882255554,
+   "pearson_r_vs_dNDVI_forest": -0.0852309314136488
   },
   "Sentinel-2_NDVI": {
    "mean_in_ndvi_drop": -0.17235960066318512,

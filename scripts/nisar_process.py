@@ -51,7 +51,10 @@ def read_box(path, box):
         g = f[GRID]
         epsg = epsg_of(g)
         rs, cs, xc, yc = window(g, box, epsg)
-        out = {p: g[p][rs, cs].astype("float32") for p in ("HHHH", "HVHV")}
+        m = g["mask"][rs, cs]
+        bad = (m == 0) | (m == 255)  # spec: 0 = partially focused/invalid, 255 = outside acquisition
+        out = {p: np.where(bad, np.nan, g[p][rs, cs]).astype("float32") for p in ("HHHH", "HVHV")}
+        out["invalid_frac"] = float(bad.mean())
         return out, xc[cs], yc[rs], epsg
 
 
@@ -78,7 +81,7 @@ def resample_to_ee(diff, xc, yc, epsg, box, res):
 
 
 t0 = time.time()
-paths = {k: os.path.join(NDIR, v["file"]) for k, v in LOG.items()}
+paths = {k: os.path.join(NDIR, LOG[k]["file"]) for k in ("pre", "post")}
 for k, p in paths.items():
     with h5py.File(p, "r") as f:
         print(k, os.path.basename(p)); describe(f)
@@ -103,6 +106,7 @@ for name, box in EXT.items():
         out[key + "_native_median"] = float(np.nanmedian(d))
     np.savez_compressed(f"data/nisar_{name}.npz", dHH=out["dHH"], dHV=out["dHV"], extent=np.array(box), res=res)
     summary[name] = {"epsg": e1, "posting_m": float(abs(dx1)), "native_shape": [len(yg), len(xg)],
+                     "invalid_frac_pre": pre["invalid_frac"], "invalid_frac_post": post["invalid_frac"],
                      "median_dHH_dB": out["dHH_native_median"], "median_dHV_dB": out["dHV_native_median"]}
     print(name, summary[name])
 proc = psutil.Process()

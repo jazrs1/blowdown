@@ -21,8 +21,12 @@ for name, title in (("AL", "Alabama box (Brewton)"), ("FL", "Florida box (Milton
             a.text(0.5, 0.5, "NISAR not yet processed", ha="center", va="center", transform=a.transAxes)
             a.set_xlim(ext[0], ext[1]); a.set_ylim(ext[2], ext[3])
         else:
+            if "dB" in t:  # remove scene-wide offset (calibration/moisture) so the relative pattern is readable
+                med = float(np.nanmedian(arr[forest])); arr = arr - med
+                t = t + "\n" + f"(forest median {med:+.2f} dB removed)"
             im = a.imshow(arr, extent=ext, cmap=cm, vmin=-v, vmax=v, interpolation="nearest")
             fig.colorbar(im, ax=a, shrink=0.75)
+            # stats use offset-removed values; the in-vs-out contrast and r are unaffected
             key = t.split()[0] + ("_" + t.split()[1] if t.startswith("Sentinel") else "")
             ok = np.isfinite(arr) & np.isfinite(dn) & forest & (dn > -0.5)
             s[key] = {"mean_in_ndvi_drop": float(np.nanmean(arr[drop])), "mean_in_no_drop": float(np.nanmean(arr[keep])),
