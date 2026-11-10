@@ -1,0 +1,2224 @@
+{
+ "grid": {
+  "crs": "EPSG:32616",
+  "res_m": 30.0,
+  "origin_x": 442360.0,
+  "origin_y": 3518430.0,
+  "shape": [
+   5100,
+   3200
+  ]
+ },
+ "band_wide_upland_share_target": 0.324,
+ "heldout": {
+  "easting_m": [
+   476320.0,
+   491830.0
+  ],
+  "northing_m": [
+   3444600.0,
+   3464610.0
+  ],
+  "lon": [
+   -87.2489,
+   -87.0857
+  ],
+  "lat": [
+   31.1351,
+   31.3158
+  ],
+  "rows": [
+   1794,
+   2461
+  ],
+  "cols": [
+   1132,
+   1649
+  ],
+  "upland_share_of_damage": 0.3247,
+  "forest_km2": 241.8,
+  "damage_km2": 77.1,
+  "dmg_upland": 26487,
+  "intact_upland": 6216,
+  "dmg_wetland": 46144,
+  "nondmg_wetland": 48789
+ },
+ "heldout_exclusion_with_2km_buffer": {
+  "easting_m": [
+   474310.0,
+   493840.0
+  ],
+  "northing_m": [
+   3442590.0,
+   3466620.0
+  ],
+  "lon": [
+   -87.27,
+   -87.0646
+  ],
+  "lat": [
+   31.1169,
+   31.334
+  ]
+ },
+ "tip": {
+  "easting_m": [
+   483760.0,
+   508810.0
+  ],
+  "northing_m": [
+   3372600.0,
+   3390840.0
+  ],
+  "lon": [
+   -87.1695,
+   -86.908
+  ],
+  "lat": [
+   30.4855,
+   30.6502
+  ],
+  "rows": [
+   4253,
+   4861
+  ],
+  "cols": [
+   1380,
+   2215
+  ],
+  "note": "rectangle intersected with the NOAA footprint",
+  "forest_km2": 196.3,
+  "damage_km2": 69.7,
+  "dmg_upland": 15525,
+  "intact_upland": 212,
+  "dmg_wetland": 39921,
+  "nondmg_wetland": 82839
+ },
+ "tip_exclusion_with_2km_buffer": {
+  "easting_m": [
+   481750.0,
+   510820.0
+  ],
+  "northing_m": [
+   3370590.0,
+   3392850.0
+  ],
+  "lon": [
+   -87.1905,
+   -86.8871
+  ],
+  "lat": [
+   30.4674,
+   30.6683
+  ]
+ },
+ "train": {
+  "forest_km2": 9626.6,
+  "damage_cells": 587781,
+  "intact_cells": 3077385
+ },
+ "n_candidates": 100,
+ "n_eligible": 78,
+ "candidates": [
+  {
+   "r0": 903,
+   "r1": 1570,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2826,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 17208,
+   "intact_upland": 4770,
+   "dmg_wetland": 22913,
+   "nondmg_wetland": 29571,
+   "northing_m": [
+    3471330.0,
+    3491340.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 936,
+   "r1": 1603,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2902,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 17715,
+   "intact_upland": 5100,
+   "dmg_wetland": 22940,
+   "nondmg_wetland": 28453,
+   "northing_m": [
+    3470340.0,
+    3490350.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 969,
+   "r1": 1636,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2894,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 17767,
+   "intact_upland": 5612,
+   "dmg_wetland": 23791,
+   "nondmg_wetland": 28844,
+   "northing_m": [
+    3469350.0,
+    3489360.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1002,
+   "r1": 1669,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2878,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 17608,
+   "intact_upland": 5672,
+   "dmg_wetland": 24666,
+   "nondmg_wetland": 28995,
+   "northing_m": [
+    3468360.0,
+    3488370.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1035,
+   "r1": 1702,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2928,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 18283,
+   "intact_upland": 5591,
+   "dmg_wetland": 25496,
+   "nondmg_wetland": 28049,
+   "northing_m": [
+    3467370.0,
+    3487380.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1068,
+   "r1": 1735,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.2949,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 18656,
+   "intact_upland": 5579,
+   "dmg_wetland": 26134,
+   "nondmg_wetland": 27698,
+   "northing_m": [
+    3466380.0,
+    3486390.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1101,
+   "r1": 1768,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.3011,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 19354,
+   "intact_upland": 5277,
+   "dmg_wetland": 26593,
+   "nondmg_wetland": 27767,
+   "northing_m": [
+    3465390.0,
+    3485400.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1134,
+   "r1": 1801,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.3116,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 20468,
+   "intact_upland": 5408,
+   "dmg_wetland": 26925,
+   "nondmg_wetland": 27076,
+   "northing_m": [
+    3464400.0,
+    3484410.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1167,
+   "r1": 1834,
+   "c0": 1062,
+   "c1": 1534,
+   "upland_share": 0.3209,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 21452,
+   "intact_upland": 5674,
+   "dmg_wetland": 27602,
+   "nondmg_wetland": 27140,
+   "northing_m": [
+    3463410.0,
+    3483420.0
+   ],
+   "easting_m": [
+    474220.0,
+    488380.0
+   ]
+  },
+  {
+   "r0": 1200,
+   "r1": 1867,
+   "c0": 1062,
+   "c1": 1551,
+   "upland_share": 0.3298,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 22829,
+   "intact_upland": 6302,
+   "dmg_wetland": 28196,
+   "nondmg_wetland": 27681,
+   "northing_m": [
+    3462420.0,
+    3482430.0
+   ],
+   "easting_m": [
+    474220.0,
+    488890.0
+   ]
+  },
+  {
+   "r0": 1233,
+   "r1": 1900,
+   "c0": 1062,
+   "c1": 1551,
+   "upland_share": 0.3407,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 23949,
+   "intact_upland": 6249,
+   "dmg_wetland": 28197,
+   "nondmg_wetland": 27544,
+   "northing_m": [
+    3461430.0,
+    3481440.0
+   ],
+   "easting_m": [
+    474220.0,
+    488890.0
+   ]
+  },
+  {
+   "r0": 1266,
+   "r1": 1933,
+   "c0": 1062,
+   "c1": 1551,
+   "upland_share": 0.351,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25456,
+   "intact_upland": 6206,
+   "dmg_wetland": 28775,
+   "nondmg_wetland": 27311,
+   "northing_m": [
+    3460440.0,
+    3480450.0
+   ],
+   "easting_m": [
+    474220.0,
+    488890.0
+   ]
+  },
+  {
+   "r0": 1299,
+   "r1": 1966,
+   "c0": 1062,
+   "c1": 1551,
+   "upland_share": 0.3595,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26247,
+   "intact_upland": 6149,
+   "dmg_wetland": 28765,
+   "nondmg_wetland": 28711,
+   "northing_m": [
+    3459450.0,
+    3479460.0
+   ],
+   "easting_m": [
+    474220.0,
+    488890.0
+   ]
+  },
+  {
+   "r0": 1332,
+   "r1": 1999,
+   "c0": 1062,
+   "c1": 1561,
+   "upland_share": 0.3624,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26743,
+   "intact_upland": 6564,
+   "dmg_wetland": 29636,
+   "nondmg_wetland": 29832,
+   "northing_m": [
+    3458460.0,
+    3478470.0
+   ],
+   "easting_m": [
+    474220.0,
+    489190.0
+   ]
+  },
+  {
+   "r0": 1365,
+   "r1": 2032,
+   "c0": 1062,
+   "c1": 1563,
+   "upland_share": 0.3617,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26314,
+   "intact_upland": 6923,
+   "dmg_wetland": 30158,
+   "nondmg_wetland": 30101,
+   "northing_m": [
+    3457470.0,
+    3477480.0
+   ],
+   "easting_m": [
+    474220.0,
+    489250.0
+   ]
+  },
+  {
+   "r0": 1398,
+   "r1": 2065,
+   "c0": 1062,
+   "c1": 1594,
+   "upland_share": 0.3579,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25993,
+   "intact_upland": 7700,
+   "dmg_wetland": 31597,
+   "nondmg_wetland": 33063,
+   "northing_m": [
+    3456480.0,
+    3476490.0
+   ],
+   "easting_m": [
+    474220.0,
+    490180.0
+   ]
+  },
+  {
+   "r0": 1431,
+   "r1": 2098,
+   "c0": 1062,
+   "c1": 1594,
+   "upland_share": 0.3607,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26501,
+   "intact_upland": 8096,
+   "dmg_wetland": 32624,
+   "nondmg_wetland": 33297,
+   "northing_m": [
+    3455490.0,
+    3475500.0
+   ],
+   "easting_m": [
+    474220.0,
+    490180.0
+   ]
+  },
+  {
+   "r0": 1464,
+   "r1": 2131,
+   "c0": 1062,
+   "c1": 1599,
+   "upland_share": 0.3678,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 27130,
+   "intact_upland": 8710,
+   "dmg_wetland": 33295,
+   "nondmg_wetland": 34640,
+   "northing_m": [
+    3454500.0,
+    3474510.0
+   ],
+   "easting_m": [
+    474220.0,
+    490330.0
+   ]
+  },
+  {
+   "r0": 1497,
+   "r1": 2164,
+   "c0": 1082,
+   "c1": 1601,
+   "upland_share": 0.3666,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 27280,
+   "intact_upland": 7288,
+   "dmg_wetland": 34317,
+   "nondmg_wetland": 33298,
+   "northing_m": [
+    3453510.0,
+    3473520.0
+   ],
+   "easting_m": [
+    474820.0,
+    490390.0
+   ]
+  },
+  {
+   "r0": 1530,
+   "r1": 2197,
+   "c0": 1127,
+   "c1": 1611,
+   "upland_share": 0.3632,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 27756,
+   "intact_upland": 4327,
+   "dmg_wetland": 35901,
+   "nondmg_wetland": 30245,
+   "northing_m": [
+    3452520.0,
+    3472530.0
+   ],
+   "easting_m": [
+    476170.0,
+    490690.0
+   ]
+  },
+  {
+   "r0": 1563,
+   "r1": 2230,
+   "c0": 1127,
+   "c1": 1614,
+   "upland_share": 0.3601,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28344,
+   "intact_upland": 4630,
+   "dmg_wetland": 37771,
+   "nondmg_wetland": 31089,
+   "northing_m": [
+    3451530.0,
+    3471540.0
+   ],
+   "easting_m": [
+    476170.0,
+    490780.0
+   ]
+  },
+  {
+   "r0": 1596,
+   "r1": 2263,
+   "c0": 1127,
+   "c1": 1614,
+   "upland_share": 0.3543,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28403,
+   "intact_upland": 4575,
+   "dmg_wetland": 39579,
+   "nondmg_wetland": 33631,
+   "northing_m": [
+    3450540.0,
+    3470550.0
+   ],
+   "easting_m": [
+    476170.0,
+    490780.0
+   ]
+  },
+  {
+   "r0": 1629,
+   "r1": 2296,
+   "c0": 1127,
+   "c1": 1614,
+   "upland_share": 0.3513,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28429,
+   "intact_upland": 4515,
+   "dmg_wetland": 41051,
+   "nondmg_wetland": 35770,
+   "northing_m": [
+    3449550.0,
+    3469560.0
+   ],
+   "easting_m": [
+    476170.0,
+    490780.0
+   ]
+  },
+  {
+   "r0": 1662,
+   "r1": 2329,
+   "c0": 1127,
+   "c1": 1627,
+   "upland_share": 0.3471,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28606,
+   "intact_upland": 4960,
+   "dmg_wetland": 42680,
+   "nondmg_wetland": 39598,
+   "northing_m": [
+    3448560.0,
+    3468570.0
+   ],
+   "easting_m": [
+    476170.0,
+    491170.0
+   ]
+  },
+  {
+   "r0": 1695,
+   "r1": 2362,
+   "c0": 1127,
+   "c1": 1649,
+   "upland_share": 0.3454,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28903,
+   "intact_upland": 5862,
+   "dmg_wetland": 43948,
+   "nondmg_wetland": 43481,
+   "northing_m": [
+    3447570.0,
+    3467580.0
+   ],
+   "easting_m": [
+    476170.0,
+    491830.0
+   ]
+  },
+  {
+   "r0": 1728,
+   "r1": 2395,
+   "c0": 1127,
+   "c1": 1649,
+   "upland_share": 0.3358,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 27894,
+   "intact_upland": 6021,
+   "dmg_wetland": 45090,
+   "nondmg_wetland": 45281,
+   "northing_m": [
+    3446580.0,
+    3466590.0
+   ],
+   "easting_m": [
+    476170.0,
+    491830.0
+   ]
+  },
+  {
+   "r0": 1761,
+   "r1": 2428,
+   "c0": 1132,
+   "c1": 1649,
+   "upland_share": 0.334,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 27499,
+   "intact_upland": 5762,
+   "dmg_wetland": 45325,
+   "nondmg_wetland": 46506,
+   "northing_m": [
+    3445590.0,
+    3465600.0
+   ],
+   "easting_m": [
+    476320.0,
+    491830.0
+   ]
+  },
+  {
+   "r0": 1794,
+   "r1": 2461,
+   "c0": 1132,
+   "c1": 1649,
+   "upland_share": 0.3247,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26487,
+   "intact_upland": 6216,
+   "dmg_wetland": 46144,
+   "nondmg_wetland": 48789,
+   "northing_m": [
+    3444600.0,
+    3464610.0
+   ],
+   "easting_m": [
+    476320.0,
+    491830.0
+   ]
+  },
+  {
+   "r0": 1827,
+   "r1": 2494,
+   "c0": 1150,
+   "c1": 1649,
+   "upland_share": 0.3182,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25824,
+   "intact_upland": 4709,
+   "dmg_wetland": 46904,
+   "nondmg_wetland": 47578,
+   "northing_m": [
+    3443610.0,
+    3463620.0
+   ],
+   "easting_m": [
+    476860.0,
+    491830.0
+   ]
+  },
+  {
+   "r0": 1860,
+   "r1": 2527,
+   "c0": 1150,
+   "c1": 1766,
+   "upland_share": 0.3134,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26232,
+   "intact_upland": 9242,
+   "dmg_wetland": 49467,
+   "nondmg_wetland": 60178,
+   "northing_m": [
+    3442620.0,
+    3462630.0
+   ],
+   "easting_m": [
+    476860.0,
+    495340.0
+   ]
+  },
+  {
+   "r0": 1893,
+   "r1": 2560,
+   "c0": 1156,
+   "c1": 1771,
+   "upland_share": 0.313,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26324,
+   "intact_upland": 8738,
+   "dmg_wetland": 50177,
+   "nondmg_wetland": 62897,
+   "northing_m": [
+    3441630.0,
+    3461640.0
+   ],
+   "easting_m": [
+    477040.0,
+    495490.0
+   ]
+  },
+  {
+   "r0": 1926,
+   "r1": 2593,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.308,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26089,
+   "intact_upland": 8622,
+   "dmg_wetland": 51668,
+   "nondmg_wetland": 67168,
+   "northing_m": [
+    3440640.0,
+    3460650.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 1959,
+   "r1": 2626,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.3057,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26400,
+   "intact_upland": 8381,
+   "dmg_wetland": 53275,
+   "nondmg_wetland": 68543,
+   "northing_m": [
+    3439650.0,
+    3459660.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 1992,
+   "r1": 2659,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2981,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25867,
+   "intact_upland": 8347,
+   "dmg_wetland": 54421,
+   "nondmg_wetland": 70627,
+   "northing_m": [
+    3438660.0,
+    3458670.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2025,
+   "r1": 2692,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2927,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26174,
+   "intact_upland": 7984,
+   "dmg_wetland": 57105,
+   "nondmg_wetland": 72997,
+   "northing_m": [
+    3437670.0,
+    3457680.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2058,
+   "r1": 2725,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2888,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26525,
+   "intact_upland": 7422,
+   "dmg_wetland": 59338,
+   "nondmg_wetland": 74487,
+   "northing_m": [
+    3436680.0,
+    3456690.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2091,
+   "r1": 2758,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2765,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26142,
+   "intact_upland": 6667,
+   "dmg_wetland": 62700,
+   "nondmg_wetland": 76930,
+   "northing_m": [
+    3435690.0,
+    3455700.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2124,
+   "r1": 2791,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.266,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26034,
+   "intact_upland": 6528,
+   "dmg_wetland": 66028,
+   "nondmg_wetland": 80483,
+   "northing_m": [
+    3434700.0,
+    3454710.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2157,
+   "r1": 2824,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2519,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25327,
+   "intact_upland": 6321,
+   "dmg_wetland": 69749,
+   "nondmg_wetland": 82320,
+   "northing_m": [
+    3433710.0,
+    3453720.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2190,
+   "r1": 2857,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2451,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25510,
+   "intact_upland": 5592,
+   "dmg_wetland": 72984,
+   "nondmg_wetland": 83896,
+   "northing_m": [
+    3432720.0,
+    3452730.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2223,
+   "r1": 2890,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2401,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25522,
+   "intact_upland": 5479,
+   "dmg_wetland": 75684,
+   "nondmg_wetland": 85283,
+   "northing_m": [
+    3431730.0,
+    3451740.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2256,
+   "r1": 2923,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2358,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 25435,
+   "intact_upland": 6109,
+   "dmg_wetland": 77679,
+   "nondmg_wetland": 85612,
+   "northing_m": [
+    3430740.0,
+    3450750.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2289,
+   "r1": 2956,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2416,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 26422,
+   "intact_upland": 6031,
+   "dmg_wetland": 78126,
+   "nondmg_wetland": 84977,
+   "northing_m": [
+    3429750.0,
+    3449760.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2322,
+   "r1": 2989,
+   "c0": 1156,
+   "c1": 1786,
+   "upland_share": 0.2506,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28083,
+   "intact_upland": 5994,
+   "dmg_wetland": 78388,
+   "nondmg_wetland": 84995,
+   "northing_m": [
+    3428760.0,
+    3448770.0
+   ],
+   "easting_m": [
+    477040.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2355,
+   "r1": 3022,
+   "c0": 1142,
+   "c1": 1786,
+   "upland_share": 0.2507,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 28905,
+   "intact_upland": 6535,
+   "dmg_wetland": 80640,
+   "nondmg_wetland": 88858,
+   "northing_m": [
+    3427770.0,
+    3447780.0
+   ],
+   "easting_m": [
+    476620.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2388,
+   "r1": 3055,
+   "c0": 1140,
+   "c1": 1786,
+   "upland_share": 0.2533,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 29768,
+   "intact_upland": 6496,
+   "dmg_wetland": 81633,
+   "nondmg_wetland": 87685,
+   "northing_m": [
+    3426780.0,
+    3446790.0
+   ],
+   "easting_m": [
+    476560.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2421,
+   "r1": 3088,
+   "c0": 1129,
+   "c1": 1786,
+   "upland_share": 0.2509,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 30104,
+   "intact_upland": 6854,
+   "dmg_wetland": 83204,
+   "nondmg_wetland": 88007,
+   "northing_m": [
+    3425790.0,
+    3445800.0
+   ],
+   "easting_m": [
+    476230.0,
+    495940.0
+   ]
+  },
+  {
+   "r0": 2454,
+   "r1": 3121,
+   "c0": 1122,
+   "c1": 1794,
+   "upland_share": 0.2585,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 31913,
+   "intact_upland": 6928,
+   "dmg_wetland": 84223,
+   "nondmg_wetland": 88405,
+   "northing_m": [
+    3424800.0,
+    3444810.0
+   ],
+   "easting_m": [
+    476020.0,
+    496180.0
+   ]
+  },
+  {
+   "r0": 2487,
+   "r1": 3154,
+   "c0": 1109,
+   "c1": 1807,
+   "upland_share": 0.2693,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 34115,
+   "intact_upland": 7686,
+   "dmg_wetland": 84718,
+   "nondmg_wetland": 90125,
+   "northing_m": [
+    3423810.0,
+    3443820.0
+   ],
+   "easting_m": [
+    475630.0,
+    496570.0
+   ]
+  },
+  {
+   "r0": 2520,
+   "r1": 3187,
+   "c0": 1109,
+   "c1": 1898,
+   "upland_share": 0.2791,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 35945,
+   "intact_upland": 15160,
+   "dmg_wetland": 84417,
+   "nondmg_wetland": 100654,
+   "northing_m": [
+    3422820.0,
+    3442830.0
+   ],
+   "easting_m": [
+    475630.0,
+    499300.0
+   ]
+  },
+  {
+   "r0": 2553,
+   "r1": 3220,
+   "c0": 1109,
+   "c1": 1908,
+   "upland_share": 0.2845,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 37044,
+   "intact_upland": 16762,
+   "dmg_wetland": 84060,
+   "nondmg_wetland": 97815,
+   "northing_m": [
+    3421830.0,
+    3441840.0
+   ],
+   "easting_m": [
+    475630.0,
+    499600.0
+   ]
+  },
+  {
+   "r0": 2586,
+   "r1": 3253,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.2941,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 38896,
+   "intact_upland": 16886,
+   "dmg_wetland": 83694,
+   "nondmg_wetland": 94190,
+   "northing_m": [
+    3420840.0,
+    3440850.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2619,
+   "r1": 3286,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.3015,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 39936,
+   "intact_upland": 16311,
+   "dmg_wetland": 82336,
+   "nondmg_wetland": 89184,
+   "northing_m": [
+    3419850.0,
+    3439860.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2652,
+   "r1": 3319,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.3115,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 41977,
+   "intact_upland": 15790,
+   "dmg_wetland": 82038,
+   "nondmg_wetland": 81757,
+   "northing_m": [
+    3418860.0,
+    3438870.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2685,
+   "r1": 3352,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.3181,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 42755,
+   "intact_upland": 15164,
+   "dmg_wetland": 80173,
+   "nondmg_wetland": 74651,
+   "northing_m": [
+    3417870.0,
+    3437880.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2718,
+   "r1": 3385,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.3288,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 43217,
+   "intact_upland": 14955,
+   "dmg_wetland": 76439,
+   "nondmg_wetland": 67918,
+   "northing_m": [
+    3416880.0,
+    3436890.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2751,
+   "r1": 3418,
+   "c0": 1109,
+   "c1": 1911,
+   "upland_share": 0.3408,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 43901,
+   "intact_upland": 14152,
+   "dmg_wetland": 72873,
+   "nondmg_wetland": 62283,
+   "northing_m": [
+    3415890.0,
+    3435900.0
+   ],
+   "easting_m": [
+    475630.0,
+    499690.0
+   ]
+  },
+  {
+   "r0": 2784,
+   "r1": 3451,
+   "c0": 1109,
+   "c1": 1916,
+   "upland_share": 0.3532,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 45192,
+   "intact_upland": 13046,
+   "dmg_wetland": 69835,
+   "nondmg_wetland": 57650,
+   "northing_m": [
+    3414900.0,
+    3434910.0
+   ],
+   "easting_m": [
+    475630.0,
+    499840.0
+   ]
+  },
+  {
+   "r0": 2817,
+   "r1": 3484,
+   "c0": 1109,
+   "c1": 1916,
+   "upland_share": 0.3744,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 47497,
+   "intact_upland": 11551,
+   "dmg_wetland": 65409,
+   "nondmg_wetland": 52252,
+   "northing_m": [
+    3413910.0,
+    3433920.0
+   ],
+   "easting_m": [
+    475630.0,
+    499840.0
+   ]
+  },
+  {
+   "r0": 2850,
+   "r1": 3517,
+   "c0": 1109,
+   "c1": 1924,
+   "upland_share": 0.3917,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 48810,
+   "intact_upland": 11415,
+   "dmg_wetland": 61692,
+   "nondmg_wetland": 49136,
+   "northing_m": [
+    3412920.0,
+    3432930.0
+   ],
+   "easting_m": [
+    475630.0,
+    500080.0
+   ]
+  },
+  {
+   "r0": 2883,
+   "r1": 3550,
+   "c0": 1109,
+   "c1": 1990,
+   "upland_share": 0.4143,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 52495,
+   "intact_upland": 16970,
+   "dmg_wetland": 58978,
+   "nondmg_wetland": 52708,
+   "northing_m": [
+    3411930.0,
+    3431940.0
+   ],
+   "easting_m": [
+    475630.0,
+    502060.0
+   ]
+  },
+  {
+   "r0": 2916,
+   "r1": 3583,
+   "c0": 1109,
+   "c1": 1990,
+   "upland_share": 0.4304,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 53877,
+   "intact_upland": 14628,
+   "dmg_wetland": 55537,
+   "nondmg_wetland": 49170,
+   "northing_m": [
+    3410940.0,
+    3430950.0
+   ],
+   "easting_m": [
+    475630.0,
+    502060.0
+   ]
+  },
+  {
+   "r0": 2949,
+   "r1": 3616,
+   "c0": 1109,
+   "c1": 1990,
+   "upland_share": 0.4384,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 55214,
+   "intact_upland": 13367,
+   "dmg_wetland": 53909,
+   "nondmg_wetland": 45923,
+   "northing_m": [
+    3409950.0,
+    3429960.0
+   ],
+   "easting_m": [
+    475630.0,
+    502060.0
+   ]
+  },
+  {
+   "r0": 2982,
+   "r1": 3649,
+   "c0": 1109,
+   "c1": 1990,
+   "upland_share": 0.4423,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 55838,
+   "intact_upland": 12074,
+   "dmg_wetland": 53002,
+   "nondmg_wetland": 42116,
+   "northing_m": [
+    3408960.0,
+    3428970.0
+   ],
+   "easting_m": [
+    475630.0,
+    502060.0
+   ]
+  },
+  {
+   "r0": 3015,
+   "r1": 3682,
+   "c0": 1109,
+   "c1": 1995,
+   "upland_share": 0.4459,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 55353,
+   "intact_upland": 11468,
+   "dmg_wetland": 50110,
+   "nondmg_wetland": 38289,
+   "northing_m": [
+    3407970.0,
+    3427980.0
+   ],
+   "easting_m": [
+    475630.0,
+    502210.0
+   ]
+  },
+  {
+   "r0": 3048,
+   "r1": 3715,
+   "c0": 1109,
+   "c1": 1995,
+   "upland_share": 0.4535,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 56566,
+   "intact_upland": 10985,
+   "dmg_wetland": 48264,
+   "nondmg_wetland": 35777,
+   "northing_m": [
+    3406980.0,
+    3426990.0
+   ],
+   "easting_m": [
+    475630.0,
+    502210.0
+   ]
+  },
+  {
+   "r0": 3081,
+   "r1": 3748,
+   "c0": 1109,
+   "c1": 2010,
+   "upland_share": 0.4637,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 58824,
+   "intact_upland": 10999,
+   "dmg_wetland": 47381,
+   "nondmg_wetland": 35147,
+   "northing_m": [
+    3405990.0,
+    3426000.0
+   ],
+   "easting_m": [
+    475630.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3114,
+   "r1": 3781,
+   "c0": 1109,
+   "c1": 2010,
+   "upland_share": 0.4686,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 58658,
+   "intact_upland": 10086,
+   "dmg_wetland": 45861,
+   "nondmg_wetland": 31956,
+   "northing_m": [
+    3405000.0,
+    3425010.0
+   ],
+   "easting_m": [
+    475630.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3147,
+   "r1": 3814,
+   "c0": 1119,
+   "c1": 2010,
+   "upland_share": 0.4701,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 57426,
+   "intact_upland": 8715,
+   "dmg_wetland": 43497,
+   "nondmg_wetland": 29465,
+   "northing_m": [
+    3404010.0,
+    3424020.0
+   ],
+   "easting_m": [
+    475930.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3180,
+   "r1": 3847,
+   "c0": 1129,
+   "c1": 2010,
+   "upland_share": 0.4697,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 56245,
+   "intact_upland": 7189,
+   "dmg_wetland": 42128,
+   "nondmg_wetland": 27837,
+   "northing_m": [
+    3403020.0,
+    3423030.0
+   ],
+   "easting_m": [
+    476230.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3213,
+   "r1": 3880,
+   "c0": 1129,
+   "c1": 2010,
+   "upland_share": 0.4647,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 55423,
+   "intact_upland": 6765,
+   "dmg_wetland": 41458,
+   "nondmg_wetland": 26768,
+   "northing_m": [
+    3402030.0,
+    3422040.0
+   ],
+   "easting_m": [
+    476230.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3246,
+   "r1": 3913,
+   "c0": 1129,
+   "c1": 2010,
+   "upland_share": 0.4576,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 53556,
+   "intact_upland": 6611,
+   "dmg_wetland": 40550,
+   "nondmg_wetland": 27556,
+   "northing_m": [
+    3401040.0,
+    3421050.0
+   ],
+   "easting_m": [
+    476230.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3279,
+   "r1": 3946,
+   "c0": 1129,
+   "c1": 2010,
+   "upland_share": 0.4563,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 53364,
+   "intact_upland": 6478,
+   "dmg_wetland": 39611,
+   "nondmg_wetland": 28202,
+   "northing_m": [
+    3400050.0,
+    3420060.0
+   ],
+   "easting_m": [
+    476230.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3312,
+   "r1": 3979,
+   "c0": 1134,
+   "c1": 2010,
+   "upland_share": 0.458,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 53208,
+   "intact_upland": 6440,
+   "dmg_wetland": 38293,
+   "nondmg_wetland": 28300,
+   "northing_m": [
+    3399060.0,
+    3419070.0
+   ],
+   "easting_m": [
+    476380.0,
+    502660.0
+   ]
+  },
+  {
+   "r0": 3345,
+   "r1": 4012,
+   "c0": 1231,
+   "c1": 2013,
+   "upland_share": 0.4653,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 51210,
+   "intact_upland": 4817,
+   "dmg_wetland": 34051,
+   "nondmg_wetland": 24494,
+   "northing_m": [
+    3398070.0,
+    3418080.0
+   ],
+   "easting_m": [
+    479290.0,
+    502750.0
+   ]
+  },
+  {
+   "r0": 3378,
+   "r1": 4045,
+   "c0": 1231,
+   "c1": 2023,
+   "upland_share": 0.4765,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 53404,
+   "intact_upland": 5211,
+   "dmg_wetland": 33001,
+   "nondmg_wetland": 25754,
+   "northing_m": [
+    3397080.0,
+    3417090.0
+   ],
+   "easting_m": [
+    479290.0,
+    503050.0
+   ]
+  },
+  {
+   "r0": 3411,
+   "r1": 4078,
+   "c0": 1248,
+   "c1": 2023,
+   "upland_share": 0.4797,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 54988,
+   "intact_upland": 4313,
+   "dmg_wetland": 32416,
+   "nondmg_wetland": 26211,
+   "northing_m": [
+    3396090.0,
+    3416100.0
+   ],
+   "easting_m": [
+    479800.0,
+    503050.0
+   ]
+  },
+  {
+   "r0": 3444,
+   "r1": 4111,
+   "c0": 1248,
+   "c1": 2031,
+   "upland_share": 0.4853,
+   "touches_tip": false,
+   "eligible": true,
+   "dmg_upland": 56743,
+   "intact_upland": 3974,
+   "dmg_wetland": 31721,
+   "nondmg_wetland": 26925,
+   "northing_m": [
+    3395100.0,
+    3415110.0
+   ],
+   "easting_m": [
+    479800.0,
+    503290.0
+   ]
+  },
+  {
+   "r0": 3477,
+   "r1": 4144,
+   "c0": 1248,
+   "c1": 2036,
+   "upland_share": 0.4827,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 57691,
+   "intact_upland": 3246,
+   "dmg_wetland": 31376,
+   "nondmg_wetland": 27807,
+   "northing_m": [
+    3394110.0,
+    3414120.0
+   ],
+   "easting_m": [
+    479800.0,
+    503440.0
+   ]
+  },
+  {
+   "r0": 3510,
+   "r1": 4177,
+   "c0": 1248,
+   "c1": 2049,
+   "upland_share": 0.4787,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 59353,
+   "intact_upland": 3547,
+   "dmg_wetland": 31042,
+   "nondmg_wetland": 28827,
+   "northing_m": [
+    3393120.0,
+    3413130.0
+   ],
+   "easting_m": [
+    479800.0,
+    503830.0
+   ]
+  },
+  {
+   "r0": 3543,
+   "r1": 4210,
+   "c0": 1248,
+   "c1": 2049,
+   "upland_share": 0.4707,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 58301,
+   "intact_upland": 3391,
+   "dmg_wetland": 31069,
+   "nondmg_wetland": 30246,
+   "northing_m": [
+    3392130.0,
+    3412140.0
+   ],
+   "easting_m": [
+    479800.0,
+    503830.0
+   ]
+  },
+  {
+   "r0": 3576,
+   "r1": 4243,
+   "c0": 1248,
+   "c1": 2087,
+   "upland_share": 0.4632,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 58883,
+   "intact_upland": 3985,
+   "dmg_wetland": 31863,
+   "nondmg_wetland": 35089,
+   "northing_m": [
+    3391140.0,
+    3411150.0
+   ],
+   "easting_m": [
+    479800.0,
+    504970.0
+   ]
+  },
+  {
+   "r0": 3609,
+   "r1": 4276,
+   "c0": 1248,
+   "c1": 2095,
+   "upland_share": 0.4573,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 58170,
+   "intact_upland": 3631,
+   "dmg_wetland": 31798,
+   "nondmg_wetland": 36750,
+   "northing_m": [
+    3390150.0,
+    3410160.0
+   ],
+   "easting_m": [
+    479800.0,
+    505210.0
+   ]
+  },
+  {
+   "r0": 3642,
+   "r1": 4309,
+   "c0": 1253,
+   "c1": 2172,
+   "upland_share": 0.4486,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 56699,
+   "intact_upland": 7041,
+   "dmg_wetland": 31882,
+   "nondmg_wetland": 41866,
+   "northing_m": [
+    3389160.0,
+    3409170.0
+   ],
+   "easting_m": [
+    479950.0,
+    507520.0
+   ]
+  },
+  {
+   "r0": 3675,
+   "r1": 4342,
+   "c0": 1253,
+   "c1": 2215,
+   "upland_share": 0.4466,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 56705,
+   "intact_upland": 8740,
+   "dmg_wetland": 31633,
+   "nondmg_wetland": 45515,
+   "northing_m": [
+    3388170.0,
+    3408180.0
+   ],
+   "easting_m": [
+    479950.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3708,
+   "r1": 4375,
+   "c0": 1260,
+   "c1": 2215,
+   "upland_share": 0.4488,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 56575,
+   "intact_upland": 7711,
+   "dmg_wetland": 30602,
+   "nondmg_wetland": 45066,
+   "northing_m": [
+    3387180.0,
+    3407190.0
+   ],
+   "easting_m": [
+    480160.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3741,
+   "r1": 4408,
+   "c0": 1260,
+   "c1": 2215,
+   "upland_share": 0.4376,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 55254,
+   "intact_upland": 7410,
+   "dmg_wetland": 31686,
+   "nondmg_wetland": 47216,
+   "northing_m": [
+    3386190.0,
+    3406200.0
+   ],
+   "easting_m": [
+    480160.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3774,
+   "r1": 4441,
+   "c0": 1260,
+   "c1": 2215,
+   "upland_share": 0.431,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 54014,
+   "intact_upland": 6639,
+   "dmg_wetland": 31710,
+   "nondmg_wetland": 49890,
+   "northing_m": [
+    3385200.0,
+    3405210.0
+   ],
+   "easting_m": [
+    480160.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3807,
+   "r1": 4474,
+   "c0": 1260,
+   "c1": 2215,
+   "upland_share": 0.4255,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 53798,
+   "intact_upland": 6129,
+   "dmg_wetland": 32305,
+   "nondmg_wetland": 50571,
+   "northing_m": [
+    3384210.0,
+    3404220.0
+   ],
+   "easting_m": [
+    480160.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3840,
+   "r1": 4507,
+   "c0": 1260,
+   "c1": 2215,
+   "upland_share": 0.4135,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 53147,
+   "intact_upland": 5944,
+   "dmg_wetland": 34406,
+   "nondmg_wetland": 53945,
+   "northing_m": [
+    3383220.0,
+    3403230.0
+   ],
+   "easting_m": [
+    480160.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3873,
+   "r1": 4540,
+   "c0": 1283,
+   "c1": 2215,
+   "upland_share": 0.4039,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 52416,
+   "intact_upland": 4908,
+   "dmg_wetland": 36475,
+   "nondmg_wetland": 54071,
+   "northing_m": [
+    3382230.0,
+    3402240.0
+   ],
+   "easting_m": [
+    480850.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3906,
+   "r1": 4573,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.387,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 52067,
+   "intact_upland": 3485,
+   "dmg_wetland": 41403,
+   "nondmg_wetland": 58017,
+   "northing_m": [
+    3381240.0,
+    3401250.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3939,
+   "r1": 4606,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.362,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 49172,
+   "intact_upland": 2746,
+   "dmg_wetland": 46478,
+   "nondmg_wetland": 64973,
+   "northing_m": [
+    3380250.0,
+    3400260.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 3972,
+   "r1": 4639,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.349,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 46224,
+   "intact_upland": 1951,
+   "dmg_wetland": 47267,
+   "nondmg_wetland": 70206,
+   "northing_m": [
+    3379260.0,
+    3399270.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4005,
+   "r1": 4672,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.334,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 42898,
+   "intact_upland": 1441,
+   "dmg_wetland": 48021,
+   "nondmg_wetland": 76727,
+   "northing_m": [
+    3378270.0,
+    3398280.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4038,
+   "r1": 4705,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.3121,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 38856,
+   "intact_upland": 1103,
+   "dmg_wetland": 49576,
+   "nondmg_wetland": 81475,
+   "northing_m": [
+    3377280.0,
+    3397290.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4071,
+   "r1": 4738,
+   "c0": 1311,
+   "c1": 2215,
+   "upland_share": 0.2967,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 35083,
+   "intact_upland": 720,
+   "dmg_wetland": 49251,
+   "nondmg_wetland": 84811,
+   "northing_m": [
+    3376290.0,
+    3396300.0
+   ],
+   "easting_m": [
+    481690.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4104,
+   "r1": 4771,
+   "c0": 1324,
+   "c1": 2215,
+   "upland_share": 0.2782,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 31154,
+   "intact_upland": 623,
+   "dmg_wetland": 48949,
+   "nondmg_wetland": 84984,
+   "northing_m": [
+    3375300.0,
+    3395310.0
+   ],
+   "easting_m": [
+    482080.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4137,
+   "r1": 4804,
+   "c0": 1380,
+   "c1": 2215,
+   "upland_share": 0.2558,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 26566,
+   "intact_upland": 578,
+   "dmg_wetland": 47637,
+   "nondmg_wetland": 85072,
+   "northing_m": [
+    3374310.0,
+    3394320.0
+   ],
+   "easting_m": [
+    483760.0,
+    508810.0
+   ]
+  },
+  {
+   "r0": 4170,
+   "r1": 4837,
+   "c0": 1380,
+   "c1": 2215,
+   "upland_share": 0.2384,
+   "touches_tip": true,
+   "eligible": false,
+   "dmg_upland": 23205,
+   "intact_upland": 514,
+   "dmg_wetland": 47245,
+   "nondmg_wetland": 88918,
+   "northing_m": [
+    3373320.0,
+    3393330.0
+   ],
+   "easting_m": [
+    483760.0,
+    508810.0
+   ]
+  }
+ ]
+}
