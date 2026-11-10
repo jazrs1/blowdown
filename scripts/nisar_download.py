@@ -29,4 +29,5 @@ for tag, name in NAMES.items():
     dt = time.time() - t0
     log[tag] = {"file": name + ".h5", "bytes": os.path.getsize(dest), "seconds": round(dt, 1)}
     print(f"{tag} done: {log[tag]}", flush=True)
+import psutil; mi = psutil.Process().memory_info(); log["download_peak_ram_bytes"] = int(getattr(mi, "peak_wset", 0) or mi.rss)
 json.dump(log, open(os.path.join(out_dir, "download_log.json"), "w"), indent=1)

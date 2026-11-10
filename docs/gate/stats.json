@@ -1,0 +1,32 @@
+{
+ "AL": {
+  "forest_px": 271734,
+  "drop_px": 22791,
+  "nodrop_px": 190552,
+  "Sentinel-1_VH": {
+   "mean_in_ndvi_drop": 0.46320345997810364,
+   "mean_in_no_drop": -0.12144887447357178,
+   "pearson_r_vs_dNDVI_forest": -0.14037145176150873
+  },
+  "Sentinel-2_NDVI": {
+   "mean_in_ndvi_drop": -0.16040267050266266,
+   "mean_in_no_drop": 0.0207175575196743,
+   "pearson_r_vs_dNDVI_forest": 0.9999999999999998
+  }
+ },
+ "FL": {
+  "forest_px": 57025,
+  "drop_px": 17344,
+  "nodrop_px": 16859,
+  "Sentinel-1_VH": {
+   "mean_in_ndvi_drop": 0.4974457919597626,
+   "mean_in_no_drop": 0.15490390360355377,
+   "pearson_r_vs_dNDVI_forest": -0.08523093176986563
+  },
+  "Sentinel-2_NDVI": {
+   "mean_in_ndvi_drop": -0.17235960066318512,
+   "mean_in_no_drop": 0.013855824247002602,
+   "pearson_r_vs_dNDVI_forest": 0.9999999999999999
+  }
+ }
+}
