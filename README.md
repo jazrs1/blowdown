@@ -26,7 +26,7 @@ directly from `data/stack`, `data/s1` and Earth Engine and does not need it.
 
 ## Do not delete `data/models/`
 
-`data/models/frozen/` (the frozen models and thresholds, hashed in `docs/models/frozen_manifest.json`) and
+`data/models/v1/` and `data/models/v2/` (the frozen models and thresholds, hashed in `docs/models/frozen_manifest.json` and `docs/models/frozen_manifest_v2.json`; v1 was `data/models/frozen/` until 2026-11-10) and
 `data/models/labeling_key.csv` (which cell id is which; only its sha256 is in git) are not in git and cannot be
 regenerated: the labeling ids are random, so re-running `scripts/labeling_build.py` without the key would silently draw a
 new sample that no longer matches `labeling.zip`. Keep them until the held-out scoring pass is done.

@@ -1,5 +1,5 @@
 """Models step 4d: validation diagnostics (validation tiles inside the training region only; nothing from the held-out
-block or the tip is read). Frozen models from data/models/frozen/ are re-run on the validation tiles and scored on
+block or the tip is read). Frozen models from data/models/v1/ are re-run on the validation tiles and scored on
   design   : the design labels (edge, clearcut and salvage cells removed) - reproduces train_gbm / train_unet numbers
   all      : every damage cell vs every intact cell in validation tiles (regions_30.npz; no edge / flag removal), which
              is closer to how John's sample is drawn
@@ -47,7 +47,7 @@ for k, s in simple.items(): SC[k] = s
 G = json.load(open("docs/models/train_gbm.json"))["gbm"]
 for arm, g in G.items():
     feats = g["features"]; X = np.stack([col(n) for n in feats], 1).astype("float32")
-    pr = np.mean([lgb.Booster(model_file=f"data/models/frozen/gbm_{arm}_seed{sd}.txt").predict(X) for sd in range(5)], 0)
+    pr = np.mean([lgb.Booster(model_file=f"data/models/v1/gbm_{arm}_seed{sd}.txt").predict(X) for sd in range(5)], 0)
     SC[f"GBM {arm}"] = pr; print("GBM", arm, round(time.time() - t0), flush=True)
     del X
 # ---- U-Net
@@ -63,7 +63,7 @@ class UNet(nn.Module):
 T, M = 320, 32
 vtiles = [((t // 100) * T, (t % 100) * T) for t in np.unique(S["tile_id"][val])]
 for arm in ("C", "D", "E"):
-    try: nm = json.load(open(f"data/models/frozen/unet_norm_{arm}.json"))
+    try: nm = json.load(open(f"data/models/v1/unet_norm_{arm}.json"))
     except FileNotFoundError: continue
     chans = []
     for n in nm["channels"]:
@@ -78,7 +78,7 @@ for arm in ("C", "D", "E"):
             mu, sd = nm["norm"][n]; chans.append(np.nan_to_num((f[n][()] - mu) / sd, nan=0.0).astype("float16"))
     X = np.stack(chans); prs = []
     for sd_ in range(5):
-        net = UNet(X.shape[0]).cuda(); net.load_state_dict(torch.load(f"data/models/frozen/unet_{arm}_seed{sd_}.pt")); net.eval()
+        net = UNet(X.shape[0]).cuda(); net.load_state_dict(torch.load(f"data/models/v1/unet_{arm}_seed{sd_}.pt")); net.eval()
         out = np.full((H, W), np.nan, "float32")
         with torch.no_grad():
             for r0, c0 in vtiles:
