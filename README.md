@@ -23,3 +23,12 @@ Rebuild it with one command from the repository root:
 
 Only `scripts/evaluate.py` (pipeline step 5) reads it. The model work on the `models` branch builds its 30 m features
 directly from `data/stack`, `data/s1` and Earth Engine and does not need it.
+
+## Do not delete `data/models/`
+
+`data/models/frozen/` (the frozen models and thresholds, hashed in `docs/models/frozen_manifest.json`) and
+`data/models/labeling_key.csv` (which cell id is which; only its sha256 is in git) are not in git and cannot be
+regenerated: the labeling ids are random, so re-running `scripts/labeling_build.py` without the key would silently draw a
+new sample that no longer matches `labeling.zip`. Keep them until the held-out scoring pass is done.
+
+Labeling: copy `labeling.zip` anywhere, unzip it, and open `labeling/index.html` in a browser (no server needed).

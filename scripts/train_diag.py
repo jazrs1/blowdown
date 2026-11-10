@@ -3,7 +3,11 @@ block or the tip is read). Frozen models from data/models/frozen/ are re-run on 
   design   : the design labels (edge, clearcut and salvage cells removed) - reproduces train_gbm / train_unet numbers
   all      : every damage cell vs every intact cell in validation tiles (regions_30.npz; no edge / flag removal), which
              is closer to how John's sample is drawn
-  band     : 'all' restricted to cells inside the band (pipeline extent mask) - does the model just find the band?
+  band     : 'all' restricted to cells inside the band (pipeline extent mask)
+  outband  : 'all' restricted to cells outside the band
+  band_mask_vs_rest : inside the band, Sentinel-2 damage cells vs ALL other forest cells (closest to John's sample: half
+             in the mask, half outside it); scored on cells where every arm has a finite score (one common set).
+             This is agreement with the Sentinel-2 mask, not with ground truth.
 Smoothed threshold arms (7x7 mean of the diff layers) are added to separate the gain from smoothing from the gain from learning.
 Writes docs/models/train_diag.json."""
 import json, sys, time; sys.path.insert(0, "scripts")
@@ -14,17 +18,23 @@ f = h5py.File("data/models/features_train.h5", "r"); S = np.load("data/models/sp
 lab = f["label"][()]; val = S["val"]; H, W = lab.shape
 up, wt, band = RG["upland"], RG["wetland"], RG["band"]
 D, I = RG["damage"] & val, RG["intact"] & val
-cells = val & (D | I | (lab >= 0)); idx = np.flatnonzero(cells.ravel())
-y_all = D.ravel()[idx]; lab_d = lab.ravel()[idx]
-SETS = {"design": lab_d >= 0, "all": (D | I).ravel()[idx], "band": ((D | I) & band).ravel()[idx]}
-Y = {"design": lab_d == 1, "all": y_all, "band": y_all}
+FO = RG["forest"]
+cells = val & (D | I | (lab >= 0) | (FO & band)); idx = np.flatnonzero(cells.ravel())
+y_all = D.ravel()[idx]; lab_d = lab.ravel()[idx]; bd = band.ravel()[idx]
+SETS = {"design": lab_d >= 0, "all": (D | I).ravel()[idx], "band": (D | I).ravel()[idx] & bd, "outband": (D | I).ravel()[idx] & ~bd,
+        "band_mask_vs_rest": FO.ravel()[idx] & bd}
+Y = {"design": lab_d == 1, "all": y_all, "band": y_all, "outband": y_all, "band_mask_vs_rest": y_all}
+COMMON = None
 DOM = {"all": np.ones(len(idx), bool), "upland": up.ravel()[idx], "wetland": wt.ravel()[idx]}
 col = lambda n: f[n][()].ravel()[idx]
+SC = {}
 def score_all(s):
     out = {}
     for sn, m in SETS.items():
         for dn, dm in DOM.items():
-            mm = m & dm & np.isfinite(s); y = Y[sn][mm]
+            mm = m & dm & np.isfinite(s)
+            if sn == "band_mask_vs_rest" and COMMON is not None: mm = m & dm & COMMON
+            y = Y[sn][mm]
             out[f"{sn}|{dn}"] = None if y.sum() < 30 or (~y).sum() < 30 else {"auc": round(float(roc_auc_score(y, s[mm])), 4), "n_damage": int(y.sum()), "n_intact": int((~y).sum())}
     return out
 res = {}
@@ -33,12 +43,12 @@ with np.errstate(invalid="ignore"):
               "B": np.nanmean(np.stack([col("o19_VH_diff"), col("o92_VH_diff")]), 0),
               "A smoothed 7x7": np.nanmean(np.stack([col("t76_HV_diff_m7"), col("t55_HV_diff_m7")]), 0), "A76 smoothed 7x7": col("t76_HV_diff_m7"),
               "B smoothed 7x7": np.nanmean(np.stack([col("o19_VH_diff_m7"), col("o92_VH_diff_m7")]), 0)}
-for k, s in simple.items(): res[k] = score_all(s); print(k, res[k]["all|all"], res[k]["band|all"], flush=True)
+for k, s in simple.items(): SC[k] = s
 G = json.load(open("docs/models/train_gbm.json"))["gbm"]
 for arm, g in G.items():
     feats = g["features"]; X = np.stack([col(n) for n in feats], 1).astype("float32")
     pr = np.mean([lgb.Booster(model_file=f"data/models/frozen/gbm_{arm}_seed{sd}.txt").predict(X) for sd in range(5)], 0)
-    res[f"GBM {arm}"] = score_all(pr); print("GBM", arm, res[f"GBM {arm}"]["all|all"], res[f"GBM {arm}"]["band|all"], round(time.time() - t0), flush=True)
+    SC[f"GBM {arm}"] = pr; print("GBM", arm, round(time.time() - t0), flush=True)
     del X
 # ---- U-Net
 class Block(nn.Sequential):
@@ -77,7 +87,11 @@ for arm in ("C", "D", "E"):
                 x = np.pad(x, ((0, 0), (0, ph), (0, pw))); pr = torch.sigmoid(net(torch.from_numpy(x.astype("float32"))[None].cuda()))[0].cpu().numpy()[: a1 - a0, : b1 - b0]
                 out[r0:r1, c0:c1] = pr[r0 - a0: r1 - a0, c0 - b0: c1 - b0]
         prs.append(out.ravel()[idx])
-    res[f"U-Net {arm}"] = score_all(np.mean(prs, 0)); print("U-Net", arm, res[f"U-Net {arm}"]["all|all"], res[f"U-Net {arm}"]["band|all"], round(time.time() - t0), flush=True)
+    SC[f"U-Net {arm}"] = np.mean(prs, 0); print("U-Net", arm, round(time.time() - t0), flush=True)
     del X; torch.cuda.empty_cache()
+COMMON = np.all([np.isfinite(v) for v in SC.values()], 0)
+for k, v in SC.items():
+    res[k] = score_all(v); print(k, {q: (res[k][q] or {}).get("auc") for q in ("design|all", "all|all", "outband|all", "band|all", "band_mask_vs_rest|upland", "band_mask_vs_rest|wetland")}, flush=True)
+res["n_common_band_cells"] = {dn: int((SETS["band_mask_vs_rest"] & DOM[dn] & COMMON).sum()) for dn in DOM}
 res["seconds"] = round(time.time() - t0)
 json.dump(res, open("docs/models/train_diag.json", "w"), indent=1)

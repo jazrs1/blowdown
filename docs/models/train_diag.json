@@ -40,7 +40,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.6906,
+   "n_damage": 76346,
+   "n_intact": 636351
+  },
+  "outband|upland": {
+   "auc": 0.5139,
+   "n_damage": 16945,
+   "n_intact": 354551
+  },
+  "outband|wetland": {
+   "auc": 0.7247,
+   "n_damage": 52974,
+   "n_intact": 116179
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.5984,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.5663,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.607,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "A76": {
   "design|all": {
@@ -83,7 +113,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.7222,
+   "n_damage": 71717,
+   "n_intact": 551499
+  },
+  "outband|upland": {
+   "auc": 0.5988,
+   "n_damage": 14181,
+   "n_intact": 297399
+  },
+  "outband|wetland": {
+   "auc": 0.7149,
+   "n_damage": 51938,
+   "n_intact": 109828
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.5693,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.5491,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.5799,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "B": {
   "design|all": {
@@ -126,7 +186,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.6529,
+   "n_damage": 76533,
+   "n_intact": 670485
+  },
+  "outband|upland": {
+   "auc": 0.4916,
+   "n_damage": 17053,
+   "n_intact": 373118
+  },
+  "outband|wetland": {
+   "auc": 0.7128,
+   "n_damage": 52994,
+   "n_intact": 119230
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.5645,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.5526,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.5767,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "A smoothed 7x7": {
   "design|all": {
@@ -169,7 +259,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.8274,
+   "n_damage": 76440,
+   "n_intact": 652782
+  },
+  "outband|upland": {
+   "auc": 0.5497,
+   "n_damage": 16997,
+   "n_intact": 363560
+  },
+  "outband|wetland": {
+   "auc": 0.9364,
+   "n_damage": 52987,
+   "n_intact": 117595
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.6623,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.5999,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.6971,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "A76 smoothed 7x7": {
   "design|all": {
@@ -212,7 +332,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.8909,
+   "n_damage": 71717,
+   "n_intact": 551879
+  },
+  "outband|upland": {
+   "auc": 0.6979,
+   "n_damage": 14181,
+   "n_intact": 297676
+  },
+  "outband|wetland": {
+   "auc": 0.9513,
+   "n_damage": 51938,
+   "n_intact": 109828
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.6261,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.5776,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.6726,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "B smoothed 7x7": {
   "design|all": {
@@ -255,7 +405,37 @@
    "n_damage": 16352,
    "n_intact": 122
   },
-  "band|wetland": null
+  "band|wetland": null,
+  "outband|all": {
+   "auc": 0.8252,
+   "n_damage": 76533,
+   "n_intact": 670537
+  },
+  "outband|upland": {
+   "auc": 0.5474,
+   "n_damage": 17053,
+   "n_intact": 373146
+  },
+  "outband|wetland": {
+   "auc": 0.9371,
+   "n_damage": 52994,
+   "n_intact": 119231
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.6352,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.602,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.6693,
+   "n_damage": 11699,
+   "n_intact": 4272
+  }
  },
  "GBM C": {
   "design|all": {
@@ -302,6 +482,36 @@
    "auc": 0.6823,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9557,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.9065,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.9722,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.6825,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.6258,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7265,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
  "GBM D": {
@@ -349,6 +559,36 @@
    "auc": 0.7284,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9048,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.8126,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.9486,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.7024,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.6908,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7124,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
  "GBM E": {
@@ -396,6 +636,36 @@
    "auc": 0.7396,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9693,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.9382,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.984,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.7618,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.7348,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7758,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
  "U-Net C": {
@@ -443,6 +713,36 @@
    "auc": 0.6997,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9865,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.9707,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.993,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.7304,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.6865,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7465,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
  "U-Net D": {
@@ -490,6 +790,36 @@
    "auc": 0.7348,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9877,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.9696,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.995,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.7421,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.7252,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7283,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
  "U-Net E": {
@@ -537,7 +867,42 @@
    "auc": 0.7507,
    "n_damage": 16502,
    "n_intact": 32
+  },
+  "outband|all": {
+   "auc": 0.9924,
+   "n_damage": 78127,
+   "n_intact": 679053
+  },
+  "outband|upland": {
+   "auc": 0.9819,
+   "n_damage": 17488,
+   "n_intact": 379671
+  },
+  "outband|wetland": {
+   "auc": 0.9966,
+   "n_damage": 53799,
+   "n_intact": 119890
+  },
+  "band_mask_vs_rest|all": {
+   "auc": 0.777,
+   "n_damage": 37649,
+   "n_intact": 27952
+  },
+  "band_mask_vs_rest|upland": {
+   "auc": 0.7558,
+   "n_damage": 16352,
+   "n_intact": 17306
+  },
+  "band_mask_vs_rest|wetland": {
+   "auc": 0.7765,
+   "n_damage": 11699,
+   "n_intact": 4272
   }
  },
- "seconds": 181
+ "n_common_band_cells": {
+  "all": 65601,
+  "upland": 33658,
+  "wetland": 15971
+ },
+ "seconds": 186
 }

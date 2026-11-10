@@ -4,7 +4,9 @@ Branch `models`. Design frozen in [design.md](design.md) (commit `fe4e253`) befo
 
 Arms A–E were trained and tuned only on the training region, using the spatial validation split in [split.json](split.json). Models and thresholds are frozen and hashed in [frozen_manifest.json](frozen_manifest.json).
 
-**Nothing inside the held-out block or the aerial tip was opened, scored or plotted by any training step.** Training reads only `features_train.h5`, where both exclusions (block + 2 km) are blank.
+**Nothing inside the held-out block or the aerial tip was opened, scored or plotted by any training step.**
+- Training reads `features_train.h5`, where both exclusions (block + 2 km) are blank, and `split.npz`.
+- The diagnostic also reads the whole-grid masks in `regions_30.npz` (damage, intact, band, upland, wetland), but only inside validation tiles.
 
 Scripts:
 - [train_split.py](../../scripts/train_split.py)
@@ -14,34 +16,41 @@ Scripts:
 
 Numbers: [train_gbm.json](train_gbm.json), [train_unet.json](train_unet.json), [train_diag.json](train_diag.json).
 
-## Read this first: the validation numbers are optimistic
+## Read this first: the validation numbers don't describe John's task
 
-The learned models reach validation AUC 0.97–0.9996. Don't expect that on John's labels. The diagnostic below re-scores the frozen models on the same validation tiles with different label sets, and shows why:
-- In the validation tiles, **almost every intact cell lies outside the storm band.** Inside the band there are 220 intact cells against 44,882 damage cells.
-- So the design labels mostly ask "storm band or rest of the forest?", and the models answer that very well.
-- The design labels also leave out the hard cells near the mask edge.
+On the design labels the learned models reach validation AUC 0.97–0.9996. Don't expect that on John's labels. The diagnostic re-scores the frozen models on the same validation tiles with other label sets:
 
-| Score, validation tiles | Design labels (edge / flag cells removed) | All damage vs all intact cells | Inside the band only |
-|---|---|---|---|
-| A: NISAR HV threshold | 0.709 | 0.678 | 0.672 |
-| A76: track 76 HV threshold | 0.738 | 0.717 | 0.633 |
-| B: S1 VH threshold | 0.681 | 0.649 | 0.648 |
-| A smoothed 7×7 (not an arm) | 0.859 | 0.819 | 0.779 |
-| A76 smoothed 7×7 (not an arm) | 0.916 | 0.895 | 0.712 |
-| B smoothed 7×7 (not an arm) | 0.873 | 0.844 | 0.799 |
-| GBM C (NISAR) | 0.980 | 0.928 | 0.684 |
-| GBM D (S1) | 0.973 | 0.890 | 0.778 |
-| GBM E (both) | 0.995 | 0.948 | 0.804 |
-| U-Net C (NISAR) | 0.997 | 0.985 | 0.728 |
-| U-Net D (S1) | 0.999 | 0.991 | 0.804 |
-| U-Net E (both) | 1.000 | 0.995 | 0.810 |
+| Score, validation tiles | Design labels (edge / flag cells removed) | All damage vs all intact | Outside the band: damage vs intact | Inside the band: damage vs intact | **Inside the band, mask vs all other forest: upland** | **…: wetland** |
+|---|---|---|---|---|---|---|
+| A: NISAR HV threshold | 0.709 | 0.678 | 0.691 | 0.672 | 0.566 | 0.607 |
+| A76: track 76 HV threshold | 0.738 | 0.717 | 0.722 | 0.633 | 0.549 | 0.580 |
+| B: S1 VH threshold | 0.681 | 0.649 | 0.653 | 0.648 | 0.553 | 0.577 |
+| A smoothed 7×7 (not an arm) | 0.859 | 0.819 | 0.827 | 0.779 | 0.600 | 0.697 |
+| A76 smoothed 7×7 (not an arm) | 0.916 | 0.895 | 0.891 | 0.712 | 0.578 | 0.673 |
+| B smoothed 7×7 (not an arm) | 0.873 | 0.844 | 0.825 | 0.799 | 0.602 | 0.669 |
+| GBM C (NISAR) | 0.9799 | 0.9277 | 0.9557 | 0.684 | 0.626 | 0.727 |
+| GBM D (S1) | 0.9729 | 0.8899 | 0.9048 | 0.778 | 0.691 | 0.712 |
+| GBM E (both) | 0.9948 | 0.9482 | 0.9693 | 0.804 | 0.735 | 0.776 |
+| U-Net C (NISAR) | 0.9968 | 0.9845 | 0.9865 | 0.728 | 0.687 | 0.747 |
+| U-Net D (S1) | 0.9986 | 0.9913 | 0.9877 | 0.804 | 0.725 | 0.728 |
+| U-Net E (both) | 0.9996 | 0.9945 | 0.9924 | 0.810 | 0.756 | 0.777 |
 
-The "inside the band" column rests on only 220 intact cells, so it's noisy. Its signal is still clear:
-- **Inside the band, the learned models are about level with a 7×7-smoothed S1 VH threshold** (0.78–0.81).
-- The NISAR-only models are weaker there than the S1-only models (0.68–0.73 vs 0.78–0.80).
-- Most of the models' edge over the plain thresholds comes from **spatial smoothing**. 70–82% of LightGBM gain is on the 7×7 means, and the smoothed thresholds alone reach 0.86–0.92 on the design labels.
+Cell counts:
+- **Outside the band:** 78,127 damage against 679,053 intact cells.
+- **Inside the band, damage vs intact:** 44,882 damage against only 220 intact cells, so that column is noisy.
+- **Last two columns:** one common set of cells where every arm has a score. Upland is 16,352 damage against 17,306 other cells; wetland is 11,699 against 4,272.
 
-John's held-out sample is drawn inside a block that holds the band, half from outside the Sentinel-2 mask. It's closer to the band-only case than to the design labels.
+**What this shows:**
+- **The high validation scores are not explained by band membership.** Outside the band the models still score 0.90–0.99. Why they score so high there isn't established. The likely main factor is the label construction: the design labels pit core damage cells against cells at least 90% intact and clear of damage, with the in-between cells removed.
+- **The task closest to John's sample is the last two columns:** inside the band, Sentinel-2 damage cells against all other forest cells. There every arm drops sharply:
+  - plain thresholds 0.55–0.61;
+  - smoothed thresholds 0.58–0.70;
+  - learned models 0.63–0.78, with arm E (both sensors) best in both domains (GBM 0.735 / 0.776, U-Net 0.756 / 0.777).
+  - These columns measure agreement with the Sentinel-2 mask, not ground truth.
+- **The training labels never cover most of the cells John will label as "outside the mask."** In the held-out block, only 6.7% of upland out-of-mask cells (6,216 of 93,407) and 4.7% of wetland ones (2,058 of 43,784) meet the intact class. The rest, about 93–95%, are partly damaged, edge or otherwise in-between cells that the models never saw as either class.
+  - That's a property of the training labels, not only of validation.
+  - Retraining with in-band negatives would be a declared deviation from the frozen design. It's John's call, before the scoring pass.
+- **Much of the gain over plain thresholds is spatial smoothing.** 70–82% of LightGBM gain is on 7×7 means, and smoothed thresholds alone reach 0.86–0.92 on the design labels.
 
 ## Validation results per arm (design labels)
 
@@ -59,9 +68,9 @@ Model arms use the 5-seed mean probability.
 | C GBM (NISAR) | 0.980 / 0.847 | 0.940 / 0.615 | 0.994 / 0.935 | 0.9793–0.9799 |
 | D GBM (S1) | 0.973 / 0.830 | 0.939 / 0.617 | 0.989 / 0.930 | 0.9725–0.9727 |
 | E GBM (both) | 0.995 / 0.922 | 0.983 / 0.798 | 0.999 / 0.970 | 0.9944–0.9948 |
-| C U-Net (NISAR) | 0.997 / 0.947 | 0.990 / 0.852 | 0.999 / 0.981 | 0.9956–0.9961 |
-| D U-Net (S1) | 0.999 / 0.964 | 0.996 / 0.905 | 1.000 / 0.989 | 0.9978–0.9982 |
-| E U-Net (both) | 1.000 / 0.975 | 0.999 / 0.934 | 1.000 / 0.991 | 0.9988–0.9994 |
+| C U-Net (NISAR) | 0.9968 / 0.947 | 0.9895 / 0.852 | 0.9992 / 0.981 | 0.9956–0.9961 |
+| D U-Net (S1) | 0.9986 / 0.964 | 0.9957 / 0.906 | 0.9997 / 0.989 | 0.9978–0.9982 |
+| E U-Net (both) | 0.9996 / 0.975 | 0.9986 / 0.934 | 0.9999 / 0.991 | 0.9988–0.9994 |
 
 Upland is the harder domain for every arm, and the plain thresholds are near chance there (0.54–0.63).
 
@@ -105,15 +114,16 @@ The post-only levels (VH post, HV post) are fairly important. They can carry lan
 | S1 VV per-date pull at 30 m (Earth Engine) | 8 min | small |
 | Regions + 30 m features (three files) | about 1.5 min per run, 3 runs | 3.3 GB (`data/models/features_*.h5`) |
 | Labeling set: sample, S2 and aerial pulls, rendering, page, zip | 7 min | 30 MB folder + 30 MB zip |
-| LightGBM (A, A76, B thresholds; C, D, E tuning + 5 seeds) | 30 min | GBM models 247 MB |
-| U-Net (C, D, E; 2 learning rates + 5 seeds; RTX 5070) | 55 min | 1 MB |
-| Validation diagnostic | 3 min | n/a |
+| LightGBM (A, A76, B thresholds; C, D, E tuning + 5 seeds) | 30 min | 15 GBM model files, 219.5 MB |
+| U-Net (C, D, E; 2 learning rates + 5 seeds; RTX 5070) | 55 min | 15 U-Net files, 28.9 MB |
+| Validation diagnostic (run twice) | 3 min each | n/a |
 
 Free disk is about 660 GB (615 GiB). `data/` dropped from 62 GB to 32 GB.
 
 ## Deviations and additions after the design commit
 
 - **Added:** the validation diagnostic (`train_diag.py`). It changes nothing that was frozen.
+- **Labeling page fixes after the design commit (no change to the sample):** a storage check at load, and a fix for the label buttons all showing as selected on unlabelled cells.
 - **Implementation details not in the design:**
   - F1 thresholds are searched over the 50th–99.5th percentiles of the validation score.
   - A U-Net validity channel is 1 where all six layers of that geometry are finite.
@@ -124,7 +134,7 @@ Free disk is about 660 GB (615 GiB). `data/` dropped from 62 GB to 32 GB.
 - **Held-out performance is unknown and likely much lower than validation** (see the diagnostic). It will be measured once, after John's labels.
 - **Spatial independence of validation.** Validation tiles border training tiles behind only a 120 m guard band, and the band runs through both. Validation is not independent of training at the band scale.
 - **F1 at the frozen threshold** is in-sample on validation.
-- **The labeling page from `file://`.** It was tested over `http://localhost`: labelling, reload persistence, going back, and the CSV export all work. The built-in browser can't open `file://` pages with storage. Chrome, Edge and Firefox normally keep localStorage for `file://` pages; Safari can be stricter. The page warns if saving fails.
+- **The labeling page.** The unzipped copy of `labeling.zip` was opened from `file://` in headless Chrome: it shows Cell 1 of 550, the image loads, and storage works (no warning). Labelling, reload persistence, going back and the CSV export were tested over `http://localhost`, not over `file://`. Edge, Firefox and Safari were not tested from `file://`. The page warns if the browser won't save.
 - **Labeling imagery.** I checked a few rendered images by eye, not all 550. Some may show cloud, haze or flooding in the composites. John's Unsure button covers those. 2 of the 150 tip cells fall in aerial gaps and say so.
 - **README rebuild command** for `data/layers.h5` was checked against the script's inputs, not re-run.
 - **The training labels are Sentinel-2-derived** and provisional, and John labels from the same composites.
