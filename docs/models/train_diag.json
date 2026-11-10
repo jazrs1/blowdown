@@ -1,0 +1,543 @@
+{
+ "A": {
+  "design|all": {
+   "auc": 0.7091,
+   "n_damage": 50653,
+   "n_intact": 636153
+  },
+  "design|upland": {
+   "auc": 0.5464,
+   "n_damage": 12067,
+   "n_intact": 354460
+  },
+  "design|wetland": {
+   "auc": 0.7466,
+   "n_damage": 32732,
+   "n_intact": 116107
+  },
+  "all|all": {
+   "auc": 0.6783,
+   "n_damage": 113995,
+   "n_intact": 636544
+  },
+  "all|upland": {
+   "auc": 0.5672,
+   "n_damage": 33297,
+   "n_intact": 354673
+  },
+  "all|wetland": {
+   "auc": 0.7168,
+   "n_damage": 64673,
+   "n_intact": 116202
+  },
+  "band|all": {
+   "auc": 0.672,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.6329,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "A76": {
+  "design|all": {
+   "auc": 0.7377,
+   "n_damage": 48599,
+   "n_intact": 551339
+  },
+  "design|upland": {
+   "auc": 0.63,
+   "n_damage": 10711,
+   "n_intact": 297326
+  },
+  "design|wetland": {
+   "auc": 0.7317,
+   "n_damage": 32408,
+   "n_intact": 109770
+  },
+  "all|all": {
+   "auc": 0.7167,
+   "n_damage": 109366,
+   "n_intact": 551692
+  },
+  "all|upland": {
+   "auc": 0.6541,
+   "n_damage": 30533,
+   "n_intact": 297521
+  },
+  "all|wetland": {
+   "auc": 0.711,
+   "n_damage": 63637,
+   "n_intact": 109851
+  },
+  "band|all": {
+   "auc": 0.633,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.5925,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "B": {
+  "design|all": {
+   "auc": 0.6811,
+   "n_damage": 50704,
+   "n_intact": 670277
+  },
+  "design|upland": {
+   "auc": 0.5399,
+   "n_damage": 12101,
+   "n_intact": 373019
+  },
+  "design|wetland": {
+   "auc": 0.7406,
+   "n_damage": 32732,
+   "n_intact": 119157
+  },
+  "all|all": {
+   "auc": 0.6493,
+   "n_damage": 114182,
+   "n_intact": 670678
+  },
+  "all|upland": {
+   "auc": 0.5588,
+   "n_damage": 33405,
+   "n_intact": 373240
+  },
+  "all|wetland": {
+   "auc": 0.7037,
+   "n_damage": 64693,
+   "n_intact": 119253
+  },
+  "band|all": {
+   "auc": 0.6484,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.6456,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "A smoothed 7x7": {
+  "design|all": {
+   "auc": 0.8592,
+   "n_damage": 50676,
+   "n_intact": 652581
+  },
+  "design|upland": {
+   "auc": 0.6195,
+   "n_damage": 12078,
+   "n_intact": 363466
+  },
+  "design|wetland": {
+   "auc": 0.9622,
+   "n_damage": 32732,
+   "n_intact": 117523
+  },
+  "all|all": {
+   "auc": 0.8189,
+   "n_damage": 114089,
+   "n_intact": 652975
+  },
+  "all|upland": {
+   "auc": 0.6508,
+   "n_damage": 33349,
+   "n_intact": 363682
+  },
+  "all|wetland": {
+   "auc": 0.9234,
+   "n_damage": 64686,
+   "n_intact": 117618
+  },
+  "band|all": {
+   "auc": 0.7791,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.7561,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "A76 smoothed 7x7": {
+  "design|all": {
+   "auc": 0.9161,
+   "n_damage": 48599,
+   "n_intact": 551719
+  },
+  "design|upland": {
+   "auc": 0.7595,
+   "n_damage": 10711,
+   "n_intact": 297603
+  },
+  "design|wetland": {
+   "auc": 0.9718,
+   "n_damage": 32408,
+   "n_intact": 109770
+  },
+  "all|all": {
+   "auc": 0.8948,
+   "n_damage": 109366,
+   "n_intact": 552072
+  },
+  "all|upland": {
+   "auc": 0.8057,
+   "n_damage": 30533,
+   "n_intact": 297798
+  },
+  "all|wetland": {
+   "auc": 0.9436,
+   "n_damage": 63637,
+   "n_intact": 109851
+  },
+  "band|all": {
+   "auc": 0.7119,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.685,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "B smoothed 7x7": {
+  "design|all": {
+   "auc": 0.8725,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.6437,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9698,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.8438,
+   "n_damage": 114182,
+   "n_intact": 670730
+  },
+  "all|upland": {
+   "auc": 0.6974,
+   "n_damage": 33405,
+   "n_intact": 373268
+  },
+  "all|wetland": {
+   "auc": 0.9342,
+   "n_damage": 64693,
+   "n_intact": 119254
+  },
+  "band|all": {
+   "auc": 0.7985,
+   "n_damage": 37649,
+   "n_intact": 193
+  },
+  "band|upland": {
+   "auc": 0.7933,
+   "n_damage": 16352,
+   "n_intact": 122
+  },
+  "band|wetland": null
+ },
+ "GBM C": {
+  "design|all": {
+   "auc": 0.9799,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.9403,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9943,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.9277,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.9173,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9207,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.6836,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.6614,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.6823,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "GBM D": {
+  "design|all": {
+   "auc": 0.9729,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.939,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9892,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.8899,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.8641,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9111,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.7778,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.8293,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.7284,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "GBM E": {
+  "design|all": {
+   "auc": 0.9948,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.9833,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.999,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.9482,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.9439,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9556,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.8038,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.8471,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.7396,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "U-Net C": {
+  "design|all": {
+   "auc": 0.9968,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.9895,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9992,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.9845,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.98,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9869,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.7276,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.7371,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.6997,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "U-Net D": {
+  "design|all": {
+   "auc": 0.9986,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.9957,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9997,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.9913,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.9839,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9955,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.804,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.848,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.7348,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "U-Net E": {
+  "design|all": {
+   "auc": 0.9996,
+   "n_damage": 50704,
+   "n_intact": 670329
+  },
+  "design|upland": {
+   "auc": 0.9986,
+   "n_damage": 12101,
+   "n_intact": 373047
+  },
+  "design|wetland": {
+   "auc": 0.9999,
+   "n_damage": 32732,
+   "n_intact": 119158
+  },
+  "all|all": {
+   "auc": 0.9945,
+   "n_damage": 123009,
+   "n_intact": 679273
+  },
+  "all|upland": {
+   "auc": 0.9904,
+   "n_damage": 35340,
+   "n_intact": 379806
+  },
+  "all|wetland": {
+   "auc": 0.9967,
+   "n_damage": 70301,
+   "n_intact": 119922
+  },
+  "band|all": {
+   "auc": 0.8098,
+   "n_damage": 44882,
+   "n_intact": 220
+  },
+  "band|upland": {
+   "auc": 0.8469,
+   "n_damage": 17852,
+   "n_intact": 135
+  },
+  "band|wetland": {
+   "auc": 0.7507,
+   "n_damage": 16502,
+   "n_intact": 32
+  }
+ },
+ "seconds": 181
+}
