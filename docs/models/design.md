@@ -148,3 +148,41 @@ Every model arm also gets HAND and the NLCD class. Each model arm has two models
 - **Re-centring constants** come from the whole-scene forest median, held-out block included. They are label-free.
 - **Shared imagery.** John labels from the same Sentinel-2 composites that define the training labels, plus aerial photos in the tip. Agreement between the models and John is therefore partly agreement with Sentinel-2.
 - **The tip block** is much wider than the band there, and has few intact upland cells.
+
+## Amendment 1, 2026-11-10
+
+Decided and committed before any v2 training, before the held-out block has been scored, and before John has started labeling.
+
+**Reason.** The v1 training labels dropped in-between and partly damaged cells: mask-edge cells, plus every cell that is neither a damage cell nor at least 90% intact. So roughly 93–95% of the out-of-mask cells in John's held-out sample are cell types v1 never saw as either class (upland 93.3%, wetland 95.3%).
+
+Where that came from:
+- The problem was found on validation tiles: `train_diag.py`, see train.md.
+- The 93–95% figure was computed by counting Sentinel-2 mask classes (intact or not) among out-of-mask cells in the held-out sampling frame.
+- That count used label masks only. No radar values, model outputs or hand labels from the held-out block were read, scored or plotted. The same kind of class count was already used to choose the block (section 2).
+
+**v1 stays frozen and is scored unchanged.** Its models, thresholds and hashes are in `data/models/v1/`, renamed from `data/models/frozen/` with the files unchanged; all 41 hashes re-verified in [v1_hashcheck.json](v1_hashcheck.json).
+
+**v2 changes only the training labels.** Inside the training region, every forest cell gets a label: 1 if it is a Sentinel-2 damage cell (damage share ≥ 0.5), 0 otherwise. There is no edge dropping and no intact-share condition. Cells with any 10 m pixel in the clearcut/salvage flag, and cells flagged as clearing after 10-29, are still excluded (as in section 4).
+
+**v2 keeps everything else from v1:**
+- arms C, D and E;
+- the same features (section 3);
+- the same two model types with the same settings (section 6), including the GBM training sample rule (all label-1 cells in training tiles plus 4 times as many label-0 cells at random), the U-Net patch rule, loss, epochs and learning-rate grid;
+- 5 seeds each;
+- the same spatial validation split and guard band (section 5, seed 0, as in `split.npz`).
+
+**Selection metric for v2: in-band validation AUC.** The in-band cut is validation-tile forest cells inside the band (pipeline extent mask), damage-mask cells against all other forest cells, using v2 labels with flagged cells excluded. It mirrors the held-out sample. It's used for:
+- the GBM grid choice;
+- GBM early stopping (the in-band validation cells are the early-stopping set);
+- the U-Net learning-rate choice and checkpoint epoch.
+
+v2 thresholds are the F1-maximising thresholds of the 5-seed mean probability on the in-band validation cut.
+
+**Freezing.** v2 models and thresholds go to `data/models/v2/`, with hashes committed in `docs/models/frozen_manifest_v2.json` before any held-out scoring.
+
+**The single held-out scoring pass** (section 7) reports, side by side:
+- v1 arms C, D and E (v1 thresholds);
+- v2 arms C, D and E (v2 thresholds);
+- arms A, A76 and B, unchanged.
+
+The paired contrasts gain v2 − v1 for each arm and model type. Everything computed is reported.
