@@ -1,8 +1,10 @@
 # Blowdown gate check: Hurricane Isaias (2026-10-10)
 
-**PASS: in the Alabama box the damage band shows in the NISAR HV difference and lines up with the Sentinel-2 NDVI drop (column-profile r = −0.88; HV is +0.52 dB higher where NDVI dropped). Florida shows no distinct swath.**
+**PASS: in the Alabama box the damage band shows in the NISAR HV difference and lines up with the Sentinel-2 NDVI drop (column-profile r = −0.88; HV is +0.52 dB higher where NDVI dropped). The band is present in evergreen pine alone and absent in the same weeks of 2025. Florida shows no distinct swath.**
 
-Caveat on the verdict: the Alabama band has branching (dendritic) edges, and I could not confirm whether it is wind damage or riparian/flood effects (see "Not verified").
+Caveat on the verdict: no aerial or field truth reaches the Alabama box, so "wind damage" there is inferred, not observed (see "Not verified").
+
+How to read r below: **negative r means agreement**, because NDVI falls where radar backscatter rises.
 
 ## Inputs
 
@@ -64,7 +66,27 @@ Contrast over NLCD forest, with "NDVI drop" defined as −0.5 < dNDVI < −0.10 
 
 The swath is clear in both radars when you average along it (profiles). At ~80 m per pixel it's noisy, with low pixel-level r. HH rises about as much as HV inside the Alabama band. A flooded forest would normally give a much larger HH (double-bounce) jump, so that is weak evidence against flooding on 10-17. It isn't proof.
 
-Raw numbers: [stats.json](stats.json), [profiles.json](profiles.json).
+Raw numbers: [stats.json](stats.json) (radar values there have the forest median removed, so the absolute means differ from the
+table above, but the drop-minus-no-drop differences and r are the same), and [profiles.json](profiles.json) (raw dB).
+
+## Storm or autumn phenology?
+
+Leaf-off in bottomland hardwoods along drainages could also give a branching NDVI drop, and could raise L-band HV.
+I checked this two ways ([phenology.json](phenology.json), [fig_phenology.png](fig_phenology.png)):
+
+| AL box | Pixels | Profile r, NISAR HV vs dNDVI 2026 | Profile r, NISAR HV vs (2026 − 2025) anomaly | dHV, drop − no-drop |
+|---|---|---|---|---|
+| Evergreen (NLCD 42) | 178k | **−0.82** | −0.63 | +0.20 dB |
+| Deciduous + woody wetland (41, 90) | 83k | −0.85 | −0.70 | +0.49 dB |
+| All forest | 272k | −0.88 | −0.69 | +0.52 dB |
+
+1. **Split by forest type.** Evergreen pine doesn't senesce, yet it carries the band with the same sharp western edge at −87.23. The radar contrast is smaller in pine (+0.20 dB) than in deciduous/wetland forest (+0.49 dB).
+2. **Same weeks in 2025.** I made cloud-masked median composites for 09-15→10-08 and 10-11→11-09. The 2025 dNDVI profile is flat across −87.25 to −87.05, so the band is not a yearly pattern.
+   The anomaly correlation (−0.63 to −0.70) is lower than against the 2026 data alone, mostly because of a noisy 2025 strip east of −86.9.
+
+Conclusion: phenology is ruled out as the main cause of the Alabama band. In Florida the anomaly correlation is weak (−0.23 for all forest).
+
+![phenology](fig_phenology.png)
 
 ## Aerial truth (Florida box)
 
@@ -85,7 +107,7 @@ a few scattered fallen stems. At 15 cm individual windthrow is resolvable, so th
 
 ## Not verified
 
-- **What causes the Alabama band:** wind blowdown, or riparian/bottomland effects (flooding, leaf stripping), given its dendritic edges. There is no aerial imagery or field data there.
+- **What causes the Alabama band:** phenology is ruled out (above), and the HH response argues against standing flood water. Wind is the likely cause, but there's no aerial imagery or field data in that box to confirm it. The dendritic edges suggest bottomland stands were hit harder.
 - **Range-direction trends:** the profiles run east–west, which is roughly NISAR's range direction, so an incidence-angle trend could add a smooth gradient. The sharp shared edge at −87.23 argues against that explaining the match, but I didn't model it.
 - **Clearcuts:** the small blocky changes (strong in both NISAR and NDVI) are probably harvests, not storm damage. I didn't use a harvest mask.
 - **Non-forest changes:** the large negative NISAR HV patches in Alabama are non-forest fields and are not interpreted.
@@ -95,4 +117,4 @@ a few scattered fallen stems. At 15 cm individual windthrow is resolvable, so th
 ## Reproduce
 
 Scripts are in `scripts/`, run with `.venv/Scripts/python -I`. Run them in order: `nisar_search`, `nisar_download data/nisar`, `s1_check`/`s1_cover`, `s2_select`,
-`noaa_forest`, `ee_panels`, `noaa_thumbs`, `nisar_process data/nisar`, `make_figures`, `swath_profile`. `data/` is git-ignored.
+`noaa_forest`, `ee_panels`, `noaa_thumbs`, `nisar_process data/nisar`, `make_figures`, `swath_profile`, `phenology_check`. `data/` is git-ignored.

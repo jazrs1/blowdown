@@ -1,0 +1,64 @@
+{
+ "AL": {
+  "pixels": {
+   "evergreen_42": 178254,
+   "decid_wetland_41_90": 82788,
+   "all_forest": 272247
+  },
+  "evergreen_42": {
+   "r_prof_HV_vs_dNDVI": -0.8205671005530594,
+   "r_prof_VH_vs_dNDVI": -0.8052643137877785,
+   "r_prof_HV_vs_anomaly": -0.6258352497720601,
+   "dHV_drop_minus_nodrop": 0.20457160472869873,
+   "mean_dNDVI_2026": 0.002564215799793601,
+   "mean_dNDVI_2025": 0.023158548399806023
+  },
+  "decid_wetland_41_90": {
+   "r_prof_HV_vs_dNDVI": -0.848470465792474,
+   "r_prof_VH_vs_dNDVI": -0.8005564328470214,
+   "r_prof_HV_vs_anomaly": -0.6983033506121479,
+   "dHV_drop_minus_nodrop": 0.48634088039398193,
+   "mean_dNDVI_2026": -0.03382953256368637,
+   "mean_dNDVI_2025": 0.006439484655857086
+  },
+  "all_forest": {
+   "r_prof_HV_vs_dNDVI": -0.8772217759371577,
+   "r_prof_VH_vs_dNDVI": -0.8888571911722289,
+   "r_prof_HV_vs_anomaly": -0.6858343859697623,
+   "dHV_drop_minus_nodrop": 0.5167539119720459,
+   "mean_dNDVI_2026": -0.009500528685748577,
+   "mean_dNDVI_2025": 0.017861131578683853
+  }
+ },
+ "FL": {
+  "pixels": {
+   "evergreen_42": 36964,
+   "decid_wetland_41_90": 21471,
+   "all_forest": 58449
+  },
+  "evergreen_42": {
+   "r_prof_HV_vs_dNDVI": -0.47076480432479034,
+   "r_prof_VH_vs_dNDVI": -0.47967405701931487,
+   "r_prof_HV_vs_anomaly": -0.3852946093365031,
+   "dHV_drop_minus_nodrop": 0.221454918384552,
+   "mean_dNDVI_2026": -0.07362165302038193,
+   "mean_dNDVI_2025": 0.026557166129350662
+  },
+  "decid_wetland_41_90": {
+   "r_prof_HV_vs_dNDVI": -0.3655473630488982,
+   "r_prof_VH_vs_dNDVI": -0.2704594668518704,
+   "r_prof_HV_vs_anomaly": -0.07517079568686297,
+   "dHV_drop_minus_nodrop": 0.27913761138916016,
+   "mean_dNDVI_2026": -0.06703703850507736,
+   "mean_dNDVI_2025": 0.012467480264604092
+  },
+  "all_forest": {
+   "r_prof_HV_vs_dNDVI": -0.3935138478772579,
+   "r_prof_VH_vs_dNDVI": -0.42443866750991577,
+   "r_prof_HV_vs_anomaly": -0.23250315097440027,
+   "dHV_drop_minus_nodrop": 0.24245736002922058,
+   "mean_dNDVI_2026": -0.07122333347797394,
+   "mean_dNDVI_2025": 0.021390948444604874
+  }
+ }
+}
