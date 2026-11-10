@@ -1,0 +1,71 @@
+[
+ {
+  "file": "docs/gate/thumbs/aerial_1_ndvi_drop.png",
+  "kind": "ndvi_drop",
+  "lon": -87.0984,
+  "lat": 30.5748,
+  "dNDVI": -0.495,
+  "dVH_S1": 0.53,
+  "acquired": [
+   "2026-10-12T12:00:00+00:00"
+  ]
+ },
+ {
+  "file": "docs/gate/thumbs/aerial_2_ndvi_drop.png",
+  "kind": "ndvi_drop",
+  "lon": -87.088,
+  "lat": 30.562,
+  "dNDVI": -0.486,
+  "dVH_S1": 1.39,
+  "acquired": [
+   "2026-10-11T12:00:00+00:00",
+   "2026-10-12T12:00:00+00:00"
+  ]
+ },
+ {
+  "file": "docs/gate/thumbs/aerial_3_ndvi_drop.png",
+  "kind": "ndvi_drop",
+  "lon": -87.0016,
+  "lat": 30.6228,
+  "dNDVI": -0.484,
+  "dVH_S1": 0.86,
+  "acquired": [
+   "2026-10-12T12:00:00+00:00"
+  ]
+ },
+ {
+  "file": "docs/gate/thumbs/aerial_4_random_forest.png",
+  "kind": "random_forest",
+  "lon": -87.0072,
+  "lat": 30.618,
+  "dNDVI": 0.019,
+  "dVH_S1": 1.81,
+  "acquired": [
+   "2026-10-12T12:00:00+00:00"
+  ]
+ },
+ {
+  "file": "docs/gate/thumbs/aerial_5_random_forest.png",
+  "kind": "random_forest",
+  "lon": -87.0128,
+  "lat": 30.5596,
+  "dNDVI": -0.07,
+  "dVH_S1": 1.07,
+  "acquired": [
+   "2026-10-11T12:00:00+00:00",
+   "2026-10-12T12:00:00+00:00"
+  ]
+ },
+ {
+  "file": "docs/gate/thumbs/aerial_6_random_forest.png",
+  "kind": "random_forest",
+  "lon": -87.1184,
+  "lat": 30.5588,
+  "dNDVI": -0.095,
+  "dVH_S1": -0.16,
+  "acquired": [
+   "2026-10-11T12:00:00+00:00",
+   "2026-10-12T12:00:00+00:00"
+  ]
+ }
+]
