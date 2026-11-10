@@ -71,6 +71,7 @@ const KEY = "blowdown_labels_v1";
 let labels = {};
 try { labels = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { labels = {}; }
 let storageOK = true;
+try { localStorage.setItem(KEY + "_test", "1"); localStorage.removeItem(KEY + "_test"); } catch (e) { storageOK = false; }
 function save() {
   try { localStorage.setItem(KEY, JSON.stringify(labels)); storageOK = true; }
   catch (e) { storageOK = false; }
@@ -84,7 +85,7 @@ function render() {
   const done = CELLS.filter((x) => labels[x.id]).length;
   $("count").textContent = `Cell ${i + 1} of ${CELLS.length} · ${done} labeled`;
   $("prog").style.width = (100 * done / CELLS.length) + "%";
-  document.querySelectorAll("button.lab").forEach((b) => b.classList.toggle("on", labels[c.id] && labels[c.id].label === b.dataset.l));
+  document.querySelectorAll("button.lab").forEach((b) => b.classList.toggle("on", !!(labels[c.id] && labels[c.id].label === b.dataset.l)));
   $("status").textContent = storageOK ? (labels[c.id] ? `This cell: ${labels[c.id].label}` : "") :
     "Warning: this browser is not saving progress. Download labels.csv often.";
   try { localStorage.setItem(KEY + "_pos", String(i)); } catch (e) {}
