@@ -8,7 +8,8 @@ import grid as G
 GR = "/science/LSAR/GCOV/grids/frequencyA"
 RAW = "data/nisar"; OUT = "data/stack"; os.makedirs(OUT, exist_ok=True)
 MIN_FREE = 15e9
-gran = [g for g in json.load(open("data/stack_granules.json")) if g["found"]]
+GRAN = sys.argv[1] if len(sys.argv) > 1 else "data/stack_granules.json"  # data/control_granules.json for the no-storm controls
+gran = [g for g in json.load(open(GRAN)) if g["found"]]
 gate = set(json.load(open("data/nisar/download_log.json"))[k]["file"] for k in ("pre", "post"))
 gran.sort(key=lambda g: (g["name"] + ".h5") not in gate)  # gate scenes first: extraction errors surface before downloads
 logp = os.path.join(OUT, "stack_log.json")
