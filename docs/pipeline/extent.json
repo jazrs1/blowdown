@@ -1,0 +1,371 @@
+{
+ "threshold": -0.06,
+ "band_km2": 1034.6782926888961,
+ "band_forest_km2": 699.4276123046875,
+ "band_lat_range": [
+  30.486,
+  31.5564
+ ],
+ "band_in_noaa_km2": 121.04345703125,
+ "forest_in_band_and_noaa_km2": 67.66033172607422,
+ "noaa_footprint_in_study_km2": 1466.8720703125,
+ "forest_in_noaa_study_km2": 500.4688720703125,
+ "band_woody_wetland_frac": 0.38752746164798174,
+ "study_woody_wetland_frac": 0.2728209720614698,
+ "band_evergreen_frac": 0.5802351565667518,
+ "study_evergreen_frac": 0.6519750718809578,
+ "nisar_band_cov": 0.9540471542273614,
+ "nisar_dHV_band_minus_forest": 0.5784022808074951,
+ "nisar_dHH_band_minus_forest": 0.2234426885843277,
+ "strips": [
+  {
+   "lat": "30.40-30.45",
+   "peak_lon": -87.013,
+   "peak_contrast": 0.083,
+   "peak_z": 7.3,
+   "band_cols_km": 0.0,
+   "band_lon_range": null,
+   "nisar_cov": 0.92,
+   "nisar_dHV_in_minus_out": null
+  },
+  {
+   "lat": "30.45-30.50",
+   "peak_lon": -87.054,
+   "peak_contrast": 0.107,
+   "peak_z": 4.7,
+   "band_cols_km": 3.7,
+   "band_lon_range": [
+    -87.099,
+    -87.049
+   ],
+   "nisar_cov": 0.93,
+   "nisar_dHV_in_minus_out": 0.43
+  },
+  {
+   "lat": "30.50-30.55",
+   "peak_lon": -87.021,
+   "peak_contrast": 0.149,
+   "peak_z": 4.6,
+   "band_cols_km": 10.5,
+   "band_lon_range": [
+    -87.126,
+    -87.017
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.54
+  },
+  {
+   "lat": "30.55-30.60",
+   "peak_lon": -87.15,
+   "peak_contrast": 0.149,
+   "peak_z": 4.5,
+   "band_cols_km": 21.4,
+   "band_lon_range": [
+    -87.159,
+    -86.933
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.86
+  },
+  {
+   "lat": "30.60-30.65",
+   "peak_lon": -87.043,
+   "peak_contrast": 0.169,
+   "peak_z": 4.0,
+   "band_cols_km": 22.2,
+   "band_lon_range": [
+    -87.149,
+    -86.919
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.69
+  },
+  {
+   "lat": "30.65-30.70",
+   "peak_lon": -87.055,
+   "peak_contrast": 0.163,
+   "peak_z": 5.0,
+   "band_cols_km": 21.4,
+   "band_lon_range": [
+    -87.18,
+    -86.958
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.47
+  },
+  {
+   "lat": "30.70-30.75",
+   "peak_lon": -87.082,
+   "peak_contrast": 0.203,
+   "peak_z": 6.6,
+   "band_cols_km": 20.2,
+   "band_lon_range": [
+    -87.189,
+    -86.979
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.42
+  },
+  {
+   "lat": "30.75-30.80",
+   "peak_lon": -87.103,
+   "peak_contrast": 0.177,
+   "peak_z": 4.5,
+   "band_cols_km": 19.1,
+   "band_lon_range": [
+    -87.196,
+    -86.983
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.45
+  },
+  {
+   "lat": "30.80-30.85",
+   "peak_lon": -87.047,
+   "peak_contrast": 0.179,
+   "peak_z": 6.0,
+   "band_cols_km": 19.1,
+   "band_lon_range": [
+    -87.2,
+    -86.988
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.46
+  },
+  {
+   "lat": "30.85-30.90",
+   "peak_lon": -87.186,
+   "peak_contrast": 0.157,
+   "peak_z": 6.2,
+   "band_cols_km": 16.4,
+   "band_lon_range": [
+    -87.219,
+    -87.01
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.55
+  },
+  {
+   "lat": "30.90-30.95",
+   "peak_lon": -87.165,
+   "peak_contrast": 0.191,
+   "peak_z": 10.4,
+   "band_cols_km": 20.6,
+   "band_lon_range": [
+    -87.241,
+    -87.014
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.53
+  },
+  {
+   "lat": "30.95-31.00",
+   "peak_lon": -87.114,
+   "peak_contrast": 0.151,
+   "peak_z": 10.3,
+   "band_cols_km": 18.9,
+   "band_lon_range": [
+    -87.244,
+    -87.047
+   ],
+   "nisar_cov": 0.96,
+   "nisar_dHV_in_minus_out": 0.66
+  },
+  {
+   "lat": "31.00-31.05",
+   "peak_lon": -87.162,
+   "peak_contrast": 0.187,
+   "peak_z": 13.7,
+   "band_cols_km": 14.0,
+   "band_lon_range": [
+    -87.229,
+    -87.084
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.71
+  },
+  {
+   "lat": "31.05-31.10",
+   "peak_lon": -87.171,
+   "peak_contrast": 0.181,
+   "peak_z": 14.4,
+   "band_cols_km": 14.1,
+   "band_lon_range": [
+    -87.21,
+    -87.058
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.76
+  },
+  {
+   "lat": "31.10-31.15",
+   "peak_lon": -87.196,
+   "peak_contrast": 0.105,
+   "peak_z": 7.1,
+   "band_cols_km": 16.1,
+   "band_lon_range": [
+    -87.221,
+    -87.053
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.35
+  },
+  {
+   "lat": "31.15-31.20",
+   "peak_lon": -87.17,
+   "peak_contrast": 0.107,
+   "peak_z": 9.2,
+   "band_cols_km": 12.8,
+   "band_lon_range": [
+    -87.23,
+    -87.096
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.4
+  },
+  {
+   "lat": "31.20-31.25",
+   "peak_lon": -87.152,
+   "peak_contrast": 0.106,
+   "peak_z": 6.7,
+   "band_cols_km": 11.7,
+   "band_lon_range": [
+    -87.229,
+    -87.108
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.65
+  },
+  {
+   "lat": "31.25-31.30",
+   "peak_lon": -87.169,
+   "peak_contrast": 0.125,
+   "peak_z": 9.2,
+   "band_cols_km": 10.4,
+   "band_lon_range": [
+    -87.232,
+    -87.124
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.78
+  },
+  {
+   "lat": "31.30-31.35",
+   "peak_lon": -87.21,
+   "peak_contrast": 0.132,
+   "peak_z": 9.6,
+   "band_cols_km": 10.5,
+   "band_lon_range": [
+    -87.24,
+    -87.13
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.67
+  },
+  {
+   "lat": "31.35-31.40",
+   "peak_lon": -87.189,
+   "peak_contrast": 0.086,
+   "peak_z": 4.9,
+   "band_cols_km": 11.6,
+   "band_lon_range": [
+    -87.26,
+    -87.136
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.33
+  },
+  {
+   "lat": "31.40-31.45",
+   "peak_lon": -87.23,
+   "peak_contrast": 0.113,
+   "peak_z": 5.8,
+   "band_cols_km": 12.2,
+   "band_lon_range": [
+    -87.26,
+    -87.133
+   ],
+   "nisar_cov": 0.95,
+   "nisar_dHV_in_minus_out": 0.4
+  },
+  {
+   "lat": "31.45-31.50",
+   "peak_lon": -87.204,
+   "peak_contrast": 0.114,
+   "peak_z": 8.7,
+   "band_cols_km": 10.9,
+   "band_lon_range": [
+    -87.252,
+    -87.137
+   ],
+   "nisar_cov": 0.87,
+   "nisar_dHV_in_minus_out": 0.52
+  },
+  {
+   "lat": "31.50-31.55",
+   "peak_lon": -87.216,
+   "peak_contrast": 0.085,
+   "peak_z": 6.7,
+   "band_cols_km": 7.8,
+   "band_lon_range": [
+    -87.253,
+    -87.16
+   ],
+   "nisar_cov": 0.69,
+   "nisar_dHV_in_minus_out": 0.49
+  },
+  {
+   "lat": "31.55-31.60",
+   "peak_lon": -87.184,
+   "peak_contrast": 0.061,
+   "peak_z": 4.9,
+   "band_cols_km": 3.0,
+   "band_lon_range": [
+    -87.256,
+    -87.217
+   ],
+   "nisar_cov": 0.5,
+   "nisar_dHV_in_minus_out": 0.12
+  },
+  {
+   "lat": "31.60-31.65",
+   "peak_lon": -87.173,
+   "peak_contrast": 0.038,
+   "peak_z": 2.5,
+   "band_cols_km": 0.0,
+   "band_lon_range": null,
+   "nisar_cov": 0.32,
+   "nisar_dHV_in_minus_out": null
+  },
+  {
+   "lat": "31.65-31.70",
+   "peak_lon": -87.244,
+   "peak_contrast": 0.066,
+   "peak_z": 4.3,
+   "band_cols_km": 0.0,
+   "band_lon_range": null,
+   "nisar_cov": 0.13,
+   "nisar_dHV_in_minus_out": null
+  },
+  {
+   "lat": "31.70-31.75",
+   "peak_lon": -87.246,
+   "peak_contrast": 0.063,
+   "peak_z": 4.3,
+   "band_cols_km": 0.0,
+   "band_lon_range": null,
+   "nisar_cov": 0.0,
+   "nisar_dHV_in_minus_out": null
+  },
+  {
+   "lat": "31.75-31.80",
+   "peak_lon": -87.559,
+   "peak_contrast": 0.062,
+   "peak_z": 5.8,
+   "band_cols_km": 0.0,
+   "band_lon_range": null,
+   "nisar_cov": 0.0,
+   "nisar_dHV_in_minus_out": null
+  }
+ ]
+}
