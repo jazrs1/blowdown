@@ -138,3 +138,99 @@ Free disk is about 660 GB (615 GiB). `data/` dropped from 62 GB to 32 GB.
 - **Labeling imagery.** I checked a few rendered images by eye, not all 550. Some may show cloud, haze or flooding in the composites. John's Unsure button covers those. 2 of the 150 tip cells fall in aerial gaps and say so.
 - **README rebuild command** for `data/layers.h5` was checked against the script's inputs, not re-run.
 - **The training labels are Sentinel-2-derived** and provisional, and John labels from the same composites.
+
+## Amendment 1: v1 vs v2 on validation tiles
+
+v2 changes only the training labels (design.md, Amendment 1). Every training-region forest cell is labelled: in the Sentinel-2 damage mask or not, with flagged cells excluded. That gives 577,835 label-1 and 9,002,841 label-0 cells, against v1's 248,131 and 3,075,249. Selection uses the in-band validation cut.
+
+v1 was not retrained. It was moved unchanged to `data/models/v1/` (all 41 hashes re-verified, [v1_hashcheck.json](v1_hashcheck.json)). v2 is frozen in `data/models/v2/` ([frozen_manifest_v2.json](frozen_manifest_v2.json)).
+
+Scripts:
+- [labels_v2.py](../../scripts/labels_v2.py)
+- [train_gbm_v2.py](../../scripts/train_gbm_v2.py)
+- [train_unet_v2.py](../../scripts/train_unet_v2.py)
+- [val_compare.py](../../scripts/val_compare.py)
+
+Numbers: [val_compare.json](val_compare.json).
+
+**How the comparison is scored:**
+- **Same cells and labels for every score:** validation-tile forest cells, damage-mask cell = 1 and any other forest cell = 0, flagged cells excluded. Only cells where every score is finite are used: 1,628,968 of 1,999,270 cells.
+- **Cuts:**
+  - full = all of those cells;
+  - in-band = inside the band, the cut that mirrors John's sample;
+  - outside-band = the rest.
+- **Intervals:** block bootstrap over 3.2 km blocks (416 blocks), 1,000 resamples, percentile 95%. The v2 − v1 intervals are paired.
+- **Read the in-band rows for v2 with care.** v2's grid choice, early stopping, learning rate and checkpoint epoch were all selected on the in-band validation cut, so v2's in-band numbers carry some selection optimism that v1's don't. The full and outside-band cuts were not used for selection.
+
+**AUC (95% CI), in-band cut**
+
+| Score | Upland (16,168 damage / 16,482 other) | Wetland (11,663 / 4,061) | v2 − v1, upland | v2 − v1, wetland |
+|---|---|---|---|---|
+| A: NISAR HV threshold | 0.559 (0.536–0.577) | 0.600 (0.569–0.627) | | |
+| A76: track 76 HV | 0.540 (0.518–0.560) | 0.574 (0.553–0.591) | | |
+| B: S1 VH threshold | 0.549 (0.537–0.561) | 0.574 (0.557–0.592) | | |
+| GBM C (NISAR), v1 → v2 | 0.620 → 0.660 (0.628–0.688) | 0.720 → 0.731 (0.688–0.766) | +0.040 (+0.023 to +0.058) | +0.010 (+0.001 to +0.023) |
+| GBM D (S1), v1 → v2 | 0.690 → 0.669 (0.632–0.708) | 0.706 → 0.700 (0.656–0.735) | −0.021 (−0.027 to −0.015) | −0.006 (−0.014 to +0.003) |
+| GBM E (both), v1 → v2 | 0.729 → 0.769 (0.734–0.803) | 0.768 → 0.790 (0.754–0.818) | +0.041 (+0.031 to +0.051) | +0.022 (+0.013 to +0.030) |
+| U-Net C (NISAR), v1 → v2 | 0.682 → 0.765 (0.736–0.795) | 0.742 → 0.800 (0.758–0.834) | +0.083 (+0.049 to +0.116) | +0.058 (+0.045 to +0.072) |
+| U-Net D (S1), v1 → v2 | 0.730 → 0.783 (0.744–0.821) | 0.724 → 0.758 (0.713–0.791) | +0.054 (+0.041 to +0.069) | +0.034 (+0.022 to +0.048) |
+| U-Net E (both), v1 → v2 | 0.753 → **0.816** (0.789–0.842) | 0.771 → **0.825** (0.793–0.851) | +0.063 (+0.043 to +0.083) | +0.053 (+0.042 to +0.069) |
+
+**AUC, full and outside-band cuts (v1 → v2; 95% CI of the v2 − v1 difference)**
+
+| Model | Full, upland | Full, wetland | Outside band, upland | Outside band, wetland |
+|---|---|---|---|---|
+| GBM C | 0.904 → 0.908 (+0.001 to +0.008) | 0.922 → 0.919 (−0.010 to +0.007) | 0.875 → 0.876 (−0.006 to +0.007) | 0.934 → 0.924 (−0.015 to −0.004) |
+| GBM D | 0.878 → 0.848 (−0.043 to −0.022) | 0.897 → 0.868 (−0.038 to −0.021) | 0.795 → 0.746 (−0.067 to −0.034) | 0.897 → 0.861 (−0.049 to −0.027) |
+| GBM E | 0.941 → 0.947 (−0.002 to +0.013) | 0.940 → 0.948 (+0.002 to +0.015) | 0.907 → 0.916 (−0.007 to +0.024) | 0.941 → 0.946 (+0.000 to +0.010) |
+| U-Net C | 0.962 → 0.966 (−0.001 to +0.009) | 0.945 → 0.956 (+0.003 to +0.022) | 0.947 → 0.951 (−0.006 to +0.013) | 0.943 → 0.954 (+0.002 to +0.021) |
+| U-Net D | 0.963 → 0.967 (+0.002 to +0.007) | 0.951 → 0.957 (+0.003 to +0.009) | 0.945 → 0.950 (+0.001 to +0.009) | 0.952 → 0.956 (+0.001 to +0.007) |
+| U-Net E | 0.970 → 0.977 (+0.005 to +0.010) | 0.956 → 0.968 (+0.006 to +0.019) | 0.959 → 0.969 (+0.007 to +0.013) | 0.956 → 0.966 (+0.005 to +0.016) |
+
+For reference, the thresholds on these cuts: full, A 0.595 / 0.669 and B 0.580 / 0.673 (upland / wetland); outside band, A 0.557 / 0.678 and B 0.531 / 0.685.
+
+**What this shows:**
+- **On the in-band cut, v2 beats v1 for every model except GBM D.**
+  - The U-Nets gain the most: +0.05 to +0.08, all intervals clear of zero.
+  - U-Net E v2 is the best arm in both domains (upland 0.816, wetland 0.825), followed by U-Net C and D v2 (0.76–0.80).
+  - Some of this gain is selection optimism (see above). Its size isn't measured.
+- **On the cuts not used for selection (full, outside band), v2 matches or slightly beats v1** (+0.00 to +0.01) for every model except GBM D. So the new labels don't cost performance elsewhere.
+- **GBM D v2 is worse everywhere** (−0.02 to −0.05). Its in-band validation AUC peaked after 2–4 trees and fell after that, so early stopping on the frozen rule left it as a 2–4-tree model. That's a consequence of the frozen selection rule, reported as it is; the S1-only U-Net (D) does not show it.
+- **The plain thresholds stay near chance in-band** (0.54–0.60). Every learned arm beats them.
+
+**Calibration on the in-band cut**
+
+![reliability](fig_reliability_inband.png)
+
+The in-band cut is 58.4% damage-mask cells. Reliability is measured against the Sentinel-2 mask, not against John's labels, which don't exist yet.
+
+| Model | v1 Brier / ECE | v2 Brier / ECE |
+|---|---|---|
+| GBM C | 0.276 / 0.219 | 0.230 / 0.110 |
+| GBM D | 0.258 / 0.197 | 0.321 / 0.309 |
+| GBM E | 0.288 / 0.275 | **0.189 / 0.079** |
+| U-Net C | 0.366 / 0.374 | 0.227 / 0.200 |
+| U-Net D | 0.310 / 0.305 | 0.227 / 0.197 |
+| U-Net E | 0.329 / 0.338 | 0.230 / 0.229 |
+
+- **v1 is badly over-confident in-band.** About 80% of in-band cells get p > 0.9, but only 63–73% of those are in the mask. That fits a model that never saw in-between cells.
+- **v2 GBM C and E are roughly calibrated.** GBM E v2 is close to the diagonal (ECE 0.08).
+- **The v2 U-Nets still over-predict.** Cells scored 0.75 are 36–50% damage-mask. That's expected from the BCE positive weight of 4, which the design kept.
+- **GBM D v2 spans only 0.17–0.41**, the 2–4-tree model above.
+- AUC is unaffected by calibration. F1 uses each arm's frozen threshold, so calibration matters only if probabilities are read as probabilities. For John's binary labels, the scoring pass reports AUC and F1 at the frozen thresholds, as designed.
+
+**Frozen v2 thresholds** (5-seed mean probability, F1-max on the in-band validation cut):
+- GBM: C 0.171, D 0.181, E 0.482
+- U-Net: C 0.709, D 0.672, E 0.796
+
+The F1 search for v2 spans the 1st–99.5th percentiles (v1 used the 50th–99.5th), because the in-band cut is 58% positive. That's an implementation detail, noted here as a deviation from the v1 code.
+
+**v2 time and disk:**
+- GBM 31 min; U-Net 53 min.
+- Comparison 16 min, plus a failed first run (a bug in the bootstrap's histogram AUC, fixed).
+- `data/models/v2` is 294 MB; the cached validation scores (`data/models/val_scores.npz`) are small.
+
+**Not verified (Amendment 1):**
+- The size of v2's selection optimism on the in-band cut.
+- Whether v2's gains on Sentinel-2 mask agreement carry over to John's labels.
+- Why GBM D's in-band AUC falls with more trees. Likely the whole-region negatives teach it something that doesn't hold inside the band, but that wasn't tested.
