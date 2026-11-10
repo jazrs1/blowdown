@@ -36,12 +36,13 @@
    1649
   ],
   "upland_share_of_damage": 0.3247,
-  "forest_km2": 241.8,
+  "forest_km2": 223.1,
   "damage_km2": 77.1,
+  "damage_km2_in_upland_or_wetland_cells": 65.5,
   "dmg_upland": 26487,
   "intact_upland": 6216,
-  "dmg_wetland": 46144,
-  "nondmg_wetland": 48789
+  "dmg_wetland": 46030,
+  "nondmg_wetland": 43784
  },
  "heldout_exclusion_with_2km_buffer": {
   "easting_m": [
@@ -87,12 +88,13 @@
    2215
   ],
   "note": "rectangle intersected with the NOAA footprint",
-  "forest_km2": 196.3,
+  "forest_km2": 173.1,
   "damage_km2": 69.7,
+  "band_forest_km2_in_tip": 67.7,
   "dmg_upland": 15525,
   "intact_upland": 212,
-  "dmg_wetland": 39921,
-  "nondmg_wetland": 82839
+  "dmg_wetland": 39824,
+  "nondmg_wetland": 70605
  },
  "tip_exclusion_with_2km_buffer": {
   "easting_m": [
@@ -113,10 +115,27 @@
   ]
  },
  "train": {
-  "forest_km2": 9626.6,
+  "forest_km2": 8922.1,
   "damage_cells": 587781,
   "intact_cells": 3077385
  },
+ "literal_rule_pick": {
+  "northing_m": [
+   3444600.0,
+   3464610.0
+  ],
+  "easting_m": [
+   476320.0,
+   491830.0
+  ],
+  "upland_share": 0.3247,
+  "touches_tip": false,
+  "dmg_upland": 26487,
+  "intact_upland": 6216,
+  "dmg_wetland": 46030,
+  "nondmg_wetland": 43784
+ },
+ "literal_rule_pick_same_as_heldout": true,
  "n_candidates": 100,
  "n_eligible": 78,
  "candidates": [
@@ -128,10 +147,11 @@
    "upland_share": 0.2826,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 17208,
    "intact_upland": 4770,
-   "dmg_wetland": 22913,
-   "nondmg_wetland": 29571,
+   "dmg_wetland": 22799,
+   "nondmg_wetland": 26347,
    "northing_m": [
     3471330.0,
     3491340.0
@@ -149,10 +169,11 @@
    "upland_share": 0.2902,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 17715,
    "intact_upland": 5100,
-   "dmg_wetland": 22940,
-   "nondmg_wetland": 28453,
+   "dmg_wetland": 22822,
+   "nondmg_wetland": 25138,
    "northing_m": [
     3470340.0,
     3490350.0
@@ -170,10 +191,11 @@
    "upland_share": 0.2894,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 17767,
    "intact_upland": 5612,
-   "dmg_wetland": 23791,
-   "nondmg_wetland": 28844,
+   "dmg_wetland": 23671,
+   "nondmg_wetland": 25406,
    "northing_m": [
     3469350.0,
     3489360.0
@@ -191,10 +213,11 @@
    "upland_share": 0.2878,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 17608,
    "intact_upland": 5672,
-   "dmg_wetland": 24666,
-   "nondmg_wetland": 28995,
+   "dmg_wetland": 24543,
+   "nondmg_wetland": 25448,
    "northing_m": [
     3468360.0,
     3488370.0
@@ -212,10 +235,11 @@
    "upland_share": 0.2928,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 18283,
    "intact_upland": 5591,
-   "dmg_wetland": 25496,
-   "nondmg_wetland": 28049,
+   "dmg_wetland": 25375,
+   "nondmg_wetland": 24489,
    "northing_m": [
     3467370.0,
     3487380.0
@@ -233,10 +257,11 @@
    "upland_share": 0.2949,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 18656,
    "intact_upland": 5579,
-   "dmg_wetland": 26134,
-   "nondmg_wetland": 27698,
+   "dmg_wetland": 26016,
+   "nondmg_wetland": 24143,
    "northing_m": [
     3466380.0,
     3486390.0
@@ -254,10 +279,11 @@
    "upland_share": 0.3011,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 19354,
    "intact_upland": 5277,
-   "dmg_wetland": 26593,
-   "nondmg_wetland": 27767,
+   "dmg_wetland": 26477,
+   "nondmg_wetland": 24283,
    "northing_m": [
     3465390.0,
     3485400.0
@@ -275,10 +301,11 @@
    "upland_share": 0.3116,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 20468,
    "intact_upland": 5408,
-   "dmg_wetland": 26925,
-   "nondmg_wetland": 27076,
+   "dmg_wetland": 26802,
+   "nondmg_wetland": 23756,
    "northing_m": [
     3464400.0,
     3484410.0
@@ -296,10 +323,11 @@
    "upland_share": 0.3209,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 21452,
    "intact_upland": 5674,
-   "dmg_wetland": 27602,
-   "nondmg_wetland": 27140,
+   "dmg_wetland": 27485,
+   "nondmg_wetland": 23947,
    "northing_m": [
     3463410.0,
     3483420.0
@@ -317,10 +345,11 @@
    "upland_share": 0.3298,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 22829,
    "intact_upland": 6302,
-   "dmg_wetland": 28196,
-   "nondmg_wetland": 27681,
+   "dmg_wetland": 28077,
+   "nondmg_wetland": 24564,
    "northing_m": [
     3462420.0,
     3482430.0
@@ -338,10 +367,11 @@
    "upland_share": 0.3407,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 23949,
    "intact_upland": 6249,
-   "dmg_wetland": 28197,
-   "nondmg_wetland": 27544,
+   "dmg_wetland": 28078,
+   "nondmg_wetland": 24522,
    "northing_m": [
     3461430.0,
     3481440.0
@@ -359,10 +389,11 @@
    "upland_share": 0.351,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25456,
    "intact_upland": 6206,
-   "dmg_wetland": 28775,
-   "nondmg_wetland": 27311,
+   "dmg_wetland": 28659,
+   "nondmg_wetland": 24307,
    "northing_m": [
     3460440.0,
     3480450.0
@@ -380,10 +411,11 @@
    "upland_share": 0.3595,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26247,
    "intact_upland": 6149,
-   "dmg_wetland": 28765,
-   "nondmg_wetland": 28711,
+   "dmg_wetland": 28648,
+   "nondmg_wetland": 25516,
    "northing_m": [
     3459450.0,
     3479460.0
@@ -401,10 +433,11 @@
    "upland_share": 0.3624,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26743,
    "intact_upland": 6564,
-   "dmg_wetland": 29636,
-   "nondmg_wetland": 29832,
+   "dmg_wetland": 29520,
+   "nondmg_wetland": 26652,
    "northing_m": [
     3458460.0,
     3478470.0
@@ -422,10 +455,11 @@
    "upland_share": 0.3617,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26314,
    "intact_upland": 6923,
-   "dmg_wetland": 30158,
-   "nondmg_wetland": 30101,
+   "dmg_wetland": 30038,
+   "nondmg_wetland": 26806,
    "northing_m": [
     3457470.0,
     3477480.0
@@ -443,10 +477,11 @@
    "upland_share": 0.3579,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25993,
    "intact_upland": 7700,
-   "dmg_wetland": 31597,
-   "nondmg_wetland": 33063,
+   "dmg_wetland": 31468,
+   "nondmg_wetland": 29417,
    "northing_m": [
     3456480.0,
     3476490.0
@@ -464,10 +499,11 @@
    "upland_share": 0.3607,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26501,
    "intact_upland": 8096,
-   "dmg_wetland": 32624,
-   "nondmg_wetland": 33297,
+   "dmg_wetland": 32499,
+   "nondmg_wetland": 29715,
    "northing_m": [
     3455490.0,
     3475500.0
@@ -485,10 +521,11 @@
    "upland_share": 0.3678,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 27130,
    "intact_upland": 8710,
-   "dmg_wetland": 33295,
-   "nondmg_wetland": 34640,
+   "dmg_wetland": 33171,
+   "nondmg_wetland": 30987,
    "northing_m": [
     3454500.0,
     3474510.0
@@ -506,10 +543,11 @@
    "upland_share": 0.3666,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 27280,
    "intact_upland": 7288,
-   "dmg_wetland": 34317,
-   "nondmg_wetland": 33298,
+   "dmg_wetland": 34194,
+   "nondmg_wetland": 29750,
    "northing_m": [
     3453510.0,
     3473520.0
@@ -527,10 +565,11 @@
    "upland_share": 0.3632,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 27756,
    "intact_upland": 4327,
-   "dmg_wetland": 35901,
-   "nondmg_wetland": 30245,
+   "dmg_wetland": 35775,
+   "nondmg_wetland": 26914,
    "northing_m": [
     3452520.0,
     3472530.0
@@ -548,10 +587,11 @@
    "upland_share": 0.3601,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28344,
    "intact_upland": 4630,
-   "dmg_wetland": 37771,
-   "nondmg_wetland": 31089,
+   "dmg_wetland": 37641,
+   "nondmg_wetland": 27836,
    "northing_m": [
     3451530.0,
     3471540.0
@@ -569,10 +609,11 @@
    "upland_share": 0.3543,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28403,
    "intact_upland": 4575,
-   "dmg_wetland": 39579,
-   "nondmg_wetland": 33631,
+   "dmg_wetland": 39452,
+   "nondmg_wetland": 30112,
    "northing_m": [
     3450540.0,
     3470550.0
@@ -590,10 +631,11 @@
    "upland_share": 0.3513,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28429,
    "intact_upland": 4515,
-   "dmg_wetland": 41051,
-   "nondmg_wetland": 35770,
+   "dmg_wetland": 40924,
+   "nondmg_wetland": 31996,
    "northing_m": [
     3449550.0,
     3469560.0
@@ -611,10 +653,11 @@
    "upland_share": 0.3471,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28606,
    "intact_upland": 4960,
-   "dmg_wetland": 42680,
-   "nondmg_wetland": 39598,
+   "dmg_wetland": 42557,
+   "nondmg_wetland": 35460,
    "northing_m": [
     3448560.0,
     3468570.0
@@ -632,10 +675,11 @@
    "upland_share": 0.3454,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28903,
    "intact_upland": 5862,
-   "dmg_wetland": 43948,
-   "nondmg_wetland": 43481,
+   "dmg_wetland": 43823,
+   "nondmg_wetland": 39134,
    "northing_m": [
     3447570.0,
     3467580.0
@@ -653,10 +697,11 @@
    "upland_share": 0.3358,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 27894,
    "intact_upland": 6021,
-   "dmg_wetland": 45090,
-   "nondmg_wetland": 45281,
+   "dmg_wetland": 44967,
+   "nondmg_wetland": 40709,
    "northing_m": [
     3446580.0,
     3466590.0
@@ -674,10 +719,11 @@
    "upland_share": 0.334,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 27499,
    "intact_upland": 5762,
-   "dmg_wetland": 45325,
-   "nondmg_wetland": 46506,
+   "dmg_wetland": 45206,
+   "nondmg_wetland": 41705,
    "northing_m": [
     3445590.0,
     3465600.0
@@ -695,10 +741,11 @@
    "upland_share": 0.3247,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26487,
    "intact_upland": 6216,
-   "dmg_wetland": 46144,
-   "nondmg_wetland": 48789,
+   "dmg_wetland": 46030,
+   "nondmg_wetland": 43784,
    "northing_m": [
     3444600.0,
     3464610.0
@@ -716,10 +763,11 @@
    "upland_share": 0.3182,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25824,
    "intact_upland": 4709,
-   "dmg_wetland": 46904,
-   "nondmg_wetland": 47578,
+   "dmg_wetland": 46795,
+   "nondmg_wetland": 42657,
    "northing_m": [
     3443610.0,
     3463620.0
@@ -737,10 +785,11 @@
    "upland_share": 0.3134,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26232,
    "intact_upland": 9242,
-   "dmg_wetland": 49467,
-   "nondmg_wetland": 60178,
+   "dmg_wetland": 49353,
+   "nondmg_wetland": 54130,
    "northing_m": [
     3442620.0,
     3462630.0
@@ -758,10 +807,11 @@
    "upland_share": 0.313,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26324,
    "intact_upland": 8738,
-   "dmg_wetland": 50177,
-   "nondmg_wetland": 62897,
+   "dmg_wetland": 50062,
+   "nondmg_wetland": 56539,
    "northing_m": [
     3441630.0,
     3461640.0
@@ -779,10 +829,11 @@
    "upland_share": 0.308,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26089,
    "intact_upland": 8622,
-   "dmg_wetland": 51668,
-   "nondmg_wetland": 67168,
+   "dmg_wetland": 51552,
+   "nondmg_wetland": 60330,
    "northing_m": [
     3440640.0,
     3460650.0
@@ -800,10 +851,11 @@
    "upland_share": 0.3057,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26400,
    "intact_upland": 8381,
-   "dmg_wetland": 53275,
-   "nondmg_wetland": 68543,
+   "dmg_wetland": 53151,
+   "nondmg_wetland": 61547,
    "northing_m": [
     3439650.0,
     3459660.0
@@ -821,10 +873,11 @@
    "upland_share": 0.2981,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25867,
    "intact_upland": 8347,
-   "dmg_wetland": 54421,
-   "nondmg_wetland": 70627,
+   "dmg_wetland": 54289,
+   "nondmg_wetland": 63270,
    "northing_m": [
     3438660.0,
     3458670.0
@@ -842,10 +895,11 @@
    "upland_share": 0.2927,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26174,
    "intact_upland": 7984,
-   "dmg_wetland": 57105,
-   "nondmg_wetland": 72997,
+   "dmg_wetland": 56978,
+   "nondmg_wetland": 65491,
    "northing_m": [
     3437670.0,
     3457680.0
@@ -863,10 +917,11 @@
    "upland_share": 0.2888,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26525,
    "intact_upland": 7422,
-   "dmg_wetland": 59338,
-   "nondmg_wetland": 74487,
+   "dmg_wetland": 59216,
+   "nondmg_wetland": 66482,
    "northing_m": [
     3436680.0,
     3456690.0
@@ -884,10 +939,11 @@
    "upland_share": 0.2765,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26142,
    "intact_upland": 6667,
-   "dmg_wetland": 62700,
-   "nondmg_wetland": 76930,
+   "dmg_wetland": 62575,
+   "nondmg_wetland": 68331,
    "northing_m": [
     3435690.0,
     3455700.0
@@ -905,10 +961,11 @@
    "upland_share": 0.266,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26034,
    "intact_upland": 6528,
-   "dmg_wetland": 66028,
-   "nondmg_wetland": 80483,
+   "dmg_wetland": 65909,
+   "nondmg_wetland": 71395,
    "northing_m": [
     3434700.0,
     3454710.0
@@ -926,10 +983,11 @@
    "upland_share": 0.2519,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25327,
    "intact_upland": 6321,
-   "dmg_wetland": 69749,
-   "nondmg_wetland": 82320,
+   "dmg_wetland": 69632,
+   "nondmg_wetland": 72884,
    "northing_m": [
     3433710.0,
     3453720.0
@@ -947,10 +1005,11 @@
    "upland_share": 0.2451,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25510,
    "intact_upland": 5592,
-   "dmg_wetland": 72984,
-   "nondmg_wetland": 83896,
+   "dmg_wetland": 72874,
+   "nondmg_wetland": 74130,
    "northing_m": [
     3432720.0,
     3452730.0
@@ -968,10 +1027,11 @@
    "upland_share": 0.2401,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25522,
    "intact_upland": 5479,
-   "dmg_wetland": 75684,
-   "nondmg_wetland": 85283,
+   "dmg_wetland": 75581,
+   "nondmg_wetland": 75156,
    "northing_m": [
     3431730.0,
     3451740.0
@@ -989,10 +1049,11 @@
    "upland_share": 0.2358,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 25435,
    "intact_upland": 6109,
-   "dmg_wetland": 77679,
-   "nondmg_wetland": 85612,
+   "dmg_wetland": 77581,
+   "nondmg_wetland": 75190,
    "northing_m": [
     3430740.0,
     3450750.0
@@ -1010,10 +1071,11 @@
    "upland_share": 0.2416,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 26422,
    "intact_upland": 6031,
-   "dmg_wetland": 78126,
-   "nondmg_wetland": 84977,
+   "dmg_wetland": 78027,
+   "nondmg_wetland": 74243,
    "northing_m": [
     3429750.0,
     3449760.0
@@ -1031,10 +1093,11 @@
    "upland_share": 0.2506,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28083,
    "intact_upland": 5994,
-   "dmg_wetland": 78388,
-   "nondmg_wetland": 84995,
+   "dmg_wetland": 78286,
+   "nondmg_wetland": 73984,
    "northing_m": [
     3428760.0,
     3448770.0
@@ -1052,10 +1115,11 @@
    "upland_share": 0.2507,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 28905,
    "intact_upland": 6535,
-   "dmg_wetland": 80640,
-   "nondmg_wetland": 88858,
+   "dmg_wetland": 80538,
+   "nondmg_wetland": 77205,
    "northing_m": [
     3427770.0,
     3447780.0
@@ -1073,10 +1137,11 @@
    "upland_share": 0.2533,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 29768,
    "intact_upland": 6496,
-   "dmg_wetland": 81633,
-   "nondmg_wetland": 87685,
+   "dmg_wetland": 81531,
+   "nondmg_wetland": 75908,
    "northing_m": [
     3426780.0,
     3446790.0
@@ -1094,10 +1159,11 @@
    "upland_share": 0.2509,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 30104,
    "intact_upland": 6854,
-   "dmg_wetland": 83204,
-   "nondmg_wetland": 88007,
+   "dmg_wetland": 83099,
+   "nondmg_wetland": 76027,
    "northing_m": [
     3425790.0,
     3445800.0
@@ -1115,10 +1181,11 @@
    "upland_share": 0.2585,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 31913,
    "intact_upland": 6928,
-   "dmg_wetland": 84223,
-   "nondmg_wetland": 88405,
+   "dmg_wetland": 84121,
+   "nondmg_wetland": 76371,
    "northing_m": [
     3424800.0,
     3444810.0
@@ -1136,10 +1203,11 @@
    "upland_share": 0.2693,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 34115,
    "intact_upland": 7686,
-   "dmg_wetland": 84718,
-   "nondmg_wetland": 90125,
+   "dmg_wetland": 84615,
+   "nondmg_wetland": 78020,
    "northing_m": [
     3423810.0,
     3443820.0
@@ -1157,10 +1225,11 @@
    "upland_share": 0.2791,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 35945,
    "intact_upland": 15160,
-   "dmg_wetland": 84417,
-   "nondmg_wetland": 100654,
+   "dmg_wetland": 84321,
+   "nondmg_wetland": 88017,
    "northing_m": [
     3422820.0,
     3442830.0
@@ -1178,10 +1247,11 @@
    "upland_share": 0.2845,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 37044,
    "intact_upland": 16762,
-   "dmg_wetland": 84060,
-   "nondmg_wetland": 97815,
+   "dmg_wetland": 83965,
+   "nondmg_wetland": 85380,
    "northing_m": [
     3421830.0,
     3441840.0
@@ -1199,10 +1269,11 @@
    "upland_share": 0.2941,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 38896,
    "intact_upland": 16886,
-   "dmg_wetland": 83694,
-   "nondmg_wetland": 94190,
+   "dmg_wetland": 83595,
+   "nondmg_wetland": 82090,
    "northing_m": [
     3420840.0,
     3440850.0
@@ -1220,10 +1291,11 @@
    "upland_share": 0.3015,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 39936,
    "intact_upland": 16311,
-   "dmg_wetland": 82336,
-   "nondmg_wetland": 89184,
+   "dmg_wetland": 82251,
+   "nondmg_wetland": 77437,
    "northing_m": [
     3419850.0,
     3439860.0
@@ -1241,10 +1313,11 @@
    "upland_share": 0.3115,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 41977,
    "intact_upland": 15790,
-   "dmg_wetland": 82038,
-   "nondmg_wetland": 81757,
+   "dmg_wetland": 81950,
+   "nondmg_wetland": 70364,
    "northing_m": [
     3418860.0,
     3438870.0
@@ -1262,10 +1335,11 @@
    "upland_share": 0.3181,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 42755,
    "intact_upland": 15164,
-   "dmg_wetland": 80173,
-   "nondmg_wetland": 74651,
+   "dmg_wetland": 80085,
+   "nondmg_wetland": 63748,
    "northing_m": [
     3417870.0,
     3437880.0
@@ -1283,10 +1357,11 @@
    "upland_share": 0.3288,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 43217,
    "intact_upland": 14955,
-   "dmg_wetland": 76439,
-   "nondmg_wetland": 67918,
+   "dmg_wetland": 76351,
+   "nondmg_wetland": 57722,
    "northing_m": [
     3416880.0,
     3436890.0
@@ -1304,10 +1379,11 @@
    "upland_share": 0.3408,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 43901,
    "intact_upland": 14152,
-   "dmg_wetland": 72873,
-   "nondmg_wetland": 62283,
+   "dmg_wetland": 72782,
+   "nondmg_wetland": 52588,
    "northing_m": [
     3415890.0,
     3435900.0
@@ -1325,10 +1401,11 @@
    "upland_share": 0.3532,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 45192,
    "intact_upland": 13046,
-   "dmg_wetland": 69835,
-   "nondmg_wetland": 57650,
+   "dmg_wetland": 69732,
+   "nondmg_wetland": 48459,
    "northing_m": [
     3414900.0,
     3434910.0
@@ -1346,10 +1423,11 @@
    "upland_share": 0.3744,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 47497,
    "intact_upland": 11551,
-   "dmg_wetland": 65409,
-   "nondmg_wetland": 52252,
+   "dmg_wetland": 65300,
+   "nondmg_wetland": 43611,
    "northing_m": [
     3413910.0,
     3433920.0
@@ -1367,10 +1445,11 @@
    "upland_share": 0.3917,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 48810,
    "intact_upland": 11415,
-   "dmg_wetland": 61692,
-   "nondmg_wetland": 49136,
+   "dmg_wetland": 61580,
+   "nondmg_wetland": 40808,
    "northing_m": [
     3412920.0,
     3432930.0
@@ -1388,10 +1467,11 @@
    "upland_share": 0.4143,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 52495,
    "intact_upland": 16970,
-   "dmg_wetland": 58978,
-   "nondmg_wetland": 52708,
+   "dmg_wetland": 58866,
+   "nondmg_wetland": 44564,
    "northing_m": [
     3411930.0,
     3431940.0
@@ -1409,10 +1489,11 @@
    "upland_share": 0.4304,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 53877,
    "intact_upland": 14628,
-   "dmg_wetland": 55537,
-   "nondmg_wetland": 49170,
+   "dmg_wetland": 55424,
+   "nondmg_wetland": 41546,
    "northing_m": [
     3410940.0,
     3430950.0
@@ -1430,10 +1511,11 @@
    "upland_share": 0.4384,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 55214,
    "intact_upland": 13367,
-   "dmg_wetland": 53909,
-   "nondmg_wetland": 45923,
+   "dmg_wetland": 53799,
+   "nondmg_wetland": 38928,
    "northing_m": [
     3409950.0,
     3429960.0
@@ -1451,10 +1533,11 @@
    "upland_share": 0.4423,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 55838,
    "intact_upland": 12074,
-   "dmg_wetland": 53002,
-   "nondmg_wetland": 42116,
+   "dmg_wetland": 52898,
+   "nondmg_wetland": 36006,
    "northing_m": [
     3408960.0,
     3428970.0
@@ -1472,10 +1555,11 @@
    "upland_share": 0.4459,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 55353,
    "intact_upland": 11468,
-   "dmg_wetland": 50110,
-   "nondmg_wetland": 38289,
+   "dmg_wetland": 50010,
+   "nondmg_wetland": 32910,
    "northing_m": [
     3407970.0,
     3427980.0
@@ -1493,10 +1577,11 @@
    "upland_share": 0.4535,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 56566,
    "intact_upland": 10985,
-   "dmg_wetland": 48264,
-   "nondmg_wetland": 35777,
+   "dmg_wetland": 48161,
+   "nondmg_wetland": 30705,
    "northing_m": [
     3406980.0,
     3426990.0
@@ -1514,10 +1599,11 @@
    "upland_share": 0.4637,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 58824,
    "intact_upland": 10999,
-   "dmg_wetland": 47381,
-   "nondmg_wetland": 35147,
+   "dmg_wetland": 47278,
+   "nondmg_wetland": 30412,
    "northing_m": [
     3405990.0,
     3426000.0
@@ -1535,10 +1621,11 @@
    "upland_share": 0.4686,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 58658,
    "intact_upland": 10086,
-   "dmg_wetland": 45861,
-   "nondmg_wetland": 31956,
+   "dmg_wetland": 45752,
+   "nondmg_wetland": 27212,
    "northing_m": [
     3405000.0,
     3425010.0
@@ -1556,10 +1643,11 @@
    "upland_share": 0.4701,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 57426,
    "intact_upland": 8715,
-   "dmg_wetland": 43497,
-   "nondmg_wetland": 29465,
+   "dmg_wetland": 43384,
+   "nondmg_wetland": 24826,
    "northing_m": [
     3404010.0,
     3424020.0
@@ -1577,10 +1665,11 @@
    "upland_share": 0.4697,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 56245,
    "intact_upland": 7189,
-   "dmg_wetland": 42128,
-   "nondmg_wetland": 27837,
+   "dmg_wetland": 42011,
+   "nondmg_wetland": 23284,
    "northing_m": [
     3403020.0,
     3423030.0
@@ -1598,10 +1687,11 @@
    "upland_share": 0.4647,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 55423,
    "intact_upland": 6765,
-   "dmg_wetland": 41458,
-   "nondmg_wetland": 26768,
+   "dmg_wetland": 41341,
+   "nondmg_wetland": 22255,
    "northing_m": [
     3402030.0,
     3422040.0
@@ -1619,10 +1709,11 @@
    "upland_share": 0.4576,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 53556,
    "intact_upland": 6611,
-   "dmg_wetland": 40550,
-   "nondmg_wetland": 27556,
+   "dmg_wetland": 40435,
+   "nondmg_wetland": 22937,
    "northing_m": [
     3401040.0,
     3421050.0
@@ -1640,10 +1731,11 @@
    "upland_share": 0.4563,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 53364,
    "intact_upland": 6478,
-   "dmg_wetland": 39611,
-   "nondmg_wetland": 28202,
+   "dmg_wetland": 39496,
+   "nondmg_wetland": 23550,
    "northing_m": [
     3400050.0,
     3420060.0
@@ -1661,10 +1753,11 @@
    "upland_share": 0.458,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 53208,
    "intact_upland": 6440,
-   "dmg_wetland": 38293,
-   "nondmg_wetland": 28300,
+   "dmg_wetland": 38180,
+   "nondmg_wetland": 23783,
    "northing_m": [
     3399060.0,
     3419070.0
@@ -1682,10 +1775,11 @@
    "upland_share": 0.4653,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 51210,
    "intact_upland": 4817,
-   "dmg_wetland": 34051,
-   "nondmg_wetland": 24494,
+   "dmg_wetland": 33961,
+   "nondmg_wetland": 20673,
    "northing_m": [
     3398070.0,
     3418080.0
@@ -1703,10 +1797,11 @@
    "upland_share": 0.4765,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 53404,
    "intact_upland": 5211,
-   "dmg_wetland": 33001,
-   "nondmg_wetland": 25754,
+   "dmg_wetland": 32916,
+   "nondmg_wetland": 21924,
    "northing_m": [
     3397080.0,
     3417090.0
@@ -1724,10 +1819,11 @@
    "upland_share": 0.4797,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 54988,
    "intact_upland": 4313,
-   "dmg_wetland": 32416,
-   "nondmg_wetland": 26211,
+   "dmg_wetland": 32336,
+   "nondmg_wetland": 22549,
    "northing_m": [
     3396090.0,
     3416100.0
@@ -1745,10 +1841,11 @@
    "upland_share": 0.4853,
    "touches_tip": false,
    "eligible": true,
+   "eligible_literal_rule": true,
    "dmg_upland": 56743,
    "intact_upland": 3974,
-   "dmg_wetland": 31721,
-   "nondmg_wetland": 26925,
+   "dmg_wetland": 31649,
+   "nondmg_wetland": 23353,
    "northing_m": [
     3395100.0,
     3415110.0
@@ -1766,10 +1863,11 @@
    "upland_share": 0.4827,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 57691,
    "intact_upland": 3246,
-   "dmg_wetland": 31376,
-   "nondmg_wetland": 27807,
+   "dmg_wetland": 31307,
+   "nondmg_wetland": 24184,
    "northing_m": [
     3394110.0,
     3414120.0
@@ -1787,10 +1885,11 @@
    "upland_share": 0.4787,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 59353,
    "intact_upland": 3547,
-   "dmg_wetland": 31042,
-   "nondmg_wetland": 28827,
+   "dmg_wetland": 30973,
+   "nondmg_wetland": 25230,
    "northing_m": [
     3393120.0,
     3413130.0
@@ -1808,10 +1907,11 @@
    "upland_share": 0.4707,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 58301,
    "intact_upland": 3391,
-   "dmg_wetland": 31069,
-   "nondmg_wetland": 30246,
+   "dmg_wetland": 31001,
+   "nondmg_wetland": 26505,
    "northing_m": [
     3392130.0,
     3412140.0
@@ -1829,10 +1929,11 @@
    "upland_share": 0.4632,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 58883,
    "intact_upland": 3985,
-   "dmg_wetland": 31863,
-   "nondmg_wetland": 35089,
+   "dmg_wetland": 31792,
+   "nondmg_wetland": 31094,
    "northing_m": [
     3391140.0,
     3411150.0
@@ -1850,10 +1951,11 @@
    "upland_share": 0.4573,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 58170,
    "intact_upland": 3631,
-   "dmg_wetland": 31798,
-   "nondmg_wetland": 36750,
+   "dmg_wetland": 31724,
+   "nondmg_wetland": 32605,
    "northing_m": [
     3390150.0,
     3410160.0
@@ -1871,10 +1973,11 @@
    "upland_share": 0.4486,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 56699,
    "intact_upland": 7041,
-   "dmg_wetland": 31882,
-   "nondmg_wetland": 41866,
+   "dmg_wetland": 31797,
+   "nondmg_wetland": 37210,
    "northing_m": [
     3389160.0,
     3409170.0
@@ -1892,10 +1995,11 @@
    "upland_share": 0.4466,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 56705,
    "intact_upland": 8740,
-   "dmg_wetland": 31633,
-   "nondmg_wetland": 45515,
+   "dmg_wetland": 31542,
+   "nondmg_wetland": 40352,
    "northing_m": [
     3388170.0,
     3408180.0
@@ -1913,10 +2017,11 @@
    "upland_share": 0.4488,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 56575,
    "intact_upland": 7711,
-   "dmg_wetland": 30602,
-   "nondmg_wetland": 45066,
+   "dmg_wetland": 30507,
+   "nondmg_wetland": 39847,
    "northing_m": [
     3387180.0,
     3407190.0
@@ -1934,10 +2039,11 @@
    "upland_share": 0.4376,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 55254,
    "intact_upland": 7410,
-   "dmg_wetland": 31686,
-   "nondmg_wetland": 47216,
+   "dmg_wetland": 31583,
+   "nondmg_wetland": 41506,
    "northing_m": [
     3386190.0,
     3406200.0
@@ -1955,10 +2061,11 @@
    "upland_share": 0.431,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 54014,
    "intact_upland": 6639,
-   "dmg_wetland": 31710,
-   "nondmg_wetland": 49890,
+   "dmg_wetland": 31600,
+   "nondmg_wetland": 43583,
    "northing_m": [
     3385200.0,
     3405210.0
@@ -1976,10 +2083,11 @@
    "upland_share": 0.4255,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 53798,
    "intact_upland": 6129,
-   "dmg_wetland": 32305,
-   "nondmg_wetland": 50571,
+   "dmg_wetland": 32199,
+   "nondmg_wetland": 44067,
    "northing_m": [
     3384210.0,
     3404220.0
@@ -1997,10 +2105,11 @@
    "upland_share": 0.4135,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 53147,
    "intact_upland": 5944,
-   "dmg_wetland": 34406,
-   "nondmg_wetland": 53945,
+   "dmg_wetland": 34300,
+   "nondmg_wetland": 46865,
    "northing_m": [
     3383220.0,
     3403230.0
@@ -2018,10 +2127,11 @@
    "upland_share": 0.4039,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 52416,
    "intact_upland": 4908,
-   "dmg_wetland": 36475,
-   "nondmg_wetland": 54071,
+   "dmg_wetland": 36368,
+   "nondmg_wetland": 46796,
    "northing_m": [
     3382230.0,
     3402240.0
@@ -2039,10 +2149,11 @@
    "upland_share": 0.387,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 52067,
    "intact_upland": 3485,
-   "dmg_wetland": 41403,
-   "nondmg_wetland": 58017,
+   "dmg_wetland": 41292,
+   "nondmg_wetland": 50693,
    "northing_m": [
     3381240.0,
     3401250.0
@@ -2060,10 +2171,11 @@
    "upland_share": 0.362,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 49172,
    "intact_upland": 2746,
-   "dmg_wetland": 46478,
-   "nondmg_wetland": 64973,
+   "dmg_wetland": 46358,
+   "nondmg_wetland": 56654,
    "northing_m": [
     3380250.0,
     3400260.0
@@ -2081,10 +2193,11 @@
    "upland_share": 0.349,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 46224,
    "intact_upland": 1951,
-   "dmg_wetland": 47267,
-   "nondmg_wetland": 70206,
+   "dmg_wetland": 47143,
+   "nondmg_wetland": 60725,
    "northing_m": [
     3379260.0,
     3399270.0
@@ -2102,10 +2215,11 @@
    "upland_share": 0.334,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 42898,
    "intact_upland": 1441,
-   "dmg_wetland": 48021,
-   "nondmg_wetland": 76727,
+   "dmg_wetland": 47892,
+   "nondmg_wetland": 66263,
    "northing_m": [
     3378270.0,
     3398280.0
@@ -2123,10 +2237,11 @@
    "upland_share": 0.3121,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 38856,
    "intact_upland": 1103,
-   "dmg_wetland": 49576,
-   "nondmg_wetland": 81475,
+   "dmg_wetland": 49447,
+   "nondmg_wetland": 70336,
    "northing_m": [
     3377280.0,
     3397290.0
@@ -2144,10 +2259,11 @@
    "upland_share": 0.2967,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 35083,
    "intact_upland": 720,
-   "dmg_wetland": 49251,
-   "nondmg_wetland": 84811,
+   "dmg_wetland": 49125,
+   "nondmg_wetland": 73118,
    "northing_m": [
     3376290.0,
     3396300.0
@@ -2165,10 +2281,11 @@
    "upland_share": 0.2782,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 31154,
    "intact_upland": 623,
-   "dmg_wetland": 48949,
-   "nondmg_wetland": 84984,
+   "dmg_wetland": 48828,
+   "nondmg_wetland": 72919,
    "northing_m": [
     3375300.0,
     3395310.0
@@ -2186,10 +2303,11 @@
    "upland_share": 0.2558,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 26566,
    "intact_upland": 578,
-   "dmg_wetland": 47637,
-   "nondmg_wetland": 85072,
+   "dmg_wetland": 47520,
+   "nondmg_wetland": 72708,
    "northing_m": [
     3374310.0,
     3394320.0
@@ -2207,10 +2325,11 @@
    "upland_share": 0.2384,
    "touches_tip": true,
    "eligible": false,
+   "eligible_literal_rule": true,
    "dmg_upland": 23205,
    "intact_upland": 514,
-   "dmg_wetland": 47245,
-   "nondmg_wetland": 88918,
+   "dmg_wetland": 47128,
+   "nondmg_wetland": 75944,
    "northing_m": [
     3373320.0,
     3393330.0

@@ -2,8 +2,9 @@
 (evaluation extent of data/coarse_30.npz: origin grid.X0, grid.Y1, 30 m, (HB/3) x (WB/3) cells).
 
 30 m cell classes (from data/controls_coarse.npz, fractions of 10 m pixels):
-  forest = majority forest type > 0; damage = damage fraction >= 0.5; intact = intact fraction >= 0.9;
-  upland = upland-forest fraction >= 0.5 (NLCD evergreen/deciduous and MERIT HAND > 5 m); wetland = woody-wetland majority.
+  forest = forest share (reference ftype > 0) >= 0.5; damage = forest & damage fraction >= 0.5; intact = forest & intact
+  fraction >= 0.9 & not damage; upland = forest & upland-forest share >= 0.5 (NLCD evergreen/deciduous and MERIT HAND > 5 m);
+  wetland = forest & woody-wetland share >= 0.5. Shares are of the nine 10 m pixels (from data/reference.h5 ftype).
 Band = data/extent_band.npy (pipeline step 1, lat/lon grid), sampled at each 30 m cell centre.
 
 Aerial tip: band cells inside the NOAA aerial footprint; tip block = their bounding rectangle widened by 1 km east and west,
@@ -24,9 +25,14 @@ from shapely.geometry import shape
 from shapely import contains_xy
 import grid as G
 K = np.load("data/controls_coarse.npz")
+import h5py
 ft, dmg, itc, upl, dmgu = K["ft_30"], K["dmg_30"], K["itc_30"], K["upl_30"], K["dmg_u_30"]
 H3, W3 = ft.shape; R = 30.0
-forest = ft > 0; D = forest & (dmg >= 0.5); I = forest & (itc >= 0.9) & ~D; U = forest & (upl >= 0.5); Wt = ft == 4
+Rf = h5py.File("data/reference.h5", "r")["ftype"]; ffor = np.zeros((H3, W3), "float32"); fwet = np.zeros_like(ffor)
+for r in range(0, H3 * 3, 600):
+    f10 = Rf[r:min(r + 600, H3 * 3), :W3 * 3]; nh = f10.shape[0] // 3
+    ffor[r // 3:r // 3 + nh] = (f10 > 0).reshape(nh, 3, W3, 3).mean((1, 3)); fwet[r // 3:r // 3 + nh] = (f10 == 4).reshape(nh, 3, W3, 3).mean((1, 3))
+forest = ffor >= 0.5; D = forest & (dmg >= 0.5); I = forest & (itc >= 0.9) & ~D; U = forest & (upl >= 0.5); Wt = forest & (fwet >= 0.5)
 xc = G.X0 + (np.arange(W3) + 0.5) * R; yc = G.Y1 - (np.arange(H3) + 0.5) * R
 tr = Transformer.from_crs(f"EPSG:{G.EPSG}", "EPSG:4326", always_xy=True)
 XX, YY = np.meshgrid(xc, yc); lon, lat = tr.transform(XX, YY)
@@ -56,17 +62,19 @@ for r0 in range(r_top, r_bot - WIN + 1, STEP):
     s = (slice(r0, r1), slice(c0, c1))
     n = {"dmg_upland": int((D[s] & U[s]).sum()), "intact_upland": int((I[s] & U[s]).sum()),
          "dmg_wetland": int((D[s] & Wt[s]).sum()), "nondmg_wetland": int((forest[s] & ~D[s] & Wt[s]).sum())}
-    tot = float(np.nansum(np.where(forest[s], dmg[s], 0))); share = float(np.nansum(np.where(forest[s], dmgu[s], 0)) / tot) if tot > 0 else np.nan
+    tot = float(np.nansum(dmg[s])); share = float(np.nansum(dmgu[s]) / tot) if tot > 0 else np.nan
     ok = (not touches_tip) and min(n.values()) >= 100
+    literal_ok = n["dmg_upland"] > 0 and n["intact_upland"] > 0   # John's rule without the added conditions
     cands.append({"r0": int(r0), "r1": int(r1), "c0": int(c0), "c1": int(c1), "upland_share": round(share, 4), "touches_tip": touches_tip,
-                  "eligible": ok, **n, "northing_m": [float(G.Y1 - r1 * R), float(G.Y1 - r0 * R)], "easting_m": [float(G.X0 + c0 * R), float(G.X0 + c1 * R)]})
+                  "eligible": ok, "eligible_literal_rule": literal_ok, **n, "northing_m": [float(G.Y1 - r1 * R), float(G.Y1 - r0 * R)], "easting_m": [float(G.X0 + c0 * R), float(G.X0 + c1 * R)]})
 el = [c for c in cands if c["eligible"]]
 best = sorted(el, key=lambda c: (abs(c["upland_share"] - SHARE), -c["r0"]))[0]
+lit = sorted([c for c in cands if c["eligible_literal_rule"]], key=lambda c: (abs(c["upland_share"] - SHARE), -c["r0"]))[0]
 r0, r1, c0, c1 = best["r0"], best["r1"], best["c0"], best["c1"]
 held = np.zeros_like(band); held[r0:r1, c0:c1] = True
 held_ex = np.zeros_like(band); held_ex[max(0, r0 - km(2)):r1 + km(2), max(0, c0 - km(2)):c1 + km(2)] = True
 train = ~held_ex & ~tip_ex
-np.savez_compressed("data/regions_30.npz", heldout=held, heldout_excl=held_ex, tip=tip, tip_excl=tip_ex, train=train, band=band,
+np.savez_compressed("data/regions_30.npz", forest_share=ffor, wetland_share=fwet, heldout=held, heldout_excl=held_ex, tip=tip, tip_excl=tip_ex, train=train, band=band,
                     forest=forest, damage=D, intact=I, upland=U, wetland=Wt)
 def ll(r_a, r_b, c_a, c_b):
     xs = [G.X0 + c_a * R, G.X0 + c_b * R]; ys = [G.Y1 - r_b * R, G.Y1 - r_a * R]
@@ -75,16 +83,19 @@ def ll(r_a, r_b, c_a, c_b):
 out = {"grid": {"crs": f"EPSG:{G.EPSG}", "res_m": R, "origin_x": G.X0, "origin_y": G.Y1, "shape": [H3, W3]},
        "band_wide_upland_share_target": SHARE,
        "heldout": {**ll(r0, r1, c0, c1), "rows": [r0, r1], "cols": [c0, c1], "upland_share_of_damage": best["upland_share"],
-                   "forest_km2": round(float(forest[held].sum()) * 9e-4, 1), "damage_km2": round(float(np.nansum(np.where(forest & held, dmg, 0))) * 9e-4, 1),
+                   "forest_km2": round(float(forest[held].sum()) * 9e-4, 1), "damage_km2": round(float(np.nansum(np.where(held, dmg, 0))) * 9e-4, 1),
+                   "damage_km2_in_upland_or_wetland_cells": round(float(np.nansum(np.where(held & (U | Wt), dmg, 0))) * 9e-4, 1),
                    **{k: best[k] for k in ("dmg_upland", "intact_upland", "dmg_wetland", "nondmg_wetland")}},
        "heldout_exclusion_with_2km_buffer": ll(max(0, r0 - km(2)), r1 + km(2), max(0, c0 - km(2)), c1 + km(2)),
        "tip": {**ll(t_r0, t_r1, t_c0, t_c1), "rows": [int(t_r0), int(t_r1)], "cols": [int(t_c0), int(t_c1)], "note": "rectangle intersected with the NOAA footprint",
-               "forest_km2": round(float((forest & tip).sum()) * 9e-4, 1), "damage_km2": round(float(np.nansum(np.where(forest & tip, dmg, 0))) * 9e-4, 1),
+               "forest_km2": round(float((forest & tip).sum()) * 9e-4, 1), "damage_km2": round(float(np.nansum(np.where(tip, dmg, 0))) * 9e-4, 1),
+               "band_forest_km2_in_tip": round(float((forest & tip & band).sum()) * 9e-4, 1),
                "dmg_upland": int((D & U & tip).sum()), "intact_upland": int((I & U & tip).sum()), "dmg_wetland": int((D & Wt & tip).sum()),
                "nondmg_wetland": int((forest & ~D & Wt & tip).sum())},
        "tip_exclusion_with_2km_buffer": ll(max(0, t_r0 - km(2)), t_r1 + km(2), max(0, t_c0 - km(2)), t_c1 + km(2)),
        "train": {"forest_km2": round(float((forest & train).sum()) * 9e-4, 1), "damage_cells": int((D & train).sum()), "intact_cells": int((I & train).sum())},
-       "n_candidates": len(cands), "n_eligible": len(el), "candidates": cands}
+       "literal_rule_pick": {k: lit[k] for k in ("northing_m", "easting_m", "upland_share", "touches_tip", "dmg_upland", "intact_upland", "dmg_wetland", "nondmg_wetland")},
+       "literal_rule_pick_same_as_heldout": lit["r0"] == best["r0"], "n_candidates": len(cands), "n_eligible": len(el), "candidates": cands}
 json.dump(out, open("docs/models/regions.json", "w"), indent=1)
 print(json.dumps({k: v for k, v in out.items() if k != "candidates"}, indent=1))
 fig, ax = plt.subplots(figsize=(6, 9))

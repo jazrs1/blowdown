@@ -1,0 +1,74 @@
+{
+ "coverage": {
+  "train": {
+   "t76_HV": 0.82,
+   "t55_HV": 0.962,
+   "o19_VH": 0.746,
+   "o92_VH": 0.865,
+   "any_nisar": 0.968,
+   "any_s1": 1.0,
+   "any_nisar_and_any_s1": 0.968,
+   "forest_cells": 9913489
+  },
+  "heldout": {
+   "t76_HV": 1.0,
+   "t55_HV": 1.0,
+   "o19_VH": 1.0,
+   "o92_VH": 1.0,
+   "any_nisar": 1.0,
+   "any_s1": 1.0,
+   "any_nisar_and_any_s1": 1.0,
+   "forest_cells": 247905,
+   "upland_cells_scorable": 119894,
+   "wetland_cells_scorable": 89814
+  },
+  "tip": {
+   "t76_HV": 1.0,
+   "t55_HV": 1.0,
+   "o19_VH": 1.0,
+   "o92_VH": 1.0,
+   "any_nisar": 1.0,
+   "any_s1": 1.0,
+   "any_nisar_and_any_s1": 1.0,
+   "forest_cells": 192356,
+   "upland_cells_scorable": 37214,
+   "wetland_cells_scorable": 110429
+  }
+ },
+ "labels": {
+  "damage_cells_before": 587781,
+  "intact_cells_before": 3077385,
+  "removed_clearcut_flag": 7652,
+  "removed_salvage_after_1029": 2340,
+  "removed_edge": 331794,
+  "damage_cells_used": 248131,
+  "intact_cells_used": 3075249
+ },
+ "radar_layers": [
+  "t76_HH_pre",
+  "t76_HH_post",
+  "t76_HH_diff",
+  "t76_HV_pre",
+  "t76_HV_post",
+  "t76_HV_diff",
+  "t55_HH_pre",
+  "t55_HH_post",
+  "t55_HH_diff",
+  "t55_HV_pre",
+  "t55_HV_post",
+  "t55_HV_diff",
+  "o19_VV_pre",
+  "o19_VV_post",
+  "o19_VV_diff",
+  "o19_VH_pre",
+  "o19_VH_post",
+  "o19_VH_diff",
+  "o92_VV_pre",
+  "o92_VV_post",
+  "o92_VV_diff",
+  "o92_VH_pre",
+  "o92_VH_post",
+  "o92_VH_diff"
+ ],
+ "seconds": 65
+}
