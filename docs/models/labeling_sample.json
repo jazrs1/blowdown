@@ -1,0 +1,42 @@
+{
+ "heldout upland in": {
+  "wanted": 100,
+  "frame_cells": 26487,
+  "drawn": 100
+ },
+ "heldout upland out": {
+  "wanted": 100,
+  "frame_cells": 93407,
+  "drawn": 100
+ },
+ "heldout wetland in": {
+  "wanted": 100,
+  "frame_cells": 46030,
+  "drawn": 100
+ },
+ "heldout wetland out": {
+  "wanted": 100,
+  "frame_cells": 43784,
+  "drawn": 100
+ },
+ "tip upland in": {
+  "wanted": 37,
+  "frame_cells": 15525,
+  "drawn": 37
+ },
+ "tip upland out": {
+  "wanted": 38,
+  "frame_cells": 21689,
+  "drawn": 38
+ },
+ "tip wetland in": {
+  "wanted": 38,
+  "frame_cells": 39824,
+  "drawn": 38
+ },
+ "tip wetland out": {
+  "wanted": 37,
+  "frame_cells": 70605,
+  "drawn": 37
+ }
+}

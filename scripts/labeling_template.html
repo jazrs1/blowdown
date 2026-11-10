@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blowdown labeling</title>
+<style>
+  :root { --bg: #f6f6f4; --fg: #1d1d1b; --muted: #6b6b66; --card: #ffffff; --line: #d9d9d4;
+          --dmg: #b3261e; --int: #1b6e3a; --uns: #8a6d00; --sel: #1d4ed8; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #1b1b1a; --fg: #ececea; --muted: #a3a39d; --card: #262624; --line: #3a3a37;
+            --dmg: #f2766d; --int: #5cc58a; --uns: #e3c44f; --sel: #7aa2ff; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width: 1000px; margin: 0 auto; padding: 16px; }
+  header { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: baseline; justify-content: space-between; }
+  h1 { font-size: 18px; margin: 0; }
+  .muted { color: var(--muted); }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin: 10px 0 14px; }
+  .bar > div { height: 100%; background: var(--sel); width: 0; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+  .imgwrap { overflow-x: auto; text-align: center; }
+  .imgwrap img { max-width: 100%; height: auto; image-rendering: auto; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 12px; }
+  button { font: inherit; padding: 10px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--card); color: var(--fg); cursor: pointer; }
+  button:hover { border-color: var(--fg); }
+  button.lab { min-width: 130px; font-weight: 600; }
+  button.d { color: var(--dmg); } button.i { color: var(--int); } button.u { color: var(--uns); }
+  button.on { outline: 3px solid var(--sel); outline-offset: 1px; }
+  kbd { font: 12px ui-monospace, monospace; border: 1px solid var(--line); border-radius: 3px; padding: 0 4px; margin-left: 6px; color: var(--muted); }
+  .spacer { flex: 1; }
+  details { margin-top: 14px; }
+  .status { min-height: 1.4em; margin-top: 8px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Blowdown labeling</h1>
+    <div class="muted" id="count"></div>
+  </header>
+  <div class="bar"><div id="prog"></div></div>
+  <div class="card">
+    <div class="imgwrap"><img id="img" alt="Sentinel-2 before and after (and aerial, where available) around the cell"></div>
+    <div class="row">
+      <button class="lab d" data-l="damaged">Damaged<kbd>1</kbd></button>
+      <button class="lab i" data-l="intact">Intact<kbd>2</kbd></button>
+      <button class="lab u" data-l="unsure">Unsure<kbd>3</kbd></button>
+      <span class="spacer"></span>
+      <button id="prev">◀ Back<kbd>←</kbd></button>
+      <button id="next">Next ▶<kbd>→</kbd></button>
+    </div>
+    <div class="row">
+      <button id="nextun">Go to first unlabeled</button>
+      <span class="spacer"></span>
+      <button id="dl">Download labels.csv</button>
+    </div>
+    <div class="status muted" id="status"></div>
+  </div>
+  <details>
+    <summary>How to label</summary>
+    <p>Judge only the <b>30 m cell inside the magenta square</b>. Each image is 1 km across. The left panel is before the storm and the middle panel is after; some cells also show an aerial photo taken after the storm.</p>
+    <p><b>Damaged</b>: the canopy in the cell is visibly broken, thinned or flattened after the storm (brown or grey where it was green, downed-tree texture in the aerial photo). <b>Intact</b>: the canopy looks the same before and after. <b>Unsure</b>: you can't tell (clouds, haze, flooding, the cell is not forest, or the change is ambiguous).</p>
+    <p>Labels are saved in this browser as you go, so you can close the page and come back. Use <b>Download labels.csv</b> when you're done (or any time, as a backup) and send that file back. Clearing the browser's site data deletes the saved labels.</p>
+  </details>
+</main>
+<script>
+const CELLS = /*CELLS*/[];
+const KEY = "blowdown_labels_v1";
+let labels = {};
+try { labels = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { labels = {}; }
+let storageOK = true;
+function save() {
+  try { localStorage.setItem(KEY, JSON.stringify(labels)); storageOK = true; }
+  catch (e) { storageOK = false; }
+}
+let i = 0;
+try { i = Math.min(parseInt(localStorage.getItem(KEY + "_pos") || "0", 10) || 0, CELLS.length - 1); } catch (e) {}
+const $ = (id) => document.getElementById(id);
+function render() {
+  const c = CELLS[i];
+  $("img").src = c.img;
+  const done = CELLS.filter((x) => labels[x.id]).length;
+  $("count").textContent = `Cell ${i + 1} of ${CELLS.length} · ${done} labeled`;
+  $("prog").style.width = (100 * done / CELLS.length) + "%";
+  document.querySelectorAll("button.lab").forEach((b) => b.classList.toggle("on", labels[c.id] && labels[c.id].label === b.dataset.l));
+  $("status").textContent = storageOK ? (labels[c.id] ? `This cell: ${labels[c.id].label}` : "") :
+    "Warning: this browser is not saving progress. Download labels.csv often.";
+  try { localStorage.setItem(KEY + "_pos", String(i)); } catch (e) {}
+  if (i + 1 < CELLS.length) { const pre = new Image(); pre.src = CELLS[i + 1].img; }
+}
+function setLabel(l) {
+  labels[CELLS[i].id] = { label: l, t: new Date().toISOString() }; save();
+  if (i + 1 < CELLS.length) i++;
+  render();
+}
+document.querySelectorAll("button.lab").forEach((b) => b.addEventListener("click", () => setLabel(b.dataset.l)));
+$("prev").onclick = () => { if (i > 0) { i--; render(); } };
+$("next").onclick = () => { if (i + 1 < CELLS.length) { i++; render(); } };
+$("nextun").onclick = () => { const k = CELLS.findIndex((x) => !labels[x.id]); if (k >= 0) { i = k; render(); } else { $("status").textContent = "All cells are labeled."; } };
+$("dl").onclick = () => {
+  const rows = ["id,label,labeled_at"].concat(CELLS.filter((x) => labels[x.id]).map((x) => `${x.id},${labels[x.id].label},${labels[x.id].t}`));
+  const blob = new Blob([rows.join("\n") + "\n"], { type: "text/csv" });
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "labels.csv";
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+};
+document.addEventListener("keydown", (e) => {
+  if (e.ctrlKey || e.metaKey || e.altKey) return;
+  if (e.key === "1") setLabel("damaged");
+  else if (e.key === "2") setLabel("intact");
+  else if (e.key === "3") setLabel("unsure");
+  else if (e.key === "ArrowLeft") $("prev").click();
+  else if (e.key === "ArrowRight") $("next").click();
+});
+render();
+</script>
+</body>
+</html>
