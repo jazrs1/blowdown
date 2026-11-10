@@ -12,7 +12,7 @@ from scipy.stats import rankdata
 import grid as G
 t0 = time.time()
 L = h5py.File("data/layers.h5", "r"); R = h5py.File("data/reference.h5", "r")
-ARMS = [(g, p) for g in ("nisar_076", "nisar_055", "nisar_076_p23", "nisar_055_p23") for p in ("HH", "HV")] + \
+ARMS = [(g, p) for g in ("nisar_076", "nisar_055", "nisar_076_p23", "nisar_055_p23", "nisar_076_pre0923", "nisar_076_pre1005") for p in ("HH", "HV")] + \
        [(f"s1_{o}_{y}", p) for y in (2026, 2025) for o in (19, 92) for p in ("VV", "VH")]
 ARMS = [(g, p) for g, p in ARMS if g in L]
 HB, WB = (G.H // 300) * 300, (G.W // 300) * 300      # analysis extent divisible by 30 and 100 px
@@ -22,7 +22,7 @@ FT = {1: "evergreen", 2: "deciduous", 3: "mixed", 4: "woody_wetland"}
 # ---- sampling rates at 10 m from reference counts
 nd = ni = 0
 for r in range(0, HB, BLK):
-    nd += int(R["damage"][r:r + BLK, :WB].sum()); ni += int(R["intact"][r:r + BLK, :WB].sum())
+    nd += int(R["damage"][r:min(r + BLK, HB), :WB].sum()); ni += int(R["intact"][r:min(r + BLK, HB), :WB].sum())
 pd, pi = min(1, 1.5e6 / max(nd, 1)), min(1, 1.5e6 / max(ni, 1))
 rng = np.random.default_rng(42)
 S = {"cls": [], "ft": [], **{f"{g}:{p}": [] for g, p in ARMS}}
@@ -34,7 +34,7 @@ def bmean(a, k):
     return np.where(n >= k * k / 2, s / np.maximum(n, 1), np.nan)
 
 for r in range(0, HB, BLK):
-    s = slice(r, r + BLK)
+    s = slice(r, min(r + BLK, HB))
     dmg = R["damage"][s, :WB].astype(bool); itc = R["intact"][s, :WB].astype(bool); ft = R["ftype"][s, :WB]
     u = rng.random(dmg.shape); pick = (dmg & (u < pd)) | (itc & (u < pi))
     S["cls"].append(dmg[pick].astype("int8")); S["ft"].append(ft[pick])

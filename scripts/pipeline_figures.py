@@ -37,18 +37,20 @@ fig.savefig("docs/pipeline/fig_threshold_maps.png", dpi=80); plt.close(fig)
 get = lambda arm, ftype, res: next((r["auc"] for r in rows if r["arm"] == arm and r["forest_type"] == ftype and r["res_m"] == res), None)
 arms = sorted({r["arm"] for r in rows}, key=lambda s: (not s.startswith("A"), not s.startswith("B:"), s))
 fig, ax = plt.subplots(1, 2, figsize=(15, 6), constrained_layout=True)
-for arm in arms:
+SHOW = [(A, "C0", "-", 2.5), (B, "C1", "-", 2.5), ("B 2025 control: S1 VH (both orbits)", "C1", ":", 2),
+        ("nisar_076:HV", "C0", "--", 1.3), ("nisar_055:HV", "C0", "-.", 1.3), ("s1_92_2026:VH", "C1", "--", 1.3), ("s1_19_2026:VH", "C1", "-.", 1.3),
+        ("A: NISAR HH (both tracks)", "C2", "-", 1.3), ("B: S1 VV (both orbits)", "C3", "-", 1.3)]
+for arm, col, st, lw in SHOW:
     y = [get(arm, "all", r) for r in (10, 30, 100)]
-    st = "-" if arm.startswith(("A", "B")) else ":"; lw = 2.5 if arm.startswith(("A", "B")) else 1.2
-    ax[0].plot([10, 30, 100], [np.nan if v is None else v for v in y], st, marker="o", lw=lw, label=arm)
+    ax[0].plot([10, 30, 100], [np.nan if v is None else v for v in y], st, c=col, marker="o", lw=lw, label=arm.replace("nisar_076", "NISAR track 76").replace("nisar_055", "NISAR track 55").replace("s1_92_2026", "S1 orbit 92").replace("s1_19_2026", "S1 orbit 19"))
 ax[0].set_xscale("log"); ax[0].set_xticks([10, 30, 100], ["10", "30", "100"]); ax[0].axhline(0.5, c="k", lw=.5)
 ax[0].set_xlabel("resolution (m)"); ax[0].set_ylabel("ROC AUC (damage vs intact)"); ax[0].set_title("All forest"); ax[0].legend(fontsize=7)
-for arm, c in ((A, "C0"), (B, "C1")):
-    for ftype, st in (("evergreen", "-"), ("deciduous", "--"), ("woody_wetland", ":")):
+for arm, c in ((A, "C0"), (B, "C1"), ("B 2025 control: S1 VH (both orbits)", "grey")):
+    for ftype, st in (("evergreen", "-"), ("woody_wetland", ":")):
         y = [get(arm, ftype, r) for r in (10, 30, 100)]
         ax[1].plot([10, 30, 100], [np.nan if v is None else v for v in y], st, c=c, marker="o", label=f"{arm.split(':')[0]} {ftype}")
 ax[1].set_xscale("log"); ax[1].set_xticks([10, 30, 100], ["10", "30", "100"]); ax[1].axhline(0.5, c="k", lw=.5)
-ax[1].set_xlabel("resolution (m)"); ax[1].set_title("By forest type: A = NISAR HV, B = S1 VH"); ax[1].legend(fontsize=7)
+ax[1].set_xlabel("resolution (m)"); ax[1].set_title("By forest type (deciduous: too few blocks): A = NISAR HV, B = S1 VH, grey = S1 VH 2025 control"); ax[1].legend(fontsize=7)
 fig.savefig("docs/pipeline/fig_auc_resolution.png", dpi=85); plt.close(fig)
 
 # ---- 100 m layers
@@ -56,7 +58,7 @@ c = np.load("data/coarse_100.npz"); e100 = ext
 pan = [("NISAR HV, track 76 asc", c["nisar_076:HV"], 2), ("NISAR HV, track 55 desc", c["nisar_055:HV"], 2),
        ("S1 VH 2026, orbits 19+92", c[B], 2), ("S1 VH 2025 control, same weeks", c["B 2025 control: S1 VH (both orbits)"], 2),
        ("Reference damage fraction", c["dmg"], None)]
-fig, ax = plt.subplots(1, 5, figsize=(24, 9), constrained_layout=True)
+fig, ax = plt.subplots(1, 5, figsize=(24, 7.6), constrained_layout=True)
 for a, (tt, img, v) in zip(ax, pan):
     img = np.where(c["ft"] > 0, img, np.nan)
     im = a.imshow(img, extent=e100, cmap="RdBu_r" if v else "Reds", vmin=-v if v else 0, vmax=v if v else 1, interpolation="nearest")
@@ -84,4 +86,4 @@ L += ["", "| Res (m) | n (both valid) | n damage | AUC A (NISAR HV) | AUC B (S1 
 for p in J["paired_A_vs_B"]:
     L.append(f"| {p['res_m']} | {p['n']:,} | {p['n_damage']:,} | {p['auc_A_NISAR_HV']} | {p['auc_B_S1_VH']} | {p['diff']:+.3f} | {p['ci95'][0]:+.3f} to {p['ci95'][1]:+.3f} |")
 open("docs/pipeline/auc_table.md", "w", encoding="utf8").write("\n".join(L) + "\n")
-print("\n".join(L))
+print("wrote docs/pipeline/auc_table.md")

@@ -1,0 +1,180 @@
+{
+ "block_bootstrap": {
+  "combined: A NISAR HV vs B S1 VH @ 30 m": {
+   "auc_first": 0.647,
+   "auc_second": 0.597,
+   "diff": 0.05,
+   "ci95_block": [
+    0.029,
+    0.061
+   ],
+   "n_blocks": 3782060,
+   "n_tiles_with_data": 135,
+   "n_tiles_with_damage": 134
+  },
+  "best geometry: NISAR t76 HV vs S1 o92 VH @ 30 m": {
+   "auc_first": 0.689,
+   "auc_second": 0.643,
+   "diff": 0.046,
+   "ci95_block": [
+    0.029,
+    0.066
+   ],
+   "n_blocks": 3058561,
+   "n_tiles_with_data": 115,
+   "n_tiles_with_damage": 113
+  },
+  "weak geometry: NISAR t55 HV vs S1 o19 VH @ 30 m": {
+   "auc_first": 0.528,
+   "auc_second": 0.513,
+   "diff": 0.015,
+   "ci95_block": [
+    -0.012,
+    0.042
+   ],
+   "n_blocks": 2592705,
+   "n_tiles_with_data": 104,
+   "n_tiles_with_damage": 103
+  },
+  "control-adjusted check: S1 o92 VH 2026 vs 2025 @ 30 m": {
+   "auc_first": 0.633,
+   "auc_second": 0.557,
+   "diff": 0.075,
+   "ci95_block": [
+    0.054,
+    0.093
+   ],
+   "n_blocks": 3493077,
+   "n_tiles_with_data": 130,
+   "n_tiles_with_damage": 129
+  },
+  "combined: A NISAR HV vs B S1 VH @ 100 m": {
+   "auc_first": 0.786,
+   "auc_second": 0.71,
+   "diff": 0.076,
+   "ci95_block": [
+    0.043,
+    0.106
+   ],
+   "n_blocks": 274032,
+   "n_tiles_with_data": 135,
+   "n_tiles_with_damage": 130
+  },
+  "best geometry: NISAR t76 HV vs S1 o92 VH @ 100 m": {
+   "auc_first": 0.856,
+   "auc_second": 0.787,
+   "diff": 0.069,
+   "ci95_block": [
+    0.043,
+    0.099
+   ],
+   "n_blocks": 227279,
+   "n_tiles_with_data": 115,
+   "n_tiles_with_damage": 103
+  },
+  "weak geometry: NISAR t55 HV vs S1 o19 VH @ 100 m": {
+   "auc_first": 0.577,
+   "auc_second": 0.53,
+   "diff": 0.048,
+   "ci95_block": [
+    -0.019,
+    0.106
+   ],
+   "n_blocks": 186952,
+   "n_tiles_with_data": 104,
+   "n_tiles_with_damage": 98
+  },
+  "control-adjusted check: S1 o92 VH 2026 vs 2025 @ 100 m": {
+   "auc_first": 0.771,
+   "auc_second": 0.615,
+   "diff": 0.156,
+   "ci95_block": [
+    0.109,
+    0.209
+   ],
+   "n_blocks": 254633,
+   "n_tiles_with_data": 130,
+   "n_tiles_with_damage": 122
+  }
+ },
+ "per_date_s1_100m": {
+  "orbit 19: 2026-09-28 -> 2026-10-22": {
+   "auc_all": 0.736,
+   "auc_evergreen": 0.697,
+   "delta_dB": 0.72
+  },
+  "orbit 19: 2026-09-28 -> 2026-11-03": {
+   "auc_all": 0.384,
+   "auc_evergreen": 0.352,
+   "delta_dB": -0.41
+  },
+  "orbit 19: 2026-10-22 -> 2026-11-03 (same side, no storm between)": {
+   "auc_all": 0.194,
+   "auc_evergreen": 0.203,
+   "delta_dB": -1.13
+  },
+  "orbit 92: 2026-09-21 -> 2026-10-27": {
+   "auc_all": 0.756,
+   "auc_evergreen": 0.697,
+   "delta_dB": 0.78
+  },
+  "orbit 92: 2026-09-21 -> 2026-11-08": {
+   "auc_all": 0.718,
+   "auc_evergreen": 0.652,
+   "delta_dB": 0.63
+  },
+  "orbit 92: 2026-10-03 -> 2026-10-27": {
+   "auc_all": 0.721,
+   "auc_evergreen": 0.643,
+   "delta_dB": 0.73
+  },
+  "orbit 92: 2026-10-03 -> 2026-11-08": {
+   "auc_all": 0.679,
+   "auc_evergreen": 0.596,
+   "delta_dB": 0.58
+  },
+  "orbit 92: 2026-09-21 -> 2026-10-03 (same side, no storm between)": {
+   "auc_all": 0.521,
+   "auc_evergreen": 0.539,
+   "delta_dB": 0.05
+  },
+  "orbit 92: 2026-10-27 -> 2026-11-08 (same side, no storm between)": {
+   "auc_all": 0.441,
+   "auc_evergreen": 0.436,
+   "delta_dB": -0.15
+  }
+ },
+ "near_total": {
+  "near_total_km2_inside_damage": 5.5,
+  "damage_blocks_100m": 62892,
+  "damage_blocks_removed": 1617,
+  "A: NISAR HV (both tracks)": {
+   "auc_all_blocks": 0.786,
+   "auc_without_near_total": 0.802
+  },
+  "B: S1 VH (both orbits)": {
+   "auc_all_blocks": 0.71,
+   "auc_without_near_total": 0.724
+  },
+  "nisar_076:HV": {
+   "auc_all_blocks": 0.851,
+   "auc_without_near_total": 0.864
+  },
+  "nisar_055:HV": {
+   "auc_all_blocks": 0.606,
+   "auc_without_near_total": 0.618
+  },
+  "s1_92_2026:VH": {
+   "auc_all_blocks": 0.771,
+   "auc_without_near_total": 0.784
+  },
+  "s1_19_2026:VH": {
+   "auc_all_blocks": 0.536,
+   "auc_without_near_total": 0.541
+  },
+  "B 2025 control: S1 VH (both orbits)": {
+   "auc_all_blocks": 0.628,
+   "auc_without_near_total": 0.63
+  }
+ }
+}
