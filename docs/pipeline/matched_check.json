@@ -1,0 +1,102 @@
+{
+ "date_matched": {
+  "A: NISAR HV (both tracks) vs S1 VH Oct-only posts (o19 10-22, o92 10-27)": {
+   "auc_A": 0.786,
+   "auc_B": 0.795,
+   "diff": -0.009,
+   "ci95_block": [
+    -0.031,
+    0.012
+   ],
+   "n": 274200
+  },
+  "A: NISAR HV (both tracks) vs S1 VH specified dates (rebuilt from per-date 100 m)": {
+   "auc_A": 0.786,
+   "auc_B": 0.71,
+   "diff": 0.076,
+   "ci95_block": [
+    0.046,
+    0.106
+   ],
+   "n": 274200
+  },
+  "A: NISAR HV (both tracks) vs S1 VH orbit 92 only, Oct post 10-27": {
+   "auc_A": 0.793,
+   "auc_B": 0.766,
+   "diff": 0.027,
+   "ci95_block": [
+    0.005,
+    0.048
+   ],
+   "n": 253185
+  },
+  "NISAR HV track 76 vs S1 VH Oct-only posts (o19 10-22, o92 10-27)": {
+   "auc_A": 0.851,
+   "auc_B": 0.809,
+   "diff": 0.042,
+   "ci95_block": [
+    0.023,
+    0.062
+   ],
+   "n": 248718
+  },
+  "NISAR HV track 76 vs S1 VH specified dates (rebuilt from per-date 100 m)": {
+   "auc_A": 0.851,
+   "auc_B": 0.718,
+   "diff": 0.133,
+   "ci95_block": [
+    0.103,
+    0.164
+   ],
+   "n": 248718
+  },
+  "NISAR HV track 76 vs S1 VH orbit 92 only, Oct post 10-27": {
+   "auc_A": 0.856,
+   "auc_B": 0.781,
+   "diff": 0.075,
+   "ci95_block": [
+    0.052,
+    0.103
+   ],
+   "n": 227970
+  }
+ },
+ "labels_without_2025": {
+  "damage_blocks": 73108,
+  "intact_blocks": 299105,
+  "mean_dNDVI2025_in_reference_damage": -0.0045,
+  "mean_dNDVI2025_in_reference_intact": 0.0035,
+  "A: NISAR HV (both tracks)": {
+   "auc_labels_with_2025": 0.786,
+   "auc_labels_without_2025": 0.819
+  },
+  "B: S1 VH (both orbits)": {
+   "auc_labels_with_2025": 0.71,
+   "auc_labels_without_2025": 0.732
+  },
+  "B 2025 control: S1 VH (both orbits)": {
+   "auc_labels_with_2025": 0.628,
+   "auc_labels_without_2025": 0.671
+  },
+  "nisar_076:HV": {
+   "auc_labels_with_2025": 0.851,
+   "auc_labels_without_2025": 0.874
+  },
+  "s1_92_2026:VH": {
+   "auc_labels_with_2025": 0.771,
+   "auc_labels_without_2025": 0.783
+  },
+  "control AUC, evergreen, labels without 2025": 0.597,
+  "control AUC, woody_wetland, labels without 2025": 0.708,
+  "A minus B, labels without 2025": {
+   "auc_A": 0.819,
+   "auc_B": 0.732,
+   "diff": 0.087,
+   "ci95_block": [
+    0.064,
+    0.111
+   ],
+   "n": 363924
+  }
+ }
+}

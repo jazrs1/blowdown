@@ -1,23 +1,35 @@
 # Blowdown pipeline: NISAR vs Sentinel-1 over the Isaias band (study area −87.60 to −86.60, 30.40 to 31.80)
 
-**Answer: once both are stack-averaged, NISAR L-band HV separates the optical damage band from intact forest better than Sentinel-1 C-band VH at 30 m and 100 m. At 10 m it does not: both are near chance.**
+**Answer: with the dates as specified and both stack-averaged, NISAR L-band HV separates the optical damage band from intact forest better than Sentinel-1 C-band VH at 30 m and 100 m. At 10 m it does not: both are near chance.**
+
+**This lead is partly a date effect.** The specified S1 posts run to 11-08, while NISAR's end on 10-29. If S1 also uses October posts only, the two-geometry average **ties** NISAR at 100 m. **NISAR's ascending track 76 still beats every S1 option.**
 
 | Resolution | AUC, NISAR HV (both tracks) | AUC, S1 VH (both orbits) | A − B | 95% CI (10 km block bootstrap) |
 |---|---|---|---|---|
 | 10 m | 0.560 | 0.563 | −0.002 | −0.006 to +0.001 (pixel bootstrap) |
 | 30 m | 0.647 | 0.597 | **+0.050** | +0.029 to +0.061 |
 | 100 m | 0.786 | 0.710 | **+0.076** | +0.043 to +0.106 |
+| 100 m, S1 posts October only (o19 10-22, o92 10-27) | 0.786 | 0.795 | −0.009 | −0.031 to +0.012 |
+| 100 m, NISAR track 76 vs S1 October-only (both orbits) | 0.851 | 0.809 | **+0.042** | +0.023 to +0.062 |
+| 100 m, NISAR track 76 vs S1 orbit 92 October-only | 0.856 | 0.781 | **+0.075** | +0.052 to +0.103 |
 
-Read this result with five qualifications:
+The date-matched rows use S1 per-date VH aggregated to 100 m in Earth Engine. The same file with the specified dates reproduces arm B exactly (0.710).
+Source: [matched_check.json](matched_check.json). No date-matched check was run at 30 m.
+
+Qualifications:
 1. **The NISAR lead comes from track 76 (ascending).** Track 76 HV reaches 0.851 at 100 m. Track 55 (descending) reaches only 0.606, which is below Sentinel-1 orbit 92 (0.771).
-   Comparing the best geometry of each sensor gives the same direction: track 76 HV 0.856 vs orbit 92 VH 0.787, +0.069 (CI +0.043 to +0.099) on the 100 m blocks valid in both.
-2. **The no-storm floor is not 0.5.** Sentinel-1 VH for the same weeks of 2025, scored against the 2026 labels, gets AUC 0.628 at 100 m (0.672 in woody wetland). Part of the all-forest separation is therefore a land-cover or seasonal effect.
-   Damage is 48% woody wetland and intact is 20%. **NISAR has no 2025 control** because it wasn't acquiring then, so its no-storm floor is unknown.
-3. **Within forest type, NISAR still leads at 100 m.**
+2. **The C-band damage signal is short-lived.** Orbit 19 scores 0.736 for 09-28→10-22 but 0.384 for 09-28→11-03, so averaging in 11-03 drops it to 0.536.
+   NISAR has no scene after 10-29, so whether L-band also fades is untested. Its 10-17-only post scored 0.842 and the 10-17 + 10-29 average scored 0.851.
+3. **The no-storm floor is not 0.5.** Sentinel-1 VH for the same weeks of 2025, scored against the 2026 labels, gets AUC 0.628 at 100 m (0.672 in woody wetland).
+   This is not because the label uses 2025 NDVI. With a label that leaves out the 2025 term, the control rises to 0.671 (evergreen 0.597, woody wetland 0.708).
+   It's a land-cover/backscatter-change pattern that tracks where the band is: damage is 48% woody wetland and intact is 20%.
+   **NISAR has no matching 2025 control.** NISAR GCOV for track 76 starts 2025-10-22, and there is no 2025 pre-storm pair (see Not verified).
+4. **Within forest type, NISAR still leads at 100 m.**
    - Evergreen: NISAR 0.668, S1 0.615, 2025 control 0.571.
    - Woody wetland: NISAR 0.864, S1 0.813, 2025 control 0.672.
-4. **Stack averaging hurt Sentinel-1.** Orbit 19's damage signal is strong on 10-22 (AUC 0.736) and reversed by 11-03 (0.384), so the 1+2-date mean drops to 0.536. The best single Sentinel-1 pair, orbit 92 09-21→10-27, reaches 0.756, still below NISAR track 76.
+   These use the specified S1 dates, not date-matched.
 5. **The reference is provisional and optical.** It is not aerial or field truth (Step 4).
+   With the label that leaves out 2025, every arm scores a little higher and the specified-dates lead is +0.087 (CI +0.064 to +0.111).
 
 ![AUC vs resolution](fig_auc_resolution.png)
 
@@ -45,7 +57,7 @@ The requested S1 dates split across the two orbits (the date→orbit check is in
 **Processing:**
 - **Grid:** one common 10 m UTM 16N grid, 9,607 × 15,533 px. NISAR is natively on this lattice (shift 0 m for all 8 scenes). Sentinel-1 and Sentinel-2 are pulled onto it through Earth Engine.
 - **NISAR masking:** mask values 0 and 255 are set to NaN.
-- **Sentinel-1 masking:** power ≤ 0 is set to NaN, and the swath edges are trimmed by 200 m. Zero-power pixels occurred along the S1D swath edge plus about 350 scattered forest pixels.
+- **Sentinel-1 masking:** power ≤ 0 is set to NaN, and the swath edges are trimmed by 200 m. Zero-power pixels occurred along the S1D swath edge plus scattered interior pixels (about 0.02% of forest).
 - **Stacking:** for each track or orbit, pre and post scenes are averaged in linear power, then converted to dB. The output is pre, post, diff and diff recentred on the forest median.
 - **Forest-median offsets removed:**
 
@@ -81,7 +93,7 @@ Numbers: [reference.json](reference.json).
 
 ### Threshold maps (30 m)
 
-Each map uses the Youden-optimal threshold on labelled 30 m blocks. Arm A is NISAR HV > +0.30 dB (TPR 0.53, FPR 0.29). Arm B is S1 VH > +0.22 dB (TPR 0.53, FPR 0.39).
+Each map uses the Youden-optimal threshold on labelled 30 m blocks. Arm A is NISAR HV > +0.30 dB (TPR 0.53, FPR 0.29). Arm B is S1 VH > +0.22 dB (TPR 0.53, FPR 0.39). TPR and FPR are in-sample: the threshold was chosen on the same blocks it is scored on.
 
 ![threshold maps](fig_threshold_maps.png)
 
@@ -150,27 +162,31 @@ Track 55 HV goes the wrong way in evergreen pine: damaged pine shows *lower* HV 
 | 92 | post→post 10-27→11-08 | 0.441 | −0.15 |
 
   The C-band damage response is strongest about two weeks after the storm and fades or reverses within weeks. That points to moisture (wet debris, standing water in bottomlands) as part of the signal. Orbit 19's 11-03 scene reverses it outright.
-  NISAR track 76 did not fade: the 10-17-only post scored 0.842 and the 10-17 + 10-29 average scored 0.851.
+  NISAR can't be tested for the same fading: it has no scene after 10-29. The 10-17-only post scored 0.842 and the 10-17 + 10-29 average scored 0.851.
 - **Pixel vs spatial bootstrap.** The pixel bootstrap gave CIs of ±0.003. The 10 km block bootstrap gives ±0.02–0.03, which is the honest figure; both are reported above.
 
 ## Disk and time
 
 | Item | Value |
 |---|---|
-| Free disk | 706.1 GB at start, **lowest 691.8 GB** (during NISAR downloads), about 646 GB at end. The 15 GB stop never came close. |
+| Free disk | 706.1 GB at start, 691.8 GB lowest during the NISAR downloads, about 646 GB at the end (**the lowest point**, after the Earth Engine pulls and layer files). The 15 GB stop never came close. |
 | NISAR | 6 new scenes downloaded, 37.0 GB in 4,877 s (81 min, about 7.6 MB/s), one at a time. Each was extracted to compact HH/HV (0.77–0.88 GB, 8 s each), then the raw file was deleted. The 2 gate scenes were reused (raw kept from the gate: 12.2 GB). Peak RAM 0.24 GB. |
 | Sentinel-1 EE pulls (10 m) | 2026: 1,035 s; 2025: 1,022 s (77 tiles per orbit); 6.7 GB. Per-date 100 m check: 9 min. |
 | Sentinel-2 EE pull (10 m, 8 bands) | 6,168 s (103 min); 2.85 GB |
 | Combine / reference / evaluate | About 30 s per arm, 19 s, and 305 s (peak RAM 3.1 GB) |
 | `data/` on disk | 62 GB. `layers.h5` is 36 GB of that, inflated by repeated rewrites; it's derived and can be deleted and regenerated with `stack_combine.py`. Compact NISAR 6.6 GB, S1 6.7 GB, S2 2.8 GB, coarse npz 1.5 GB. |
-| Wall clock for this pipeline | About 4.5 h, mostly NISAR download (81 min) and the S2 pull (103 min) |
+| Wall clock for this pipeline | About 4.5 h (00:38–05:10 for steps 2–6), mostly the NISAR download (81 min) and the S2 pull (103 min) |
 
 ## Not verified
 
 - **Truth.** The reference is a heuristic optical mask (dNBR plus NDVI anomaly thresholds), not windthrow observed on the ground or in aerial imagery. The aerial footprint covers only the band's southern tip, and I didn't compare it pixel by pixel.
   The thresholds (−0.10, −0.06, −0.03, −0.02) are judgment calls.
 - **What the radar responds to.** The Sentinel-1 signal fades or reverses by early November, and damage is concentrated in woody wetland. Part of both sensors' response may be moisture or flooding in bottomlands rather than structural damage. I haven't checked river gauges, rainfall or a flood product.
-- **The NISAR no-storm floor.** It's unknown, since there was no 2025 NISAR acquisition. Sentinel-1's floor is 0.63 at 100 m.
+- **The NISAR no-storm floor.** ASF metadata shows NISAR GCOV from 2025-10-22 on: track 76 frame 17 has 2025-10-22, 11-03 and 11-15; track 55 frame 73 starts 2025-11-26. So there is no 2025 pre-storm pair.
+  Two partial no-storm controls are possible but **not downloaded (they need your OK)**:
+  - Track 76, 2025-10-22→11-03: same weeks as the posts, about 12 GB.
+  - Track 76, 2026-09-11→09-23: pre-storm, about 6 GB plus the 09-23 scene, which would be re-downloaded because its raw file was deleted.
+  Sentinel-1's floor is 0.63 at 100 m.
 - **The P05036 offset** (0.6 dB HV, 1 dB HH): calibration or environment, not resolved.
 - **Track 55 HV reversal in evergreen**, and why descending is so much weaker than ascending. Ascending passes at about 06:02 local time (possible dew) and descending at about 19:37. I didn't test this.
 - **Orbit 19's 11-03 scene:** not inspected for rain or wet-surface conditions.
@@ -185,6 +201,6 @@ Track 55 HV goes the wrong way in evergreen pine: damaged pine shows *lower* HV 
 Scripts are in `scripts/`; run them with `.venv/Scripts/python -I`.
 1. Step 1: `extent_ee`, `extent_nisar`, `extent_noaa`, `extent_analysis`.
 2. Stacks: `stack_search`, `stack_build`, `s1_stack 2026`, `s1_stack 2025`, `s2_stack`.
-3. Combine and evaluate: `stack_combine`, `reference`, `scene_check`, `evaluate`, `s1_perdate`, `sensitivity`, `pipeline_figures`.
+3. Combine and evaluate: `stack_combine`, `reference`, `scene_check`, `evaluate`, `s1_perdate`, `sensitivity`, `matched_check`, `pipeline_figures`.
 
 `data/` is git-ignored.

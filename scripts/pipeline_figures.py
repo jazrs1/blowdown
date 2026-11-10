@@ -29,9 +29,9 @@ for a, (title, img) in zip(ax, [("Provisional optical reference (30 m block >= 5
     a.set_xlabel("UTM 16N easting (km)"); a.set_ylabel("northing (km)")
 from matplotlib.patches import Patch
 fig.legend(handles=[Patch(color=c, label=l) for c, l in zip(cmap.colors[1:], ["forest, not flagged", "flagged, not in reference",
-           "reference damage, missed", "flagged and in reference", "no radar data"])], loc="lower center", ncol=5, fontsize=9)
+           "reference damage, missed", "flagged and in reference", "no radar data"])], loc="upper center", bbox_to_anchor=(0.5, 0.0), ncol=5, fontsize=9)
 fig.suptitle("Threshold maps at 30 m (forest only; Youden-optimal threshold on labelled 30 m blocks)")
-fig.savefig("docs/pipeline/fig_threshold_maps.png", dpi=80); plt.close(fig)
+fig.savefig("docs/pipeline/fig_threshold_maps.png", dpi=80, bbox_inches="tight"); plt.close(fig)
 
 # ---- AUC vs resolution
 get = lambda arm, ftype, res: next((r["auc"] for r in rows if r["arm"] == arm and r["forest_type"] == ftype and r["res_m"] == res), None)
