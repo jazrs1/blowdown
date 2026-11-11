@@ -100,7 +100,6 @@ for s in W["stations"]:
     a2.plot(s["signed_distance_km"], s["gust_kt"], "^", ms=5.5, mfc="none" if sparse else MOD, mec=MOD)
 for s in W["stations"]:
     if s["short"] == "Jay": a2.annotate("Jay", (s["signed_distance_km"], s["gust_kt"]), xytext=(-30, 6), textcoords="offset points", fontsize=8, color=MOD, arrowprops=dict(arrowstyle="-", color=MOD, lw=0.6))
-    if s["short"] == "Destin": a2.annotate("Destin", (s["signed_distance_km"], s["gust_kt"]), xytext=(-10, 22), textcoords="offset points", fontsize=8, color=MOD, ha="right", arrowprops=dict(arrowstyle="-", color=MOD, lw=0.6))
 a2.set_ylim(0, 120); a2.set_ylabel("peak gust (kt)", color=MOD); a2.tick_params(colors=MOD)
 ax.set_xlabel("km from track (negative = west)"); ax.set_ylabel("forest in damage mask (%)"); ax.set_ylim(0, 50); ax.set_xlim(-108, 76)
 ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=1)

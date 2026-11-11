@@ -4,7 +4,14 @@ Branch `site`. The damage here is the **Sentinel-2 damage mask** (pipeline step 
 
 The held-out block (lat 31.14–31.32, plus a 2 km buffer) and the aerial tip (plus a 2 km buffer) are left out of every number and figure. They show as grey, "Held out until scoring".
 
-Script: [wind_link.py](../../scripts/wind_link.py). Numbers: [wind.json](wind.json). Station values and sources: [stations.json](stations.json). Downloaded sources are in `data/wind/sources/` (not in git).
+Scripts:
+- [wind_link.py](../../scripts/wind_link.py) (west box)
+- [wind_link_both.py](../../scripts/wind_link_both.py) (both sides)
+- [station_timing.py](../../scripts/station_timing.py)
+- [goes_wv.py](../../scripts/goes_wv.py)
+- [nexrad_maxvel.py](../../scripts/nexrad_maxvel.py) and [nexrad_fig.py](../../scripts/nexrad_fig.py)
+
+The artifact check is in [artifact_check.md](artifact_check.md). Numbers: [wind.json](wind.json), [wind_both.json](wind_both.json). Station values and sources: [stations.json](stations.json). Downloaded sources are in `data/wind/sources/` (not in git).
 
 ## Track
 
@@ -27,7 +34,7 @@ Mapped stations:
 |---|---|---|---|
 | Jay, FL (UF FAWN 110) | **102.2** | 56 km left | NWS Mobile Post Tropical Cyclone Report, Highest 10 Land Gusts (updated 10/23/2026). The NWS Mobile county impact narrative (Santa Rosa) gives "102 kts ... at a UF FAWN station in Jay". |
 | Oriole Beach, FL (Texas Tech StickNet 0217A) | **101.3** | 48 km left (approx.) | Same NWS report. The impact narrative (Escambia, FL) gives "gusts measured 101 kts". |
-| Whiting Field South (KNDZ, AWOS) | 99.0 | 44 km left | IEM ASOS archive, peak-wind remark at 01:56Z 10 Oct. Matches the NWS report's 99.0. |
+| Whiting Field South (KNDZ, AWOS) | 99.0 | 44 km left | IEM ASOS archive: peak-wind remark in the 01:56Z report, peak at 01:37Z 10 Oct. Matches the NWS report's 99.0. |
 | Pensacola Regional (KPNS) | 80 | 58 km left | IEM ASOS archive, 23:53Z 9 Oct |
 | Eglin AFB (KVPS) | 71 | at the track (5 km right) | IEM ASOS archive (61 reports 22Z–06Z) |
 | Destin–Fort Walton Beach (KDTS) | 66 | 11 km right | IEM ASOS archive (25 reports) |
@@ -53,7 +60,7 @@ Listed by NWS Mobile but not mapped, because no published coordinates were found
 - **Stations with very few reports in the storm window** (fewer than 10 between 22Z and 06Z) probably had outages, so their peaks are unreliable. They're drawn hollow in the figure.
 - NWS notes that point observations likely didn't sample the event's peak values, and that anemometer heights are under 20 m.
 
-## Damaged share of forest by distance from the track
+## West of the track (study box only)
 
 ![damage vs distance](fig_damage_vs_distance.png)
 
@@ -72,7 +79,7 @@ Damage is concentrated in a band 45–75 km left of the track. The median damage
 | −40 to 0 | 0.4–1.3% | 0.2–0.8% | 0.1–4.5% |
 | −105 to −80 | 0.7–1.0% | 0.6–1.3% | 0.5–1.2% |
 
-The right side has no forest in the grid, so no bins exist there.
+The study box has no forest right of the track; the east box below adds that side.
 
 Along the track, the damaged share is highest 20–70 km north of landfall: 10–13% of all forest, and wetland 17–25%. It drops to under 1% at 80–90 km, with a smaller rise around 120–130 km.
 
@@ -80,21 +87,163 @@ Along the track, the damaged share is highest 20–70 km north of landfall: 10�
 
 ![wind map](fig_wind_map.png)
 
+## Is the band an acquisition artefact?
+
+No. Neither band edge follows a Sentinel-2, Sentinel-1 or NISAR swath or frame edge, or a change in composite acquisition date. The band and both edges survive a rebuild from one clear pre scene and one clear post scene (17 September and 20 October, Sentinel-2 relative orbit 40).
+
+The east edge does run within a few km of an MGRS tile boundary (87.0°W) between 30.65°N and 30.95°N, but:
+- there's no step at that line where the band is absent;
+- the tile-free radar sensors put the band and edge in the same place, within a median 1 km.
+
+Details: [artifact_check.md](artifact_check.md).
+
+## Both sides of the track
+
+An east box (lon −86.60 to −85.80, lat 30.40–31.80; Okaloosa and Walton counties, FL; Covington and Crenshaw, AL) was mapped with the same Sentinel-2 composites, dates and mask rules as the west box: [s2_stack_east.py](../../scripts/s2_stack_east.py), [reference_east.py](../../scripts/reference_east.py), [east_layers.py](../../scripts/east_layers.py). It holds 6,913 km² of forest and 111.6 km² of 10 m damage pixels.
+
+![both sides](fig_wind_both.png)
+
+![map, both sides](fig_wind_map_both.png)
+
+| Side and distance from the track | Forest | Damage | Damaged share |
+|---|---|---|---|
+| West, 40–80 km | 3,272 km² | 487 km² | **14.9%** |
+| West, 0–40 km | 4,249 km² | 27 km² | 0.64% |
+| East, 0–40 km | 3,543 km² | 15 km² | 0.42% |
+| West, all (0–110 km) | 9,436 km² | 530 km² | 5.6% |
+| East, all (0–75 km) | 6,399 km² | 85 km² | 1.3% |
+
+West-box figures exclude the held-out areas.
+
+**East of the track:**
+- **Upland forest** has 0.2–0.8% damaged share in every 5 km bin out to 75 km.
+- **Woody wetland** stays at 0.3–2.6% out to 55 km, then rises to 6–12% at 55–70 km. On the map that rise appears to follow the Choctawhatchee River floodplain along the box's east edge, where flooding as well as wind could lower NDVI.
+- **Along the track**, the first 10 km north of the coast on the east side shows 13%. That comes from what appears to be a wetland patch near the river mouth at the east end of Choctawhatchee Bay, about 60–70 km east of the track. Elsewhere on the east side it's 0.1–2.8%.
+
+**The left-side concentration survives mapping the right side.**
+
+**County shares of mapped forest in the Sentinel-2 damage mask:**
+
+| County | Mapped forest | Damage | Share |
+|---|---|---|---|
+| Santa Rosa, FL | 1,367 km² | 255 km² | 18.6% |
+| Escambia, FL | 794 km² | 57 km² | 7.2% |
+| Escambia, AL | 1,395 km² | 86 km² | 6.2% |
+| Walton, FL | 1,602 km² | 23 km² | 1.45% |
+| Crenshaw, AL | 620 km² | 3.6 km² | 0.58% |
+| Covington, AL | 1,695 km² | 6.7 km² | 0.39% |
+| Okaloosa, FL | 1,518 km² | 5.2 km² | 0.35% |
+
+West-box parts exclude the held-out areas. County outlines are TIGER 2018 via Earth Engine.
+
+**NWS Mobile against the map:**
+- **Covington County:** NWS Mobile reports "widespread tree damage ... leading to a majority of roads becoming impassable and approximately 58% of the county without power." The mask finds little: 0.39% of mapped forest.
+- **Okaloosa:** NWS reports "significant tree damage ... multiple hardwood and softwood tree snaps", most concentrated in the south and west. The mask finds 0.35%.
+- **Santa Rosa:** NWS reports "catastrophic damage ... hundreds of trees snapped". The mask finds 18.6%, which agrees.
+
+**Why the mask can miss reported damage.** The mask records canopy-scale loss of greenness and burn ratio in 10 m pixels against the 2025 change. Scattered falls of single trees along roads and power lines, which close roads and cut power, would not register. So the Covington and Okaloosa reports and the map aren't necessarily in conflict, but I haven't verified which explanation holds.
+
+**Radar coverage of the east box:**
+- Sentinel-1 orbit 19 covers all of its forest; orbit 92 covers none of it.
+- The NISAR track 76 pair (5 → 17 October, the only raw granules still on disk) covers 98.7% of its forest.
+- NISAR track 55 frame 73 covers about 21% of the east box. Its raw files were deleted after extraction, so mapping that part would mean re-downloading the frame 73 granules for 22 September, 4, 16 and 28 October, about 6 GB each. **Not downloaded; that needs your OK.**
+
+## Wind mechanism evidence
+
+### What NHC, NWS and the news said
+
+- **NHC Forecast Discussion 14** (10 PM CDT, 9 Oct): "Isaias made landfall as a 90-kt hurricane at 0130 UTC near Destin, Florida ... Eglin AFB (KEVX) radar data and surface observations indicate damaging, gusty winds are persisting in the residual northern eyewall and in a band wrapping around the western side of the circulation." By Discussion 15 (09Z, 10 Oct) Isaias was post-tropical. ([NHC archive](https://www.nhc.noaa.gov/archive/2026/ISAIAS.shtml))
+- **NWS Mobile Post Tropical Cyclone Report** (updated 23 Oct): it gives the gust table above and lists 0 tornadoes for the NWS Mobile/Pensacola area. It notes that point observations likely didn't sample the peak values.
+- **Fox 10 (WALA), 14 Oct**: "Summary of the NWS post-storm report" attributes the inland wind strength to a sting jet: air descending from the cloud head as the storm collapsed into an extratropical cyclone. The article doesn't quote NWS or NHC for that explanation. ([link](https://www.fox10tv.com/2026/10/14/hurricane-isaias-summary-nws-post-storm-report/))
+- **NHC's Tropical Cyclone Report for Isaias is still pending.** The NHC report index listed no report for AL092026 when checked on 2026-11-10.
+
+### Radar: KMOB and KEVX, lowest elevation sweep, 22Z–06Z
+
+![nexrad](fig_nexrad_maxvel.png)
+
+Method:
+- 57 volumes per radar from the public Level II archive on AWS (`unidata-nexrad-level2`).
+- Velocities dealiased with Py-ART's region-based method. |V| above 75 m/s was dropped as a dealiasing failure.
+- To keep one bad volume from setting a value, each point shows the **second-highest** |V| over the window.
+
+Results:
+
+| Radar | Beam centre over the band | Band (2nd-highest \|V\|, mean / 90th pct) | Same range outside the band | Time of highest value in the band |
+|---|---|---|---|---|
+| KMOB (west of the band) | 1.1–1.6 km, at 103–134 km range | 44 / 50 m/s | 35 / 46 m/s | median 01:56Z |
+| KEVX (east of the band) | 1.3–2.3 km, at 107–160 km range | 30 / 37 m/s | 30 / 39 m/s | median 01:41Z |
+
+What the radar shows:
+- **KMOB** places the band along the western edge of a broad zone of strong radial velocity around the storm's western half, with higher values in the band than at the same range outside it.
+- **KEVX** shows no difference between the band and its surroundings.
+- **Both** time the band's strongest radial winds at about 01:40–02:00Z, matching the station peaks.
+
+Limits that matter here:
+- Radial velocity is only the component along the beam. Both radars look roughly east–west across the band, so they mainly see the east–west component.
+- It's measured 1–2 km above the ground, where winds can differ from surface winds.
+- **The band lies near or beyond both radars' unambiguous Doppler range** (the white ring at about 115 km), where data are partly range-folded.
+- The radar can't resolve a swath a few km wide at this range.
+
+### Timing at the gust stations
+
+![timing](fig_station_timing.png)
+
+| Station (distance from track) | Peak | Time | From | Relative to the centre's closest approach |
+|---|---|---|---|---|
+| Whiting Field South (44 km W) | 99 kt gust | 01:37Z | 030° (NNE) | 0.8 h **before** (02:25Z) |
+| Pensacola (58 km W) | 80 kt gust | 23:53Z | 040° (NE) | 1.3 h before (01:10Z) |
+| Jay, FAWN 15-min mean (56 km W) | 63 kt mean (no gusts in public file) | 01:15Z | 048° (NE) | 1.4 h before (02:40Z); the record has a gap at 01:30Z |
+| Eglin AFB (at the track) | 71 kt gust | 01:17Z | 360° (N) | 0.1 h before |
+| Destin (11 km E) | 66 kt gust | 23:12Z | 020° (NNE) | 1.8 h before |
+
+FAWN's clock is local CDT (UTC−5), inferred from solar noon in its radiation record. No public time series was found for the Oriole Beach StickNet.
+
+**The peak gusts came before the centre passed the stations' latitude, from the north-northeast to northeast, while Isaias was still a hurricane.** NHC had landfall at 01:30Z and 80 kt at 03Z, and declared it post-tropical at 09Z; the best track switches from hurricane to low between 00Z and 06Z. The peaks were not after the centre passed, and not after the transition.
+
+### Dry air: GOES-19 band 9 water vapour, hourly
+
+![water vapour](fig_goes_wv.png)
+
+Mean brightness temperature 40–120 km from the centre, by quadrant (warmer means drier):
+- **00Z:** all quadrants cold (202–210 K).
+- **01Z:** the south side starts warming (SE 220, SW 217 K).
+- **02Z:** SE 231, SW 229 K; the north stays at 208–211 K.
+- **03Z:** SE 245, SW 250 K.
+- **04–05Z:** all quadrants warm.
+
+A dry slot wraps into the south and southwest side from about 01Z. It reaches the southern end of the band around 03Z and covers the band by 04–05Z: one to three hours after the station peaks, which happened while the band was under cold, moist cloud. The images are hourly, and mid-level water vapour doesn't show near-surface dryness.
+
+### Candidate explanations
+
+None of these is claimed. The evidence above bears on each as follows.
+
+| Candidate | What the evidence supports | What it does not support |
+|---|---|---|
+| **Sting jet** (Fox 10) | Isaias was collapsing and losing tropical character within hours of landfall. A dry slot did develop on the south side. Sting jets are narrow and short-lived, so sparse stations and hourly imagery could miss one. | The station peaks came 1–2 h before the centre passed, from the NE–NNE, during the hurricane phase and before the dry slot reached the band. Sting jets usually come with the dry slot during frontal fracture. No observation here places descending cloud-head air over the band. |
+| **Dry-air intrusion** | Dry air wrapped into the south and southwest side from 01Z and over the band by 04–05Z. It could have helped mix momentum down after the peaks. | The measured peaks came before the dry air arrived over the band. Sentinel-2 can't tell when the trees fell. |
+| **Mesovortex or tornado swath** | NHC saw damaging gusts in a band wrapping around the western side on KEVX radar. Rotating features in that band could leave narrow swaths. | The damage band is about 10–22 km wide over most of its length (3–8 km at its ends) and about 120 km long, larger than one mesovortex or tornado track. NWS Mobile lists 0 tornadoes. The radar can't resolve small vortices over the band (1–2 km beam, partly range-folded). |
+| **Edge of the western wind field** | The damage sits at and just beyond NHC's analysed western 64 kt radius (37–46 km) and inside the 50 kt radius. The peak winds came from the NE–NNE before the centre passed, i.e. in the storm's western and northwestern quadrant. KMOB shows the band at the western edge of strong radial winds, timed with the station peaks. NHC described a damaging band on the western side. | It doesn't explain why the west was much more damaged than the east, where NHC's hurricane-force radius was slightly larger. The east-side stations near landfall that kept reporting peaked lower. KEVX doesn't see the band as distinct. |
+| **Error in the operational track** | The b-deck fixes are rounded to 0.1° (about 10 km), and the inland track wasn't checked against radar centre fixes here. | NWS Mobile's lowest pressures were at Crystal Beach (977.9 mb) and Destin airport (981.7 mb), both beside the track at landfall, which puts the centre near the track there. A 45–75 km error would be needed to move the band to the right side. |
+
 ## Does the damage sit where the strongest winds were expected?
 
-No, not where you'd expect for a northward-moving hurricane. The strongest winds are usually on the right of the track near landfall, which here means east of the track around Destin and Fort Walton Beach. Inside this study grid, the damage mask instead sits 45–75 km left (west) of the track, from about 20 to 70 km north of landfall.
+No. For a northward-moving hurricane, the strongest winds are usually expected right of the track near landfall, here east of the track around Destin and Fort Walton Beach. The Sentinel-2 damage mask instead concentrates 45–75 km **left** (west) of the track, about 20–70 km north of landfall.
 
-The gust reports point the same way. The three highest land gusts (Jay 102 kt, Oriole Beach 101 kt, Whiting Field 99 kt) are all 44–56 km left of the track. The stations close to the track on the right side that kept reporting through the storm peaked lower (Eglin 71 kt, Destin 66 kt).
+That pattern survives three tests:
+- an artifact check of the optical data;
+- a single-date rebuild;
+- mapping the right side, where upland damage stays below 1% at every distance.
 
-Two things limit this conclusion:
-- The study grid was drawn around the damage band and ends at the track, so the right side was never mapped with the Sentinel-2 mask. Damage east of the track can't be ruled out from this analysis.
-- **NHC's own analysed wind field doesn't explain it either.** At 00Z its hurricane-force radius is slightly larger on the right (30 nm east, 20–25 nm west). The damage band, 45–75 km west, lies at and just beyond the western edge of the analysed 64 kt winds (37–46 km) and well inside the 50 kt radius (93–130 km). So the damage is consistent with the analysed field reaching that far west, but the field doesn't put the strongest winds on the left.
-- I haven't established why the strongest observed gusts and the damage fell on the left. Possible reasons, not tested: a wind field more asymmetric than the radii capture as the storm weakened and lost tropical character within six hours of landfall; error in the operational track (0.1° fixes, about 10 km); and sparse station coverage on the right, where several stations had outages. Stations within about 5 km of the track are called "at the track" because of that rounding.
+The highest gusts, all from the north-northeast to northeast before the centre passed, are on the same western side.
+
+Why the worst damage fell there is an **open question**. A sting jet, a dry-air intrusion, a mesovortex or tornado swath, the edge of the western wind field and an error in the operational track have all been offered or can be imagined. The evidence gathered here fits some better than others, as set out above, but doesn't settle it. NHC's Tropical Cyclone Report, still pending, may.
 
 ## Not verified
 
-- Jay's 102.2 kt gust against raw FAWN data (no gust in the public file).
-- The coordinates and data of the StickNet stations, including Oriole Beach.
-- Whether ASOS stations with few storm-window reports failed or just reported less often.
-- Damage right of the track: outside the study grid, so not mapped.
-- The operational best track may be revised in NHC's final report; it was used as downloaded.
+- **Raw-data checks:** Jay's 102.2 kt gust against raw FAWN data (no gust in the public file); the coordinates and data of the StickNet stations, including Oriole Beach.
+- **Station outages:** whether ASOS stations with few storm-window reports failed or just reported less often.
+- **East-box radar:** the east box's radar layers are partial (Sentinel-1 orbit 19 only; NISAR track 76 single pair only; track 55 not downloaded).
+- **Radar quality:** Doppler velocities over the band are near or beyond the unambiguous range and depend on dealiasing, which was capped, not hand-checked.
+- **Damage timing:** when the trees fell. Sentinel-2 composites can't time it.
+- **County disagreement:** whether scattered single-tree damage explains the gap between the NWS reports and the mask in Covington and Okaloosa counties.
+- **The track:** the operational best track may be revised in NHC's Tropical Cyclone Report. It was used as downloaded.
