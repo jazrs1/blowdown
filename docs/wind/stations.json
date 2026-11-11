@@ -1,0 +1,180 @@
+{
+ "stations": [
+  {
+   "name": "Jay (UF FAWN station 110)",
+   "short": "Jay",
+   "network": "UF FAWN",
+   "lat": 30.77516,
+   "lon": -87.14015,
+   "location_source": "FAWN station location table, https://fawn.ifas.ufl.edu/tour/location_info.php",
+   "gust_kt": 102.2,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts; also 'peak wind gusts of 102 kts ... at a UF FAWN station in Jay' in NWS Mobile, County Impacts Associated with Hurricane Isaias (PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf, 10/23/2026)",
+   "independent_check": "FAWN public 15-minute file (fawnpub/15_minute_obs/BY_STATION/Jay_110/2026.csv) has no gust column; its peak 15-minute mean wind on 9-10 Oct is 72.59 mph = 63.1 kt at 2026-10-09 20:15 (FAWN local time), matching the NWS sustained value for Jay FAWN (63.1 kt). The 102.2 kt gust itself could not be checked against FAWN's public data."
+  },
+  {
+   "name": "Oriole Beach (Texas Tech StickNet 0217A)",
+   "short": "Oriole Beach",
+   "network": "TTU StickNet (deployable, 2.25 m)",
+   "lat": 30.373,
+   "lon": -87.091,
+   "location_approximate": true,
+   "location_source": "approximate location of the Oriole Beach community (Gulf Breeze peninsula); the StickNet's own coordinates were not found",
+   "gust_kt": 101.3,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts; 'gusts measured 101 kts' at Oriole Beach in NWS Mobile, County Impacts Associated with Hurricane Isaias (PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf, 10/23/2026)",
+   "independent_check": "none found (StickNet data not located)"
+  },
+  {
+   "name": "Whiting Field South (KNDZ, AWOS)",
+   "short": "Whiting Field South",
+   "network": "ASOS/AWOS",
+   "lat": 30.7044,
+   "lon": -87.0231,
+   "location_source": "IEM station metadata",
+   "gust_kt": 99.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-10 01:56 UTC; matches 'Whiting Field S 99.0 kt' in NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "n_obs_9_11_oct": 58,
+   "n_obs_22Z_to_06Z": 17
+  },
+  {
+   "name": "Pensacola Regional (KPNS)",
+   "short": "Pensacola",
+   "network": "ASOS/AWOS",
+   "lat": 30.4781,
+   "lon": -87.1869,
+   "location_source": "IEM station metadata",
+   "gust_kt": 80.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:53 UTC",
+   "n_obs_9_11_oct": 80,
+   "n_obs_22Z_to_06Z": 19
+  },
+  {
+   "name": "Pensacola NAS (KNPA)",
+   "short": "Pensacola NAS",
+   "network": "ASOS/AWOS",
+   "lat": 30.3533,
+   "lon": -87.318,
+   "location_source": "IEM station metadata",
+   "gust_kt": 55.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-09 21:56 UTC",
+   "n_obs_9_11_oct": 61,
+   "n_obs_22Z_to_06Z": 4
+  },
+  {
+   "name": "Hurlburt Field (KHRT)",
+   "short": "Hurlburt Field",
+   "network": "ASOS/AWOS",
+   "lat": 30.4278,
+   "lon": -86.6893,
+   "location_source": "IEM station metadata",
+   "gust_kt": 47.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 22:00 UTC",
+   "n_obs_9_11_oct": 69,
+   "n_obs_22Z_to_06Z": 2
+  },
+  {
+   "name": "Eglin AFB (KVPS)",
+   "short": "Eglin AFB",
+   "network": "ASOS/AWOS",
+   "lat": 30.4833,
+   "lon": -86.5254,
+   "location_source": "IEM station metadata",
+   "gust_kt": 71.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-10 01:55 UTC",
+   "n_obs_9_11_oct": 172,
+   "n_obs_22Z_to_06Z": 61
+  },
+  {
+   "name": "Destin-Fort Walton Beach (KDTS)",
+   "short": "Destin",
+   "network": "ASOS/AWOS",
+   "lat": 30.3934,
+   "lon": -86.4674,
+   "location_source": "IEM station metadata",
+   "gust_kt": 66.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:12 UTC",
+   "n_obs_9_11_oct": 78,
+   "n_obs_22Z_to_06Z": 25
+  },
+  {
+   "name": "Duke Field (KEGI)",
+   "short": "Duke Field",
+   "network": "ASOS/AWOS",
+   "lat": 30.6503,
+   "lon": -86.5229,
+   "location_source": "IEM station metadata",
+   "gust_kt": 39.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 22:10 UTC",
+   "n_obs_9_11_oct": 75,
+   "n_obs_22Z_to_06Z": 2
+  },
+  {
+   "name": "Crestview (KCEW)",
+   "short": "Crestview",
+   "network": "ASOS/AWOS",
+   "lat": 30.78,
+   "lon": -86.52,
+   "location_source": "IEM station metadata",
+   "gust_kt": 38.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-09 23:44 UTC",
+   "n_obs_9_11_oct": 73,
+   "n_obs_22Z_to_06Z": 20
+  },
+  {
+   "name": "Evergreen AL (KGZH)",
+   "short": "Evergreen AL",
+   "network": "ASOS/AWOS",
+   "lat": 31.4158,
+   "lon": -87.0441,
+   "location_source": "IEM station metadata",
+   "gust_kt": 38.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:53 UTC",
+   "n_obs_9_11_oct": 28,
+   "n_obs_22Z_to_06Z": 5
+  }
+ ],
+ "listed_not_mapped": [
+  {
+   "name": "Navarre (TXTECH StickNet 0325C)",
+   "gust_kt": 91.5,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "Ferry Pass (TXTECH StickNet 0218A)",
+   "gust_kt": 90.8,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "Allentown (TXTECH StickNet 0326C)",
+   "gust_kt": 88.1,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "UWF Pace Library (WeatherSTEM)",
+   "gust_kt": 86.9,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "FSWN Escambia Pensacola Beach (WeatherSTEM)",
+   "gust_kt": 86.0,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "Navarre Beach Marine Science Station (WeatherSTEM)",
+   "gust_kt": 86.0,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  },
+  {
+   "name": "Gulf Breeze (WxFlow)",
+   "gust_kt": 82.6,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "note": "not mapped: no published coordinates found"
+  }
+ ],
+ "note": "NWS: 'It is unlikely that the point-based observations provided in this report sampled the peak values for the event.' Anemometer heights < 20 m."
+}

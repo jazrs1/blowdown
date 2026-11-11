@@ -4,7 +4,7 @@ Branch `site`. The damage here is the **Sentinel-2 damage mask** (pipeline step 
 
 The held-out block (lat 31.14–31.32, plus a 2 km buffer) and the aerial tip (plus a 2 km buffer) are left out of every number and figure. They show as grey, "Held out until scoring".
 
-Script: [wind_link.py](../../scripts/wind_link.py). Numbers: [wind.json](wind.json). Station values and sources: `data/wind/stations.json`, with downloaded sources in `data/wind/sources/`.
+Script: [wind_link.py](../../scripts/wind_link.py). Numbers: [wind.json](wind.json). Station values and sources: [stations.json](stations.json). Downloaded sources are in `data/wind/sources/` (not in git).
 
 ## Track
 

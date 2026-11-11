@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hurricane blowdown from satellite radar — John Azer</title>
+<meta name="description" content="Can NASA's new NISAR L-band radar map the forest Hurricane Isaias knocked down in October 2026, and does it do better than Sentinel-1? A pre-registered comparison, with the held-out test still sealed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,380;6..72,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<style>
+  :root {
+    --paper: #EDEDE7;
+    --ink: #22201C;
+    --body: #4A463E;
+    --muted: #6E6859;
+    --rule: #B6B2A5;
+    --hair: #D6D2C6;
+    --accent: #7D5F33;
+    --model: #8C4A32;
+    --wet: #2F5F73;
+    --serif: "Newsreader", Georgia, serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 380;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page { max-width: 760px; margin: 0 auto; padding: 40px 32px 120px; }
+
+  .label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    font-weight: 400;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 6px 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 72px;
+  }
+  header .suite a { color: var(--muted); border-bottom-color: var(--hair); }
+  header .suite a:hover { color: var(--ink); }
+
+  .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0 14px; margin: -12px 0 28px; }
+  .jump a, .jump span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
+  .jump a { display: inline-block; line-height: 20px; padding: 12px 0; border-bottom: 0; }
+  .jump a:hover { color: var(--ink); }
+  .jump span { color: var(--rule); }
+
+  .kicker { display: block; color: var(--muted); margin-bottom: 20px; }
+
+  h1 { font-size: 34px; line-height: 1.3; font-weight: 380; letter-spacing: -0.005em; margin: 0 0 24px; max-width: 19em; }
+  .standfirst { font-size: 18px; color: var(--body); margin: 0; max-width: 33em; }
+
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0 40px;
+    margin: 56px 0;
+    padding: 26px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .metric .v { font-family: var(--mono); font-size: 25px; font-weight: 400; letter-spacing: -0.02em; display: block; }
+  .metric .k { display: block; margin-top: 7px; }
+
+  section { margin-top: 72px; }
+
+  h2 { font-family: var(--serif); font-size: 23px; line-height: 1.25; letter-spacing: -0.005em; color: var(--ink); font-weight: 500; margin: 0 0 18px; }
+  h3.subhead { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink); line-height: 1.35; margin: 30px 0 6px; }
+
+  p { max-width: 33em; color: var(--body); }
+  p.lead { color: var(--ink); }
+  figure { margin: 0; }
+  .fig { width: 100%; height: auto; display: block; }
+
+  .caption { font-size: 15.5px; color: var(--muted); max-width: 33em; margin: 20px 0 0; line-height: 1.55; }
+
+  ol.method { list-style: none; counter-reset: step; padding: 0; margin: 0; max-width: 34em; }
+  ol.method li {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 34px 1fr;
+    gap: 16px;
+    padding: 13px 0;
+    border-top: 1px solid var(--hair);
+    color: var(--body);
+    font-size: 17px;
+  }
+  ol.method li:last-child { border-bottom: 1px solid var(--hair); }
+  ol.method li::before { content: counter(step, decimal-leading-zero); font-family: var(--mono); font-size: 12.5px; color: var(--muted); padding-top: 5px; }
+  .step-title { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--ink); line-height: 1.35; margin: 0 0 3px; }
+  .step-detail { margin: 0; font-size: 16px; }
+
+  .table-wrap { overflow-x: auto; margin-top: 32px; }
+  table {
+    border-collapse: collapse;
+    font-family: var(--mono);
+    font-size: 13.5px;
+    width: 100%;
+    max-width: 640px;
+  }
+  th {
+    text-align: right;
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    font-size: 11.5px;
+    padding: 0 0 9px 12px;
+    border-bottom: 1px solid var(--rule);
+    vertical-align: bottom;
+  }
+  th:first-child, td:first-child { text-align: left; padding-left: 0; }
+  td { text-align: right; padding: 7px 0 7px 12px; border-bottom: 1px solid var(--hair); color: var(--body); font-variant-numeric: tabular-nums; }
+  td.pending { color: var(--muted); font-size: 12px; }
+  th:first-child { width: 44%; }
+  tr.flag td { color: var(--ink); }
+
+  .sealed {
+    margin-top: 28px;
+    padding: 18px 20px;
+    border: 1px dashed var(--rule);
+    max-width: 640px;
+  }
+  .sealed p { margin: 6px 0 0; font-size: 16px; }
+
+  footer {
+    margin-top: 88px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 28px;
+  }
+  footer .suite-row { flex-basis: 100%; }
+
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 1px; }
+  a:hover { border-bottom-color: var(--ink); }
+  footer a { font-family: var(--mono); font-size: 13px; border-bottom-color: var(--hair); display: inline-block; line-height: 22px; padding: 11px 0; }
+  a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 1px; }
+
+  /* --- map --- */
+  .map-block { border: 1px solid var(--rule); }
+  #map { height: 560px; background: #dcdcd5; }
+  .map-controls {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 4px 24px;
+    padding: 16px 20px 18px;
+    border-top: 1px solid var(--rule);
+  }
+  .map-controls fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  .map-controls legend { padding: 0; margin-bottom: 4px; }
+  .map-controls label.opt {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 36px;
+    font-size: 16px;
+    color: var(--body);
+    cursor: pointer;
+  }
+  .map-controls input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--ink); margin: 0; }
+  .swatch { width: 26px; height: 9px; border: 1px solid var(--rule); flex: 0 0 auto; }
+  .ramp-rdbu { background: linear-gradient(90deg, #2166ac, #f7f7f7, #b2182b); }
+  .ramp-brbg { background: linear-gradient(90deg, #8c510a, #f5f5f5, #01665e); }
+  .sw-damage { background: #8c2e1e; }
+  .sw-track { height: 0; border: 0; border-top: 2px solid var(--ink); }
+  .sw-gust { width: 10px; height: 10px; border-radius: 50%; background: var(--model); border: 0; margin: 0 8px; }
+  .sw-held { background: #9e9e9e; }
+  .slider-row { grid-column: 1 / -1; display: none; padding-top: 8px; }
+  .slider-row.on { display: block; }
+  .slider-row input[type="range"] { width: 100%; height: 44px; display: block; margin: 0; accent-color: var(--ink); background: transparent; cursor: pointer; }
+  .slider-ends { display: flex; justify-content: space-between; margin-top: -4px; }
+  .legend-note { grid-column: 1 / -1; margin: 10px 0 0; font-size: 14.5px; color: var(--muted); line-height: 1.5; max-width: none; }
+  .split-line { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); z-index: 650; pointer-events: none; display: none; }
+  .leaflet-container { font-family: var(--mono); font-size: 12px; }
+  .leaflet-tooltip.held-label {
+    background: transparent; border: 0; box-shadow: none; color: #1f1f1f;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; text-align: center; white-space: normal; width: 110px;
+  }
+  .leaflet-tooltip.held-label::before { display: none; }
+  .zoom-low .leaflet-tooltip.held-label { display: none; }
+  .base-tiles { filter: grayscale(1) sepia(0.12) contrast(0.82) brightness(1.06); }
+  .leaflet-popup-content { font-family: var(--serif); font-size: 15px; line-height: 1.45; color: var(--body); }
+  .leaflet-popup-content b { color: var(--ink); font-weight: 500; }
+  .map-status { padding: 8px 20px; border-top: 1px solid var(--hair); margin: 0; font-size: 14px; color: var(--muted); max-width: none; display: none; }
+
+  @media (max-width: 620px) {
+    body { font-size: 17px; }
+    .page { padding: 28px 22px 80px; }
+    h1 { font-size: 27px; }
+    h2 { font-size: 21px; }
+    header { margin-bottom: 40px; }
+    .jump { gap: 0 4px; }
+    .jump a, .jump span { font-size: 11px; }
+    section { margin-top: 56px; }
+    .metrics { gap: 0 10px; }
+    .metric .v { font-size: 19px; }
+    .metric .k { margin-top: 5px; font-size: 10.5px; letter-spacing: 0.03em; line-height: 1.5; }
+    #map { height: 70vh; max-height: 520px; min-height: 360px; }
+    .map-controls { grid-template-columns: 1fr; padding: 12px 14px 14px; }
+    table { font-size: 12.5px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <span class="label">blowdown.johnazer.com</span>
+    <span class="label suite">Weather suite: <a href="https://hurricane.johnazer.com">hurricane.johnazer.com</a> &middot; John Azer, November 2026</span>
+  </header>
+
+  <nav class="jump" aria-label="Sections">
+    <a href="#what">What happened</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#question">Question</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#map-section">Map</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#storm">Storm?</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#water">Trees or water?</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#wind">Wind</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#results">Results</a>
+    <span aria-hidden="true">&middot;</span>
+    <a href="#methods">Methods</a>
+  </nav>
+
+  <span class="label kicker">Hurricane blowdown from satellite radar</span>
+
+  <h1>Can NASA's new NISAR radar map the forest Hurricane Isaias knocked down?</h1>
+
+  <p class="standfirst">A comparison of NISAR's L-band radar with Europe's Sentinel-1 over the pine and bottomland forest of the western Florida Panhandle and south Alabama, a month after the October 2026 landfall. The test was fixed in writing before any model saw the held-out area, and that area stays sealed until it has been labelled by hand.</p>
+
+  <div class="metrics">
+    <div class="metric">
+      <span class="v">$33.5M+</span>
+      <span class="k label">Alabama timber damaged, preliminary</span>
+    </div>
+    <div class="metric">
+      <span class="v">~$30M</span>
+      <span class="k label">Florida timber damaged, preliminary</span>
+    </div>
+    <div class="metric">
+      <span class="v">102 kt</span>
+      <span class="k label">peak land gust, Jay, Florida</span>
+    </div>
+  </div>
+
+  <section id="what">
+    <h2>What happened</h2>
+    <p>Hurricane Isaias came ashore near Destin, Florida, at about 8:30 in the evening of 9 October 2026, a Category 2 storm with 105 mph winds, and weakened fast as it moved north into Alabama. NWS Mobile's post-storm report lists the highest land gusts at Jay, Florida (102.2 kt, a University of Florida FAWN station), Oriole Beach (101.3 kt) and Whiting Field South (99 kt). Santa Rosa County alone reported about 4 million cubic yards of vegetative debris.</p>
+    <p>The Alabama Forestry Commission's preliminary aerial survey on 13 October estimated more than 2.5 million tons of timber damaged, worth more than $33.5 million, in Conecuh, Escambia and Monroe counties. The Florida Forest Service's preliminary report put Florida's damaged timber at about $30 million across five counties, most of it in Santa Rosa. Both agencies say ground surveys are still needed.</p>
+    <p class="caption">Sources: <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile post-tropical cyclone report</a> (updated 23 October); <a href="https://www.fox10tv.com/2026/10/18/new-estimates-timber-damage-alabama-isaias/">Alabama Forestry Commission estimate, as reported by WALA FOX10</a>; <a href="https://blogs.ifas.ufl.edu/ffgs/2026/10/30/florida-land-steward-update-october-30-2026/">Florida Forest Service estimate, via UF/IFAS Florida Land Steward Update</a> (30 October); track from the <a href="https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat">NHC operational best track</a>.</p>
+  </section>
+
+  <section id="question">
+    <h2>The question</h2>
+    <p class="lead">NISAR, the NASA and ISRO radar satellite launched in 2025, sees the ground at L-band, a wavelength of about 24 cm. That is long enough to pass through leaves and scatter off trunks and large branches, which is what changes when a stand is knocked down. Sentinel-1 works at C-band, about 5.5 cm, and mostly sees the canopy surface.</p>
+    <p>So the question is plain: does NISAR's before-and-after change map the blowdown better than Sentinel-1's, and at what resolution? Radar sees through cloud and works at night, so if it works it can map damage days after a storm, when optical satellites are still blind.</p>
+    <p>The reference is a provisional damage mask from Sentinel-2 optical imagery. A 20 km stretch of the damage band and the strip under NOAA's aerial survey are held out: nothing in them has been used to build, tune or check any model, and they will be scored once, against labels drawn by hand.</p>
+  </section>
+
+  <section id="map-section">
+    <h2>The map</h2>
+    <figure class="map-block">
+      <div id="map" role="region" aria-label="Map of radar and optical change over the study area"></div>
+      <p class="map-status label" id="map-status"></p>
+      <div class="map-controls">
+        <fieldset>
+          <legend class="label">Change after the storm</legend>
+          <label class="opt"><input type="checkbox" data-layer="nisar" checked> <span class="swatch ramp-rdbu"></span> NISAR HV difference</label>
+          <label class="opt"><input type="checkbox" data-layer="s1"> <span class="swatch ramp-rdbu"></span> Sentinel-1 VH difference</label>
+          <label class="opt"><input type="checkbox" data-layer="ndvi"> <span class="swatch ramp-brbg"></span> Sentinel-2 NDVI difference</label>
+          <label class="opt"><input type="checkbox" data-layer="damage"> <span class="swatch sw-damage"></span> Sentinel-2 damage mask</label>
+        </fieldset>
+        <fieldset>
+          <legend class="label">Storm and imagery</legend>
+          <label class="opt"><input type="checkbox" data-layer="track" checked> <span class="swatch sw-track"></span> Best track</label>
+          <label class="opt"><input type="checkbox" data-layer="stations" checked> <span class="swatch sw-gust"></span> Gust stations</label>
+          <label class="opt"><input type="checkbox" data-layer="beforeafter"> <span class="swatch" style="background:linear-gradient(90deg,#4d6b3a 50%,#8a7a55 50%)"></span> Sentinel-2 before / after</label>
+          <span class="opt label" style="min-height:36px;display:flex;align-items:center;gap:10px"><span class="swatch sw-held"></span> Held out until scoring</span>
+        </fieldset>
+        <div class="slider-row" id="slider-row">
+          <label class="label" for="split">Drag to compare: before (left) and after (right)</label>
+          <input type="range" id="split" min="0" max="100" value="50" aria-label="Before and after split position">
+          <div class="slider-ends"><span class="label">Sep to early Oct</span><span class="label">mid Oct to early Nov</span></div>
+        </div>
+        <p class="legend-note">Radar differences are after minus before in decibels, scaled from &minus;2 dB (blue) to +2 dB (red), with each layer's forest-wide median removed; red means brighter after the storm. NDVI runs from &minus;0.25 (brown, greenness lost) to +0.25. Forest only, about 64 m pixels. The grey blocks are the held-out area and the aerial strip, left blank until scoring.</p>
+      </div>
+    </figure>
+    <p class="caption">NISAR HV is the mean of an ascending and a descending track; Sentinel-1 VH is the mean of two ascending orbits, using October images only so its timing matches NISAR's. Sentinel-2 true colour is a cloud-masked median of 1 September to 8 October and of 11 October to 9 November. Basemap &copy; OpenStreetMap contributors. The grey labels appear when zoomed in.</p>
+  </section>
+
+  <section id="storm">
+    <h2>Is the signal the storm?</h2>
+    <p class="lead">A radar change map can light up for reasons that have nothing to do with wind: rain, a wet season, a field harvested. So NISAR's change across the storm was set against NISAR's change over two 12-day windows with no storm in them.</p>
+    <figure>
+      <picture>
+        <source media="(max-width: 620px)" srcset="figures/storm_vs_control_narrow.png" width="761" height="976">
+        <img class="fig" src="figures/storm_vs_control.png" alt="Bar chart. NISAR HV separates damaged from intact forest with AUC 0.83 at 100 m across the storm, against 0.54 and 0.57 for two windows with no storm; on upland forest 0.74 against 0.51 and 0.57." width="1257" height="611" loading="lazy">
+      </picture>
+      <p class="caption">How well NISAR HV change on one ascending track separates damaged from intact forest (0.5 is chance), for the 12 days across the storm and for two 12-day windows with no storm. Upland means pine and hardwood on ground more than 5 m above the nearest stream.</p>
+    </figure>
+    <p>Across the storm, NISAR HV scores 0.83 at 100 m resolution. The two no-storm windows score 0.54 and 0.57, so roughly 80 to 87 per cent of the separation above chance comes from the storm. On upland forest, where floodwater cannot pool, it still scores 0.74 against 0.51 and 0.57. NISAR's HH channel carries no detectable storm signal on upland forest.</p>
+    <p>Against Sentinel-1 with images matched in time, NISAR's ascending track does better at 100 m (0.85 against 0.81) but the two NISAR tracks averaged together only tie, because the descending track is weak over pine.</p>
+  </section>
+
+  <section id="water">
+    <h2>Downed trees or floodwater?</h2>
+    <p class="lead">Isaias dropped up to 11 inches of rain. In bottomland forest, standing water under the trees also brightens radar, and it would look a lot like damage. Water drains; fallen trees stay down. So the test is whether the signal holds over time.</p>
+    <figure>
+      <picture>
+        <source media="(max-width: 620px)" srcset="figures/persistence_narrow.png" width="753" height="1282">
+        <img class="fig" src="figures/persistence.png" alt="Two panels. On upland forest NISAR HV contrast stays near 0.5 dB from 17 to 29 October; in woody wetland NISAR HV and HH contrasts grow. Sentinel-1 fades on upland." width="1297" height="738" loading="lazy">
+      </picture>
+      <p class="caption">Mean radar change in damaged forest minus intact forest, by date after the storm. The grey band is NISAR HV over the two no-storm windows.</p>
+    </figure>
+    <p>On upland forest, NISAR HV holds nearly steady from 17 to 29 October (+0.52 to +0.47 dB), which looks like structure, not water. In woody wetland, both NISAR channels grow instead of fading, led by HH (+0.83 to +1.01 dB), which is also what lasting floodwater under the canopy would do. There, downed trees and water cannot be told apart from these data. Sentinel-1 fades more on upland than in wetland, the opposite of a simple drying pattern.</p>
+  </section>
+
+  <section id="wind">
+    <h2>Wind and damage</h2>
+    <p class="lead">A northward-moving hurricane usually does its worst damage right of the track, near landfall. Here the damage sits 45 to 75 km west of the track, on its left.</p>
+    <figure>
+      <picture>
+        <source media="(max-width: 620px)" srcset="figures/wind_distance_narrow.png" width="838" height="913">
+        <img class="fig" src="figures/wind_distance.png" alt="Line chart of the share of forest in the damage mask by distance west of the track, peaking at about 30 per cent 60 to 65 km west, with the three strongest gust stations at 44 to 56 km west." width="1386" height="692" loading="lazy">
+      </picture>
+      <p class="caption">Share of forest in the Sentinel-2 damage mask by distance from the NHC best track, in 5 km bins, with the held-out areas left out. Triangles are station peak gusts; hollow ones reported fewer than ten times during the storm and may have failed.</p>
+    </figure>
+    <p>The damaged share of forest peaks at 30 per cent 60 to 65 km west of the track, and at 45 per cent in woody wetland. The three strongest gusts, at Jay, Oriole Beach and Whiting Field, are all 44 to 56 km west. Stations right of the track near landfall that kept reporting peaked lower: 71 kt at Eglin and 66 kt at Destin. The study area was drawn around the damage band and ends at the track, so damage east of it was never mapped, and why the strongest wind fell on the left is not established.</p>
+  </section>
+
+  <section id="results">
+    <h2>Results</h2>
+    <p>Five ways of mapping the damage are compared on a sealed 20 km stretch of the band: simple thresholds on NISAR (A) and Sentinel-1 (B), and models trained on NISAR alone (C), Sentinel-1 alone (D), and both (E). The models come in two versions: v1 as first designed, and v2 after a documented change to the training labels (see Methods). All were frozen and their files hashed before scoring.</p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Arm</th><th>Upland AUC</th><th>Wetland AUC</th><th>F1, damaged</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A NISAR HV threshold</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>B Sentinel-1 VH threshold</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>C NISAR model, v1</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>C NISAR model, v2</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>D Sentinel-1 model, v1</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>D Sentinel-1 model, v2</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>E both sensors, v1</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+          <tr><td>E both sensors, v2</td><td class="pending" colspan="3">Scored after held-out labeling</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="sealed">
+      <span class="label">Sealed</span>
+      <p>550 cells, 400 in the held-out stretch and 150 under the NOAA aerial survey, are waiting to be labelled by hand from before-and-after imagery. The scores above will be filled in once, all of them, including any that go against NISAR.</p>
+    </div>
+  </section>
+
+  <section id="methods">
+    <h2>Methods and honesty notes</h2>
+    <ol class="method">
+      <li><div><h3 class="step-title">The reference is optical and provisional</h3><p class="step-detail">The damage mask comes from Sentinel-2 greenness and burn-ratio change against the same weeks of 2025, with clearcuts and salvage flagged out. There is no field or aerial truth inside the damage band yet, and the hand labels are drawn from the same Sentinel-2 imagery, so agreement with them is partly agreement with Sentinel-2.</p></div></li>
+      <li><div><h3 class="step-title">Validation scores were inflated</h3><p class="step-detail">The first models scored 0.97 to 0.9996 AUC on validation tiles, but the training labels pitted clear damage against clean intact forest and left out the cells in between. On the cut that mirrors the held-out sample, inside the band, damage against all other forest, they scored 0.63 to 0.78, and the simple thresholds 0.55 to 0.61.</p></div></li>
+      <li><div><h3 class="step-title">Amendment 1 changed only the labels</h3><p class="step-detail">About 93 to 95 per cent of the out-of-mask cells in the hand-label sample were cell types the first models never saw. Before any model was scored on the held-out area and before labeling began, a written amendment added v2 models trained on every forest cell. v1 stays frozen; both will be scored side by side.</p></div></li>
+      <li><div><h3 class="step-title">Processor versions are flagged</h3><p class="step-detail">NISAR's newest scene (29 October) comes from a newer processor and sits about 0.6 dB lower in HV and 1 dB in HH. The 2025 no-storm scenes come from an older one and sit about 2 dB lower in HV. Each layer's forest-wide median is removed, which takes out uniform offsets but not uneven ones.</p></div></li>
+      <li><div><h3 class="step-title">Not verified</h3><p class="step-detail">The Jay gust against raw FAWN data (the public file has no gusts); the location and data of the Oriole Beach StickNet; damage east of the track; floodwater against structure in woody wetland; and the size of the selection advantage v2 gained by being tuned on the in-band cut.</p></div></li>
+    </ol>
+  </section>
+
+  <footer>
+    <span class="label suite-row">Weather suite</span>
+    <a href="https://hurricane.johnazer.com">hurricane.johnazer.com: hurricane intensity from infrared imagery</a>
+    <a href="https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat">NHC best track</a>
+    <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile report</a>
+    <a href="https://mesonet.agron.iastate.edu/request/download.phtml">IEM ASOS archive</a>
+    <a href="https://asf.alaska.edu/">NISAR data via ASF</a>
+    <a href="https://developers.google.com/earth-engine/datasets/catalog/COPERNICUS_S1_GRD">Sentinel data via Earth Engine</a>
+  </footer>
+
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="map.js"></script>
+</body>
+</html>

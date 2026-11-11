@@ -1,0 +1,116 @@
+(function () {
+  "use strict";
+  var el = document.getElementById("map");
+  var statusEl = document.getElementById("map-status");
+  function status(msg) { statusEl.textContent = msg; statusEl.style.display = msg ? "block" : "none"; }
+  if (!window.L) { status("The map library did not load. The figures below do not depend on it."); return; }
+
+  var map = L.map(el, { zoomControl: true, scrollWheelZoom: false, attributionControl: true, minZoom: 7, maxZoom: 13, zoomSnap: 0.25, zoomDelta: 0.5 });
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors", maxZoom: 19, className: "base-tiles"
+  }).addTo(map);
+  function zoomClass() { el.classList.toggle("zoom-low", map.getZoom() < 9.25); }
+  map.on("zoomend", zoomClass);
+  map.on("focus", function () { map.scrollWheelZoom.enable(); });
+  map.on("blur", function () { map.scrollWheelZoom.disable(); });
+
+  map.createPane("imagery"); map.getPane("imagery").style.zIndex = 380;
+  map.createPane("change"); map.getPane("change").style.zIndex = 400;
+  map.createPane("held"); map.getPane("held").style.zIndex = 450;
+
+  var layers = {};
+  var splitLine = L.DomUtil.create("div", "split-line", el);
+
+  function getJSON(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(url); return r.json(); }); }
+
+  Promise.all([getJSON("data/layers.json"), getJSON("data/track.geojson"), getJSON("data/stations.geojson"),
+               getJSON("data/heldout.geojson"), getJSON("data/study.geojson")]).then(function (res) {
+    var meta = res[0], track = res[1], stations = res[2], held = res[3], study = res[4];
+    var b = L.latLngBounds(meta.bounds);
+    map.fitBounds(b, { padding: [4, 4] }); zoomClass();
+    map.setMaxBounds(b.pad(0.6));
+
+    function img(name, pane, opacity) { return L.imageOverlay("data/" + name, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0] }); }
+    layers.nisar = img("nisar_hv.png", "change", 0.9);
+    layers.s1 = img("s1_vh.png", "change", 0.9);
+    layers.ndvi = img("s2_ndvi.png", "change", 0.9);
+    layers.damage = img("damage.png", "change", 1);
+    layers.before = img("s2_before.jpg", "imagery", 1);
+    layers.after = img("s2_after.jpg", "imagery", 1);
+
+    L.geoJSON(study, { style: { color: "#6E6859", weight: 1, dashArray: "3 3", fill: false }, interactive: false }).addTo(map);
+
+    L.geoJSON(held, {
+      pane: "held",
+      style: { color: "#555", weight: 1, fillColor: "#9e9e9e", fillOpacity: 0.92 },
+      onEachFeature: function (f, l) {
+        l.bindTooltip(f.properties.label, { permanent: true, direction: "center", className: "held-label" });
+        l.bindPopup("<b>Held out until scoring</b><br>" + f.properties.which + ". Nothing here has been used to build or tune any model; it is blank on every layer until the single scoring pass.");
+      }
+    }).addTo(map);
+
+    var fixes = track.features.filter(function (f) { return f.properties.kind === "fix"; });
+    function fmtTime(t) { return t.slice(6, 8) + " Oct " + t.slice(8, 10) + "Z"; }
+    layers.track = L.layerGroup([
+      L.geoJSON(track.features.filter(function (f) { return f.properties.kind === "track"; }), { style: { color: "#22201C", weight: 2.5 } }),
+      L.geoJSON(fixes, {
+        pointToLayer: function (f, ll) { return L.circleMarker(ll, { radius: 3.5, color: "#22201C", weight: 1, fillColor: "#EDEDE7", fillOpacity: 1 }); },
+        onEachFeature: function (f, l) { l.bindTooltip(fmtTime(f.properties.time) + ", " + f.properties.vmax_kt + " kt"); }
+      }),
+      L.geoJSON(track.features.filter(function (f) { return f.properties.kind === "landfall"; }), {
+        pointToLayer: function (f, ll) { return L.circleMarker(ll, { radius: 6, color: "#22201C", weight: 2, fillColor: "#22201C", fillOpacity: 1 }); },
+        onEachFeature: function (f, l) { l.bindTooltip("Landfall, " + f.properties.note); }
+      })
+    ]);
+
+    layers.stations = L.geoJSON(stations, {
+      pointToLayer: function (f, ll) {
+        var g = f.properties.gust_kt, r = 4 + Math.max(0, (g - 30)) / 10;
+        return L.circleMarker(ll, { radius: r, color: "#8C4A32", weight: 1.5, fillColor: "#8C4A32", fillOpacity: f.properties.sparse ? 0 : 0.85 });
+      },
+      onEachFeature: function (f, l) {
+        var p = f.properties;
+        l.bindPopup("<b>" + p.name + "</b><br>Peak gust " + p.gust_kt.toFixed(1) + " kt<br><span style='font-size:13px'>" + p.source +
+          (p.approx ? ". Location approximate." : "") + (p.sparse ? ". Few reports during the storm; the station may have failed." : "") + "</span>");
+        l.bindTooltip(p.name.split(" (")[0] + " " + Math.round(p.gust_kt) + " kt");
+      }
+    });
+
+    function sync() {
+      document.querySelectorAll(".map-controls input[data-layer]").forEach(function (cb) { set(cb.dataset.layer, cb.checked); });
+    }
+    function set(key, on) {
+      if (key === "beforeafter") {
+        [layers.before, layers.after].forEach(function (l) { if (on) l.addTo(map); else map.removeLayer(l); });
+        document.getElementById("slider-row").classList.toggle("on", on);
+        splitLine.style.display = on ? "block" : "none";
+        updateSplit();
+        return;
+      }
+      var l = layers[key]; if (!l) return;
+      if (on) l.addTo(map); else map.removeLayer(l);
+    }
+    document.querySelectorAll(".map-controls input[data-layer]").forEach(function (cb) {
+      cb.addEventListener("change", function () { set(cb.dataset.layer, cb.checked); });
+    });
+
+    var split = document.getElementById("split");
+    function updateSplit() {
+      if (!map.hasLayer(layers.after)) return;
+      var w = map.getSize().x, x = Math.round(w * split.value / 100);
+      splitLine.style.left = x + "px";
+      var a = layers.after.getElement(), bimg = layers.before.getElement();
+      if (!a || !bimg) return;
+      var nw = map.latLngToContainerPoint(b.getNorthWest());
+      var cut = Math.max(0, x - nw.x);
+      a.style.clipPath = "inset(0 0 0 " + cut + "px)";
+      bimg.style.clipPath = "inset(0 calc(100% - " + cut + "px) 0 0)";
+    }
+    split.addEventListener("input", updateSplit);
+    map.on("move zoomend resize viewreset", updateSplit);
+    map.on("zoomanim", function () { splitLine.style.opacity = 0; });
+    map.on("zoomend", function () { splitLine.style.opacity = 1; });
+    sync();
+    status("");
+  }).catch(function (e) { status("Map data failed to load (" + e.message + ")."); });
+})();
