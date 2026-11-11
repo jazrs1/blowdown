@@ -47,11 +47,11 @@ h, l = axs[0].get_legend_handles_labels(); fig.legend(h, l, loc="lower center", 
 fig.text(0.5, -0.11, "Sentinel-1 points are 27 October and 8 November.", ha="center", fontsize=8, color=MUTED)
 save(fig, "persistence.png")
 # 3. wind: damaged share vs distance from track
-W = json.load(open("docs/wind/wind.json"))
+W = json.load(open("docs/wind/wind.json")); WB2 = json.load(open("docs/wind/wind_both.json"))   # both sides of the track
 fig, ax = plt.subplots(figsize=(7.4, 3.6))
 for dn, col, ls, lab in (("wetland", WET, "-", "Woody wetland"), ("upland", ACC, "-", "Upland forest"), ("all", INK, "--", "All forest")):
-    r = W["bins_signed_distance_5km"][dn]; ax.plot([(q["from_km"] + q["to_km"]) / 2 for q in r], [q["damaged_share"] * 100 for q in r], ls, color=col, lw=1.7 if ls == "-" else 1.1, label=lab)
-ax.axvline(0, color=INK, lw=0.9); ax.text(-1.5, 46, "track", ha="right", fontsize=8.5, color=MUTED)
+    r = WB2["bins_signed_distance_5km"][dn]; ax.plot([(q["from_km"] + q["to_km"]) / 2 for q in r], [q["damaged_share"] * 100 for q in r], ls, color=col, lw=1.7 if ls == "-" else 1.1, label=lab)
+ax.axvline(0, color=INK, lw=0.9); ax.text(-2, 46, "west of track", ha="right", fontsize=8.5, color=MUTED); ax.text(2, 46, "east of track", ha="left", fontsize=8.5, color=MUTED)
 a2 = ax.twinx(); a2.grid(False); a2.spines["right"].set_visible(True)
 for s in W["stations"]:
     if s.get("gust_kt") is None: continue
@@ -62,8 +62,8 @@ for s in W["stations"]:
         off = (4, -12) if s["short"] == "Whiting Field South" else (4, 4)
         a2.annotate(s["short"].replace("Whiting Field South", "Whiting Field"), (s["signed_distance_km"], s["gust_kt"]), xytext=off, textcoords="offset points", fontsize=8, color=MOD)
 a2.set_ylim(0, 120); a2.set_ylabel("peak gust (kt), triangles", color=MOD); a2.tick_params(colors=MOD)
-ax.set_xlabel("distance from the best track (km), negative = west of the track"); ax.set_ylabel("forest in damage mask (%)")
-ax.set_ylim(0, 50); ax.legend(fontsize=8.5, loc="upper left"); ax.set_xlim(-108, 16)
+ax.set_xlabel("distance from the best track (km), negative = west, positive = east"); ax.set_ylabel("forest in damage mask (%)")
+ax.set_ylim(0, 50); ax.legend(fontsize=8.5, loc="upper right"); ax.set_xlim(-108, 76)
 save(fig, "wind_distance.png")
 # ---- narrow versions for phones (served below 620 px by <picture>), same data, larger relative type
 plt.rcParams.update({"font.size": 10})
@@ -91,7 +91,7 @@ h, l = axs[0].get_legend_handles_labels(); fig.legend(h, l, loc="lower center", 
 save(fig, "persistence_narrow.png")
 fig, ax = plt.subplots(figsize=(3.9, 4.0))
 for dn, col, ls, lab in (("wetland", WET, "-", "Woody wetland"), ("upland", ACC, "-", "Upland forest"), ("all", INK, "--", "All forest")):
-    r = W["bins_signed_distance_5km"][dn]; ax.plot([(q["from_km"] + q["to_km"]) / 2 for q in r], [q["damaged_share"] * 100 for q in r], ls, color=col, lw=1.7 if ls == "-" else 1.1, label=lab)
+    r = WB2["bins_signed_distance_5km"][dn]; ax.plot([(q["from_km"] + q["to_km"]) / 2 for q in r], [q["damaged_share"] * 100 for q in r], ls, color=col, lw=1.7 if ls == "-" else 1.1, label=lab)
 ax.axvline(0, color=INK, lw=0.9)
 a2 = ax.twinx(); a2.grid(False); a2.spines["right"].set_visible(True)
 for s in W["stations"]:
@@ -102,7 +102,7 @@ for s in W["stations"]:
     if s["short"] == "Jay": a2.annotate("Jay", (s["signed_distance_km"], s["gust_kt"]), xytext=(-30, 6), textcoords="offset points", fontsize=8, color=MOD, arrowprops=dict(arrowstyle="-", color=MOD, lw=0.6))
     if s["short"] == "Destin": a2.annotate("Destin", (s["signed_distance_km"], s["gust_kt"]), xytext=(-10, 22), textcoords="offset points", fontsize=8, color=MOD, ha="right", arrowprops=dict(arrowstyle="-", color=MOD, lw=0.6))
 a2.set_ylim(0, 120); a2.set_ylabel("peak gust (kt)", color=MOD); a2.tick_params(colors=MOD)
-ax.set_xlabel("km from track (negative = west)"); ax.set_ylabel("forest in damage mask (%)"); ax.set_ylim(0, 50); ax.set_xlim(-108, 16)
+ax.set_xlabel("km from track (negative = west)"); ax.set_ylabel("forest in damage mask (%)"); ax.set_ylim(0, 50); ax.set_xlim(-108, 76)
 ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=1)
 save(fig, "wind_distance_narrow.png")
 from PIL import Image
