@@ -1,0 +1,61 @@
+{
+ "bounds": [
+  [
+   30.41955690343387,
+   -87.60891232615334
+  ],
+  [
+   31.80102093305623,
+   -86.59426521274034
+  ]
+ ],
+ "pixel_m_mercator": 75.0,
+ "size": [
+  1506,
+  2395
+ ],
+ "layers": {
+  "nisar_hv.png": {
+   "label": "NISAR HV difference",
+   "unit": "dB",
+   "range": [
+    -2.0,
+    2.0
+   ],
+   "cmap": "RdBu_r",
+   "bytes": 1710046
+  },
+  "s1_vh.png": {
+   "label": "Sentinel-1 VH difference",
+   "unit": "dB",
+   "range": [
+    -2.0,
+    2.0
+   ],
+   "cmap": "RdBu_r",
+   "bytes": 1832214
+  },
+  "s2_ndvi.png": {
+   "label": "Sentinel-2 NDVI difference",
+   "unit": "NDVI",
+   "range": [
+    -0.25,
+    0.25
+   ],
+   "cmap": "BrBG",
+   "bytes": 879121
+  },
+  "damage.png": {
+   "label": "Sentinel-2 damage mask",
+   "bytes": 99558
+  },
+  "s2_before.jpg": {
+   "label": "Sentinel-2 true colour before",
+   "bytes": 930562
+  },
+  "s2_after.jpg": {
+   "label": "Sentinel-2 true colour after",
+   "bytes": 919793
+  }
+ }
+}
