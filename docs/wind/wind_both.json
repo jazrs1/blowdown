@@ -1,0 +1,1046 @@
+{
+ "bins_signed_distance_5km": {
+  "all": [
+   {
+    "from_km": -105,
+    "to_km": -100,
+    "side": "left",
+    "forest_cells": 146020,
+    "damaged_share": 0.0065
+   },
+   {
+    "from_km": -100,
+    "to_km": -95,
+    "side": "left",
+    "forest_cells": 452267,
+    "damaged_share": 0.0086
+   },
+   {
+    "from_km": -95,
+    "to_km": -90,
+    "side": "left",
+    "forest_cells": 510050,
+    "damaged_share": 0.0088
+   },
+   {
+    "from_km": -90,
+    "to_km": -85,
+    "side": "left",
+    "forest_cells": 479573,
+    "damaged_share": 0.0083
+   },
+   {
+    "from_km": -85,
+    "to_km": -80,
+    "side": "left",
+    "forest_cells": 540737,
+    "damaged_share": 0.0086
+   },
+   {
+    "from_km": -80,
+    "to_km": -75,
+    "side": "left",
+    "forest_cells": 535643,
+    "damaged_share": 0.0097
+   },
+   {
+    "from_km": -75,
+    "to_km": -70,
+    "side": "left",
+    "forest_cells": 542195,
+    "damaged_share": 0.0757
+   },
+   {
+    "from_km": -70,
+    "to_km": -65,
+    "side": "left",
+    "forest_cells": 450858,
+    "damaged_share": 0.221
+   },
+   {
+    "from_km": -65,
+    "to_km": -60,
+    "side": "left",
+    "forest_cells": 404259,
+    "damaged_share": 0.2997
+   },
+   {
+    "from_km": -60,
+    "to_km": -55,
+    "side": "left",
+    "forest_cells": 349790,
+    "damaged_share": 0.2618
+   },
+   {
+    "from_km": -55,
+    "to_km": -50,
+    "side": "left",
+    "forest_cells": 386675,
+    "damaged_share": 0.229
+   },
+   {
+    "from_km": -50,
+    "to_km": -45,
+    "side": "left",
+    "forest_cells": 470275,
+    "damaged_share": 0.1359
+   },
+   {
+    "from_km": -45,
+    "to_km": -40,
+    "side": "left",
+    "forest_cells": 495369,
+    "damaged_share": 0.0607
+   },
+   {
+    "from_km": -40,
+    "to_km": -35,
+    "side": "left",
+    "forest_cells": 541028,
+    "damaged_share": 0.0125
+   },
+   {
+    "from_km": -35,
+    "to_km": -30,
+    "side": "left",
+    "forest_cells": 558459,
+    "damaged_share": 0.0084
+   },
+   {
+    "from_km": -30,
+    "to_km": -25,
+    "side": "left",
+    "forest_cells": 663432,
+    "damaged_share": 0.0066
+   },
+   {
+    "from_km": -25,
+    "to_km": -20,
+    "side": "left",
+    "forest_cells": 636762,
+    "damaged_share": 0.0056
+   },
+   {
+    "from_km": -20,
+    "to_km": -15,
+    "side": "left",
+    "forest_cells": 602368,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -15,
+    "to_km": -10,
+    "side": "left",
+    "forest_cells": 595226,
+    "damaged_share": 0.0069
+   },
+   {
+    "from_km": -10,
+    "to_km": -5,
+    "side": "left",
+    "forest_cells": 583076,
+    "damaged_share": 0.0041
+   },
+   {
+    "from_km": -5,
+    "to_km": 0,
+    "side": "left",
+    "forest_cells": 540834,
+    "damaged_share": 0.0022
+   },
+   {
+    "from_km": 0,
+    "to_km": 5,
+    "side": "right",
+    "forest_cells": 528414,
+    "damaged_share": 0.0028
+   },
+   {
+    "from_km": 5,
+    "to_km": 10,
+    "side": "right",
+    "forest_cells": 519155,
+    "damaged_share": 0.0029
+   },
+   {
+    "from_km": 10,
+    "to_km": 15,
+    "side": "right",
+    "forest_cells": 490256,
+    "damaged_share": 0.0041
+   },
+   {
+    "from_km": 15,
+    "to_km": 20,
+    "side": "right",
+    "forest_cells": 508111,
+    "damaged_share": 0.0048
+   },
+   {
+    "from_km": 20,
+    "to_km": 25,
+    "side": "right",
+    "forest_cells": 472230,
+    "damaged_share": 0.0053
+   },
+   {
+    "from_km": 25,
+    "to_km": 30,
+    "side": "right",
+    "forest_cells": 450649,
+    "damaged_share": 0.0046
+   },
+   {
+    "from_km": 30,
+    "to_km": 35,
+    "side": "right",
+    "forest_cells": 481469,
+    "damaged_share": 0.0038
+   },
+   {
+    "from_km": 35,
+    "to_km": 40,
+    "side": "right",
+    "forest_cells": 486184,
+    "damaged_share": 0.0054
+   },
+   {
+    "from_km": 40,
+    "to_km": 45,
+    "side": "right",
+    "forest_cells": 467667,
+    "damaged_share": 0.0078
+   },
+   {
+    "from_km": 45,
+    "to_km": 50,
+    "side": "right",
+    "forest_cells": 478919,
+    "damaged_share": 0.0091
+   },
+   {
+    "from_km": 50,
+    "to_km": 55,
+    "side": "right",
+    "forest_cells": 502355,
+    "damaged_share": 0.0138
+   },
+   {
+    "from_km": 55,
+    "to_km": 60,
+    "side": "right",
+    "forest_cells": 498590,
+    "damaged_share": 0.0228
+   },
+   {
+    "from_km": 60,
+    "to_km": 65,
+    "side": "right",
+    "forest_cells": 501050,
+    "damaged_share": 0.0407
+   },
+   {
+    "from_km": 65,
+    "to_km": 70,
+    "side": "right",
+    "forest_cells": 505294,
+    "damaged_share": 0.0579
+   },
+   {
+    "from_km": 70,
+    "to_km": 75,
+    "side": "right",
+    "forest_cells": 215265,
+    "damaged_share": 0.0099
+   }
+  ],
+  "upland": [
+   {
+    "from_km": -105,
+    "to_km": -100,
+    "side": "left",
+    "forest_cells": 72658,
+    "damaged_share": 0.0081
+   },
+   {
+    "from_km": -100,
+    "to_km": -95,
+    "side": "left",
+    "forest_cells": 221138,
+    "damaged_share": 0.0116
+   },
+   {
+    "from_km": -95,
+    "to_km": -90,
+    "side": "left",
+    "forest_cells": 266320,
+    "damaged_share": 0.0105
+   },
+   {
+    "from_km": -90,
+    "to_km": -85,
+    "side": "left",
+    "forest_cells": 211940,
+    "damaged_share": 0.0061
+   },
+   {
+    "from_km": -85,
+    "to_km": -80,
+    "side": "left",
+    "forest_cells": 235535,
+    "damaged_share": 0.0087
+   },
+   {
+    "from_km": -80,
+    "to_km": -75,
+    "side": "left",
+    "forest_cells": 246128,
+    "damaged_share": 0.0129
+   },
+   {
+    "from_km": -75,
+    "to_km": -70,
+    "side": "left",
+    "forest_cells": 228923,
+    "damaged_share": 0.0217
+   },
+   {
+    "from_km": -70,
+    "to_km": -65,
+    "side": "left",
+    "forest_cells": 164961,
+    "damaged_share": 0.1244
+   },
+   {
+    "from_km": -65,
+    "to_km": -60,
+    "side": "left",
+    "forest_cells": 168799,
+    "damaged_share": 0.2237
+   },
+   {
+    "from_km": -60,
+    "to_km": -55,
+    "side": "left",
+    "forest_cells": 164318,
+    "damaged_share": 0.1781
+   },
+   {
+    "from_km": -55,
+    "to_km": -50,
+    "side": "left",
+    "forest_cells": 193490,
+    "damaged_share": 0.1761
+   },
+   {
+    "from_km": -50,
+    "to_km": -45,
+    "side": "left",
+    "forest_cells": 232654,
+    "damaged_share": 0.1265
+   },
+   {
+    "from_km": -45,
+    "to_km": -40,
+    "side": "left",
+    "forest_cells": 274258,
+    "damaged_share": 0.0609
+   },
+   {
+    "from_km": -40,
+    "to_km": -35,
+    "side": "left",
+    "forest_cells": 290397,
+    "damaged_share": 0.0068
+   },
+   {
+    "from_km": -35,
+    "to_km": -30,
+    "side": "left",
+    "forest_cells": 291866,
+    "damaged_share": 0.0075
+   },
+   {
+    "from_km": -30,
+    "to_km": -25,
+    "side": "left",
+    "forest_cells": 351499,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -25,
+    "to_km": -20,
+    "side": "left",
+    "forest_cells": 308729,
+    "damaged_share": 0.0022
+   },
+   {
+    "from_km": -20,
+    "to_km": -15,
+    "side": "left",
+    "forest_cells": 307998,
+    "damaged_share": 0.0054
+   },
+   {
+    "from_km": -15,
+    "to_km": -10,
+    "side": "left",
+    "forest_cells": 289896,
+    "damaged_share": 0.0075
+   },
+   {
+    "from_km": -10,
+    "to_km": -5,
+    "side": "left",
+    "forest_cells": 257995,
+    "damaged_share": 0.005
+   },
+   {
+    "from_km": -5,
+    "to_km": 0,
+    "side": "left",
+    "forest_cells": 275632,
+    "damaged_share": 0.0025
+   },
+   {
+    "from_km": 0,
+    "to_km": 5,
+    "side": "right",
+    "forest_cells": 271129,
+    "damaged_share": 0.0027
+   },
+   {
+    "from_km": 5,
+    "to_km": 10,
+    "side": "right",
+    "forest_cells": 253639,
+    "damaged_share": 0.0025
+   },
+   {
+    "from_km": 10,
+    "to_km": 15,
+    "side": "right",
+    "forest_cells": 226668,
+    "damaged_share": 0.0047
+   },
+   {
+    "from_km": 15,
+    "to_km": 20,
+    "side": "right",
+    "forest_cells": 238954,
+    "damaged_share": 0.0061
+   },
+   {
+    "from_km": 20,
+    "to_km": 25,
+    "side": "right",
+    "forest_cells": 217592,
+    "damaged_share": 0.0061
+   },
+   {
+    "from_km": 25,
+    "to_km": 30,
+    "side": "right",
+    "forest_cells": 220484,
+    "damaged_share": 0.0058
+   },
+   {
+    "from_km": 30,
+    "to_km": 35,
+    "side": "right",
+    "forest_cells": 225344,
+    "damaged_share": 0.0041
+   },
+   {
+    "from_km": 35,
+    "to_km": 40,
+    "side": "right",
+    "forest_cells": 205906,
+    "damaged_share": 0.0037
+   },
+   {
+    "from_km": 40,
+    "to_km": 45,
+    "side": "right",
+    "forest_cells": 198377,
+    "damaged_share": 0.0043
+   },
+   {
+    "from_km": 45,
+    "to_km": 50,
+    "side": "right",
+    "forest_cells": 186442,
+    "damaged_share": 0.0028
+   },
+   {
+    "from_km": 50,
+    "to_km": 55,
+    "side": "right",
+    "forest_cells": 202945,
+    "damaged_share": 0.0076
+   },
+   {
+    "from_km": 55,
+    "to_km": 60,
+    "side": "right",
+    "forest_cells": 188601,
+    "damaged_share": 0.0061
+   },
+   {
+    "from_km": 60,
+    "to_km": 65,
+    "side": "right",
+    "forest_cells": 130134,
+    "damaged_share": 0.0035
+   },
+   {
+    "from_km": 65,
+    "to_km": 70,
+    "side": "right",
+    "forest_cells": 138112,
+    "damaged_share": 0.0044
+   },
+   {
+    "from_km": 70,
+    "to_km": 75,
+    "side": "right",
+    "forest_cells": 63365,
+    "damaged_share": 0.0043
+   }
+  ],
+  "wetland": [
+   {
+    "from_km": -105,
+    "to_km": -100,
+    "side": "left",
+    "forest_cells": 46715,
+    "damaged_share": 0.0063
+   },
+   {
+    "from_km": -100,
+    "to_km": -95,
+    "side": "left",
+    "forest_cells": 141224,
+    "damaged_share": 0.0052
+   },
+   {
+    "from_km": -95,
+    "to_km": -90,
+    "side": "left",
+    "forest_cells": 142639,
+    "damaged_share": 0.0078
+   },
+   {
+    "from_km": -90,
+    "to_km": -85,
+    "side": "left",
+    "forest_cells": 161828,
+    "damaged_share": 0.0119
+   },
+   {
+    "from_km": -85,
+    "to_km": -80,
+    "side": "left",
+    "forest_cells": 202546,
+    "damaged_share": 0.0069
+   },
+   {
+    "from_km": -80,
+    "to_km": -75,
+    "side": "left",
+    "forest_cells": 170120,
+    "damaged_share": 0.0068
+   },
+   {
+    "from_km": -75,
+    "to_km": -70,
+    "side": "left",
+    "forest_cells": 188263,
+    "damaged_share": 0.1829
+   },
+   {
+    "from_km": -70,
+    "to_km": -65,
+    "side": "left",
+    "forest_cells": 192320,
+    "damaged_share": 0.3276
+   },
+   {
+    "from_km": -65,
+    "to_km": -60,
+    "side": "left",
+    "forest_cells": 138447,
+    "damaged_share": 0.3785
+   },
+   {
+    "from_km": -60,
+    "to_km": -55,
+    "side": "left",
+    "forest_cells": 102507,
+    "damaged_share": 0.4492
+   },
+   {
+    "from_km": -55,
+    "to_km": -50,
+    "side": "left",
+    "forest_cells": 102442,
+    "damaged_share": 0.3628
+   },
+   {
+    "from_km": -50,
+    "to_km": -45,
+    "side": "left",
+    "forest_cells": 131686,
+    "damaged_share": 0.1345
+   },
+   {
+    "from_km": -45,
+    "to_km": -40,
+    "side": "left",
+    "forest_cells": 84591,
+    "damaged_share": 0.0855
+   },
+   {
+    "from_km": -40,
+    "to_km": -35,
+    "side": "left",
+    "forest_cells": 79927,
+    "damaged_share": 0.0451
+   },
+   {
+    "from_km": -35,
+    "to_km": -30,
+    "side": "left",
+    "forest_cells": 102150,
+    "damaged_share": 0.0183
+   },
+   {
+    "from_km": -30,
+    "to_km": -25,
+    "side": "left",
+    "forest_cells": 111577,
+    "damaged_share": 0.0176
+   },
+   {
+    "from_km": -25,
+    "to_km": -20,
+    "side": "left",
+    "forest_cells": 126150,
+    "damaged_share": 0.0158
+   },
+   {
+    "from_km": -20,
+    "to_km": -15,
+    "side": "left",
+    "forest_cells": 119168,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -15,
+    "to_km": -10,
+    "side": "left",
+    "forest_cells": 120803,
+    "damaged_share": 0.0046
+   },
+   {
+    "from_km": -10,
+    "to_km": -5,
+    "side": "left",
+    "forest_cells": 133115,
+    "damaged_share": 0.0057
+   },
+   {
+    "from_km": -5,
+    "to_km": 0,
+    "side": "left",
+    "forest_cells": 100216,
+    "damaged_share": 0.0033
+   },
+   {
+    "from_km": 0,
+    "to_km": 5,
+    "side": "right",
+    "forest_cells": 91735,
+    "damaged_share": 0.0028
+   },
+   {
+    "from_km": 5,
+    "to_km": 10,
+    "side": "right",
+    "forest_cells": 102742,
+    "damaged_share": 0.0062
+   },
+   {
+    "from_km": 10,
+    "to_km": 15,
+    "side": "right",
+    "forest_cells": 94296,
+    "damaged_share": 0.0031
+   },
+   {
+    "from_km": 15,
+    "to_km": 20,
+    "side": "right",
+    "forest_cells": 114665,
+    "damaged_share": 0.0032
+   },
+   {
+    "from_km": 20,
+    "to_km": 25,
+    "side": "right",
+    "forest_cells": 106475,
+    "damaged_share": 0.0045
+   },
+   {
+    "from_km": 25,
+    "to_km": 30,
+    "side": "right",
+    "forest_cells": 97042,
+    "damaged_share": 0.0053
+   },
+   {
+    "from_km": 30,
+    "to_km": 35,
+    "side": "right",
+    "forest_cells": 124663,
+    "damaged_share": 0.0043
+   },
+   {
+    "from_km": 35,
+    "to_km": 40,
+    "side": "right",
+    "forest_cells": 146640,
+    "damaged_share": 0.0096
+   },
+   {
+    "from_km": 40,
+    "to_km": 45,
+    "side": "right",
+    "forest_cells": 137922,
+    "damaged_share": 0.0152
+   },
+   {
+    "from_km": 45,
+    "to_km": 50,
+    "side": "right",
+    "forest_cells": 151556,
+    "damaged_share": 0.0208
+   },
+   {
+    "from_km": 50,
+    "to_km": 55,
+    "side": "right",
+    "forest_cells": 154192,
+    "damaged_share": 0.0265
+   },
+   {
+    "from_km": 55,
+    "to_km": 60,
+    "side": "right",
+    "forest_cells": 165979,
+    "damaged_share": 0.0563
+   },
+   {
+    "from_km": 60,
+    "to_km": 65,
+    "side": "right",
+    "forest_cells": 221783,
+    "damaged_share": 0.0864
+   },
+   {
+    "from_km": 65,
+    "to_km": 70,
+    "side": "right",
+    "forest_cells": 226734,
+    "damaged_share": 0.124
+   },
+   {
+    "from_km": 70,
+    "to_km": 75,
+    "side": "right",
+    "forest_cells": 89369,
+    "damaged_share": 0.0175
+   }
+  ]
+ },
+ "bins_along_track_10km": {
+  "left": [
+   {
+    "from_km": -10,
+    "to_km": 0,
+    "forest_cells": 38880,
+    "damaged_share": 0.0086
+   },
+   {
+    "from_km": 0,
+    "to_km": 10,
+    "forest_cells": 384514,
+    "damaged_share": 0.0214
+   },
+   {
+    "from_km": 10,
+    "to_km": 20,
+    "forest_cells": 450261,
+    "damaged_share": 0.0345
+   },
+   {
+    "from_km": 20,
+    "to_km": 30,
+    "forest_cells": 606059,
+    "damaged_share": 0.1096
+   },
+   {
+    "from_km": 30,
+    "to_km": 40,
+    "forest_cells": 730779,
+    "damaged_share": 0.1231
+   },
+   {
+    "from_km": 40,
+    "to_km": 50,
+    "forest_cells": 712773,
+    "damaged_share": 0.1098
+   },
+   {
+    "from_km": 50,
+    "to_km": 60,
+    "forest_cells": 758442,
+    "damaged_share": 0.0993
+   },
+   {
+    "from_km": 60,
+    "to_km": 70,
+    "forest_cells": 737887,
+    "damaged_share": 0.0985
+   },
+   {
+    "from_km": 70,
+    "to_km": 80,
+    "forest_cells": 722282,
+    "damaged_share": 0.0522
+   },
+   {
+    "from_km": 80,
+    "to_km": 90,
+    "forest_cells": 671040,
+    "damaged_share": 0.0059
+   },
+   {
+    "from_km": 90,
+    "to_km": 100,
+    "forest_cells": 613448,
+    "damaged_share": 0.0111
+   },
+   {
+    "from_km": 100,
+    "to_km": 110,
+    "forest_cells": 369585,
+    "damaged_share": 0.0319
+   },
+   {
+    "from_km": 110,
+    "to_km": 120,
+    "forest_cells": 225797,
+    "damaged_share": 0.0166
+   },
+   {
+    "from_km": 120,
+    "to_km": 130,
+    "forest_cells": 641369,
+    "damaged_share": 0.0619
+   },
+   {
+    "from_km": 130,
+    "to_km": 140,
+    "forest_cells": 753194,
+    "damaged_share": 0.0454
+   },
+   {
+    "from_km": 140,
+    "to_km": 150,
+    "forest_cells": 788885,
+    "damaged_share": 0.0278
+   },
+   {
+    "from_km": 150,
+    "to_km": 160,
+    "forest_cells": 775820,
+    "damaged_share": 0.0193
+   },
+   {
+    "from_km": 160,
+    "to_km": 170,
+    "forest_cells": 461234,
+    "damaged_share": 0.0135
+   },
+   {
+    "from_km": 170,
+    "to_km": 180,
+    "forest_cells": 42647,
+    "damaged_share": 0.0358
+   }
+  ],
+  "right": [
+   {
+    "from_km": 0,
+    "to_km": 10,
+    "forest_cells": 137519,
+    "damaged_share": 0.1305
+   },
+   {
+    "from_km": 10,
+    "to_km": 20,
+    "forest_cells": 549364,
+    "damaged_share": 0.0281
+   },
+   {
+    "from_km": 20,
+    "to_km": 30,
+    "forest_cells": 568339,
+    "damaged_share": 0.014
+   },
+   {
+    "from_km": 30,
+    "to_km": 40,
+    "forest_cells": 549480,
+    "damaged_share": 0.0108
+   },
+   {
+    "from_km": 40,
+    "to_km": 50,
+    "forest_cells": 532208,
+    "damaged_share": 0.0085
+   },
+   {
+    "from_km": 50,
+    "to_km": 60,
+    "forest_cells": 492564,
+    "damaged_share": 0.0184
+   },
+   {
+    "from_km": 60,
+    "to_km": 70,
+    "forest_cells": 463418,
+    "damaged_share": 0.0112
+   },
+   {
+    "from_km": 70,
+    "to_km": 80,
+    "forest_cells": 474558,
+    "damaged_share": 0.0153
+   },
+   {
+    "from_km": 80,
+    "to_km": 90,
+    "forest_cells": 435897,
+    "damaged_share": 0.0154
+   },
+   {
+    "from_km": 90,
+    "to_km": 100,
+    "forest_cells": 321782,
+    "damaged_share": 0.0104
+   },
+   {
+    "from_km": 100,
+    "to_km": 110,
+    "forest_cells": 323112,
+    "damaged_share": 0.0046
+   },
+   {
+    "from_km": 110,
+    "to_km": 120,
+    "forest_cells": 880432,
+    "damaged_share": 0.0034
+   },
+   {
+    "from_km": 120,
+    "to_km": 130,
+    "forest_cells": 520306,
+    "damaged_share": 0.0069
+   },
+   {
+    "from_km": 130,
+    "to_km": 140,
+    "forest_cells": 453050,
+    "damaged_share": 0.0045
+   },
+   {
+    "from_km": 140,
+    "to_km": 150,
+    "forest_cells": 344211,
+    "damaged_share": 0.0031
+   },
+   {
+    "from_km": 150,
+    "to_km": 160,
+    "forest_cells": 63238,
+    "damaged_share": 0.0015
+   }
+  ]
+ },
+ "side_summary": {
+  "left_0_110km": {
+   "forest_km2": 9436.4,
+   "damage_km2": 530.4,
+   "damaged_share": 0.0562
+  },
+  "right_0_75km": {
+   "forest_km2": 6398.5,
+   "damage_km2": 85.1,
+   "damaged_share": 0.0133
+  },
+  "left_40_80km": {
+   "forest_km2": 3271.6,
+   "damage_km2": 487.1,
+   "damaged_share": 0.1489
+  },
+  "right_0_40km": {
+   "forest_km2": 3542.8,
+   "damage_km2": 14.8,
+   "damaged_share": 0.0042
+  },
+  "left_0_40km": {
+   "forest_km2": 4249.1,
+   "damage_km2": 27.1,
+   "damaged_share": 0.0064
+  }
+ },
+ "counties": {
+  "Escambia AL": {
+   "mapped_forest_km2": 1394.6,
+   "damage_km2": 85.8,
+   "damaged_share": 0.0615
+  },
+  "Covington AL": {
+   "mapped_forest_km2": 1695.3,
+   "damage_km2": 6.7,
+   "damaged_share": 0.0039
+  },
+  "Crenshaw AL": {
+   "mapped_forest_km2": 619.5,
+   "damage_km2": 3.6,
+   "damaged_share": 0.0058
+  },
+  "Escambia FL": {
+   "mapped_forest_km2": 794.4,
+   "damage_km2": 57.4,
+   "damaged_share": 0.0723
+  },
+  "Santa Rosa FL": {
+   "mapped_forest_km2": 1366.6,
+   "damage_km2": 254.6,
+   "damaged_share": 0.1863
+  },
+  "Walton FL": {
+   "mapped_forest_km2": 1601.8,
+   "damage_km2": 23.2,
+   "damaged_share": 0.0145
+  },
+  "Okaloosa FL": {
+   "mapped_forest_km2": 1518.2,
+   "damage_km2": 5.2,
+   "damaged_share": 0.0035
+  }
+ }
+}

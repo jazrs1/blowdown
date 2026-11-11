@@ -1,0 +1,20 @@
+{
+ "east_forest_km2": 6912.8,
+ "east_damage_km2_cells": 86.5,
+ "east_upland_forest_km2": 2936.4,
+ "east_wetland_forest_km2": 1920.1,
+ "s1_valid_share_of_east_forest": {
+  "o19": 1.0,
+  "o92": 0.0
+ },
+ "nisar_t76_pair_valid_share_of_east_forest": 0.987,
+ "nisar_frame_footprint_share_of_east_box": {
+  "076": 0.994,
+  "055": 0.212
+ },
+ "nisar_median_removed_dB": {
+  "HV": -0.9710979461669922,
+  "HH": -0.747694730758667
+ },
+ "seconds": 385
+}
