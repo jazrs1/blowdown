@@ -29,7 +29,12 @@
 
   window.__blowdownMap = map;   // exposed for automated alignment checks only
   var layers = {};
+  // Before/after divider: a line with "Before" / "After" labels and a grip, draggable on the map (pointer events; the
+  // slider below stays the keyboard control and moves with it).
   var splitLine = L.DomUtil.create("div", "split-line", el);
+  splitLine.innerHTML = '<span class="split-tag split-before">Before</span><span class="split-tag split-after">After</span><span class="split-grip" aria-hidden="true"></span>';
+  splitLine.setAttribute("title", "Drag to compare before and after");
+  L.DomEvent.disableClickPropagation(splitLine); L.DomEvent.disableScrollPropagation(splitLine);
 
   function getJSON(url) { return fetch(url).then(function (r) { if (!r.ok) throw new Error(url); return r.json(); }); }
 
@@ -117,10 +122,15 @@
     });
 
     var split = document.getElementById("split");
+    function span() {   // the slider's 0-100 runs across the imagery as it sits on screen, clipped to the map
+      var w = map.getSize().x, nw = map.latLngToContainerPoint(b.getNorthWest()), se = map.latLngToContainerPoint(b.getSouthEast());
+      var lo = Math.max(0, nw.x), hi = Math.min(w, se.x); return hi - lo > 20 ? [lo, hi] : [0, w];
+    }
     function updateSplit() {
       if (!map.hasLayer(layers.after)) return;
-      var w = map.getSize().x, x = Math.round(w * split.value / 100);
+      var w = map.getSize().x, sp = span(), x = Math.round(sp[0] + (sp[1] - sp[0]) * split.value / 100);
       splitLine.style.left = x + "px";
+      splitLine.classList.toggle("near-left", x < 128); splitLine.classList.toggle("near-right", w - x < 72);   // keep labels inside the map and clear of the zoom buttons
       var a = layers.after.getElement(), bimg = layers.before.getElement();
       if (!a || !bimg) return;
       var nw = map.latLngToContainerPoint(b.getNorthWest());
@@ -129,6 +139,19 @@
       bimg.style.clipPath = "inset(0 calc(100% - " + cut + "px) 0 0)";
     }
     split.addEventListener("input", updateSplit);
+    var dragging = false;
+    function dragTo(clientX) {
+      var r = el.getBoundingClientRect(), sp = span(), v = Math.max(0, Math.min(100, (clientX - r.left - sp[0]) / (sp[1] - sp[0]) * 100));
+      split.value = v; updateSplit();
+    }
+    splitLine.addEventListener("pointerdown", function (e) {
+      dragging = true; splitLine.classList.add("dragging"); map.dragging.disable();
+      try { splitLine.setPointerCapture(e.pointerId); } catch (err) {}
+      dragTo(e.clientX); e.preventDefault();
+    });
+    splitLine.addEventListener("pointermove", function (e) { if (dragging) { dragTo(e.clientX); e.preventDefault(); } });
+    function endDrag() { if (!dragging) return; dragging = false; splitLine.classList.remove("dragging"); map.dragging.enable(); }
+    splitLine.addEventListener("pointerup", endDrag); splitLine.addEventListener("pointercancel", endDrag); splitLine.addEventListener("lostpointercapture", endDrag);
     map.on("move zoomend resize viewreset", updateSplit);
     map.on("zoomanim", function () { splitLine.style.opacity = 0; });
     map.on("zoomend", function () { splitLine.style.opacity = 1; });
