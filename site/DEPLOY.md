@@ -2,7 +2,7 @@
 
 The site is static: `index.html`, `map.js`, `figures/`, `data/`. There is no build step and no `vercel.json`, the same as `site/` in `jazrs1/hurricane-intensity`, which has no Vercel config in the repo.
 
-It loads Leaflet 1.9.4 from unpkg (pinned with integrity hashes), Google Fonts, and Esri basemap tiles at runtime. Everything else is in this folder, about 6.5 MB.
+It loads Leaflet 1.9.4 from unpkg and MapLibre GL 5.24.0 plus maplibre-gl-leaflet 0.1.4 from jsDelivr (all pinned with integrity hashes), Google Fonts, and OpenFreeMap tiles at runtime. Everything else is in this folder, about 6.5 MB.
 
 **Nothing has been deployed.** These are the steps.
 
@@ -49,5 +49,20 @@ This needs the blowdown repository on GitHub. It isn't on GitHub yet, and creati
 ## Before going public
 
 - **Held-out areas:** the gray blocks and blank pixels are deliberate. Keep them until the scoring pass is done, then re-export the layers with `scripts/site_layers.py` once the rule is lifted.
-- **Basemap:** the map uses Esri's Light Gray Canvas tiles (base and labels) from services.arcgisonline.com, credited on the map. OpenStreetMap's standard tiles were dropped because their land-use fills change shade at the Alabama-Florida line. Esri's terms for using these tiles on a public site were not checked: confirm them, or switch to another light basemap, before going public.
+- **Basemap: OpenFreeMap "Positron", vector, no API key.**
+  - **Source:** the style is a muted copy of `https://tiles.openfreemap.org/styles/positron`, built by `scripts/basemap_style.py` and hosted with the site as `data/basemap_style.json`. OpenFreeMap's quick-start page says custom styles must be self-hosted.
+  - **What was changed:** park, land-use and land-cover layers removed (they drew a shade change at the Alabama–Florida line); colors muted; state and county lines shown from zoom 6.
+  - **Runtime loads:** tiles, fonts and icons still come from `tiles.openfreemap.org`. The style is drawn by MapLibre GL 5.24.0 through `@maplibre/maplibre-gl-leaflet` 0.1.4, both pinned on jsDelivr with integrity hashes. MapLibre 6 ships only as ES modules, which the Leaflet plugin can't use, so it stays on 5.24.0.
+  - **Terms** (OpenFreeMap terms of use, read 2026-11-11):
+    - free, no API key, no stated view limits for normal map use;
+    - provided "as-is", with no promise of availability, and it may be discontinued without notice;
+    - bulk/offline downloads are capped at 3,000 tiles or 50 MB per download, at most 4 parallel requests, with a unique User-Agent;
+    - governed by Hungarian law.
+  - **Attribution:** the map shows "OpenFreeMap © OpenMapTiles © OpenStreetMap contributors". OpenStreetMap's license (ODbL) and the OpenMapTiles schema require credit; OpenFreeMap's own credit is a courtesy.
+  - **Fallback if the public OpenFreeMap instance goes away:** self-host a Protomaps extract of the study region. This hasn't been tested.
+    1. Install the `pmtiles` CLI and cut an extract from a Protomaps daily planet build:
+       `pmtiles extract https://build.protomaps.com/<YYYYMMDD>.pmtiles site/data/basemap.pmtiles --bbox=-88.6,29.6,-85.4,32.7 --maxzoom=13`
+       (check the size; keep it within what Vercel serves comfortably).
+    2. Load MapLibre's `pmtiles` protocol plugin and point a style's vector source at `pmtiles://data/basemap.pmtiles`. A Protomaps "light" or "grayscale" basemap style, with its land-use layers removed the same way, fits the site.
+    3. Change the attribution to "Protomaps © OpenStreetMap contributors".
 - **Results table:** it says "Scored after held-out labeling" until the single scoring pass.

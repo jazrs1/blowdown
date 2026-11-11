@@ -6,16 +6,19 @@
   if (!window.L) { status("The map library did not load. The figures below do not depend on it."); return; }
 
   var map = L.map(el, { zoomControl: true, scrollWheelZoom: false, attributionControl: true, minZoom: 7, maxZoom: 13, zoomSnap: 0.25, zoomDelta: 0.5 });
-  // Esri Light Gray Canvas (base + labels). OpenStreetMap's standard tiles were dropped because their forest/land-use fills are
-  // mapped far more densely in Florida than in Alabama, which drew a shade seam exactly along the state line (31.0 N).
-  L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
-    attribution: "&copy; Esri, &copy; OpenStreetMap contributors", maxZoom: 16
-  }).addTo(map);
+  // Basemap: OpenFreeMap "Positron" vector style (no API key), drawn through maplibre-gl-leaflet under the overlays.
+  // The hosted style (data/basemap_style.json) drops park, land-use and land-cover fills, which drew a shade change along the
+  // Florida-Alabama line, and keeps roads, labels, water and boundaries, muted.
+  var OFM_ATTR = '<a href="https://openfreemap.org">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/">OpenMapTiles</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
   map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
-  map.createPane("labels"); map.getPane("labels").style.zIndex = 460; map.getPane("labels").style.pointerEvents = "none";
-  L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
-    pane: "labels", maxZoom: 16
-  }).addTo(map);
+  if (window.L.maplibreGL) {
+    // Muted copy of OpenFreeMap's Positron style, hosted with the site (built by scripts/basemap_style.py).
+    fetch("data/basemap_style.json?v=2026-11-11").then(function (r) { if (!r.ok) throw new Error("style " + r.status); return r.json(); })
+      .then(function (st) { L.maplibreGL({ style: st, attributionControl: { customAttribution: OFM_ATTR }, interactive: false }).addTo(map); })
+      .catch(function (e) { status("The basemap did not load (" + e.message + "); the data layers below still work."); });
+  } else {
+    status("The basemap library did not load; the data layers still work.");
+  }
 
   map.on("focus", function () { map.scrollWheelZoom.enable(); });
   map.on("blur", function () { map.scrollWheelZoom.disable(); });
@@ -24,6 +27,7 @@
   map.createPane("change"); map.getPane("change").style.zIndex = 400;
   map.createPane("held"); map.getPane("held").style.zIndex = 450;
 
+  window.__blowdownMap = map;   // exposed for automated alignment checks only
   var layers = {};
   var splitLine = L.DomUtil.create("div", "split-line", el);
 
@@ -34,12 +38,15 @@
     var meta = res[0], track = res[1], stations = res[2], held = res[3], study = res[4];
     var b = L.latLngBounds(meta.bounds);
     map.fitBounds(b, { padding: [4, 4] });
+    var vq = /[?&]view=([-0-9.]+),([-0-9.]+),([0-9.]+)/.exec(location.search);   // ?view=lat,lon,zoom (used for alignment checks)
+    if (vq) map.setView([+vq[1], +vq[2]], +vq[3], { animate: false });
     map.setMaxBounds(b.pad(0.6));
 
     // A failed overlay shows a transparent pixel (no broken-image icon) and a message under the map instead of failing silently.
+    var DATA_VERSION = "2026-11-11";   // bump when site/data images are regenerated, so browsers don't show stale cached copies
     var BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     function img(name, pane, opacity) {
-      var o = L.imageOverlay("data/" + name, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0], errorOverlayUrl: BLANK });
+      var o = L.imageOverlay("data/" + name + "?v=" + DATA_VERSION, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0], errorOverlayUrl: BLANK });
       o.on("error", function () { status("A map layer (" + name + ") did not load. Reloading the page usually fixes this."); });
       return o;
     }

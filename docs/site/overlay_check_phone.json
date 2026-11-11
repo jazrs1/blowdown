@@ -1,0 +1,19 @@
+{
+ "phone_all_overlays": {
+  "data/damage.png": 1506,
+  "data/nisar_hv.png": 1506,
+  "data/s1_vh.png": 1506,
+  "data/s2_ndvi.png": 1506,
+  "data/s2_before.jpg": 1506,
+  "data/s2_after.jpg": 1506,
+  "status": "",
+  "jump_height": 88,
+  "attr_h": 14,
+  "basemap_canvas": true,
+  "default_checked": null
+ },
+ "console_errors": [],
+ "openfreemap_responses": {
+  "200": 5
+ }
+}

@@ -1,4 +1,18 @@
 {
+ "basemap_alignment": {
+  "img_vs_bounds_px": [
+   0,
+   0,
+   0,
+   0
+  ],
+  "basemap_canvas": true,
+  "attribution": "Leaflet | OpenFreeMap \u00a9 OpenMapTiles \u00a9 OpenStreetMap contributors"
+ },
+ "openfreemap_responses": {
+  "200": 15
+ },
+ "console_errors": [],
  "default_layers_on": [
   "damage",
   "track",
@@ -19,6 +33,8 @@
   "data/s2_after.jpg": 1506,
   "status": "",
   "jump_height": 44,
+  "attr_h": 16,
+  "basemap_canvas": true,
   "default_checked": null
  },
  "phone_all_overlays": {
@@ -30,20 +46,52 @@
   "data/s2_after.jpg": 1506,
   "status": "",
   "jump_height": 88,
+  "attr_h": 14,
+  "basemap_canvas": true,
   "default_checked": null
  },
  "network_data_requests": [
   {
-   "url": "damage.png",
+   "url": "basemap_style.json?v=2026-11-11",
+   "status": 200,
+   "mime": "application/json",
+   "bytes": 24614
+  },
+  {
+   "url": "basemap_style.json?v=2026-11-11",
+   "status": 200,
+   "mime": "application/json",
+   "bytes": 24614
+  },
+  {
+   "url": "basemap_style.json?v=2026-11-11",
+   "status": 200,
+   "mime": "application/json",
+   "bytes": 24614
+  },
+  {
+   "url": "damage.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 99747
   },
   {
-   "url": "damage.png",
+   "url": "damage.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 99747
+  },
+  {
+   "url": "damage.png?v=2026-11-11",
+   "status": 200,
+   "mime": "image/png",
+   "bytes": 99747
+  },
+  {
+   "url": "heldout.geojson",
+   "status": 200,
+   "mime": "application/octet-stream",
+   "bytes": 4205
   },
   {
    "url": "heldout.geojson",
@@ -70,64 +118,76 @@
    "bytes": 1185
   },
   {
-   "url": "nisar_hv.png",
+   "url": "layers.json",
+   "status": 200,
+   "mime": "application/json",
+   "bytes": 1185
+  },
+  {
+   "url": "nisar_hv.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 1710237
   },
   {
-   "url": "nisar_hv.png",
+   "url": "nisar_hv.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 1710237
   },
   {
-   "url": "s1_vh.png",
+   "url": "s1_vh.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 1832405
   },
   {
-   "url": "s1_vh.png",
+   "url": "s1_vh.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 1832405
   },
   {
-   "url": "s2_after.jpg",
+   "url": "s2_after.jpg?v=2026-11-11",
    "status": 200,
    "mime": "image/jpeg",
    "bytes": 919984
   },
   {
-   "url": "s2_after.jpg",
+   "url": "s2_after.jpg?v=2026-11-11",
    "status": 200,
    "mime": "image/jpeg",
    "bytes": 919984
   },
   {
-   "url": "s2_before.jpg",
+   "url": "s2_before.jpg?v=2026-11-11",
    "status": 200,
    "mime": "image/jpeg",
    "bytes": 930753
   },
   {
-   "url": "s2_before.jpg",
+   "url": "s2_before.jpg?v=2026-11-11",
    "status": 200,
    "mime": "image/jpeg",
    "bytes": 930753
   },
   {
-   "url": "s2_ndvi.png",
+   "url": "s2_ndvi.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 879311
   },
   {
-   "url": "s2_ndvi.png",
+   "url": "s2_ndvi.png?v=2026-11-11",
    "status": 200,
    "mime": "image/png",
    "bytes": 879311
+  },
+  {
+   "url": "stations.geojson",
+   "status": 200,
+   "mime": "application/octet-stream",
+   "bytes": 3206
   },
   {
    "url": "stations.geojson",
@@ -152,6 +212,18 @@
    "status": 200,
    "mime": "application/octet-stream",
    "bytes": 3068
+  },
+  {
+   "url": "study.geojson",
+   "status": 200,
+   "mime": "application/octet-stream",
+   "bytes": 3068
+  },
+  {
+   "url": "track.geojson",
+   "status": 200,
+   "mime": "application/octet-stream",
+   "bytes": 6060
   },
   {
    "url": "track.geojson",
