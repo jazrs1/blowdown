@@ -141,5 +141,5 @@ for s in ST["stations"]:
     ax.plot(sx / 1e3, sy / 1e3, "^" if s.get("gust_kt") and s["gust_kt"] >= 90 else "v", c="#2f6f8f", ms=7, mec="white")
     ax.annotate(f"{s['short']} {s['gust_kt']:.0f} kt" + (" (approx. location)" if s.get("location_approximate") else ""), (sx / 1e3, sy / 1e3), xytext=(5, 3), textcoords="offset points", fontsize=7.5, color="#1d4f66", path_effects=[pe.withStroke(linewidth=2.5, foreground="white")])
 ax.set_xlim(ext[0] - 5, ext[1] + 45); ax.set_ylim(ext[2] - 25, ext[3]); ax.set_xlabel("UTM 16N easting (km)"); ax.set_ylabel("northing (km)")
-ax.set_title("Isaias best track, peak gusts (kt) and Sentinel-2 damage mask (red)\nstudy grid only; grey = held out until scoring", fontsize=10)
+ax.set_title("Isaias best track, peak gusts (kt) and Sentinel-2 damage mask (red)\nstudy grid only; gray = held out until scoring", fontsize=10)
 fig.savefig("docs/wind/fig_wind_map.png", dpi=90, bbox_inches="tight"); plt.close(fig)

@@ -123,7 +123,7 @@ for k, g in lines.items():
         xs, ys = seg.xy; ax.plot(np.array(xs) / 1e3, np.array(ys) / 1e3, ls, c=c, lw=lw, label=k if first else None); first = False
 for q in ok: ax.plot(*[v / 1e3 for v in ll2u(q["lon"], q["lat"])], "o", ms=3, c="yellow", mec="k", mew=0.4)
 ax.set_xlim(ext[0], ext[1]); ax.set_ylim(ext[2], ext[3]); ax.legend(fontsize=7, loc="lower left", framealpha=0.9)
-ax.set_title("Acquisition geometry over the damage mask (red)" + chr(10) + "black = band outline, yellow = edge points, grey = held out", fontsize=9)
+ax.set_title("Acquisition geometry over the damage mask (red)" + chr(10) + "black = band outline, yellow = edge points, gray = held out", fontsize=9)
 for k, (nm, ttl) in enumerate((("pre_doy_median", "pre composite: median acquisition day of year"), ("post_doy_median", "post composite: median acquisition day of year"))):
     a = fig.add_subplot(gs[0, 2 + k]); v = ST[nm].copy().astype(float); v[EX200] = np.nan
     im = a.imshow(v, extent=ext, cmap="viridis", interpolation="nearest"); a.imshow(np.where(EX200, 1.0, np.nan), extent=ext, cmap=ListedColormap(["#9e9e9e"]), interpolation="nearest"); band_outline(a); fig.colorbar(im, ax=a, shrink=0.6); a.set_title(ttl, fontsize=9)

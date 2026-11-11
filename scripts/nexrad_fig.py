@@ -1,7 +1,7 @@
 """Figure and band statistics for the NEXRAD maximum-|V| maps (nexrad_maxvel.py).
 Band test: for each radar, mean of the maximum |V| inside the damage band (pipeline extent mask, held-out exclusions removed)
 vs. outside the band at the same range from the radar (annulus matched to the band's range distribution, land and sea),
-which keeps beam height comparable. Held-out block + 2 km and aerial tip + 2 km are greyed and excluded.
+which keeps beam height comparable. Held-out block + 2 km and aerial tip + 2 km are grayed and excluded.
 Writes docs/wind/nexrad.json (adds band_test) and docs/wind/fig_nexrad_maxvel.png."""
 import json, sys; sys.path.insert(0, "scripts")
 import numpy as np, matplotlib
@@ -47,7 +47,7 @@ for col, site in enumerate(("KMOB", "KEVX")):
         ax.set_xlim(-88.4, -85.5); ax.set_ylim(29.8, 32.3); ax.set_aspect(1 / np.cos(np.radians(31)))
         fig.colorbar(im, ax=ax, shrink=0.7, label=lab)
         hb = J[site]["beam_height_over_band"]["band_center_31.0N_87.15W"]
-        ax.set_title(f"{site}: {lab}\nbeam centre over the band ~{hb['beam_center_height_m_asl']/1000:.1f} km ({hb['range_km']:.0f} km range); blue = band outline; grey = held out", fontsize=9)
+        ax.set_title(f"{site}: {lab}\nbeam center over the band ~{hb['beam_center_height_m_asl']/1000:.1f} km ({hb['range_km']:.0f} km range); blue = band outline; gray = held out", fontsize=9)
 fig.suptitle("NEXRAD Level II lowest velocity sweep, 22Z 9 Oct to 06Z 10 Oct 2026: dealiased radial velocity (wind component along the beam, at beam height; not surface wind)", fontsize=10)
 fig.savefig("docs/wind/fig_nexrad_maxvel.png", dpi=75)
 json.dump(J, open("docs/wind/nexrad.json", "w"), indent=1); print(json.dumps({s: J[s]["band_test"] for s in ("KMOB", "KEVX")}, indent=1))

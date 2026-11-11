@@ -57,7 +57,7 @@ for lay in ("dNDVI", "NISAR HV t76 pair", "S1 VH orbit 19"):
         out[f"{lay} | {dom}"] = rows
 json.dump(out, open("docs/wind/east_profiles.json", "w"), indent=1)
 fig, axs = plt.subplots(1, 3, figsize=(16, 4.4), constrained_layout=True)
-for ax, (lay, unit, sg) in zip(axs, (("dNDVI", "NDVI change (negative = loss)", 1), ("NISAR HV t76 pair", "HV change (dB, re-centred)", 1), ("S1 VH orbit 19", "VH change (dB, re-centred)", 1))):
+for ax, (lay, unit, sg) in zip(axs, (("dNDVI", "NDVI change (negative = loss)", 1), ("NISAR HV t76 pair", "HV change (dB, re-centered)", 1), ("S1 VH orbit 19", "VH change (dB, re-centered)", 1))):
     for dom, ls in (("all", "-"), ("upland", "--")):
         r = out[f"{lay} | {dom}"]; ax.plot([q["from_km"] + 2.5 for q in r], [q["mean"] for q in r], ls, c="k" if dom == "all" else "#7D5F33", label=f"{dom} forest")
     ax.axvline(0, c="0.4", lw=0.8); ax.axhline(0, c="0.7", lw=0.6); ax.set_title(lay + " (mean over forest, 5 km bins)", fontsize=10); ax.set_xlabel("km from track (negative = west)"); ax.set_ylabel(unit)

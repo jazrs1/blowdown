@@ -2,7 +2,7 @@
 
 The site is static: `index.html`, `map.js`, `figures/`, `data/`. There is no build step and no `vercel.json`, the same as `site/` in `jazrs1/hurricane-intensity`, which has no Vercel config in the repo.
 
-It loads Leaflet 1.9.4 from unpkg (pinned with integrity hashes), Google Fonts, and OpenStreetMap tiles at runtime. Everything else is in this folder, about 6.5 MB.
+It loads Leaflet 1.9.4 from unpkg (pinned with integrity hashes), Google Fonts, and Esri basemap tiles at runtime. Everything else is in this folder, about 6.5 MB.
 
 **Nothing has been deployed.** These are the steps.
 
@@ -48,6 +48,6 @@ This needs the blowdown repository on GitHub. It isn't on GitHub yet, and creati
 
 ## Before going public
 
-- **Held-out areas:** the grey blocks and blank pixels are deliberate. Keep them until the scoring pass is done, then re-export the layers with `scripts/site_layers.py` once the rule is lifted.
-- **Basemap:** OpenStreetMap's tile servers allow light use with attribution (their tile usage policy). If traffic grows, switch to a keyed provider.
+- **Held-out areas:** the gray blocks and blank pixels are deliberate. Keep them until the scoring pass is done, then re-export the layers with `scripts/site_layers.py` once the rule is lifted.
+- **Basemap:** the map uses Esri's Light Gray Canvas tiles (base and labels) from services.arcgisonline.com, credited on the map. OpenStreetMap's standard tiles were dropped because their land-use fills change shade at the Alabama-Florida line. Esri's terms for using these tiles on a public site were not checked: confirm them, or switch to another light basemap, before going public.
 - **Results table:** it says "Scored after held-out labeling" until the single scoring pass.

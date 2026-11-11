@@ -1,4 +1,4 @@
-"""Wind timing at gust stations against the storm centre's passage.
+"""Wind timing at gust stations against the storm center's passage.
 - ASOS/AWOS (IEM archive, METARs and specials): Whiting Field South (NDZ), Pensacola (PNS), Eglin (VPS), Destin (DTS):
   sustained speed (sknt), direction (drct), gust, and peak-wind remark (gust, direction, time), 2026-10-09 18Z to 10-10 08Z.
 - FAWN Jay (station 110): 15-minute mean wind speed and direction (public file; no gusts). Its clock is inferred from the
@@ -65,20 +65,20 @@ for ax, s in zip(axs, order):
     g = np.array(d["gust"]); sk = np.array(d["sknt"]); dr = np.array(d["drct"])
     allg = [(t[i], g[i], dr[i]) for i in range(len(t)) if np.isfinite(g[i])] + [(a, b, c) for a, b, c in d["pk"]]
     best = max(allg, key=lambda q: q[1]) if allg else None
-    rec = {"name": NAMES[s], "centre_closest_approach_h_from_00Z": round(tp, 2), "closest_distance_km": round(dist, 1),
+    rec = {"name": NAMES[s], "center_closest_approach_h_from_00Z": round(tp, 2), "closest_distance_km": round(dist, 1),
            "n_reports_22Z_06Z": int(((t >= -2) & (t <= 6)).sum())}
     if best: rec.update({"peak_gust_kt": best[1], "peak_gust_h_from_00Z": round(best[0], 2), "peak_gust_dir_deg": None if not np.isfinite(best[2]) else best[2],
-                         "peak_after_centre_h": round(best[0] - tp, 2)})
+                         "peak_after_center_h": round(best[0] - tp, 2)})
     km = int(np.nanargmax(sk)) if np.isfinite(sk).any() else None
-    if km is not None: rec.update({"max_sustained_kt": round(float(sk[km]), 1), "max_sustained_h": round(float(t[km]), 2), "max_sustained_dir": None if not np.isfinite(dr[km]) else float(dr[km]), "max_sustained_after_centre_h": round(float(t[km]) - tp, 2)})
+    if km is not None: rec.update({"max_sustained_kt": round(float(sk[km]), 1), "max_sustained_h": round(float(t[km]), 2), "max_sustained_dir": None if not np.isfinite(dr[km]) else float(dr[km]), "max_sustained_after_center_h": round(float(t[km]) - tp, 2)})
     out["stations"][s] = rec
     ax.plot(t, sk, "-", c="#22201C", lw=1.2, label="sustained / mean (kt)")
     ax.plot(t, g, "^", c="#8C4A32", ms=4, label="gust (kt)")
     for a, b, c in d["pk"]: ax.plot(a, b, "*", c="#8C4A32", ms=9)
     a2 = ax.twinx(); a2.plot(t, dr, ".", c="#2F5F73", ms=3); a2.set_ylim(0, 360); a2.set_yticks([0, 90, 180, 270, 360], ["N", "E", "S", "W", "N"]); a2.tick_params(labelsize=7, colors="#2F5F73")
-    ax.axvline(tp, c="k", lw=1); ax.text(tp + 0.05, 5, "centre closest", fontsize=7)
+    ax.axvline(tp, c="k", lw=1); ax.text(tp + 0.05, 5, "center closest", fontsize=7)
     ax.axvline(1.5, c="0.5", ls=":", lw=1); ax.axvspan(0, 6, color="#D6D2C6", alpha=0.4, lw=0)
-    ax.set_ylim(0, 110); ax.set_title(f"{NAMES[s]} (closest centre approach {dist:.0f} km)", fontsize=9, loc="left"); ax.set_ylabel("kt")
+    ax.set_ylim(0, 110); ax.set_title(f"{NAMES[s]} (closest center approach {dist:.0f} km)", fontsize=9, loc="left"); ax.set_ylabel("kt")
 axs[0].legend(fontsize=7, loc="upper left"); axs[-1].set_xlabel("hours from 00Z 10 Oct 2026 (CDT = UTC-5). Dotted: NHC landfall 01:30Z. Shaded: hurricane (00Z) to low (06Z) in the best track")
 fig.suptitle("Wind speed (black), gusts (triangles, stars = peak-wind remarks) and direction (blue dots, right axis)", fontsize=10)
 fig.savefig("docs/wind/fig_station_timing.png", dpi=85)

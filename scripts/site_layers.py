@@ -60,7 +60,16 @@ nd[excl] = np.nan
 v = np.where(inside, samp(nd), np.nan)
 rgba = (BrBG(colors.Normalize(-0.25, 0.25, clip=True)(np.nan_to_num(v))) * 255).astype("uint8"); rgba[..., 3] = np.where(fo_t & np.isfinite(v), 255, 0)
 meta["layers"]["s2_ndvi.png"] = {"label": "Sentinel-2 NDVI difference", "unit": "NDVI", "range": [-0.25, 0.25], "cmap": "BrBG", "bytes": save_png(rgba, "s2_ndvi.png")}
-dm = fo_t & samp(dmg); rgba = np.zeros((mh, mw, 4), "uint8"); rgba[dm] = (140, 46, 30, 235)
+# damage: a 75 m display pixel is marked if ANY 30 m damage cell falls inside it (3 x 3 sub-samples), so the band stays visible
+# at the default zoom; one solid violet that appears in neither the RdBu radar ramp nor the BrBG NDVI ramp
+dm = np.zeros((mh, mw), bool)
+for fx in (-1 / 3, 0, 1 / 3):
+    for fy in (-1 / 3, 0, 1 / 3):
+        LO2, LA2 = m2l.transform(MX + fx * PX, MY + fy * PX); UX2, UY2 = l2u.transform(LO2, LA2)
+        c2 = np.floor((UX2 - G.X0) / R).astype(int); r2 = np.floor((G.Y1 - UY2) / R).astype(int); ok2 = (c2 >= 0) & (c2 < W3) & (r2 >= 0) & (r2 < H3)
+        dm |= ok2 & (dmg & forest)[np.clip(r2, 0, H3 - 1), np.clip(c2, 0, W3 - 1)]
+dm &= ~ex_t
+rgba = np.zeros((mh, mw, 4), "uint8"); rgba[dm] = (118, 32, 168, 255)
 meta["layers"]["damage.png"] = {"label": "Sentinel-2 damage mask", "bytes": save_png(rgba, "damage.png")}
 # ---- true colour from Earth Engine on the same 3857 grid
 cache = "data/site_s2rgb_3857.npz"

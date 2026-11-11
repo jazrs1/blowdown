@@ -1,4 +1,4 @@
-# Artifact check: is the damage band an acquisition artefact?
+# Artifact check: is the damage band an acquisition artifact?
 
 Branch `site`. The held-out block (lat 31.14–31.32, plus a 2 km buffer) and the aerial tip (plus a 2 km buffer) are masked in every number and in the figure.
 

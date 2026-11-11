@@ -1,7 +1,7 @@
-"""GOES-19 (GOES-East) ABI band 9 (6.9 um, mid-level water vapour) CONUS Cloud and Moisture Imagery (ABI-L2-CMIPC), hourly
+"""GOES-19 (GOES-East) ABI band 9 (6.9 um, mid-level water vapor) CONUS Cloud and Moisture Imagery (ABI-L2-CMIPC), hourly
 from 22Z 9 Oct to 06Z 10 Oct 2026, public noaa-goes19 bucket on AWS. Brightness temperature crops around the storm with the
-best-track centre at that time, the damage band outline and the held-out areas (grey). A dry slot shows as warm (high BT).
-Sector test: mean BT in the 40-120 km ring around the centre, by quadrant (NE, SE, SW, NW).
+best-track center at that time, the damage band outline and the held-out areas (grey). A dry slot shows as warm (high BT).
+Sector test: mean BT in the 40-120 km ring around the center, by quadrant (NE, SE, SW, NW).
 Writes data/goes/*.nc, docs/wind/goes_wv.json, docs/wind/fig_goes_wv.png."""
 import json, os, re, sys, urllib.request; sys.path.insert(0, "scripts")
 import xml.etree.ElementTree as ET
@@ -57,6 +57,6 @@ for ax, (fp, hr) in zip(axs.ravel(), files):
     ax.set_xlim(-90, -84); ax.set_ylim(28.5, 33.5); ax.set_aspect(1 / np.cos(np.radians(31)))
     ax.set_title(f"{int(round(hr)) % 24:02d}Z  ring BT NE {sec['NE']:.0f} SE {sec['SE']:.0f} SW {sec['SW']:.0f} NW {sec['NW']:.0f} K", fontsize=8.5)
 fig.colorbar(im, ax=axs, shrink=0.5, label="band 9 brightness temperature (K); light = cold/moist, dark = warm/dry")
-fig.suptitle("GOES-19 band 9 water vapour, hourly; red line/dot = best track and centre; brown = damage band outline; grey = held out", fontsize=10)
+fig.suptitle("GOES-19 band 9 water vapor, hourly; red line/dot = best track and center; brown = damage band outline; gray = held out", fontsize=10)
 fig.savefig("docs/wind/fig_goes_wv.png", dpi=75)
 json.dump(out, open("docs/wind/goes_wv.json", "w"), indent=1); print(json.dumps(out, indent=1))

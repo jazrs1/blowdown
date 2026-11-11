@@ -2,7 +2,7 @@
 
 Branch `site`. The damage here is the **Sentinel-2 damage mask** (pipeline step 4), not model output.
 
-The held-out block (lat 31.14–31.32, plus a 2 km buffer) and the aerial tip (plus a 2 km buffer) are left out of every number and figure. They show as grey, "Held out until scoring".
+The held-out block (lat 31.14–31.32, plus a 2 km buffer) and the aerial tip (plus a 2 km buffer) are left out of every number and figure. They show as gray, "Held out until scoring".
 
 Scripts:
 - [wind_link.py](../../scripts/wind_link.py) (west box)
@@ -19,7 +19,7 @@ NHC operational best track, ATCF b-deck `bal092026.dat`:
 - Downloaded from `https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat` on 2026-11-10 (46 records, sha256 `1aa33d53…`).
 - Peak 105 kt, 959 mb (9 Oct 12Z–18Z). 95 kt at 30.2°N 86.6°W at 10 Oct 00Z, then 45 kt at 31.4°N 86.5°W at 06Z (system type LO) and extratropical by 12Z.
 - **Landfall:** NWS Mobile puts it near Destin around 8:30 PM CDT on 9 Oct (01:30Z), as a Category 2 with 105 mph winds. I placed it where the best track crosses the coast at 30.40°N, 86.58°W (about 01:00Z on the track's timing). Interpolating by time alone would put the 01:30Z position about 12 km inland, at 30.50°N. Along-track distances start from the coast crossing.
-- **Analysed wind field (b-deck wind radii):**
+- **Analyzed wind field (b-deck wind radii):**
   - At 00Z on 10 Oct: radius of maximum wind 15 nm (28 km). 64 kt winds reach 30 / 30 / 25 / 20 nm in the NE / SE / SW / NW quadrants, so hurricane-force winds extend about 37–46 km on the west side and about 56 km on the east side. 50 kt winds reach 60 / 70 / 50 / 70 nm.
   - At 18Z on 9 Oct the 64 kt radii were the same, with radius of maximum wind 20 nm.
   - By 06Z on 10 Oct, 34 kt radii only (radius of maximum wind 100 nm).
@@ -87,7 +87,7 @@ Along the track, the damaged share is highest 20–70 km north of landfall: 10�
 
 ![wind map](fig_wind_map.png)
 
-## Is the band an acquisition artefact?
+## Is the band an acquisition artifact?
 
 No. The band and both edges survive a rebuild from one clear pre scene and one clear post scene (17 September and 20 October, Sentinel-2 relative orbit 40), and the tile-free radar sensors put them in the same place, within a median 1 km. Composite acquisition dates and counts show no systematic jump at the edges.
 
@@ -186,7 +186,7 @@ Method:
 
 Results:
 
-| Radar | Beam centre over the band | Band (2nd-highest \|V\|, mean / 90th pct) | Same range outside the band | Time of highest value in the band |
+| Radar | Beam center over the band | Band (2nd-highest \|V\|, mean / 90th pct) | Same range outside the band | Time of highest value in the band |
 |---|---|---|---|---|
 | KMOB (west of the band) | 1.1–1.6 km, at 103–134 km range | 44 / 50 m/s | 35 / 46 m/s | median 01:56Z |
 | KEVX (east of the band) | 1.3–2.3 km, at 107–160 km range | 30 / 37 m/s | 30 / 39 m/s | median 01:41Z |
@@ -206,7 +206,7 @@ Limits that matter here:
 
 ![timing](fig_station_timing.png)
 
-| Station (distance from track) | Peak | Time | From | Relative to the centre's closest approach |
+| Station (distance from track) | Peak | Time | From | Relative to the center's closest approach |
 |---|---|---|---|---|
 | Whiting Field South (44 km W) | 99 kt gust | 01:37Z | 030° (NNE) | 0.8 h **before** (02:25Z) |
 | Pensacola (58 km W) | 80 kt gust | 23:53Z | 040° (NE) | 1.3 h before (01:10Z) |
@@ -216,22 +216,22 @@ Limits that matter here:
 
 FAWN's clock is local CDT (UTC−5), inferred from solar noon in its radiation record. No public time series was found for the Oriole Beach StickNet.
 
-Whiting Field's record is sparse: no routine report between 00:56Z and 01:56Z, so the 01:37Z peak comes from a peak-wind remark. It continues past the centre's closest approach (reports at 02:04, 02:33, 02:47 and 02:56Z) with no higher gust. Pensacola's and Jay's records are continuous through the window and carry the "before the centre passed" finding most firmly.
+Whiting Field's record is sparse: no routine report between 00:56Z and 01:56Z, so the 01:37Z peak comes from a peak-wind remark. It continues past the center's closest approach (reports at 02:04, 02:33, 02:47 and 02:56Z) with no higher gust. Pensacola's and Jay's records are continuous through the window and carry the "before the center passed" finding most firmly.
 
-**The peak gusts came before the centre passed the stations' latitude, from the north-northeast to northeast, while Isaias was still a hurricane.** NHC had landfall at 01:30Z and 80 kt at 03Z, and declared it post-tropical at 09Z; the best track switches from hurricane to low between 00Z and 06Z. The peaks were not after the centre passed, and not after the transition.
+**The peak gusts came before the center passed the stations' latitude, from the north-northeast to northeast, while Isaias was still a hurricane.** NHC had landfall at 01:30Z and 80 kt at 03Z, and declared it post-tropical at 09Z; the best track switches from hurricane to low between 00Z and 06Z. The peaks were not after the center passed, and not after the transition.
 
-### Dry air: GOES-19 band 9 water vapour, hourly
+### Dry air: GOES-19 band 9 water vapor, hourly
 
-![water vapour](fig_goes_wv.png)
+![water vapor](fig_goes_wv.png)
 
-Mean brightness temperature 40–120 km from the centre, by quadrant (warmer means drier):
+Mean brightness temperature 40–120 km from the center, by quadrant (warmer means drier):
 - **00Z:** all quadrants cold (202–210 K).
 - **01Z:** the south side starts warming (SE 220, SW 217 K).
 - **02Z:** SE 231, SW 229 K; the north stays at 208–211 K.
 - **03Z:** SE 245, SW 250 K.
 - **04–05Z:** all quadrants warm.
 
-A dry slot wraps into the south and southwest side from about 01Z. It reaches the southern end of the band around 03Z and covers the band by 04–05Z: one to three hours after the station peaks, which happened while the band was under cold, moist cloud. The images are hourly, and mid-level water vapour doesn't show near-surface dryness.
+A dry slot wraps into the south and southwest side from about 01Z. It reaches the southern end of the band around 03Z and covers the band by 04–05Z: one to three hours after the station peaks, which happened while the band was under cold, moist cloud. The images are hourly, and mid-level water vapor doesn't show near-surface dryness.
 
 ### Candidate explanations
 
@@ -239,11 +239,11 @@ None of these is claimed. The evidence above bears on each as follows.
 
 | Candidate | What the evidence supports | What it does not support |
 |---|---|---|
-| **Sting jet** (Fox 10) | Isaias was collapsing and losing tropical character within hours of landfall. A dry slot did develop on the south side. Sting jets are narrow and short-lived, so sparse stations and hourly imagery could miss one. | The station peaks came 1–2 h before the centre passed, from the NE–NNE, during the hurricane phase and before the dry slot reached the band. Sting jets usually come with the dry slot during frontal fracture. No observation here places descending cloud-head air over the band. |
+| **Sting jet** (Fox 10) | Isaias was collapsing and losing tropical character within hours of landfall. A dry slot did develop on the south side. Sting jets are narrow and short-lived, so sparse stations and hourly imagery could miss one. | The station peaks came 1–2 h before the center passed, from the NE–NNE, during the hurricane phase and before the dry slot reached the band. Sting jets usually come with the dry slot during frontal fracture. No observation here places descending cloud-head air over the band. |
 | **Dry-air intrusion** | Dry air wrapped into the south and southwest side from 01Z and over the band by 04–05Z. It could have helped mix momentum down after the peaks. | The measured peaks came before the dry air arrived over the band. Sentinel-2 can't tell when the trees fell. |
 | **Mesovortex or tornado swath** | NHC saw damaging gusts in a band wrapping around the western side on KEVX radar. Rotating features in that band could leave narrow swaths. | The damage band is about 10–22 km wide over most of its length (3–8 km at its ends) and about 120 km long, larger than one mesovortex or tornado track. NWS Mobile lists 0 tornadoes. The radar can't resolve small vortices over the band (1–2 km beam, partly range-folded). |
-| **Edge of the western wind field** | The damage sits at and just beyond NHC's analysed western 64 kt radius (37–46 km) and inside the 50 kt radius. The peak winds came from the NE–NNE before the centre passed, i.e. in the storm's western and northwestern quadrant. KMOB shows the band at the western edge of strong radial winds, timed with the station peaks. NHC described a damaging band on the western side. | It doesn't explain why the west was much more damaged than the east, where NHC's hurricane-force radius was slightly larger. The east-side stations near landfall that kept reporting peaked lower. KMOB's strongest radial winds lie east of the band, not in it. |
-| **Error in the operational track** | The b-deck fixes are rounded to 0.1° (about 10 km), and the inland track wasn't checked against radar centre fixes here. | NWS Mobile's lowest pressures were at Crystal Beach (977.9 mb) and Destin airport (981.7 mb), both beside the track at landfall, which puts the centre near the track there. A 45–75 km error would be needed to move the band to the right side. |
+| **Edge of the western wind field** | The damage sits at and just beyond NHC's analyzed western 64 kt radius (37–46 km) and inside the 50 kt radius. The peak winds came from the NE–NNE before the center passed, i.e. in the storm's western and northwestern quadrant. KMOB shows the band at the western edge of strong radial winds, timed with the station peaks. NHC described a damaging band on the western side. | It doesn't explain why the west was much more damaged than the east, where NHC's hurricane-force radius was slightly larger. The east-side stations near landfall that kept reporting peaked lower. KMOB's strongest radial winds lie east of the band, not in it. |
+| **Error in the operational track** | The b-deck fixes are rounded to 0.1° (about 10 km), and the inland track wasn't checked against radar center fixes here. | NWS Mobile's lowest pressures were at Crystal Beach (977.9 mb) and Destin airport (981.7 mb), both beside the track at landfall, which puts the center near the track there. A 45–75 km error would be needed to move the band to the right side. |
 
 ## Does the damage sit where the strongest winds were expected?
 
@@ -254,7 +254,7 @@ That pattern survives three tests:
 - a single-date rebuild;
 - mapping the right side, where upland damage stays below 1% at every distance.
 
-The highest gusts, all from the north-northeast to northeast before the centre passed, are on the same western side.
+The highest gusts, all from the north-northeast to northeast before the center passed, are on the same western side.
 
 Why the worst damage fell there is an **open question**. A sting jet, a dry-air intrusion, a mesovortex or tornado swath, the edge of the western wind field and an error in the operational track have all been offered or can be imagined. The evidence gathered here fits some better than others, as set out above, but doesn't settle it. NHC's Tropical Cyclone Report, still pending, may.
 

@@ -6,8 +6,15 @@
   if (!window.L) { status("The map library did not load. The figures below do not depend on it."); return; }
 
   var map = L.map(el, { zoomControl: true, scrollWheelZoom: false, attributionControl: true, minZoom: 7, maxZoom: 13, zoomSnap: 0.25, zoomDelta: 0.5 });
-  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors", maxZoom: 19, className: "base-tiles"
+  // Esri Light Gray Canvas (base + labels). OpenStreetMap's standard tiles were dropped because their forest/land-use fills are
+  // mapped far more densely in Florida than in Alabama, which drew a shade seam exactly along the state line (31.0 N).
+  L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {
+    attribution: "&copy; Esri, &copy; OpenStreetMap contributors", maxZoom: 16
+  }).addTo(map);
+  map.attributionControl.setPrefix('<a href="https://leafletjs.com">Leaflet</a>');
+  map.createPane("labels"); map.getPane("labels").style.zIndex = 460; map.getPane("labels").style.pointerEvents = "none";
+  L.tileLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}", {
+    pane: "labels", maxZoom: 16
   }).addTo(map);
 
   map.on("focus", function () { map.scrollWheelZoom.enable(); });
@@ -29,11 +36,17 @@
     map.fitBounds(b, { padding: [4, 4] });
     map.setMaxBounds(b.pad(0.6));
 
-    function img(name, pane, opacity) { return L.imageOverlay("data/" + name, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0] }); }
+    // A failed overlay shows a transparent pixel (no broken-image icon) and a message under the map instead of failing silently.
+    var BLANK = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+    function img(name, pane, opacity) {
+      var o = L.imageOverlay("data/" + name, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0], errorOverlayUrl: BLANK });
+      o.on("error", function () { status("A map layer (" + name + ") did not load. Reloading the page usually fixes this."); });
+      return o;
+    }
     layers.nisar = img("nisar_hv.png", "change", 0.9);
     layers.s1 = img("s1_vh.png", "change", 0.9);
     layers.ndvi = img("s2_ndvi.png", "change", 0.9);
-    layers.damage = img("damage.png", "change", 1);
+    layers.damage = img("damage.png", "change", 0.9);
     layers.before = img("s2_before.jpg", "imagery", 1);
     layers.after = img("s2_after.jpg", "imagery", 1);
 

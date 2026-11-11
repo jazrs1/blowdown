@@ -62,7 +62,7 @@
   header .suite a { color: var(--muted); border-bottom-color: var(--hair); }
   header .suite a:hover { color: var(--ink); }
 
-  .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0 14px; margin: -12px 0 28px; }
+  .jump { display: flex; flex-wrap: wrap; align-items: center; gap: 0 10px; margin: -12px 0 28px; }
   .jump a, .jump span { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; color: var(--muted); }
   .jump a { display: inline-block; line-height: 20px; padding: 12px 0; border-bottom: 0; }
   .jump a:hover { color: var(--ink); }
@@ -163,6 +163,7 @@
   /* --- map --- */
   .metrics-src { margin: -44px 0 40px; font-size: 13.5px; color: var(--muted); max-width: none; line-height: 1.5; }
   .findings { margin: 0 0 8px; }
+  .auc-note { margin: 6px 0 0; font-size: 15px; color: var(--muted); max-width: 36em; }
   .findings ul { list-style: none; padding: 0; margin: 10px 0 0; max-width: 36em; }
   .findings li { position: relative; padding: 9px 0 9px 22px; border-top: 1px solid var(--hair); color: var(--ink); font-size: 17px; line-height: 1.45; }
   .findings li:last-child { border-bottom: 1px solid var(--hair); }
@@ -199,7 +200,7 @@
   .swatch { width: 26px; height: 9px; border: 1px solid var(--rule); flex: 0 0 auto; }
   .ramp-rdbu { background: linear-gradient(90deg, #2166ac, #f7f7f7, #b2182b); }
   .ramp-brbg { background: linear-gradient(90deg, #8c510a, #f5f5f5, #01665e); }
-  .sw-damage { background: #8c2e1e; }
+  .sw-damage { background: #7620a8; }
   .sw-track { height: 0; border: 0; border-top: 2px solid var(--ink); }
   .sw-gust { width: 10px; height: 10px; border-radius: 50%; background: var(--model); border: 0; margin: 0 8px; }
   .sw-held { background: #9e9e9e; }
@@ -215,7 +216,6 @@
     font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em; line-height: 1.3; padding: 3px 6px; white-space: nowrap;
   }
   .leaflet-tooltip.held-label::before { display: none; }
-  .base-tiles { filter: grayscale(1) sepia(0.12) contrast(0.82) brightness(1.06); }
   .leaflet-popup-content { font-family: var(--serif); font-size: 15px; line-height: 1.45; color: var(--body); }
   .leaflet-popup-content b { color: var(--ink); font-weight: 500; }
   .map-status { max-width: 1100px; margin: 0 auto; padding: 8px 20px; border-top: 1px solid var(--hair); margin: 0; font-size: 14px; color: var(--muted); max-width: none; display: none; }
@@ -250,15 +250,15 @@
   </header>
 
   <nav class="jump" aria-label="Sections">
-    <a href="#what">What happened</a>
+    <a href="#what">Background</a>
     <span aria-hidden="true">&middot;</span>
     <a href="#question">Question</a>
     <span aria-hidden="true">&middot;</span>
     <a href="#map-section">Map</a>
     <span aria-hidden="true">&middot;</span>
-    <a href="#storm">Storm?</a>
+    <a href="#storm">Controls</a>
     <span aria-hidden="true">&middot;</span>
-    <a href="#water">Trees or water?</a>
+    <a href="#water">Trees or water</a>
     <span aria-hidden="true">&middot;</span>
     <a href="#wind">Wind</a>
     <span aria-hidden="true">&middot;</span>
@@ -271,7 +271,7 @@
 
   <h1>Can NASA's new NISAR radar map the forest Hurricane Isaias knocked down?</h1>
 
-  <p class="standfirst">A comparison of NISAR's L-band radar with Europe's Sentinel-1 over the pine and bottomland forest of the western Florida Panhandle and south Alabama, a month after the October 2026 landfall. The test was fixed in writing before any model saw the held-out area, and that area stays sealed until it has been labelled by hand.</p>
+  <p class="standfirst">A comparison of NISAR's L-band radar with Europe's Sentinel-1 over the pine and bottomland forest of the western Florida Panhandle and south Alabama, in the weeks after the October 2026 landfall. The test was fixed in writing before any model saw the held-out area, and that area stays sealed until it has been labeled by hand.</p>
 
   <div class="metrics">
     <div class="metric">
@@ -289,20 +289,21 @@
   </div>
   <p class="metrics-src">Sources: Alabama Forestry Commission preliminary aerial survey, as reported by <a href="https://www.fox10tv.com/2026/10/18/new-estimates-timber-damage-alabama-isaias/">WALA FOX10</a> (17 October); Florida Forest Service preliminary report, as quoted in the <a href="https://blogs.ifas.ufl.edu/ffgs/2026/10/30/florida-land-steward-update-october-30-2026/">UF/IFAS Florida Land Steward Update</a> (30 October); <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile post-tropical cyclone report</a> (102.2 kt, updated 23 October).</p>
 
-  <section class="findings" aria-labelledby="kf">
+  <section class="findings" aria-labeledby="kf">
     <span class="label" id="kf">Key findings</span>
+    <p class="auc-note">Scores are AUC, which measures how well a layer separates damaged from intact forest; 0.5 is no better than chance and 1.0 is perfect.</p>
     <ul>
       <li>NISAR's change across the storm picks out damaged forest (0.82 against 0.57&ndash;0.58 without a storm), and still does on upland forest (0.72).</li>
       <li>On upland forest the signal barely fades over 12 days, like downed trees; in woody wetland it grows, which floodwater could also cause.</li>
-      <li>On validation tiles, NISAR and Sentinel-1 together beat either alone (0.82 against 0.76&ndash;0.80); NISAR's own edge over Sentinel-1 is small (0.84 against 0.80).</li>
-      <li>The worst damage is a narrow swath 40 to 80 km west of the track, and the peak gusts arrived before the centre passed.</li>
+      <li>On validation tiles, NISAR and Sentinel-1 together beat either alone (0.82 against 0.76 to 0.80). In the date-matched comparison, NISAR track 76 edged Sentinel-1 at 100 m (0.84 against 0.80).</li>
+      <li>The worst damage is a narrow swath 40 to 80 km west of the track, and the peak gusts arrived before the center passed.</li>
     </ul>
   </section>
 
   <section id="what">
     <h2>What happened</h2>
     <p>Hurricane Isaias came ashore near Destin, Florida, at about 8:30 in the evening of 9 October 2026, a Category 2 storm with 105 mph winds, and weakened fast as it moved north into Alabama. NWS Mobile's post-storm report lists the highest land gusts at Jay, Florida (102.2 kt, a University of Florida FAWN station), Oriole Beach (101.3 kt) and Whiting Field South (99 kt).</p>
-    <p>The best track shows the centre crossing the coast between Fort Walton Beach and Destin and running almost due north along 86.5&deg;W, past Crestview and Andalusia. It was down to a 45 kt low by 1 a.m. local time and extratropical over central Alabama by morning. The forest damage lies well to the west of that line, which is the subject of the wind section below.</p>
+    <p>The best track shows the center crossing the coast between Fort Walton Beach and Destin and running almost due north along 86.5&deg;W, past Crestview and Andalusia. It was down to a 45 kt low by 1 a.m. local time and extratropical over central Alabama by morning. The forest damage lies well to the west of that line, which is the subject of the wind section below.</p>
     <p>The Alabama Forestry Commission's preliminary aerial survey on 13 October estimated more than 2.5 million tons of timber damaged, worth more than $33.5 million, in Conecuh, Escambia and Monroe counties. The Florida Forest Service's preliminary report put Florida's damaged timber at about $30 million across five counties, most of it in Santa Rosa. Both agencies say ground surveys are still needed.</p>
     <p class="caption">Sources: <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile post-tropical cyclone report</a> (updated 23 October); <a href="https://www.fox10tv.com/2026/10/18/new-estimates-timber-damage-alabama-isaias/">Alabama Forestry Commission estimate, as reported by WALA FOX10</a>; <a href="https://blogs.ifas.ufl.edu/ffgs/2026/10/30/florida-land-steward-update-october-30-2026/">Florida Forest Service estimate, via UF/IFAS Florida Land Steward Update</a> (30 October); track from the <a href="https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat">NHC operational best track</a>.</p>
   </section>
@@ -324,10 +325,10 @@
       <div class="map-controls">
         <fieldset>
           <legend class="label">Change after the storm</legend>
-          <label class="opt"><input type="checkbox" data-layer="nisar" checked> <span class="swatch ramp-rdbu"></span> NISAR HV difference</label>
+          <label class="opt"><input type="checkbox" data-layer="damage" checked> <span class="swatch sw-damage"></span> Sentinel-2 damage mask</label>
+          <label class="opt"><input type="checkbox" data-layer="nisar"> <span class="swatch ramp-rdbu"></span> NISAR HV difference</label>
           <label class="opt"><input type="checkbox" data-layer="s1"> <span class="swatch ramp-rdbu"></span> Sentinel-1 VH difference</label>
           <label class="opt"><input type="checkbox" data-layer="ndvi"> <span class="swatch ramp-brbg"></span> Sentinel-2 NDVI difference</label>
-          <label class="opt"><input type="checkbox" data-layer="damage"> <span class="swatch sw-damage"></span> Sentinel-2 damage mask</label>
         </fieldset>
         <fieldset>
           <legend class="label">Storm and imagery</legend>
@@ -341,10 +342,10 @@
           <input type="range" id="split" min="0" max="100" value="50" aria-label="Before and after split position">
           <div class="slider-ends"><span class="label">Sep to early Oct</span><span class="label">mid Oct to early Nov</span></div>
         </div>
-        <p class="legend-note">Radar differences are after minus before in decibels, scaled from &minus;2 dB (blue) to +2 dB (red), with each layer's forest-wide median removed; red means brighter after the storm. NDVI runs from &minus;0.25 (brown, greenness lost) to +0.25. Forest only, about 64 m pixels. The grey blocks are the held-out area and the aerial strip, left blank until scoring.</p>
+        <p class="legend-note">The map opens on the Sentinel-2 damage mask (violet); tick the other layers to compare. Radar differences are after minus before in decibels, scaled from &minus;2 dB (blue) to +2 dB (red), with each layer's forest-wide median removed; red means brighter after the storm. NDVI runs from &minus;0.25 (brown, greenness lost) to +0.25. Forest only, about 64 m pixels. The gray blocks are the held-out area and the aerial strip, left blank until scoring.</p>
       </div>
     </figure>
-    <div class="page-narrow"><p class="caption">NISAR HV is the mean of an ascending and a descending track; Sentinel-1 VH is the mean of two ascending orbits, using October images only so its timing matches NISAR's. Sentinel-2 true colour is a cloud-masked median of 1 September to 8 October and of 11 October to 9 November. Basemap &copy; OpenStreetMap contributors. The map shows the original study area west of the track only; the area east of the track, mapped for the wind section, is not on it. Turning on the before/after view switches the change layers off so the imagery shows; they can be turned back on.</p></div>
+    <div class="page-narrow"><p class="caption">NISAR HV is the mean of an ascending and a descending track; Sentinel-1 VH is the mean of two ascending orbits, using October images only so its timing matches NISAR's. Sentinel-2 true color is a cloud-masked median of 1 September to 8 October and of 11 October to 9 November. Basemap: Esri Light Gray Canvas (tiles &copy; Esri; data &copy; OpenStreetMap contributors and others). The map shows the original study area west of the track only; the area east of the track, mapped for the wind section, is not on it. Turning on the before/after view switches the change layers off so the imagery shows; they can be turned back on.</p></div>
   </section>
 
 <div class="page cont">
@@ -353,12 +354,13 @@
   <section id="storm">
     <h2>Is the signal the storm?</h2>
     <p class="lead">A radar change map can light up for reasons that have nothing to do with wind: rain, a wet season, a field harvested. So NISAR's change across the storm was set against NISAR's change over two 12-day windows with no storm in them.</p>
+    <p class="auc-note">AUC measures how well a layer separates damaged from intact forest; 0.5 is no better than chance and 1.0 is perfect.</p>
     <figure>
       <picture>
         <source media="(max-width: 620px)" srcset="figures/storm_vs_control_narrow.png" width="761" height="976">
         <img class="fig" src="figures/storm_vs_control.png" alt="Bar chart. NISAR HV separates damaged from intact forest with AUC 0.82 at 100 m across the storm, against 0.57 and 0.58 for two windows with no storm; on upland forest 0.72 against 0.52 and 0.58." width="1257" height="611" loading="lazy">
       </picture>
-      <p class="caption">How well NISAR HV change on one ascending track separates damaged from intact forest (0.5 is chance), for the 12 days across the storm and for two 12-day windows with no storm, with the held-out areas left out. Upland means blocks that are at least 90 per cent pine or hardwood on ground more than 5 m above the nearest stream.</p>
+      <p class="caption">How well NISAR HV change on one ascending track separates damaged from intact forest (0.5 is chance), for the 12 days across the storm and for two 12-day windows with no storm, with the held-out areas left out. Upland means blocks that are at least 90 percent pine or hardwood on ground more than 5 m above the nearest stream.</p>
     </figure>
     <p>Across the storm, NISAR HV scores 0.82 at 100 m resolution. The two no-storm windows score 0.57 and 0.58, so roughly three quarters of the separation above chance comes from the storm. On upland forest, where floodwater cannot pool, it still scores 0.72 against 0.52 and 0.58. NISAR's HH channel carries no detectable storm signal on upland forest. These numbers leave out the held-out stretch and the aerial strip; with them included, the earlier analysis gave 0.83 against 0.54 and 0.57.</p>
     <p>Against Sentinel-1 with images matched in time, NISAR's ascending track does better at 100 m (0.84 against 0.80, held-out areas excluded) but the two NISAR tracks averaged together only tie, because the descending track is weak over pine.</p>
@@ -372,7 +374,7 @@
         <source media="(max-width: 620px)" srcset="figures/persistence_narrow.png" width="753" height="1282">
         <img class="fig" src="figures/persistence.png" alt="Two panels. On upland forest NISAR HV contrast stays near 0.5 dB from 17 to 29 October; in woody wetland NISAR HV and HH contrasts grow. Sentinel-1 fades on upland." width="1297" height="738" loading="lazy">
       </picture>
-      <p class="caption">Mean radar change in damaged forest minus intact forest at 30 m, by date after the storm, with the held-out areas left out. The grey band is NISAR HV over the two no-storm windows.</p>
+      <p class="caption">Mean radar change in damaged forest minus intact forest at 30 m, by date after the storm, with the held-out areas left out. The gray band is NISAR HV over the two no-storm windows.</p>
     </figure>
     <p>On upland forest, NISAR HV fades only slightly from 17 to 29 October (+0.51 to +0.44 dB), far above the no-storm windows, which looks more like structure than water. In woody wetland, both NISAR channels grow instead of fading, led by HH (+0.94 to +1.07 dB), which is also what lasting floodwater under the canopy would do. There, downed trees and water cannot be told apart from these data. Sentinel-1 fades more on upland (+0.36 to +0.18 dB) than in wetland (+0.97 to +0.86 dB), the opposite of a simple drying pattern. Held-out areas are excluded throughout, and NISAR's 29 October scene comes from a newer processor (see Methods).</p>
   </section>
@@ -383,16 +385,16 @@
     <figure>
       <picture>
         <source media="(max-width: 620px)" srcset="figures/wind_distance_narrow.png" width="838" height="913">
-        <img class="fig" src="figures/wind_distance.png" alt="Line chart of the share of forest in the damage mask by distance from the track on both sides. West of the track it peaks at about 30 per cent 60 to 65 km out; east of the track it stays below 1 per cent in upland forest, with a small wetland rise 55 to 70 km out. The three strongest gust stations are 44 to 56 km west." width="1386" height="692" loading="lazy">
+        <img class="fig" src="figures/wind_distance.png" alt="Line chart of the share of forest in the damage mask by distance from the track on both sides. West of the track it peaks at about 30 percent 60 to 65 km out; east of the track it stays below 1 percent in upland forest, with a small wetland rise 55 to 70 km out. The three strongest gust stations are 44 to 56 km west." width="1386" height="692" loading="lazy">
       </picture>
       <p class="caption">Share of forest in the Sentinel-2 damage mask by distance from the NHC best track, in 5 km bins, on both sides of the track, with the held-out areas left out. Triangles are station peak gusts; hollow ones reported fewer than ten times during the storm and may have failed.</p>
     </figure>
-    <p>West of the track, 15 per cent of forest 40 to 80 km out is in the damage mask, up to 45 per cent of woody wetland. East of the track, mapped with the same method out to 75 km, it is 0.4 per cent within 40 km, and under 1 per cent of upland forest at every distance; the only rise is in what looks like a river floodplain at the far eastern edge, where flooding could also be the cause. The band is not an artefact of how the images were taken. Part of its eastern edge runs close to a satellite tile boundary, but the change does not jump across that boundary where the band is absent, the band survives a rebuild from a single clear image before and after, and both radars put it in the same place. The radars, which do not depend on the optical mask, also show the change west of the track and not east of it.</p>
+    <p>West of the track, 15 percent of forest 40 to 80 km out is in the damage mask, up to 45 percent of woody wetland. East of the track, mapped with the same method out to 75 km, it is 0.4 percent within 40 km, and under 1 percent of upland forest at every distance; the only rise is in what looks like a river floodplain at the far eastern edge, where flooding could also be the cause. The band is not an artifact of how the images were taken. Part of its eastern edge runs close to a satellite tile boundary, but the change does not jump across that boundary where the band is absent, the band survives a rebuild from a single clear image before and after, and both radars put it in the same place. The radars, which do not depend on the optical mask, also show the change west of the track and not east of it.</p>
     <h3 class="subhead">Coastal gusts near Pensacola</h3>
-    <p>Some of the strongest gusts were measured near the coast around Pensacola: 101 kt at Oriole Beach on the Gulf Breeze peninsula and 80 kt at Pensacola airport, 48 to 58 km west of the track. Media coverage of Isaias discussed a sting jet as a possible cause of its unusual winds: the <a href="https://www.fox10tv.com/2026/10/14/hurricane-isaias-summary-nws-post-storm-report/">WALA FOX10 summary</a> of the NWS report put the inland wind strength down to one. Asked by <a href="https://weartv.com/news/local/national-hurricane-center-wont-confirm-sting-jet-during-hurricane-isaias">WEAR-TV</a> whether there was a sting jet, NHC Deputy Director Jamie Rhome said: "It remains to be seen." He added that strong winds on the west side are not by themselves necessarily a sting jet. NHC has not confirmed one.</p>
+    <p>Some of the strongest gusts were measured near the coast around Pensacola: 101 kt at Oriole Beach on the Gulf Breeze peninsula and 80 kt at Pensacola airport, 48 to 58 km west of the track. Media coverage of Isaias discussed a sting jet as a possible cause of its unusual winds: the <a href="https://www.fox10tv.com/2026/10/14/hurricane-isaias-summary-nws-post-storm-report/">WALA FOX10 summary</a> of the NWS report attributed the unusual inland winds to a sting jet that set up as the storm transitioned. Asked by <a href="https://weartv.com/news/local/national-hurricane-center-wont-confirm-sting-jet-during-hurricane-isaias">WEAR-TV</a> whether there was a sting jet, NHC Deputy Director Jamie Rhome said: "It remains to be seen." He added that strong winds on the west side are not by themselves necessarily a sting jet. NHC has not confirmed one.</p>
     <h3 class="subhead">The inland swath</h3>
-    <p>The damage band itself lies inland, running some 120 km north from about 30.5&deg;N in Santa Rosa County into south Alabama. It may be a separate feature from the coastal gusts. At the stations nearest it, Whiting Field South&rsquo;s 99 kt gust and Jay&rsquo;s highest 15-minute wind (the time of Jay&rsquo;s 102 kt gust is not public) came from the north-northeast to northeast about one to one and a half hours before the centre passed, while Isaias was still a hurricane, and before dry air on satellite water vapour reached the band. At the time, NHC noted damaging gusts "in a band wrapping around the western side of the circulation." That timing fits the outer western wind field or a mesovortex better than a sting jet, which usually arrives with the dry air as a storm loses its tropical character. None of these is established here, and NHC's Tropical Cyclone Report for Isaias is still pending.</p>
-    <p class="caption">Sources: <a href="https://www.nhc.noaa.gov/archive/2026/ISAIAS.shtml">NHC advisory archive</a> (Discussion 14); <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile report</a> and <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf">county impact narratives</a>; <a href="https://www.fox10tv.com/2026/10/14/hurricane-isaias-summary-nws-post-storm-report/">WALA FOX10 summary</a> (14 October); <a href="https://weartv.com/news/local/national-hurricane-center-wont-confirm-sting-jet-during-hurricane-isaias">WEAR-TV</a> (20 October); KMOB and KEVX radar from the NEXRAD Level II archive; GOES-19 water vapour from NOAA's open data.</p>
+    <p>The damage band itself lies inland, running some 120 km north from about 30.5&deg;N in Santa Rosa County into south Alabama. It may be a separate feature from the coastal gusts. At the stations nearest it, Whiting Field South&rsquo;s 99 kt gust and Jay&rsquo;s highest 15-minute wind (the time of Jay&rsquo;s 102 kt gust is not public) came from the north-northeast to northeast about one to one and a half hours before the center passed, while Isaias was still a hurricane, and before dry air on satellite water vapor reached the band. At the time, NHC noted damaging gusts "in a band wrapping around the western side of the circulation." That timing fits the outer western wind field or a mesovortex better than a sting jet, which usually arrives with the dry air as a storm loses its tropical character. None of these is established here, and NHC's Tropical Cyclone Report for Isaias is still pending.</p>
+    <p class="caption">Sources: <a href="https://www.nhc.noaa.gov/archive/2026/ISAIAS.shtml">NHC advisory archive</a> (Discussion 14); <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile report</a> and <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf">county impact narratives</a>; <a href="https://www.fox10tv.com/2026/10/14/hurricane-isaias-summary-nws-post-storm-report/">WALA FOX10 summary</a> (14 October); <a href="https://weartv.com/news/local/national-hurricane-center-wont-confirm-sting-jet-during-hurricane-isaias">WEAR-TV</a> (20 October); KMOB and KEVX radar from the NEXRAD Level II archive; GOES-19 water vapor from NOAA's open data.</p>
   </section>
 
   <section id="results">
@@ -418,7 +420,7 @@
     <p>Until then, the only scores are on validation tiles inside the training region, and they measure agreement with the Sentinel-2 mask, not with hand labels. On the validation cut that mirrors the held-out sample (inside the band, damaged forest against all other forest), the v2 U-Net models scored 0.82 on upland and 0.82 on wetland with both radars, 0.76 and 0.80 with NISAR alone, and 0.78 and 0.76 with Sentinel-1 alone. The simple thresholds scored 0.54 to 0.60. These v2 models were tuned on that same cut, so the numbers are somewhat optimistic.</p>
     <div class="sealed">
       <span class="label">Sealed</span>
-      <p>550 cells, 400 in the held-out stretch and 150 under the NOAA aerial survey, are waiting to be labelled by hand from before-and-after imagery. The scores above will be filled in once, all of them, including any that go against NISAR.</p>
+      <p>550 cells, 400 in the held-out stretch and 150 under the NOAA aerial survey, are waiting to be labeled by hand from before-and-after imagery. The scores above will be filled in once, all of them, including any that go against NISAR.</p>
     </div>
   </section>
 
@@ -428,7 +430,7 @@
       <li><div><h3 class="step-title">The reference is optical and provisional</h3><p class="step-detail">The damage mask comes from Sentinel-2 greenness and burn-ratio change against the same weeks of 2025, with clearcuts and salvage flagged out. There is no field or aerial truth inside the damage band yet, and the hand labels are drawn from the same Sentinel-2 imagery, so agreement with them is partly agreement with Sentinel-2.</p></div></li>
       <li><div><h3 class="step-title">The mask sees stands, not single trees</h3><p class="step-detail">The damage mask detects stand-level damage: a 10 m pixel has to lose greenness and burn ratio well beyond the same weeks of 2025. Scattered single trees down along roads and power lines, such as those NWS Mobile reported in Covington County, Alabama, may not show up in it.</p></div></li>
       <li><div><h3 class="step-title">Validation scores were inflated</h3><p class="step-detail">The first models scored 0.97 to 0.9996 AUC on validation tiles, but the training labels pitted clear damage against clean intact forest and left out the cells in between. On the cut that mirrors the held-out sample, inside the band, damage against all other forest, they scored 0.63 to 0.78, and the simple thresholds 0.55 to 0.61.</p></div></li>
-      <li><div><h3 class="step-title">Amendment 1 changed only the labels</h3><p class="step-detail">About 93 to 95 per cent of the out-of-mask cells in the hand-label sample were cell types the first models never saw. Before any model was scored on the held-out area and before labeling began, a written amendment added v2 models trained on every forest cell. v1 stays frozen; both will be scored side by side.</p></div></li>
+      <li><div><h3 class="step-title">Amendment 1 changed only the labels</h3><p class="step-detail">About 93 to 95 percent of the out-of-mask cells in the hand-label sample were cell types the first models never saw. Before any model was scored on the held-out area and before labeling began, a written amendment added v2 models trained on every forest cell. v1 stays frozen; both will be scored side by side.</p></div></li>
       <li><div><h3 class="step-title">Processor versions are flagged</h3><p class="step-detail">NISAR's newest scene (29 October) comes from a newer processor and sits about 0.6 dB lower in HV and 1 dB in HH. The 2025 no-storm scenes come from an older one and sit about 2 dB lower in HV. Each layer's forest-wide median is removed, which takes out uniform offsets but not uneven ones.</p></div></li>
       <li><div><h3 class="step-title">Not verified</h3><p class="step-detail">The Jay gust against raw FAWN data (the public file has no gusts); the location and data of the Oriole Beach StickNet; why the worst damage fell west of the track; floodwater against structure in woody wetland; and the size of the selection advantage v2 gained by being tuned on the in-band cut.</p></div></li>
     </ol>
