@@ -11,7 +11,11 @@ Script: [wind_link.py](../../scripts/wind_link.py). Numbers: [wind.json](wind.js
 NHC operational best track, ATCF b-deck `bal092026.dat`:
 - Downloaded from `https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat` on 2026-11-10 (46 records, sha256 `1aa33d53…`).
 - Peak 105 kt, 959 mb (9 Oct 12Z–18Z). 95 kt at 30.2°N 86.6°W at 10 Oct 00Z, then 45 kt at 31.4°N 86.5°W at 06Z (system type LO) and extratropical by 12Z.
-- **Landfall:** NWS Mobile puts it near Destin around 8:30 PM CDT on 9 Oct, as a Category 2 with 105 mph winds. I placed it on the track at 01:30Z 10 Oct by linear interpolation between fixes: 30.50°N 86.58°W.
+- **Landfall:** NWS Mobile puts it near Destin around 8:30 PM CDT on 9 Oct (01:30Z), as a Category 2 with 105 mph winds. I placed it where the best track crosses the coast at 30.40°N, 86.58°W (about 01:00Z on the track's timing). Interpolating by time alone would put the 01:30Z position about 12 km inland, at 30.50°N. Along-track distances start from the coast crossing.
+- **Analysed wind field (b-deck wind radii):**
+  - At 00Z on 10 Oct: radius of maximum wind 15 nm (28 km). 64 kt winds reach 30 / 30 / 25 / 20 nm in the NE / SE / SW / NW quadrants, so hurricane-force winds extend about 37–46 km on the west side and about 56 km on the east side. 50 kt winds reach 60 / 70 / 50 / 70 nm.
+  - At 18Z on 9 Oct the 64 kt radii were the same, with radius of maximum wind 20 nm.
+  - By 06Z on 10 Oct, 34 kt radii only (radius of maximum wind 100 nm).
 
 **The track runs north along the eastern edge of the study grid.** Every forest cell in the grid lies 0.6–104.5 km left (west) of the track, and none lies right of it.
 
@@ -25,12 +29,12 @@ Mapped stations:
 | Oriole Beach, FL (Texas Tech StickNet 0217A) | **101.3** | 48 km left (approx.) | Same NWS report. The impact narrative (Escambia, FL) gives "gusts measured 101 kts". |
 | Whiting Field South (KNDZ, AWOS) | 99.0 | 44 km left | IEM ASOS archive, peak-wind remark at 01:56Z 10 Oct. Matches the NWS report's 99.0. |
 | Pensacola Regional (KPNS) | 80 | 58 km left | IEM ASOS archive, 23:53Z 9 Oct |
-| Eglin AFB (KVPS) | 71 | 5 km right | IEM ASOS archive (61 reports 22Z–06Z) |
+| Eglin AFB (KVPS) | 71 | at the track (5 km right) | IEM ASOS archive (61 reports 22Z–06Z) |
 | Destin–Fort Walton Beach (KDTS) | 66 | 11 km right | IEM ASOS archive (25 reports) |
 | Pensacola NAS (KNPA) | 55 | 70 km left | IEM; only 4 reports 22Z–06Z |
 | Hurlburt Field (KHRT) | 47 | 10 km left | IEM; only 2 reports 22Z–06Z |
-| Duke Field (KEGI) | 39 | 4 km right | IEM; only 2 reports 22Z–06Z |
-| Crestview (KCEW) | 38 | 3 km right | IEM (20 reports) |
+| Duke Field (KEGI) | 39 | at the track (4 km right) | IEM; only 2 reports 22Z–06Z |
+| Crestview (KCEW) | 38 | at the track (3 km right) | IEM (20 reports) |
 | Evergreen, AL (KGZH) | 38 | 51 km left | IEM; only 5 reports 22Z–06Z |
 
 Listed by NWS Mobile but not mapped, because no published coordinates were found:
@@ -70,7 +74,7 @@ Damage is concentrated in a band 45–75 km left of the track. The median damage
 
 The right side has no forest in the grid, so no bins exist there.
 
-Along the track, the damaged share is highest 10–60 km north of landfall: 11–13% of all forest, and wetland 18–26%. It drops to under 1% at 70–80 km, with a smaller rise around 110–120 km.
+Along the track, the damaged share is highest 20–70 km north of landfall: 10–13% of all forest, and wetland 17–25%. It drops to under 1% at 80–90 km, with a smaller rise around 120–130 km.
 
 ## Map
 
@@ -78,13 +82,14 @@ Along the track, the damaged share is highest 10–60 km north of landfall: 11�
 
 ## Does the damage sit where the strongest winds were expected?
 
-No, not where you'd expect for a northward-moving hurricane. The strongest winds are usually on the right of the track near landfall, which here means east of the track around Destin and Fort Walton Beach. Inside this study grid, the damage mask instead sits 45–75 km left (west) of the track, from about 10 to 60 km north of landfall.
+No, not where you'd expect for a northward-moving hurricane. The strongest winds are usually on the right of the track near landfall, which here means east of the track around Destin and Fort Walton Beach. Inside this study grid, the damage mask instead sits 45–75 km left (west) of the track, from about 20 to 70 km north of landfall.
 
 The gust reports point the same way. The three highest land gusts (Jay 102 kt, Oriole Beach 101 kt, Whiting Field 99 kt) are all 44–56 km left of the track. The stations close to the track on the right side that kept reporting through the storm peaked lower (Eglin 71 kt, Destin 66 kt).
 
 Two things limit this conclusion:
 - The study grid was drawn around the damage band and ends at the track, so the right side was never mapped with the Sentinel-2 mask. Damage east of the track can't be ruled out from this analysis.
-- I haven't established why the strongest observed winds and damage fell on the left. Possible reasons, none tested: an asymmetric wind field as the storm weakened and lost tropical character within six hours of landfall; error in the operational track (0.1° fixes); and sparse station coverage with outages on the right side.
+- **NHC's own analysed wind field doesn't explain it either.** At 00Z its hurricane-force radius is slightly larger on the right (30 nm east, 20–25 nm west). The damage band, 45–75 km west, lies at and just beyond the western edge of the analysed 64 kt winds (37–46 km) and well inside the 50 kt radius (93–130 km). So the damage is consistent with the analysed field reaching that far west, but the field doesn't put the strongest winds on the left.
+- I haven't established why the strongest observed gusts and the damage fell on the left. Possible reasons, not tested: a wind field more asymmetric than the radii capture as the storm weakened and lost tropical character within six hours of landfall; error in the operational track (0.1° fixes, about 10 km); and sparse station coverage on the right, where several stations had outages. Stations within about 5 km of the track are called "at the track" because of that rounding.
 
 ## Not verified
 

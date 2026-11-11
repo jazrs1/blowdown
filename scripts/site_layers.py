@@ -78,7 +78,8 @@ if not os.path.exists(cache):
 T = np.load(cache)
 for tag, nm in (("0", "s2_before.jpg"), ("1", "s2_after.jpg")):
     rgb = np.stack([T[f"r{tag}"], T[f"g{tag}"], T[f"b{tag}"]], -1) / 10000.0
-    rgb = (np.clip(np.nan_to_num(rgb) / 0.16, 0, 1) ** 0.85 * 255).astype("uint8"); rgb[ex_t] = (158, 158, 158)
+    nod = ~np.isfinite(rgb).all(-1)                       # masked by SCL (water, cloud) or no data
+    rgb = (np.clip(np.nan_to_num(rgb) / 0.16, 0, 1) ** 0.85 * 255).astype("uint8"); rgb[nod] = (205, 212, 214); rgb[ex_t] = (158, 158, 158)
     Image.fromarray(rgb).save(f"{OUT}/{nm}", quality=78, optimize=True, progressive=True)
     meta["layers"][nm] = {"label": "Sentinel-2 true colour " + ("before" if tag == "0" else "after"), "bytes": os.path.getsize(f"{OUT}/{nm}")}
 # ---- vectors
@@ -88,7 +89,7 @@ for q in fx:
     feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": [q["lon"], q["lat"]]},
                   "properties": {"kind": "fix", "time": q["time"], "vmax_kt": q["vmax_kt"], "mslp_mb": q["mslp_mb"], "type": q["type"]}})
 lf = W["landfall"]["lon_lat_on_track"]
-feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": lf}, "properties": {"kind": "landfall", "note": "near Destin, about 8:30 PM CDT 9 Oct (NWS Mobile)"}})
+feats.append({"type": "Feature", "geometry": {"type": "Point", "coordinates": lf}, "properties": {"kind": "landfall", "note": "where the best track meets the coast; NWS Mobile: landfall near Destin about 8:30 PM CDT 9 Oct"}})
 json.dump({"type": "FeatureCollection", "features": feats}, open(f"{OUT}/track.geojson", "w"))
 sf = [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [s["lon"], s["lat"]]},
        "properties": {"name": s["name"], "gust_kt": s["gust_kt"], "network": s["network"], "approx": bool(s.get("location_approximate")),

@@ -1,6 +1,6 @@
 """Site figures in the house style of hurricane.johnazer.com (paper #EDEDE7, ink #22201C, accent #7D5F33, model #8C4A32).
-From committed results only (no held-out data): docs/pipeline/controls_strict.json, controls_eval.json, controls_upland.json,
-docs/wind/wind.json. Writes site/figures/*.png at 2x."""
+From docs/site/site_numbers.json (controls numbers recomputed with the held-out block and aerial tip excluded) and
+docs/wind/wind.json (also excluding them). Writes site/figures/*.png at 2x."""
 import json, os
 import numpy as np, matplotlib
 matplotlib.use("Agg"); import matplotlib.pyplot as plt
@@ -11,11 +11,10 @@ plt.rcParams.update({"font.family": ["Georgia", "DejaVu Serif"], "font.size": 10
                      "axes.grid": True, "grid.color": HAIR, "grid.linewidth": 0.8, "axes.axisbelow": True, "legend.frameon": False})
 def save(fig, name): fig.savefig(f"site/figures/{name}", dpi=200, bbox_inches="tight"); plt.close(fig)
 # 1. storm vs no-storm (NISAR HV, track 76 single 12-day pairs)
-E = json.load(open("docs/pipeline/controls_eval.json")); T = json.load(open("docs/pipeline/controls_strict.json"))
-def ev(pair, res, dom="all"): return next(r["auc"] for r in E["rows"] if r["pair"].startswith(pair) and r["pol"] == "HV" and r["res_m"] == res and r["domain"] == dom and r["forest_type"] == "all")
-groups = [("All forest, 100 m", ev("A storm", 100), ev("C no storm", 100), ev("B no storm", 100)),
-          ("Upland forest, 100 m", T["pairs"]["A storm 10-05->10-17 | HV | 100 m"]["auc"], T["pairs"]["C no storm 2026-09-11->09-23 | HV | 100 m"]["auc"], T["pairs"]["B no storm 2025-10-22->11-03 | HV | 100 m"]["auc"]),
-          ("All forest, 30 m", ev("A storm", 30), ev("C no storm", 30), ev("B no storm", 30))]
+N = json.load(open("docs/site/site_numbers.json"))   # held-out block and aerial tip excluded (site_numbers.py)
+sv = N["storm_vs_control_HV"]
+g = lambda dom, res: (sv[f"storm | {dom} | {res} m"], sv[f"nostorm_2026 | {dom} | {res} m"], sv[f"nostorm_2025 | {dom} | {res} m"])
+groups = [("All forest, 100 m",) + g("all forest", 100), ("Upland forest, 100 m",) + g("strict upland", 100), ("All forest, 30 m",) + g("all forest", 30)]
 fig, ax = plt.subplots(figsize=(7.2, 3.4)); w = 0.26
 for k, (lab, a, c, b) in enumerate(groups):
     for j, (v, col, nm) in enumerate(((a, MOD, "Storm pair, 5 to 17 Oct 2026"), (c, MUTED, "No storm, 11 to 23 Sep 2026"), (b, RULE, "No storm, 22 Oct to 3 Nov 2025"))):
@@ -25,7 +24,13 @@ ax.set_xticks(range(len(groups)), [g[0] for g in groups]); ax.set_ylim(0.45, 0.8
 ax.set_ylabel("AUC, damage vs intact"); ax.legend(fontsize=8.5, loc="upper right"); ax.grid(axis="x", visible=False)
 save(fig, "storm_vs_control.png")
 # 2. persistence
-U = json.load(open("docs/pipeline/controls_upland.json"))["persistence"]
+PN = N["persistence_30m"]
+def recmap(d):
+    return {"NISAR HV t76 2026-10-17 (pre 10-05)": [d["NISAR HV post 10-17"]], "NISAR HV t76 2026-10-29 (pre 10-05)": [d["NISAR HV post 10-29"]],
+            "NISAR HH t76 2026-10-17 (pre 10-05)": [d["NISAR HH post 10-17"]], "NISAR HH t76 2026-10-29 (pre 10-05)": [d["NISAR HH post 10-29"]],
+            "S1 VH o92 2026-10-27": [d["S1 VH o92 post 10-27"]], "S1 VH o92 2026-11-08": [d["S1 VH o92 post 11-08"]],
+            "NISAR HV no-storm B (2025)": [d["NISAR HV no-storm 2025"]], "NISAR HV no-storm C (2026 pre)": [d["NISAR HV no-storm 2026"]]}
+U = {"upland | 30 m": recmap(PN["upland"]), "woody_wetland | 30 m": recmap(PN["woody_wetland"])}
 day = lambda s: (np.datetime64("2026-" + s) - np.datetime64("2026-10-01")).astype(int)
 fig, axs = plt.subplots(1, 2, figsize=(7.4, 3.3), sharey=True)
 for a, dom, title in zip(axs, ("upland | 30 m", "woody_wetland | 30 m"), ("Upland forest", "Woody wetland")):

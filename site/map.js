@@ -9,8 +9,7 @@
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors", maxZoom: 19, className: "base-tiles"
   }).addTo(map);
-  function zoomClass() { el.classList.toggle("zoom-low", map.getZoom() < 9.25); }
-  map.on("zoomend", zoomClass);
+
   map.on("focus", function () { map.scrollWheelZoom.enable(); });
   map.on("blur", function () { map.scrollWheelZoom.disable(); });
 
@@ -27,7 +26,7 @@
                getJSON("data/heldout.geojson"), getJSON("data/study.geojson")]).then(function (res) {
     var meta = res[0], track = res[1], stations = res[2], held = res[3], study = res[4];
     var b = L.latLngBounds(meta.bounds);
-    map.fitBounds(b, { padding: [4, 4] }); zoomClass();
+    map.fitBounds(b, { padding: [4, 4] });
     map.setMaxBounds(b.pad(0.6));
 
     function img(name, pane, opacity) { return L.imageOverlay("data/" + name, b, { pane: pane, opacity: opacity, interactive: false, className: "ov-" + name.split(".")[0] }); }
@@ -44,7 +43,7 @@
       pane: "held",
       style: { color: "#555", weight: 1, fillColor: "#9e9e9e", fillOpacity: 0.92 },
       onEachFeature: function (f, l) {
-        l.bindTooltip(f.properties.label, { permanent: true, direction: "center", className: "held-label" });
+        l.bindTooltip(f.properties.label, { permanent: true, direction: "top", offset: [0, -4], className: "held-label" });
         l.bindPopup("<b>Held out until scoring</b><br>" + f.properties.which + ". Nothing here has been used to build or tune any model; it is blank on every layer until the single scoring pass.");
       }
     }).addTo(map);
@@ -81,6 +80,9 @@
     }
     function set(key, on) {
       if (key === "beforeafter") {
+        if (on) ["nisar", "s1", "ndvi", "damage"].forEach(function (k) {
+          var c = document.querySelector('.map-controls input[data-layer="' + k + '"]'); if (c.checked) { c.checked = false; set(k, false); }
+        });
         [layers.before, layers.after].forEach(function (l) { if (on) l.addTo(map); else map.removeLayer(l); });
         document.getElementById("slider-row").classList.toggle("on", on);
         splitLine.style.display = on ? "block" : "none";
@@ -110,6 +112,7 @@
     map.on("move zoomend resize viewreset", updateSplit);
     map.on("zoomanim", function () { splitLine.style.opacity = 0; });
     map.on("zoomend", function () { splitLine.style.opacity = 1; });
+    if (/[?&]compare\b/.test(location.search)) { var bc = document.querySelector('.map-controls input[data-layer="beforeafter"]'); bc.checked = true; }
     sync();
     status("");
   }).catch(function (e) { status("Map data failed to load (" + e.message + ")."); });

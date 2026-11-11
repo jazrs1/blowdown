@@ -26,9 +26,19 @@ for line in open("data/wind/bal092026.dat"):
     t = p[2]; la = float(p[6][:-1]) / 10 * (1 if p[6][-1] == "N" else -1); lo = float(p[7][:-1]) / 10 * (-1 if p[7][-1] == "W" else 1)
     fix[t] = {"time": t, "lat": la, "lon": lo, "vmax_kt": int(p[8]), "mslp_mb": int(p[9]) if p[9].strip() not in ("", "0") else None, "type": p[10]}
 fixes = [fix[k] for k in sorted(fix)]
+radii = {}
+for line in open("data/wind/bal092026.dat"):
+    p = [x.strip() for x in line.split(",")]
+    if p[11] in ("34", "50", "64") and p[2] in ("2026100918", "2026101000", "2026101006"):
+        radii.setdefault(p[2], {"rmw_nm": int(p[19]) if p[19] else None})[p[11] + "kt_NE_SE_SW_NW_nm"] = [int(p[13]), int(p[14]), int(p[15]), int(p[16])]
 tx, ty = to_utm.transform([f["lon"] for f in fixes], [f["lat"] for f in fixes]); tx, ty = np.array(tx), np.array(ty)
 hrs = np.array([(np.datetime64(f"{f['time'][:4]}-{f['time'][4:6]}-{f['time'][6:8]}T{f['time'][8:]}") - np.datetime64("2026-10-10T00")) / np.timedelta64(1, "h") for f in fixes], float)
-lf_h = 1.5; lfx, lfy = np.interp(lf_h, hrs, tx), np.interp(lf_h, hrs, ty)
+# landfall point: where the best track crosses 30.40N (the Gulf coast at ~86.58W, Okaloosa Island / Fort Walton Beach),
+# between the 00Z and 06Z fixes; NWS gives landfall near Destin about 01:30Z. Time-interpolation would put it ~12 km inland.
+LAT_COAST = 30.40
+k0 = max(i for i in range(len(fixes) - 1) if fixes[i]["lat"] <= LAT_COAST < fixes[i + 1]["lat"])
+fr = (LAT_COAST - fixes[k0]["lat"]) / (fixes[k0 + 1]["lat"] - fixes[k0]["lat"]); lf_h = hrs[k0] + fr * (hrs[k0 + 1] - hrs[k0])
+lfx, lfy = tx[k0] + fr * (tx[k0 + 1] - tx[k0]), ty[k0] + fr * (ty[k0 + 1] - ty[k0])
 # cumulative along-track distance, zero at landfall
 seg_len = np.hypot(np.diff(tx), np.diff(ty)); cum = np.r_[0, np.cumsum(seg_len)]
 cum_lf = np.interp(lf_h, hrs, cum); along_fix = cum - cum_lf
@@ -46,8 +56,9 @@ sd_km = best * sgn / 1000; along_km = along / 1000
 ok = forest & ~excl
 out = {"track_source": "NHC ATCF b-deck bal092026.dat, https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat",
        "retrieved_utc": open("data/wind/bal092026.retrieved").read().strip(), "fixes": fixes,
-       "landfall": {"assumed_time_utc": "2026-10-10T01:30Z", "source": "NWS Mobile post-tropical cyclone report (landfall near Destin ~8:30 PM CDT 9 Oct)",
+       "landfall": {"method": "point where the best track crosses 30.40N (coast); NWS Mobile: landfall near Destin ~8:30 PM CDT 9 Oct (01:30Z)", "track_time_at_crossing_h_after_00Z": round(float(lf_h), 2),
                     "lon_lat_on_track": [round(v, 4) for v in to_ll.transform(lfx, lfy)]},
+       "wind_radii_bdeck": radii,
        "grid_signed_distance_km_range": [round(float(sd_km[ok].min()), 1), round(float(sd_km[ok].max()), 1)],
        "forest_cells_right_of_track": int((ok & (sd_km > 0)).sum()), "forest_cells_left_of_track": int((ok & (sd_km < 0)).sum())}
 edges = np.arange(np.floor(sd_km[ok].min() / 5) * 5, np.ceil(sd_km[ok].max() / 5) * 5 + 5, 5)
@@ -123,7 +134,7 @@ ax.plot(tx[sel] / 1e3, ty[sel] / 1e3, "-", c="#22201C", lw=2)
 for k in np.nonzero(sel)[0]:
     ax.plot(tx[k] / 1e3, ty[k] / 1e3, "o", c="#22201C", ms=4)
     ax.annotate(f"{fixes[k]['time'][6:8]}/{fixes[k]['time'][8:]}Z {fixes[k]['vmax_kt']} kt", (tx[k] / 1e3, ty[k] / 1e3), xytext=(6, 0), textcoords="offset points", fontsize=7)
-ax.plot(lfx / 1e3, lfy / 1e3, "*", c="#22201C", ms=12); ax.annotate("landfall (NWS)", (lfx / 1e3, lfy / 1e3), xytext=(6, -10), textcoords="offset points", fontsize=8)
+ax.plot(lfx / 1e3, lfy / 1e3, "*", c="#22201C", ms=12); ax.annotate("landfall (track meets coast)", (lfx / 1e3, lfy / 1e3), xytext=(6, -10), textcoords="offset points", fontsize=8)
 for s in ST["stations"]:
     if s.get("lat") is None: continue
     sx, sy = to_utm.transform(s["lon"], s["lat"])

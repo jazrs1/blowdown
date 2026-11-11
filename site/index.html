@@ -197,11 +197,10 @@
   .split-line { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.25); z-index: 650; pointer-events: none; display: none; }
   .leaflet-container { font-family: var(--mono); font-size: 12px; }
   .leaflet-tooltip.held-label {
-    background: transparent; border: 0; box-shadow: none; color: #1f1f1f;
-    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.05em; text-align: center; white-space: normal; width: 110px;
+    background: rgba(237,237,231,0.94); border: 1px solid #8a8a8a; border-radius: 1px; box-shadow: none; color: #1f1f1f;
+    font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.04em; line-height: 1.3; padding: 3px 6px; white-space: nowrap;
   }
   .leaflet-tooltip.held-label::before { display: none; }
-  .zoom-low .leaflet-tooltip.held-label { display: none; }
   .base-tiles { filter: grayscale(1) sepia(0.12) contrast(0.82) brightness(1.06); }
   .leaflet-popup-content { font-family: var(--serif); font-size: 15px; line-height: 1.45; color: var(--body); }
   .leaflet-popup-content b { color: var(--ink); font-weight: 500; }
@@ -274,7 +273,8 @@
 
   <section id="what">
     <h2>What happened</h2>
-    <p>Hurricane Isaias came ashore near Destin, Florida, at about 8:30 in the evening of 9 October 2026, a Category 2 storm with 105 mph winds, and weakened fast as it moved north into Alabama. NWS Mobile's post-storm report lists the highest land gusts at Jay, Florida (102.2 kt, a University of Florida FAWN station), Oriole Beach (101.3 kt) and Whiting Field South (99 kt). Santa Rosa County alone reported about 4 million cubic yards of vegetative debris.</p>
+    <p>Hurricane Isaias came ashore near Destin, Florida, at about 8:30 in the evening of 9 October 2026, a Category 2 storm with 105 mph winds, and weakened fast as it moved north into Alabama. NWS Mobile's post-storm report lists the highest land gusts at Jay, Florida (102.2 kt, a University of Florida FAWN station), Oriole Beach (101.3 kt) and Whiting Field South (99 kt).</p>
+    <p>The best track shows the centre crossing the coast between Fort Walton Beach and Destin and running almost due north along 86.5&deg;W, past Crestview and Andalusia. It was down to a 45 kt low by 1 a.m. local time and extratropical over central Alabama by morning. The forest damage lies well to the west of that line, which is the subject of the wind section below.</p>
     <p>The Alabama Forestry Commission's preliminary aerial survey on 13 October estimated more than 2.5 million tons of timber damaged, worth more than $33.5 million, in Conecuh, Escambia and Monroe counties. The Florida Forest Service's preliminary report put Florida's damaged timber at about $30 million across five counties, most of it in Santa Rosa. Both agencies say ground surveys are still needed.</p>
     <p class="caption">Sources: <a href="https://www.weather.gov/media/mob/TropicalEventSummary/PSHMOB_2026AL09_Isaias_Summary.pdf">NWS Mobile post-tropical cyclone report</a> (updated 23 October); <a href="https://www.fox10tv.com/2026/10/18/new-estimates-timber-damage-alabama-isaias/">Alabama Forestry Commission estimate, as reported by WALA FOX10</a>; <a href="https://blogs.ifas.ufl.edu/ffgs/2026/10/30/florida-land-steward-update-october-30-2026/">Florida Forest Service estimate, via UF/IFAS Florida Land Steward Update</a> (30 October); track from the <a href="https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat">NHC operational best track</a>.</p>
   </section>
@@ -314,7 +314,7 @@
         <p class="legend-note">Radar differences are after minus before in decibels, scaled from &minus;2 dB (blue) to +2 dB (red), with each layer's forest-wide median removed; red means brighter after the storm. NDVI runs from &minus;0.25 (brown, greenness lost) to +0.25. Forest only, about 64 m pixels. The grey blocks are the held-out area and the aerial strip, left blank until scoring.</p>
       </div>
     </figure>
-    <p class="caption">NISAR HV is the mean of an ascending and a descending track; Sentinel-1 VH is the mean of two ascending orbits, using October images only so its timing matches NISAR's. Sentinel-2 true colour is a cloud-masked median of 1 September to 8 October and of 11 October to 9 November. Basemap &copy; OpenStreetMap contributors. The grey labels appear when zoomed in.</p>
+    <p class="caption">NISAR HV is the mean of an ascending and a descending track; Sentinel-1 VH is the mean of two ascending orbits, using October images only so its timing matches NISAR's. Sentinel-2 true colour is a cloud-masked median of 1 September to 8 October and of 11 October to 9 November. Basemap &copy; OpenStreetMap contributors. Turning on the before/after view switches the change layers off so the imagery shows; they can be turned back on.</p>
   </section>
 
   <section id="storm">
@@ -323,12 +323,12 @@
     <figure>
       <picture>
         <source media="(max-width: 620px)" srcset="figures/storm_vs_control_narrow.png" width="761" height="976">
-        <img class="fig" src="figures/storm_vs_control.png" alt="Bar chart. NISAR HV separates damaged from intact forest with AUC 0.83 at 100 m across the storm, against 0.54 and 0.57 for two windows with no storm; on upland forest 0.74 against 0.51 and 0.57." width="1257" height="611" loading="lazy">
+        <img class="fig" src="figures/storm_vs_control.png" alt="Bar chart. NISAR HV separates damaged from intact forest with AUC 0.82 at 100 m across the storm, against 0.57 and 0.58 for two windows with no storm; on upland forest 0.72 against 0.52 and 0.58." width="1257" height="611" loading="lazy">
       </picture>
-      <p class="caption">How well NISAR HV change on one ascending track separates damaged from intact forest (0.5 is chance), for the 12 days across the storm and for two 12-day windows with no storm. Upland means pine and hardwood on ground more than 5 m above the nearest stream.</p>
+      <p class="caption">How well NISAR HV change on one ascending track separates damaged from intact forest (0.5 is chance), for the 12 days across the storm and for two 12-day windows with no storm, with the held-out areas left out. Upland means blocks that are at least 90 per cent pine or hardwood on ground more than 5 m above the nearest stream.</p>
     </figure>
-    <p>Across the storm, NISAR HV scores 0.83 at 100 m resolution. The two no-storm windows score 0.54 and 0.57, so roughly 80 to 87 per cent of the separation above chance comes from the storm. On upland forest, where floodwater cannot pool, it still scores 0.74 against 0.51 and 0.57. NISAR's HH channel carries no detectable storm signal on upland forest.</p>
-    <p>Against Sentinel-1 with images matched in time, NISAR's ascending track does better at 100 m (0.85 against 0.81) but the two NISAR tracks averaged together only tie, because the descending track is weak over pine.</p>
+    <p>Across the storm, NISAR HV scores 0.82 at 100 m resolution. The two no-storm windows score 0.57 and 0.58, so roughly three quarters of the separation above chance comes from the storm. On upland forest, where floodwater cannot pool, it still scores 0.72 against 0.52 and 0.58. NISAR's HH channel carries no detectable storm signal on upland forest. These numbers leave out the held-out stretch and the aerial strip; with them included, the earlier analysis gave 0.83 against 0.54 and 0.57.</p>
+    <p>Against Sentinel-1 with images matched in time, NISAR's ascending track does better at 100 m (0.84 against 0.80, held-out areas excluded) but the two NISAR tracks averaged together only tie, because the descending track is weak over pine.</p>
   </section>
 
   <section id="water">
@@ -339,9 +339,9 @@
         <source media="(max-width: 620px)" srcset="figures/persistence_narrow.png" width="753" height="1282">
         <img class="fig" src="figures/persistence.png" alt="Two panels. On upland forest NISAR HV contrast stays near 0.5 dB from 17 to 29 October; in woody wetland NISAR HV and HH contrasts grow. Sentinel-1 fades on upland." width="1297" height="738" loading="lazy">
       </picture>
-      <p class="caption">Mean radar change in damaged forest minus intact forest, by date after the storm. The grey band is NISAR HV over the two no-storm windows.</p>
+      <p class="caption">Mean radar change in damaged forest minus intact forest at 30 m, by date after the storm, with the held-out areas left out. The grey band is NISAR HV over the two no-storm windows.</p>
     </figure>
-    <p>On upland forest, NISAR HV holds nearly steady from 17 to 29 October (+0.52 to +0.47 dB), which looks like structure, not water. In woody wetland, both NISAR channels grow instead of fading, led by HH (+0.83 to +1.01 dB), which is also what lasting floodwater under the canopy would do. There, downed trees and water cannot be told apart from these data. Sentinel-1 fades more on upland than in wetland, the opposite of a simple drying pattern.</p>
+    <p>On upland forest, NISAR HV fades only slightly from 17 to 29 October (+0.51 to +0.44 dB), far above the no-storm windows, which looks more like structure than water. In woody wetland, both NISAR channels grow instead of fading, led by HH (+0.94 to +1.07 dB), which is also what lasting floodwater under the canopy would do. There, downed trees and water cannot be told apart from these data. Sentinel-1 fades more on upland (+0.36 to +0.18 dB) than in wetland (+0.97 to +0.86 dB), the opposite of a simple drying pattern. Held-out areas are excluded throughout, and NISAR's 29 October scene comes from a newer processor (see Methods).</p>
   </section>
 
   <section id="wind">
@@ -354,7 +354,7 @@
       </picture>
       <p class="caption">Share of forest in the Sentinel-2 damage mask by distance from the NHC best track, in 5 km bins, with the held-out areas left out. Triangles are station peak gusts; hollow ones reported fewer than ten times during the storm and may have failed.</p>
     </figure>
-    <p>The damaged share of forest peaks at 30 per cent 60 to 65 km west of the track, and at 45 per cent in woody wetland. The three strongest gusts, at Jay, Oriole Beach and Whiting Field, are all 44 to 56 km west. Stations right of the track near landfall that kept reporting peaked lower: 71 kt at Eglin and 66 kt at Destin. The study area was drawn around the damage band and ends at the track, so damage east of it was never mapped, and why the strongest wind fell on the left is not established.</p>
+    <p>The damaged share of forest peaks at 30 per cent 60 to 65 km west of the track, and at 45 per cent in woody wetland. The three strongest gusts, at Jay, Oriole Beach and Whiting Field, are all 44 to 56 km west. Stations at or just right of the track near landfall that kept reporting peaked lower: 71 kt at Eglin and 66 kt at Destin. NHC's own analysis put hurricane-force winds about 37 to 46 km out on the west side and 56 km on the east, so the damage band sits at and just beyond the western edge of the analysed hurricane-force winds. The study area was drawn around the damage band and ends at the track, so damage east of it was never mapped, and why the strongest gusts fell on the left is not established.</p>
   </section>
 
   <section id="results">

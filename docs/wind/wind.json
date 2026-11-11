@@ -228,12 +228,65 @@
   }
  ],
  "landfall": {
-  "assumed_time_utc": "2026-10-10T01:30Z",
-  "source": "NWS Mobile post-tropical cyclone report (landfall near Destin ~8:30 PM CDT 9 Oct)",
+  "method": "point where the best track crosses 30.40N (coast); NWS Mobile: landfall near Destin ~8:30 PM CDT 9 Oct (01:30Z)",
+  "track_time_at_crossing_h_after_00Z": 1.0,
   "lon_lat_on_track": [
-   -86.5752,
-   30.5
+   -86.5835,
+   30.4
   ]
+ },
+ "wind_radii_bdeck": {
+  "2026100918": {
+   "rmw_nm": 20,
+   "34kt_NE_SE_SW_NW_nm": [
+    180,
+    150,
+    90,
+    160
+   ],
+   "50kt_NE_SE_SW_NW_nm": [
+    60,
+    70,
+    50,
+    70
+   ],
+   "64kt_NE_SE_SW_NW_nm": [
+    30,
+    30,
+    25,
+    20
+   ]
+  },
+  "2026101000": {
+   "rmw_nm": 15,
+   "34kt_NE_SE_SW_NW_nm": [
+    100,
+    140,
+    90,
+    100
+   ],
+   "50kt_NE_SE_SW_NW_nm": [
+    60,
+    70,
+    50,
+    70
+   ],
+   "64kt_NE_SE_SW_NW_nm": [
+    30,
+    30,
+    25,
+    20
+   ]
+  },
+  "2026101006": {
+   "rmw_nm": 100,
+   "34kt_NE_SE_SW_NW_nm": [
+    160,
+    140,
+    90,
+    100
+   ]
+  }
  },
  "grid_signed_distance_km_range": [
   -104.5,
@@ -692,156 +745,156 @@
  },
  "bins_along_track_from_landfall_10km": [
   {
-   "from_km": -20.0,
-   "to_km": -10.0,
-   "forest_cells": 58908,
-   "damaged_share": 0.022,
-   "damaged_share_upland": 0.0315,
-   "damaged_share_wetland": 0.0182
-  },
-  {
    "from_km": -10.0,
    "to_km": 0.0,
-   "forest_cells": 396469,
-   "damaged_share": 0.0195,
-   "damaged_share_upland": 0.0253,
-   "damaged_share_wetland": 0.0191
+   "forest_cells": 38880,
+   "damaged_share": 0.0086,
+   "damaged_share_upland": 0.0048,
+   "damaged_share_wetland": 0.0093
   },
   {
    "from_km": 0.0,
    "to_km": 10.0,
-   "forest_cells": 454840,
-   "damaged_share": 0.0416,
-   "damaged_share_upland": 0.0269,
-   "damaged_share_wetland": 0.0837
+   "forest_cells": 379333,
+   "damaged_share": 0.0217,
+   "damaged_share_upland": 0.0272,
+   "damaged_share_wetland": 0.0206
   },
   {
    "from_km": 10.0,
    "to_km": 20.0,
-   "forest_cells": 604497,
-   "damaged_share": 0.1241,
-   "damaged_share_upland": 0.0825,
-   "damaged_share_wetland": 0.1826
+   "forest_cells": 431524,
+   "damaged_share": 0.036,
+   "damaged_share_upland": 0.0282,
+   "damaged_share_wetland": 0.0648
   },
   {
    "from_km": 20.0,
    "to_km": 30.0,
-   "forest_cells": 705669,
-   "damaged_share": 0.1257,
-   "damaged_share_upland": 0.0895,
-   "damaged_share_wetland": 0.182
+   "forest_cells": 580813,
+   "damaged_share": 0.1143,
+   "damaged_share_upland": 0.0682,
+   "damaged_share_wetland": 0.1822
   },
   {
    "from_km": 30.0,
    "to_km": 40.0,
-   "forest_cells": 683305,
-   "damaged_share": 0.1068,
-   "damaged_share_upland": 0.0806,
-   "damaged_share_wetland": 0.1806
+   "forest_cells": 709003,
+   "damaged_share": 0.1269,
+   "damaged_share_upland": 0.0945,
+   "damaged_share_wetland": 0.1749
   },
   {
    "from_km": 40.0,
    "to_km": 50.0,
-   "forest_cells": 714841,
-   "damaged_share": 0.1069,
-   "damaged_share_upland": 0.0821,
-   "damaged_share_wetland": 0.1984
+   "forest_cells": 688618,
+   "damaged_share": 0.1136,
+   "damaged_share_upland": 0.0849,
+   "damaged_share_wetland": 0.1871
   },
   {
    "from_km": 50.0,
    "to_km": 60.0,
-   "forest_cells": 690319,
-   "damaged_share": 0.1062,
-   "damaged_share_upland": 0.0498,
-   "damaged_share_wetland": 0.2559
+   "forest_cells": 713756,
+   "damaged_share": 0.1051,
+   "damaged_share_upland": 0.0815,
+   "damaged_share_wetland": 0.1932
   },
   {
    "from_km": 60.0,
    "to_km": 70.0,
-   "forest_cells": 649378,
-   "damaged_share": 0.0465,
-   "damaged_share_upland": 0.0333,
-   "damaged_share_wetland": 0.0909
+   "forest_cells": 690223,
+   "damaged_share": 0.1052,
+   "damaged_share_upland": 0.0513,
+   "damaged_share_wetland": 0.2536
   },
   {
    "from_km": 70.0,
    "to_km": 80.0,
-   "forest_cells": 611251,
-   "damaged_share": 0.0058,
-   "damaged_share_upland": 0.0049,
-   "damaged_share_wetland": 0.0094
+   "forest_cells": 664844,
+   "damaged_share": 0.0566,
+   "damaged_share_upland": 0.0358,
+   "damaged_share_wetland": 0.1173
   },
   {
    "from_km": 80.0,
    "to_km": 90.0,
-   "forest_cells": 551499,
-   "damaged_share": 0.0207,
-   "damaged_share_upland": 0.0159,
-   "damaged_share_wetland": 0.0377
+   "forest_cells": 606583,
+   "damaged_share": 0.0064,
+   "damaged_share_upland": 0.0059,
+   "damaged_share_wetland": 0.0095
   },
   {
    "from_km": 90.0,
    "to_km": 100.0,
-   "forest_cells": 257450,
-   "damaged_share": 0.0262,
-   "damaged_share_upland": 0.0182,
-   "damaged_share_wetland": 0.0517
+   "forest_cells": 555709,
+   "damaged_share": 0.0122,
+   "damaged_share_upland": 0.01,
+   "damaged_share_wetland": 0.0199
   },
   {
    "from_km": 100.0,
    "to_km": 110.0,
-   "forest_cells": 227756,
-   "damaged_share": 0.0308,
-   "damaged_share_upland": 0.0208,
-   "damaged_share_wetland": 0.0614
+   "forest_cells": 319140,
+   "damaged_share": 0.0366,
+   "damaged_share_upland": 0.0257,
+   "damaged_share_wetland": 0.0762
   },
   {
    "from_km": 110.0,
    "to_km": 120.0,
-   "forest_cells": 618315,
-   "damaged_share": 0.0626,
-   "damaged_share_upland": 0.0338,
-   "damaged_share_wetland": 0.1185
+   "forest_cells": 178676,
+   "damaged_share": 0.0189,
+   "damaged_share_upland": 0.0145,
+   "damaged_share_wetland": 0.0325
   },
   {
    "from_km": 120.0,
    "to_km": 130.0,
-   "forest_cells": 725451,
-   "damaged_share": 0.0479,
-   "damaged_share_upland": 0.0305,
-   "damaged_share_wetland": 0.0673
+   "forest_cells": 595288,
+   "damaged_share": 0.0661,
+   "damaged_share_upland": 0.0364,
+   "damaged_share_wetland": 0.1248
   },
   {
    "from_km": 130.0,
    "to_km": 140.0,
-   "forest_cells": 779473,
-   "damaged_share": 0.0256,
-   "damaged_share_upland": 0.0203,
-   "damaged_share_wetland": 0.0212
+   "forest_cells": 716888,
+   "damaged_share": 0.0476,
+   "damaged_share_upland": 0.0307,
+   "damaged_share_wetland": 0.07
   },
   {
    "from_km": 140.0,
    "to_km": 150.0,
-   "forest_cells": 753742,
-   "damaged_share": 0.0188,
-   "damaged_share_upland": 0.0162,
-   "damaged_share_wetland": 0.0208
+   "forest_cells": 769359,
+   "damaged_share": 0.0284,
+   "damaged_share_upland": 0.0209,
+   "damaged_share_wetland": 0.0253
   },
   {
    "from_km": 150.0,
    "to_km": 160.0,
-   "forest_cells": 405214,
-   "damaged_share": 0.0142,
-   "damaged_share_upland": 0.008,
-   "damaged_share_wetland": 0.0282
+   "forest_cells": 770971,
+   "damaged_share": 0.0194,
+   "damaged_share_upland": 0.0169,
+   "damaged_share_wetland": 0.0209
   },
   {
    "from_km": 160.0,
    "to_km": 170.0,
-   "forest_cells": 25112,
-   "damaged_share": 0.0476,
-   "damaged_share_upland": 0.0694,
-   "damaged_share_wetland": 0.0059
+   "forest_cells": 461234,
+   "damaged_share": 0.0135,
+   "damaged_share_upland": 0.008,
+   "damaged_share_wetland": 0.0262
+  },
+  {
+   "from_km": 170.0,
+   "to_km": 180.0,
+   "forest_cells": 42647,
+   "damaged_share": 0.0358,
+   "damaged_share_upland": 0.0474,
+   "damaged_share_wetland": 0.0185
   }
  ],
  "damage_signed_distance_km_quantiles": {
