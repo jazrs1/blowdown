@@ -1,0 +1,96 @@
+{
+ "pasture_hay_81": {
+  "n_pixels_30m": 826951,
+  "km2": 744.3,
+  "mean_dndvi_2026": -0.0134,
+  "mean_dndvi_2025": -0.0279,
+  "median_dndvi_2026": -0.0107,
+  "share_greener_2026": 0.424,
+  "mean_ndvi_pre_2026": 0.673
+ },
+ "cropland_82": {
+  "n_pixels_30m": 948902,
+  "km2": 854.0,
+  "mean_dndvi_2026": -0.1798,
+  "mean_dndvi_2025": -0.1909,
+  "median_dndvi_2026": -0.1236,
+  "share_greener_2026": 0.196,
+  "mean_ndvi_pre_2026": 0.683
+ },
+ "open_land_81_82": {
+  "n_pixels_30m": 1775853,
+  "km2": 1598.3,
+  "mean_dndvi_2026": -0.1023,
+  "mean_dndvi_2025": -0.115,
+  "median_dndvi_2026": -0.0435,
+  "share_greener_2026": 0.302,
+  "mean_ndvi_pre_2026": 0.678
+ },
+ "forest_outside_damage_mask": {
+  "n_pixels_30m": 9325201,
+  "km2": 8392.7,
+  "mean_dndvi_2026": -0.0004,
+  "mean_dndvi_2025": 0.0018,
+  "median_dndvi_2026": 0.0023,
+  "share_greener_2026": 0.536,
+  "mean_ndvi_pre_2026": 0.796
+ },
+ "upland_forest_41_43_outside_mask": {
+  "n_pixels_30m": 6986993,
+  "km2": 6288.3,
+  "mean_dndvi_2026": 0.0032,
+  "mean_dndvi_2025": 0.0048,
+  "median_dndvi_2026": 0.0052,
+  "share_greener_2026": 0.589,
+  "mean_ndvi_pre_2026": 0.789
+ },
+ "woody_wetland_90_outside_mask": {
+  "n_pixels_30m": 2338208,
+  "km2": 2104.4,
+  "mean_dndvi_2026": -0.0111,
+  "mean_dndvi_2025": -0.0071,
+  "median_dndvi_2026": -0.0091,
+  "share_greener_2026": 0.376,
+  "mean_ndvi_pre_2026": 0.816
+ },
+ "forest_inside_damage_mask": {
+  "n_pixels_30m": 629347,
+  "km2": 566.4,
+  "mean_dndvi_2026": -0.1468,
+  "mean_dndvi_2025": -0.0067,
+  "median_dndvi_2026": -0.1301,
+  "share_greener_2026": 0.001,
+  "mean_ndvi_pre_2026": 0.824
+ },
+ "notes": "NDVI change = after minus before median composite; 2025 = same calendar windows (no storm). Held-out block and aerial tip excluded.",
+ "true_colour_reflectance": {
+  "open_land_81_82": {
+   "before": {
+    "mean_red": 0.0612,
+    "mean_green": 0.0709,
+    "mean_blue": 0.0445,
+    "red_over_green": 0.863
+   },
+   "after": {
+    "mean_red": 0.0774,
+    "mean_green": 0.0711,
+    "mean_blue": 0.0452,
+    "red_over_green": 1.089
+   }
+  },
+  "forest_outside_damage_mask": {
+   "before": {
+    "mean_red": 0.0286,
+    "mean_green": 0.0434,
+    "mean_blue": 0.0274,
+    "red_over_green": 0.658
+   },
+   "after": {
+    "mean_red": 0.0268,
+    "mean_green": 0.0351,
+    "mean_blue": 0.0201,
+    "red_over_green": 0.763
+   }
+  }
+ }
+}
