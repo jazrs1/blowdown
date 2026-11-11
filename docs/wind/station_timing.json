@@ -1,0 +1,78 @@
+{
+ "stations": {
+  "Jay (FAWN)": {
+   "name": "Jay, FAWN 15-min mean",
+   "centre_closest_approach_h_from_00Z": 2.67,
+   "closest_distance_km": 56.2,
+   "n_reports_22Z_06Z": 33,
+   "max_sustained_kt": 63.1,
+   "max_sustained_h": 1.25,
+   "max_sustained_dir": 47.92,
+   "max_sustained_after_centre_h": -1.42
+  },
+  "NDZ": {
+   "name": "Whiting Field South (KNDZ)",
+   "centre_closest_approach_h_from_00Z": 2.42,
+   "closest_distance_km": 44.5,
+   "n_reports_22Z_06Z": 17,
+   "peak_gust_kt": 99.0,
+   "peak_gust_h_from_00Z": 1.62,
+   "peak_gust_dir_deg": 30.0,
+   "peak_after_centre_h": -0.8,
+   "max_sustained_kt": 68.0,
+   "max_sustained_h": 1.93,
+   "max_sustained_dir": 40.0,
+   "max_sustained_after_centre_h": -0.48
+  },
+  "PNS": {
+   "name": "Pensacola (KPNS)",
+   "centre_closest_approach_h_from_00Z": 1.17,
+   "closest_distance_km": 58.4,
+   "n_reports_22Z_06Z": 19,
+   "peak_gust_kt": 80.0,
+   "peak_gust_h_from_00Z": -0.12,
+   "peak_gust_dir_deg": 40.0,
+   "peak_after_centre_h": -1.28,
+   "max_sustained_kt": 42.0,
+   "max_sustained_h": 1.1,
+   "max_sustained_dir": 330.0,
+   "max_sustained_after_centre_h": -0.07
+  },
+  "VPS": {
+   "name": "Eglin AFB (KVPS)",
+   "centre_closest_approach_h_from_00Z": 1.42,
+   "closest_distance_km": 4.9,
+   "n_reports_22Z_06Z": 61,
+   "peak_gust_kt": 71.0,
+   "peak_gust_h_from_00Z": 1.28,
+   "peak_gust_dir_deg": 360.0,
+   "peak_after_centre_h": -0.13,
+   "max_sustained_kt": 20.0,
+   "max_sustained_h": -3.08,
+   "max_sustained_dir": 20.0,
+   "max_sustained_after_centre_h": -4.5
+  },
+  "DTS": {
+   "name": "Destin (KDTS)",
+   "centre_closest_approach_h_from_00Z": 1.0,
+   "closest_distance_km": 11.2,
+   "n_reports_22Z_06Z": 25,
+   "peak_gust_kt": 66.0,
+   "peak_gust_h_from_00Z": -0.8,
+   "peak_gust_dir_deg": 20.0,
+   "peak_after_centre_h": -1.8,
+   "max_sustained_kt": 34.0,
+   "max_sustained_h": 1.17,
+   "max_sustained_dir": 30.0,
+   "max_sustained_after_centre_h": 0.17
+  }
+ },
+ "notes": {
+  "fawn_clock": {
+   "weighted_solar_noon_local_h": 12.42,
+   "expected_solar_noon_utc_h": 17.56,
+   "inferred_utc_offset_h": -5
+  },
+  "sticknet": "No public Texas Tech StickNet time series found for Oriole Beach 0217A (not plotted)."
+ }
+}

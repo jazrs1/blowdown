@@ -1,0 +1,1419 @@
+{
+ "band_edge_points": [
+  {
+   "lat": 30.474999999999998,
+   "lon": -87.099,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 90.9,
+    "S2 orbit 83 swath edge": 0.5,
+    "S2 MGRS tile edge": 9.5,
+    "S1 orbit 19 swath edge": 9.4,
+    "S1 orbit 92 swath edge": 48.5,
+    "NISAR track 076 frame edge": 46.0,
+    "NISAR track 055 frame edge": 46.3
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": NaN,
+    "pre_n": NaN,
+    "post_doy_median": NaN,
+    "post_n": NaN
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.474999999999998,
+   "lon": -87.049,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 93.5,
+    "S2 orbit 83 swath edge": 5.2,
+    "S2 MGRS tile edge": 4.7,
+    "S1 orbit 19 swath edge": 14.1,
+    "S1 orbit 92 swath edge": 43.7,
+    "NISAR track 076 frame edge": 50.8,
+    "NISAR track 055 frame edge": 41.6
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": NaN,
+    "pre_n": NaN,
+    "post_doy_median": NaN,
+    "post_n": NaN
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.525,
+   "lon": -87.126,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 84.8,
+    "S2 orbit 83 swath edge": 3.4,
+    "S2 MGRS tile edge": 12.1,
+    "S1 orbit 19 swath edge": 7.9,
+    "S1 orbit 92 swath edge": 50.1,
+    "NISAR track 076 frame edge": 44.8,
+    "NISAR track 055 frame edge": 50.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": NaN,
+    "pre_n": NaN,
+    "post_doy_median": NaN,
+    "post_n": NaN
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.525,
+   "lon": -87.017,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 90.8,
+    "S2 orbit 83 swath edge": 6.8,
+    "S2 MGRS tile edge": 1.6,
+    "S1 orbit 19 swath edge": 18.2,
+    "S1 orbit 92 swath edge": 39.8,
+    "NISAR track 076 frame edge": 54.9,
+    "NISAR track 055 frame edge": 40.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": NaN,
+    "pre_n": NaN,
+    "post_doy_median": NaN,
+    "post_n": NaN
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.575,
+   "lon": -87.159,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 78.4,
+    "S2 orbit 83 swath edge": 7.8,
+    "S2 MGRS tile edge": 7.7,
+    "S1 orbit 19 swath edge": 5.8,
+    "S1 orbit 92 swath edge": 52.3,
+    "NISAR track 076 frame edge": 43.4,
+    "NISAR track 055 frame edge": 54.7
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": NaN,
+    "pre_n": NaN,
+    "post_doy_median": 4.0,
+    "post_n": 11.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.575,
+   "lon": -86.933,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 91.9,
+    "S2 orbit 83 swath edge": 13.2,
+    "S2 MGRS tile edge": 3.3,
+    "S1 orbit 19 swath edge": 27.1,
+    "S1 orbit 92 swath edge": 30.9,
+    "NISAR track 076 frame edge": 64.2,
+    "NISAR track 055 frame edge": 34.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.5,
+    "pre_n": -2.0,
+    "post_doy_median": -2.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.625,
+   "lon": -87.149,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 74.4,
+    "S2 orbit 83 swath edge": 8.2,
+    "S2 MGRS tile edge": 2.1,
+    "S1 orbit 19 swath edge": 7.8,
+    "S1 orbit 92 swath edge": 50.4,
+    "NISAR track 076 frame edge": 46.0,
+    "NISAR track 055 frame edge": 55.4
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -0.5,
+    "pre_n": 3.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.625,
+   "lon": -86.919,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 88.9,
+    "S2 orbit 83 swath edge": 13.2,
+    "S2 MGRS tile edge": 2.0,
+    "S1 orbit 19 swath edge": 29.5,
+    "S1 orbit 92 swath edge": 28.7,
+    "NISAR track 076 frame edge": 67.0,
+    "NISAR track 055 frame edge": 35.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": 4.0,
+    "post_doy_median": -1.0,
+    "post_n": 5.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 30.674999999999997,
+   "lon": -87.18,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 68.1,
+    "S2 orbit 83 swath edge": 12.4,
+    "S2 MGRS tile edge": 3.4,
+    "S1 orbit 19 swath edge": 6.0,
+    "S1 orbit 92 swath edge": 52.4,
+    "NISAR track 076 frame edge": 45.4,
+    "NISAR track 055 frame edge": 60.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -4.0,
+    "pre_n": 11.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.674999999999997,
+   "lon": -86.958,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 82.4,
+    "S2 orbit 83 swath edge": 8.2,
+    "S2 MGRS tile edge": 3.4,
+    "S1 orbit 19 swath edge": 26.9,
+    "S1 orbit 92 swath edge": 31.4,
+    "NISAR track 076 frame edge": 65.1,
+    "NISAR track 055 frame edge": 41.2
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.0,
+    "pre_n": -2.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.724999999999998,
+   "lon": -87.189,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 63.2,
+    "S2 orbit 83 swath edge": 14.6,
+    "S2 MGRS tile edge": 0.9,
+    "S1 orbit 19 swath edge": 6.2,
+    "S1 orbit 92 swath edge": 52.3,
+    "NISAR track 076 frame edge": 47.5,
+    "NISAR track 055 frame edge": 63.2
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.5,
+    "pre_n": -5.0,
+    "post_doy_median": 0.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.724999999999998,
+   "lon": -86.979,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 77.3,
+    "S2 orbit 83 swath edge": 5.1,
+    "S2 MGRS tile edge": 0.9,
+    "S1 orbit 19 swath edge": 25.9,
+    "S1 orbit 92 swath edge": 32.5,
+    "NISAR track 076 frame edge": 65.2,
+    "NISAR track 055 frame edge": 46.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": -1.0,
+    "post_doy_median": -1.0,
+    "post_n": -4.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.775,
+   "lon": -87.196,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 58.5,
+    "S2 orbit 83 swath edge": 16.4,
+    "S2 MGRS tile edge": 4.7,
+    "S1 orbit 19 swath edge": 6.6,
+    "S1 orbit 92 swath edge": 52.0,
+    "NISAR track 076 frame edge": 50.3,
+    "NISAR track 055 frame edge": 66.4
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.0,
+    "pre_n": 0.0,
+    "post_doy_median": 2.0,
+    "post_n": 2.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.775,
+   "lon": -86.983,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 73.5,
+    "S2 orbit 83 swath edge": 3.4,
+    "S2 MGRS tile edge": 1.7,
+    "S1 orbit 19 swath edge": 26.6,
+    "S1 orbit 92 swath edge": 31.9,
+    "NISAR track 076 frame edge": 67.3,
+    "NISAR track 055 frame edge": 49.9
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.5,
+    "pre_n": -4.0,
+    "post_doy_median": -1.0,
+    "post_n": -7.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.825,
+   "lon": -87.2,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 54.2,
+    "S2 orbit 83 swath edge": 18.1,
+    "S2 MGRS tile edge": 10.2,
+    "S1 orbit 19 swath edge": 7.2,
+    "S1 orbit 92 swath edge": 51.4,
+    "NISAR track 076 frame edge": 53.7,
+    "NISAR track 055 frame edge": 69.7
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.0,
+    "pre_n": 3.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.825,
+   "lon": -86.988,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 69.9,
+    "S2 orbit 83 swath edge": 1.5,
+    "S2 MGRS tile edge": 1.2,
+    "S1 orbit 19 swath edge": 27.2,
+    "S1 orbit 92 swath edge": 31.5,
+    "NISAR track 076 frame edge": 69.7,
+    "NISAR track 055 frame edge": 54.2
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.0,
+    "pre_n": -9.0,
+    "post_doy_median": 0.0,
+    "post_n": -6.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.875,
+   "lon": -87.219,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 49.0,
+    "S2 orbit 83 swath edge": 21.3,
+    "S2 MGRS tile edge": 15.7,
+    "S1 orbit 19 swath edge": 6.5,
+    "S1 orbit 92 swath edge": 52.3,
+    "NISAR track 076 frame edge": 56.6,
+    "NISAR track 055 frame edge": 74.4
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -3.0,
+    "pre_n": 0.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.875,
+   "lon": -87.01,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 65.2,
+    "S2 orbit 83 swath edge": 1.9,
+    "S2 MGRS tile edge": 0.9,
+    "S1 orbit 19 swath edge": 26.1,
+    "S1 orbit 92 swath edge": 32.6,
+    "NISAR track 076 frame edge": 71.1,
+    "NISAR track 055 frame edge": 59.7
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 4.0,
+    "pre_n": 1.0,
+    "post_doy_median": -1.0,
+    "post_n": 2.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.924999999999997,
+   "lon": -87.241,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 43.8,
+    "S2 orbit 83 swath edge": 24.7,
+    "S2 MGRS tile edge": 21.3,
+    "S1 orbit 19 swath edge": 5.5,
+    "S1 orbit 92 swath edge": 53.4,
+    "NISAR track 076 frame edge": 59.7,
+    "NISAR track 055 frame edge": 79.5
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.0,
+    "pre_n": 2.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.924999999999997,
+   "lon": -87.014,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 62.2,
+    "S2 orbit 83 swath edge": 3.8,
+    "S2 MGRS tile edge": 1.3,
+    "S1 orbit 19 swath edge": 26.8,
+    "S1 orbit 92 swath edge": 32.0,
+    "NISAR track 076 frame edge": 74.3,
+    "NISAR track 055 frame edge": 64.2
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -7.5,
+    "pre_n": 5.0,
+    "post_doy_median": -2.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.974999999999998,
+   "lon": -87.244,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 40.4,
+    "S2 orbit 83 swath edge": 26.4,
+    "S2 MGRS tile edge": 23.3,
+    "S1 orbit 19 swath edge": 6.3,
+    "S1 orbit 92 swath edge": 52.8,
+    "NISAR track 076 frame edge": 64.1,
+    "NISAR track 055 frame edge": 83.3
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.0,
+    "pre_n": -4.0,
+    "post_doy_median": 2.0,
+    "post_n": 2.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 30.974999999999998,
+   "lon": -87.047,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 57.1,
+    "S2 orbit 83 swath edge": 8.2,
+    "S2 MGRS tile edge": 4.5,
+    "S1 orbit 19 swath edge": 24.7,
+    "S1 orbit 92 swath edge": 34.2,
+    "NISAR track 076 frame edge": 70.0,
+    "NISAR track 055 frame edge": 70.5
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.0,
+    "pre_n": -3.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.025,
+   "lon": -87.229,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 38.9,
+    "S2 orbit 83 swath edge": 26.4,
+    "S2 MGRS tile edge": 21.8,
+    "S1 orbit 19 swath edge": 8.7,
+    "S1 orbit 92 swath edge": 50.4,
+    "NISAR track 076 frame edge": 59.8,
+    "NISAR track 055 frame edge": 86.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 5.5,
+    "pre_n": 3.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.025,
+   "lon": -87.084,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 51.8,
+    "S2 orbit 83 swath edge": 13.0,
+    "S2 MGRS tile edge": 8.0,
+    "S1 orbit 19 swath edge": 22.3,
+    "S1 orbit 92 swath edge": 36.8,
+    "NISAR track 076 frame edge": 63.7,
+    "NISAR track 055 frame edge": 77.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": -2.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.075,
+   "lon": -87.21,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 38.7,
+    "S2 orbit 83 swath edge": 26.0,
+    "S2 MGRS tile edge": 20.0,
+    "S1 orbit 19 swath edge": 11.5,
+    "S1 orbit 92 swath edge": 47.7,
+    "NISAR track 076 frame edge": 55.0,
+    "NISAR track 055 frame edge": 81.5
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 4.0,
+    "pre_n": -1.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.075,
+   "lon": -87.058,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 52.8,
+    "S2 orbit 83 swath edge": 11.9,
+    "S2 MGRS tile edge": 5.5,
+    "S1 orbit 19 swath edge": 25.8,
+    "S1 orbit 92 swath edge": 33.4,
+    "NISAR track 076 frame edge": 59.1,
+    "NISAR track 055 frame edge": 77.5
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.5,
+    "pre_n": -3.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.125,
+   "lon": -87.221,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 36.4,
+    "S2 orbit 83 swath edge": 28.3,
+    "S2 MGRS tile edge": 21.0,
+    "S1 orbit 19 swath edge": 11.5,
+    "S1 orbit 92 swath edge": 47.8,
+    "NISAR track 076 frame edge": 49.4,
+    "NISAR track 055 frame edge": 76.5
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": 0.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.125,
+   "lon": -87.053,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 52.0,
+    "S2 orbit 83 swath edge": 12.8,
+    "S2 MGRS tile edge": 5.0,
+    "S1 orbit 19 swath edge": 27.3,
+    "S1 orbit 92 swath edge": 32.0,
+    "NISAR track 076 frame edge": 53.9,
+    "NISAR track 055 frame edge": 72.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -2.5,
+    "pre_n": 4.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.174999999999997,
+   "lon": -87.23,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 34.3,
+    "S2 orbit 83 swath edge": 30.5,
+    "S2 MGRS tile edge": 21.9,
+    "S1 orbit 19 swath edge": 11.7,
+    "S1 orbit 92 swath edge": 47.7,
+    "NISAR track 076 frame edge": 43.8,
+    "NISAR track 055 frame edge": 71.4
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.5,
+    "pre_n": -1.0,
+    "post_doy_median": 2.0,
+    "post_n": 2.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.174999999999997,
+   "lon": -87.096,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 46.8,
+    "S2 orbit 83 swath edge": 18.1,
+    "S2 MGRS tile edge": 9.1,
+    "S1 orbit 19 swath edge": 24.3,
+    "S1 orbit 92 swath edge": 35.1,
+    "NISAR track 076 frame edge": 47.4,
+    "NISAR track 055 frame edge": 67.9
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.5,
+    "pre_n": -1.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.224999999999998,
+   "lon": -87.229,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 33.2,
+    "S2 orbit 83 swath edge": 31.8,
+    "S2 MGRS tile edge": 21.8,
+    "S1 orbit 19 swath edge": 12.8,
+    "S1 orbit 92 swath edge": 46.6,
+    "NISAR track 076 frame edge": 38.5,
+    "NISAR track 055 frame edge": 66.1
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.5,
+    "pre_n": -1.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.224999999999998,
+   "lon": -87.108,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 44.5,
+    "S2 orbit 83 swath edge": 20.6,
+    "S2 MGRS tile edge": 10.3,
+    "S1 orbit 19 swath edge": 24.2,
+    "S1 orbit 92 swath edge": 35.3,
+    "NISAR track 076 frame edge": 41.8,
+    "NISAR track 055 frame edge": 62.9
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.5,
+    "pre_n": -1.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.275,
+   "lon": -87.232,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 31.7,
+    "S2 orbit 83 swath edge": 33.4,
+    "S2 MGRS tile edge": 22.1,
+    "S1 orbit 19 swath edge": 13.6,
+    "S1 orbit 92 swath edge": 46.0,
+    "NISAR track 076 frame edge": 33.1,
+    "NISAR track 055 frame edge": 60.8
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 2.0,
+    "pre_n": -2.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.275,
+   "lon": -87.124,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 41.7,
+    "S2 orbit 83 swath edge": 23.4,
+    "S2 MGRS tile edge": 11.8,
+    "S1 orbit 19 swath edge": 23.7,
+    "S1 orbit 92 swath edge": 35.9,
+    "NISAR track 076 frame edge": 36.0,
+    "NISAR track 055 frame edge": 58.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 3.0,
+    "pre_n": 0.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.325,
+   "lon": -87.24,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 29.8,
+    "S2 orbit 83 swath edge": 35.5,
+    "S2 MGRS tile edge": 22.8,
+    "S1 orbit 19 swath edge": 13.9,
+    "S1 orbit 92 swath edge": 45.8,
+    "NISAR track 076 frame edge": 27.6,
+    "NISAR track 055 frame edge": 55.8
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -3.0,
+    "pre_n": 0.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.325,
+   "lon": -87.13,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 40.0,
+    "S2 orbit 83 swath edge": 25.3,
+    "S2 MGRS tile edge": 12.3,
+    "S1 orbit 19 swath edge": 24.1,
+    "S1 orbit 92 swath edge": 35.5,
+    "NISAR track 076 frame edge": 30.5,
+    "NISAR track 055 frame edge": 52.8
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": 2.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": true
+  },
+  {
+   "lat": 31.375,
+   "lon": -87.26,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 26.7,
+    "S2 orbit 83 swath edge": 38.7,
+    "S2 MGRS tile edge": 18.9,
+    "S1 orbit 19 swath edge": 13.0,
+    "S1 orbit 92 swath edge": 46.7,
+    "NISAR track 076 frame edge": 21.7,
+    "NISAR track 055 frame edge": 51.3
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 1.0,
+    "pre_n": -1.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.375,
+   "lon": -87.136,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 38.2,
+    "S2 orbit 83 swath edge": 27.2,
+    "S2 MGRS tile edge": 12.9,
+    "S1 orbit 19 swath edge": 24.6,
+    "S1 orbit 92 swath edge": 35.1,
+    "NISAR track 076 frame edge": 25.1,
+    "NISAR track 055 frame edge": 47.6
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": -4.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.424999999999997,
+   "lon": -87.26,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 25.5,
+    "S2 orbit 83 swath edge": 40.0,
+    "S2 MGRS tile edge": 13.4,
+    "S1 orbit 19 swath edge": 14.0,
+    "S1 orbit 92 swath edge": 45.8,
+    "NISAR track 076 frame edge": 16.4,
+    "NISAR track 055 frame edge": 46.3
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -4.0,
+    "pre_n": 1.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.424999999999997,
+   "lon": -87.133,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 37.2,
+    "S2 orbit 83 swath edge": 28.3,
+    "S2 MGRS tile edge": 12.6,
+    "S1 orbit 19 swath edge": 25.9,
+    "S1 orbit 92 swath edge": 33.9,
+    "NISAR track 076 frame edge": 19.8,
+    "NISAR track 055 frame edge": 42.2
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 2.5,
+    "pre_n": 4.0,
+    "post_doy_median": -2.0,
+    "post_n": -2.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.474999999999998,
+   "lon": -87.252,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 25.0,
+    "S2 orbit 83 swath edge": 40.6,
+    "S2 MGRS tile edge": 7.8,
+    "S1 orbit 19 swath edge": 15.8,
+    "S1 orbit 92 swath edge": 44.1,
+    "NISAR track 076 frame edge": 11.3,
+    "NISAR track 055 frame edge": 41.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 5.0,
+    "pre_n": 0.0,
+    "post_doy_median": 1.0,
+    "post_n": 1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.474999999999998,
+   "lon": -87.137,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 35.6,
+    "S2 orbit 83 swath edge": 30.0,
+    "S2 MGRS tile edge": 7.9,
+    "S1 orbit 19 swath edge": 26.5,
+    "S1 orbit 92 swath edge": 33.3,
+    "NISAR track 076 frame edge": 14.4,
+    "NISAR track 055 frame edge": 37.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.0,
+    "pre_n": 4.0,
+    "post_doy_median": -2.0,
+    "post_n": -2.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.525,
+   "lon": -87.253,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 23.7,
+    "S2 orbit 83 swath edge": 42.0,
+    "S2 MGRS tile edge": 2.3,
+    "S1 orbit 19 swath edge": 16.7,
+    "S1 orbit 92 swath edge": 43.2,
+    "NISAR track 076 frame edge": 6.0,
+    "NISAR track 055 frame edge": 36.3
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -3.0,
+    "pre_n": 0.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.525,
+   "lon": -87.16,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 32.3,
+    "S2 orbit 83 swath edge": 33.5,
+    "S2 MGRS tile edge": 2.3,
+    "S1 orbit 19 swath edge": 25.4,
+    "S1 orbit 92 swath edge": 34.5,
+    "NISAR track 076 frame edge": 8.5,
+    "NISAR track 055 frame edge": 32.4
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": 0.0,
+    "pre_n": 0.0,
+    "post_doy_median": -1.0,
+    "post_n": -1.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.575,
+   "lon": -87.256,
+   "side": "west",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 22.2,
+    "S2 orbit 83 swath edge": 43.6,
+    "S2 MGRS tile edge": 3.2,
+    "S1 orbit 19 swath edge": 17.5,
+    "S1 orbit 92 swath edge": 42.6,
+    "NISAR track 076 frame edge": 0.6,
+    "NISAR track 055 frame edge": 32.0
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -2.0,
+    "pre_n": 1.0,
+    "post_doy_median": 2.0,
+    "post_n": 5.0
+   },
+   "in_heldout_exclusion": false
+  },
+  {
+   "lat": 31.575,
+   "lon": -87.217,
+   "side": "east",
+   "distance_km": {
+    "S2 orbit 40 swath edge": 25.8,
+    "S2 orbit 83 swath edge": 40.1,
+    "S2 MGRS tile edge": 3.2,
+    "S1 orbit 19 swath edge": 21.1,
+    "S1 orbit 92 swath edge": 38.9,
+    "NISAR track 076 frame edge": 1.6,
+    "NISAR track 055 frame edge": 29.8
+   },
+   "inside_minus_outside": {
+    "pre_doy_median": -1.0,
+    "pre_n": -3.0,
+    "post_doy_median": 0.0,
+    "post_n": 0.0
+   },
+   "in_heldout_exclusion": false
+  }
+ ],
+ "summary": {
+  "S2 orbit 40 swath edge": {
+   "edge_points": 29,
+   "within_1km": 0,
+   "within_3km": 0,
+   "median_km": 49.0
+  },
+  "S2 orbit 83 swath edge": {
+   "edge_points": 29,
+   "within_1km": 0,
+   "within_3km": 2,
+   "median_km": 21.3
+  },
+  "S2 MGRS tile edge": {
+   "edge_points": 29,
+   "within_1km": 3,
+   "within_3km": 8,
+   "median_km": 5.0
+  },
+  "S1 orbit 19 swath edge": {
+   "edge_points": 29,
+   "within_1km": 0,
+   "within_3km": 0,
+   "median_km": 21.1
+  },
+  "S1 orbit 92 swath edge": {
+   "edge_points": 29,
+   "within_1km": 0,
+   "within_3km": 0,
+   "median_km": 38.9
+  },
+  "NISAR track 076 frame edge": {
+   "edge_points": 29,
+   "within_1km": 1,
+   "within_3km": 2,
+   "median_km": 53.9
+  },
+  "NISAR track 055 frame edge": {
+   "edge_points": 29,
+   "within_1km": 0,
+   "within_3km": 0,
+   "median_km": 59.7
+  },
+  "jump pre_doy_median (inside - outside, 2 km)": {
+   "median": 0.0,
+   "abs_ge_2": 16,
+   "n": 29
+  },
+  "jump post_doy_median (inside - outside, 2 km)": {
+   "median": 0.0,
+   "abs_ge_2": 6,
+   "n": 29
+  },
+  "jump pre_n (inside - outside, 2 km)": {
+   "median": 0.0,
+   "abs_ge_2": 18,
+   "n": 29
+  },
+  "jump post_n (inside - outside, 2 km)": {
+   "median": 0.0,
+   "abs_ge_2": 9,
+   "n": 29
+  }
+ },
+ "single_dates": {
+  "rel_orbit": 40,
+  "pre": {
+   "window": "pre",
+   "date": "2026-09-17",
+   "rel_orbit": 40,
+   "coverage": 1,
+   "clear": 0.969
+  },
+  "post": {
+   "window": "post",
+   "date": "2026-10-20",
+   "rel_orbit": 40,
+   "coverage": 1,
+   "clear": 0.976
+  },
+  "min_clear": 0.969
+ },
+ "single_vs_composite": {
+  "forest_cells_valid_both": 8998011,
+  "share_valid_of_forest": 0.908,
+  "pearson_r_dNDVI": 0.39,
+  "mean_dNDVI_single_in_damage_mask": -0.143,
+  "mean_dNDVI_single_outside": -0.011,
+  "mean_dNDVI_composite_in_damage_mask": -0.146,
+  "mean_dNDVI_composite_outside": -0.001,
+  "proxy_agreement": {
+   "proxy_share_composite": 0.084,
+   "proxy_share_single": 0.1879,
+   "single_proxy_share_in_damage_mask": 0.744,
+   "single_proxy_share_outside_mask": 0.15
+  }
+ },
+ "profiles": [
+  {
+   "lat": "30.45-30.50",
+   "composite": {
+    "peak_lon": -87.285,
+    "west_halfmax_lon": -87.335,
+    "east_halfmax_lon": -87.235,
+    "peak_minus_base": 0.057
+   },
+   "single": {
+    "peak_lon": -87.285,
+    "west_halfmax_lon": -87.335,
+    "east_halfmax_lon": -87.245,
+    "peak_minus_base": 0.105
+   }
+  },
+  {
+   "lat": "30.50-30.55",
+   "composite": {
+    "peak_lon": -87.215,
+    "west_halfmax_lon": -87.285,
+    "east_halfmax_lon": -87.175,
+    "peak_minus_base": 0.08
+   },
+   "single": {
+    "peak_lon": -87.235,
+    "west_halfmax_lon": -87.285,
+    "east_halfmax_lon": -87.185,
+    "peak_minus_base": 0.151
+   }
+  },
+  {
+   "lat": "30.55-30.60",
+   "composite": {
+    "peak_lon": -87.215,
+    "west_halfmax_lon": -87.345,
+    "east_halfmax_lon": -87.185,
+    "peak_minus_base": 0.085
+   },
+   "single": {
+    "peak_lon": -87.215,
+    "west_halfmax_lon": -87.345,
+    "east_halfmax_lon": -87.185,
+    "peak_minus_base": 0.102
+   }
+  },
+  {
+   "lat": "30.60-30.65",
+   "composite": {
+    "peak_lon": -87.245,
+    "west_halfmax_lon": -87.285,
+    "east_halfmax_lon": -87.205,
+    "peak_minus_base": 0.119
+   },
+   "single": {
+    "peak_lon": -87.245,
+    "west_halfmax_lon": -87.285,
+    "east_halfmax_lon": -87.205,
+    "peak_minus_base": 0.112
+   }
+  },
+  {
+   "lat": "30.65-30.70",
+   "composite": {
+    "peak_lon": -87.055,
+    "west_halfmax_lon": -87.155,
+    "east_halfmax_lon": -86.975,
+    "peak_minus_base": 0.158
+   },
+   "single": {
+    "peak_lon": -87.065,
+    "west_halfmax_lon": -87.145,
+    "east_halfmax_lon": -86.975,
+    "peak_minus_base": 0.158
+   }
+  },
+  {
+   "lat": "30.70-30.75",
+   "composite": {
+    "peak_lon": -87.065,
+    "west_halfmax_lon": -87.125,
+    "east_halfmax_lon": -86.995,
+    "peak_minus_base": 0.174
+   },
+   "single": {
+    "peak_lon": -87.065,
+    "west_halfmax_lon": -87.125,
+    "east_halfmax_lon": -86.995,
+    "peak_minus_base": 0.157
+   }
+  },
+  {
+   "lat": "30.75-30.80",
+   "composite": {
+    "peak_lon": -87.085,
+    "west_halfmax_lon": -87.185,
+    "east_halfmax_lon": -87.005,
+    "peak_minus_base": 0.172
+   },
+   "single": {
+    "peak_lon": -87.085,
+    "west_halfmax_lon": -87.145,
+    "east_halfmax_lon": -87.035,
+    "peak_minus_base": 0.182
+   }
+  },
+  {
+   "lat": "30.80-30.85",
+   "composite": {
+    "peak_lon": -87.065,
+    "west_halfmax_lon": -87.225,
+    "east_halfmax_lon": -87.005,
+    "peak_minus_base": 0.138
+   },
+   "single": {
+    "peak_lon": -87.065,
+    "west_halfmax_lon": -87.235,
+    "east_halfmax_lon": -87.015,
+    "peak_minus_base": 0.129
+   }
+  },
+  {
+   "lat": "30.85-30.90",
+   "composite": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.255,
+    "east_halfmax_lon": -87.015,
+    "peak_minus_base": 0.121
+   },
+   "single": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.265,
+    "east_halfmax_lon": -87.025,
+    "peak_minus_base": 0.138
+   }
+  },
+  {
+   "lat": "30.90-30.95",
+   "composite": {
+    "peak_lon": -87.145,
+    "west_halfmax_lon": -87.195,
+    "east_halfmax_lon": -87.025,
+    "peak_minus_base": 0.131
+   },
+   "single": {
+    "peak_lon": -87.145,
+    "west_halfmax_lon": -87.225,
+    "east_halfmax_lon": -87.025,
+    "peak_minus_base": 0.12
+   }
+  },
+  {
+   "lat": "30.95-31.00",
+   "composite": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.255,
+    "east_halfmax_lon": -87.085,
+    "peak_minus_base": 0.124
+   },
+   "single": {
+    "peak_lon": -87.135,
+    "west_halfmax_lon": -87.255,
+    "east_halfmax_lon": -87.075,
+    "peak_minus_base": 0.108
+   }
+  },
+  {
+   "lat": "31.00-31.05",
+   "composite": {
+    "peak_lon": -87.145,
+    "west_halfmax_lon": -87.205,
+    "east_halfmax_lon": -87.095,
+    "peak_minus_base": 0.159
+   },
+   "single": {
+    "peak_lon": -87.145,
+    "west_halfmax_lon": -87.205,
+    "east_halfmax_lon": -87.095,
+    "peak_minus_base": 0.144
+   }
+  },
+  {
+   "lat": "31.05-31.10",
+   "composite": {
+    "peak_lon": -87.165,
+    "west_halfmax_lon": -87.205,
+    "east_halfmax_lon": -87.065,
+    "peak_minus_base": 0.156
+   },
+   "single": {
+    "peak_lon": -87.165,
+    "west_halfmax_lon": -87.205,
+    "east_halfmax_lon": -87.055,
+    "peak_minus_base": 0.149
+   }
+  },
+  {
+   "lat": "31.10-31.15",
+   "composite": {
+    "peak_lon": -87.185,
+    "west_halfmax_lon": -87.225,
+    "east_halfmax_lon": -87.055,
+    "peak_minus_base": 0.096
+   },
+   "single": {
+    "peak_lon": -87.185,
+    "west_halfmax_lon": -87.225,
+    "east_halfmax_lon": -87.145,
+    "peak_minus_base": 0.097
+   }
+  },
+  {
+   "lat": "31.15-31.20",
+   "composite": {
+    "peak_lon": -87.515,
+    "west_halfmax_lon": -87.565,
+    "east_halfmax_lon": -87.395,
+    "peak_minus_base": 0.024
+   },
+   "single": {
+    "peak_lon": -87.455,
+    "west_halfmax_lon": -87.485,
+    "east_halfmax_lon": -87.415,
+    "peak_minus_base": 0.049
+   }
+  },
+  {
+   "lat": "31.20-31.25",
+   "composite": {
+    "peak_lon": -87.045,
+    "west_halfmax_lon": -87.075,
+    "east_halfmax_lon": -87.005,
+    "peak_minus_base": 0.021
+   },
+   "single": {
+    "peak_lon": -87.425,
+    "west_halfmax_lon": -87.485,
+    "east_halfmax_lon": -87.405,
+    "peak_minus_base": 0.035
+   }
+  },
+  {
+   "lat": "31.25-31.30",
+   "composite": {
+    "peak_lon": -87.035,
+    "west_halfmax_lon": -87.075,
+    "east_halfmax_lon": -87.005,
+    "peak_minus_base": 0.021
+   },
+   "single": {
+    "peak_lon": -87.415,
+    "west_halfmax_lon": -87.455,
+    "east_halfmax_lon": -87.395,
+    "peak_minus_base": 0.027
+   }
+  },
+  {
+   "lat": "31.30-31.35",
+   "composite": {
+    "peak_lon": -87.195,
+    "west_halfmax_lon": -87.245,
+    "east_halfmax_lon": -87.145,
+    "peak_minus_base": 0.121
+   },
+   "single": {
+    "peak_lon": -87.195,
+    "west_halfmax_lon": -87.245,
+    "east_halfmax_lon": -87.145,
+    "peak_minus_base": 0.114
+   }
+  },
+  {
+   "lat": "31.35-31.40",
+   "composite": {
+    "peak_lon": -87.185,
+    "west_halfmax_lon": -87.235,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.079
+   },
+   "single": {
+    "peak_lon": -87.185,
+    "west_halfmax_lon": -87.235,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.081
+   }
+  },
+  {
+   "lat": "31.40-31.45",
+   "composite": {
+    "peak_lon": -87.215,
+    "west_halfmax_lon": -87.255,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.085
+   },
+   "single": {
+    "peak_lon": -87.215,
+    "west_halfmax_lon": -87.255,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.078
+   }
+  },
+  {
+   "lat": "31.45-31.50",
+   "composite": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.245,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.077
+   },
+   "single": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.245,
+    "east_halfmax_lon": -87.135,
+    "peak_minus_base": 0.074
+   }
+  },
+  {
+   "lat": "31.50-31.55",
+   "composite": {
+    "peak_lon": -87.225,
+    "west_halfmax_lon": -87.265,
+    "east_halfmax_lon": -87.155,
+    "peak_minus_base": 0.076
+   },
+   "single": {
+    "peak_lon": -87.225,
+    "west_halfmax_lon": -87.265,
+    "east_halfmax_lon": -87.145,
+    "peak_minus_base": 0.062
+   }
+  },
+  {
+   "lat": "31.55-31.60",
+   "composite": {
+    "peak_lon": -87.205,
+    "west_halfmax_lon": -87.275,
+    "east_halfmax_lon": -87.155,
+    "peak_minus_base": 0.046
+   },
+   "single": {
+    "peak_lon": -87.195,
+    "west_halfmax_lon": -87.285,
+    "east_halfmax_lon": -87.095,
+    "peak_minus_base": 0.051
+   }
+  }
+ ],
+ "edge_shift_single_vs_composite_km": {
+  "west_median": 0.0,
+  "east_median": 1.0,
+  "strips": 23
+ }
+}
