@@ -1,0 +1,1016 @@
+{
+ "track_source": "NHC ATCF b-deck bal092026.dat, https://ftp.nhc.noaa.gov/atcf/btk/bal092026.dat",
+ "retrieved_utc": "2026-11-10T23:54Z",
+ "fixes": [
+  {
+   "time": "2026100418",
+   "lat": 22.0,
+   "lon": -96.5,
+   "vmax_kt": 15,
+   "mslp_mb": null,
+   "type": "DB"
+  },
+  {
+   "time": "2026100500",
+   "lat": 22.0,
+   "lon": -96.5,
+   "vmax_kt": 20,
+   "mslp_mb": null,
+   "type": "DB"
+  },
+  {
+   "time": "2026100506",
+   "lat": 22.0,
+   "lon": -96.5,
+   "vmax_kt": 25,
+   "mslp_mb": null,
+   "type": "DB"
+  },
+  {
+   "time": "2026100512",
+   "lat": 22.0,
+   "lon": -96.5,
+   "vmax_kt": 25,
+   "mslp_mb": 1010,
+   "type": "DB"
+  },
+  {
+   "time": "2026100518",
+   "lat": 22.2,
+   "lon": -96.3,
+   "vmax_kt": 25,
+   "mslp_mb": 1010,
+   "type": "DB"
+  },
+  {
+   "time": "2026100600",
+   "lat": 22.3,
+   "lon": -96.1,
+   "vmax_kt": 25,
+   "mslp_mb": 1009,
+   "type": "DB"
+  },
+  {
+   "time": "2026100606",
+   "lat": 22.2,
+   "lon": -96.0,
+   "vmax_kt": 25,
+   "mslp_mb": 1009,
+   "type": "DB"
+  },
+  {
+   "time": "2026100612",
+   "lat": 22.0,
+   "lon": -96.0,
+   "vmax_kt": 25,
+   "mslp_mb": 1008,
+   "type": "DB"
+  },
+  {
+   "time": "2026100618",
+   "lat": 21.9,
+   "lon": -95.7,
+   "vmax_kt": 30,
+   "mslp_mb": 1007,
+   "type": "TD"
+  },
+  {
+   "time": "2026100700",
+   "lat": 21.7,
+   "lon": -95.3,
+   "vmax_kt": 30,
+   "mslp_mb": 1006,
+   "type": "TD"
+  },
+  {
+   "time": "2026100706",
+   "lat": 21.9,
+   "lon": -94.6,
+   "vmax_kt": 35,
+   "mslp_mb": 1004,
+   "type": "TS"
+  },
+  {
+   "time": "2026100712",
+   "lat": 22.2,
+   "lon": -93.9,
+   "vmax_kt": 40,
+   "mslp_mb": 1002,
+   "type": "TS"
+  },
+  {
+   "time": "2026100718",
+   "lat": 22.5,
+   "lon": -93.3,
+   "vmax_kt": 50,
+   "mslp_mb": 995,
+   "type": "TS"
+  },
+  {
+   "time": "2026100800",
+   "lat": 22.7,
+   "lon": -92.3,
+   "vmax_kt": 60,
+   "mslp_mb": 988,
+   "type": "TS"
+  },
+  {
+   "time": "2026100806",
+   "lat": 23.1,
+   "lon": -91.5,
+   "vmax_kt": 70,
+   "mslp_mb": 981,
+   "type": "HU"
+  },
+  {
+   "time": "2026100812",
+   "lat": 23.4,
+   "lon": -90.6,
+   "vmax_kt": 75,
+   "mslp_mb": 977,
+   "type": "HU"
+  },
+  {
+   "time": "2026100818",
+   "lat": 23.9,
+   "lon": -89.8,
+   "vmax_kt": 80,
+   "mslp_mb": 975,
+   "type": "HU"
+  },
+  {
+   "time": "2026100900",
+   "lat": 24.8,
+   "lon": -89.0,
+   "vmax_kt": 85,
+   "mslp_mb": 974,
+   "type": "HU"
+  },
+  {
+   "time": "2026100906",
+   "lat": 25.8,
+   "lon": -88.4,
+   "vmax_kt": 90,
+   "mslp_mb": 970,
+   "type": "HU"
+  },
+  {
+   "time": "2026100912",
+   "lat": 27.0,
+   "lon": -87.6,
+   "vmax_kt": 105,
+   "mslp_mb": 959,
+   "type": "HU"
+  },
+  {
+   "time": "2026100918",
+   "lat": 28.5,
+   "lon": -87.1,
+   "vmax_kt": 105,
+   "mslp_mb": 959,
+   "type": "HU"
+  },
+  {
+   "time": "2026101000",
+   "lat": 30.2,
+   "lon": -86.6,
+   "vmax_kt": 95,
+   "mslp_mb": 967,
+   "type": "HU"
+  },
+  {
+   "time": "2026101006",
+   "lat": 31.4,
+   "lon": -86.5,
+   "vmax_kt": 45,
+   "mslp_mb": 1001,
+   "type": "LO"
+  },
+  {
+   "time": "2026101012",
+   "lat": 32.3,
+   "lon": -86.7,
+   "vmax_kt": 30,
+   "mslp_mb": 1004,
+   "type": "EX"
+  },
+  {
+   "time": "2026101018",
+   "lat": 33.2,
+   "lon": -87.1,
+   "vmax_kt": 25,
+   "mslp_mb": 1007,
+   "type": "EX"
+  },
+  {
+   "time": "2026101100",
+   "lat": 34.4,
+   "lon": -87.0,
+   "vmax_kt": 20,
+   "mslp_mb": 1009,
+   "type": "EX"
+  },
+  {
+   "time": "2026101106",
+   "lat": 34.8,
+   "lon": -86.9,
+   "vmax_kt": 20,
+   "mslp_mb": 1010,
+   "type": "EX"
+  },
+  {
+   "time": "2026101112",
+   "lat": 37.3,
+   "lon": -84.8,
+   "vmax_kt": 20,
+   "mslp_mb": 1010,
+   "type": "EX"
+  }
+ ],
+ "landfall": {
+  "assumed_time_utc": "2026-10-10T01:30Z",
+  "source": "NWS Mobile post-tropical cyclone report (landfall near Destin ~8:30 PM CDT 9 Oct)",
+  "lon_lat_on_track": [
+   -86.5752,
+   30.5
+  ]
+ },
+ "grid_signed_distance_km_range": [
+  -104.5,
+  -0.6
+ ],
+ "forest_cells_right_of_track": 0,
+ "forest_cells_left_of_track": 9913489,
+ "bins_signed_distance_5km": {
+  "all": [
+   {
+    "from_km": -105.0,
+    "to_km": -100.0,
+    "side": "left",
+    "forest_cells": 146020,
+    "damaged_share": 0.0065
+   },
+   {
+    "from_km": -100.0,
+    "to_km": -95.0,
+    "side": "left",
+    "forest_cells": 452267,
+    "damaged_share": 0.0086
+   },
+   {
+    "from_km": -95.0,
+    "to_km": -90.0,
+    "side": "left",
+    "forest_cells": 510050,
+    "damaged_share": 0.0088
+   },
+   {
+    "from_km": -90.0,
+    "to_km": -85.0,
+    "side": "left",
+    "forest_cells": 479573,
+    "damaged_share": 0.0083
+   },
+   {
+    "from_km": -85.0,
+    "to_km": -80.0,
+    "side": "left",
+    "forest_cells": 540737,
+    "damaged_share": 0.0086
+   },
+   {
+    "from_km": -80.0,
+    "to_km": -75.0,
+    "side": "left",
+    "forest_cells": 535643,
+    "damaged_share": 0.0097
+   },
+   {
+    "from_km": -75.0,
+    "to_km": -70.0,
+    "side": "left",
+    "forest_cells": 542195,
+    "damaged_share": 0.0757
+   },
+   {
+    "from_km": -70.0,
+    "to_km": -65.0,
+    "side": "left",
+    "forest_cells": 450858,
+    "damaged_share": 0.221
+   },
+   {
+    "from_km": -65.0,
+    "to_km": -60.0,
+    "side": "left",
+    "forest_cells": 404259,
+    "damaged_share": 0.2997
+   },
+   {
+    "from_km": -60.0,
+    "to_km": -55.0,
+    "side": "left",
+    "forest_cells": 349790,
+    "damaged_share": 0.2618
+   },
+   {
+    "from_km": -55.0,
+    "to_km": -50.0,
+    "side": "left",
+    "forest_cells": 386675,
+    "damaged_share": 0.229
+   },
+   {
+    "from_km": -50.0,
+    "to_km": -45.0,
+    "side": "left",
+    "forest_cells": 470275,
+    "damaged_share": 0.1359
+   },
+   {
+    "from_km": -45.0,
+    "to_km": -40.0,
+    "side": "left",
+    "forest_cells": 495369,
+    "damaged_share": 0.0607
+   },
+   {
+    "from_km": -40.0,
+    "to_km": -35.0,
+    "side": "left",
+    "forest_cells": 541028,
+    "damaged_share": 0.0125
+   },
+   {
+    "from_km": -35.0,
+    "to_km": -30.0,
+    "side": "left",
+    "forest_cells": 558459,
+    "damaged_share": 0.0084
+   },
+   {
+    "from_km": -30.0,
+    "to_km": -25.0,
+    "side": "left",
+    "forest_cells": 663432,
+    "damaged_share": 0.0066
+   },
+   {
+    "from_km": -25.0,
+    "to_km": -20.0,
+    "side": "left",
+    "forest_cells": 636762,
+    "damaged_share": 0.0056
+   },
+   {
+    "from_km": -20.0,
+    "to_km": -15.0,
+    "side": "left",
+    "forest_cells": 602368,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -15.0,
+    "to_km": -10.0,
+    "side": "left",
+    "forest_cells": 595226,
+    "damaged_share": 0.0069
+   },
+   {
+    "from_km": -10.0,
+    "to_km": -5.0,
+    "side": "left",
+    "forest_cells": 467440,
+    "damaged_share": 0.0037
+   },
+   {
+    "from_km": -5.0,
+    "to_km": 0.0,
+    "side": "left",
+    "forest_cells": 85063,
+    "damaged_share": 0.0035
+   }
+  ],
+  "upland": [
+   {
+    "from_km": -105.0,
+    "to_km": -100.0,
+    "side": "left",
+    "forest_cells": 72658,
+    "damaged_share": 0.0081
+   },
+   {
+    "from_km": -100.0,
+    "to_km": -95.0,
+    "side": "left",
+    "forest_cells": 221138,
+    "damaged_share": 0.0116
+   },
+   {
+    "from_km": -95.0,
+    "to_km": -90.0,
+    "side": "left",
+    "forest_cells": 266320,
+    "damaged_share": 0.0105
+   },
+   {
+    "from_km": -90.0,
+    "to_km": -85.0,
+    "side": "left",
+    "forest_cells": 211940,
+    "damaged_share": 0.0061
+   },
+   {
+    "from_km": -85.0,
+    "to_km": -80.0,
+    "side": "left",
+    "forest_cells": 235535,
+    "damaged_share": 0.0087
+   },
+   {
+    "from_km": -80.0,
+    "to_km": -75.0,
+    "side": "left",
+    "forest_cells": 246128,
+    "damaged_share": 0.0129
+   },
+   {
+    "from_km": -75.0,
+    "to_km": -70.0,
+    "side": "left",
+    "forest_cells": 228923,
+    "damaged_share": 0.0217
+   },
+   {
+    "from_km": -70.0,
+    "to_km": -65.0,
+    "side": "left",
+    "forest_cells": 164961,
+    "damaged_share": 0.1244
+   },
+   {
+    "from_km": -65.0,
+    "to_km": -60.0,
+    "side": "left",
+    "forest_cells": 168799,
+    "damaged_share": 0.2237
+   },
+   {
+    "from_km": -60.0,
+    "to_km": -55.0,
+    "side": "left",
+    "forest_cells": 164318,
+    "damaged_share": 0.1781
+   },
+   {
+    "from_km": -55.0,
+    "to_km": -50.0,
+    "side": "left",
+    "forest_cells": 193490,
+    "damaged_share": 0.1761
+   },
+   {
+    "from_km": -50.0,
+    "to_km": -45.0,
+    "side": "left",
+    "forest_cells": 232654,
+    "damaged_share": 0.1265
+   },
+   {
+    "from_km": -45.0,
+    "to_km": -40.0,
+    "side": "left",
+    "forest_cells": 274258,
+    "damaged_share": 0.0609
+   },
+   {
+    "from_km": -40.0,
+    "to_km": -35.0,
+    "side": "left",
+    "forest_cells": 290397,
+    "damaged_share": 0.0068
+   },
+   {
+    "from_km": -35.0,
+    "to_km": -30.0,
+    "side": "left",
+    "forest_cells": 291866,
+    "damaged_share": 0.0075
+   },
+   {
+    "from_km": -30.0,
+    "to_km": -25.0,
+    "side": "left",
+    "forest_cells": 351499,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -25.0,
+    "to_km": -20.0,
+    "side": "left",
+    "forest_cells": 308729,
+    "damaged_share": 0.0022
+   },
+   {
+    "from_km": -20.0,
+    "to_km": -15.0,
+    "side": "left",
+    "forest_cells": 307998,
+    "damaged_share": 0.0054
+   },
+   {
+    "from_km": -15.0,
+    "to_km": -10.0,
+    "side": "left",
+    "forest_cells": 289896,
+    "damaged_share": 0.0075
+   },
+   {
+    "from_km": -10.0,
+    "to_km": -5.0,
+    "side": "left",
+    "forest_cells": 200266,
+    "damaged_share": 0.0037
+   },
+   {
+    "from_km": -5.0,
+    "to_km": 0.0,
+    "side": "left",
+    "forest_cells": 38977,
+    "damaged_share": 0.0053
+   }
+  ],
+  "wetland": [
+   {
+    "from_km": -105.0,
+    "to_km": -100.0,
+    "side": "left",
+    "forest_cells": 46715,
+    "damaged_share": 0.0063
+   },
+   {
+    "from_km": -100.0,
+    "to_km": -95.0,
+    "side": "left",
+    "forest_cells": 141224,
+    "damaged_share": 0.0052
+   },
+   {
+    "from_km": -95.0,
+    "to_km": -90.0,
+    "side": "left",
+    "forest_cells": 142639,
+    "damaged_share": 0.0078
+   },
+   {
+    "from_km": -90.0,
+    "to_km": -85.0,
+    "side": "left",
+    "forest_cells": 161828,
+    "damaged_share": 0.0119
+   },
+   {
+    "from_km": -85.0,
+    "to_km": -80.0,
+    "side": "left",
+    "forest_cells": 202546,
+    "damaged_share": 0.0069
+   },
+   {
+    "from_km": -80.0,
+    "to_km": -75.0,
+    "side": "left",
+    "forest_cells": 170120,
+    "damaged_share": 0.0068
+   },
+   {
+    "from_km": -75.0,
+    "to_km": -70.0,
+    "side": "left",
+    "forest_cells": 188263,
+    "damaged_share": 0.1829
+   },
+   {
+    "from_km": -70.0,
+    "to_km": -65.0,
+    "side": "left",
+    "forest_cells": 192320,
+    "damaged_share": 0.3276
+   },
+   {
+    "from_km": -65.0,
+    "to_km": -60.0,
+    "side": "left",
+    "forest_cells": 138447,
+    "damaged_share": 0.3785
+   },
+   {
+    "from_km": -60.0,
+    "to_km": -55.0,
+    "side": "left",
+    "forest_cells": 102507,
+    "damaged_share": 0.4492
+   },
+   {
+    "from_km": -55.0,
+    "to_km": -50.0,
+    "side": "left",
+    "forest_cells": 102442,
+    "damaged_share": 0.3628
+   },
+   {
+    "from_km": -50.0,
+    "to_km": -45.0,
+    "side": "left",
+    "forest_cells": 131686,
+    "damaged_share": 0.1345
+   },
+   {
+    "from_km": -45.0,
+    "to_km": -40.0,
+    "side": "left",
+    "forest_cells": 84591,
+    "damaged_share": 0.0855
+   },
+   {
+    "from_km": -40.0,
+    "to_km": -35.0,
+    "side": "left",
+    "forest_cells": 79927,
+    "damaged_share": 0.0451
+   },
+   {
+    "from_km": -35.0,
+    "to_km": -30.0,
+    "side": "left",
+    "forest_cells": 102150,
+    "damaged_share": 0.0183
+   },
+   {
+    "from_km": -30.0,
+    "to_km": -25.0,
+    "side": "left",
+    "forest_cells": 111577,
+    "damaged_share": 0.0176
+   },
+   {
+    "from_km": -25.0,
+    "to_km": -20.0,
+    "side": "left",
+    "forest_cells": 126150,
+    "damaged_share": 0.0158
+   },
+   {
+    "from_km": -20.0,
+    "to_km": -15.0,
+    "side": "left",
+    "forest_cells": 119168,
+    "damaged_share": 0.0051
+   },
+   {
+    "from_km": -15.0,
+    "to_km": -10.0,
+    "side": "left",
+    "forest_cells": 120803,
+    "damaged_share": 0.0046
+   },
+   {
+    "from_km": -10.0,
+    "to_km": -5.0,
+    "side": "left",
+    "forest_cells": 112415,
+    "damaged_share": 0.0065
+   },
+   {
+    "from_km": -5.0,
+    "to_km": 0.0,
+    "side": "left",
+    "forest_cells": 15422,
+    "damaged_share": 0.001
+   }
+  ]
+ },
+ "bins_along_track_from_landfall_10km": [
+  {
+   "from_km": -20.0,
+   "to_km": -10.0,
+   "forest_cells": 58908,
+   "damaged_share": 0.022,
+   "damaged_share_upland": 0.0315,
+   "damaged_share_wetland": 0.0182
+  },
+  {
+   "from_km": -10.0,
+   "to_km": 0.0,
+   "forest_cells": 396469,
+   "damaged_share": 0.0195,
+   "damaged_share_upland": 0.0253,
+   "damaged_share_wetland": 0.0191
+  },
+  {
+   "from_km": 0.0,
+   "to_km": 10.0,
+   "forest_cells": 454840,
+   "damaged_share": 0.0416,
+   "damaged_share_upland": 0.0269,
+   "damaged_share_wetland": 0.0837
+  },
+  {
+   "from_km": 10.0,
+   "to_km": 20.0,
+   "forest_cells": 604497,
+   "damaged_share": 0.1241,
+   "damaged_share_upland": 0.0825,
+   "damaged_share_wetland": 0.1826
+  },
+  {
+   "from_km": 20.0,
+   "to_km": 30.0,
+   "forest_cells": 705669,
+   "damaged_share": 0.1257,
+   "damaged_share_upland": 0.0895,
+   "damaged_share_wetland": 0.182
+  },
+  {
+   "from_km": 30.0,
+   "to_km": 40.0,
+   "forest_cells": 683305,
+   "damaged_share": 0.1068,
+   "damaged_share_upland": 0.0806,
+   "damaged_share_wetland": 0.1806
+  },
+  {
+   "from_km": 40.0,
+   "to_km": 50.0,
+   "forest_cells": 714841,
+   "damaged_share": 0.1069,
+   "damaged_share_upland": 0.0821,
+   "damaged_share_wetland": 0.1984
+  },
+  {
+   "from_km": 50.0,
+   "to_km": 60.0,
+   "forest_cells": 690319,
+   "damaged_share": 0.1062,
+   "damaged_share_upland": 0.0498,
+   "damaged_share_wetland": 0.2559
+  },
+  {
+   "from_km": 60.0,
+   "to_km": 70.0,
+   "forest_cells": 649378,
+   "damaged_share": 0.0465,
+   "damaged_share_upland": 0.0333,
+   "damaged_share_wetland": 0.0909
+  },
+  {
+   "from_km": 70.0,
+   "to_km": 80.0,
+   "forest_cells": 611251,
+   "damaged_share": 0.0058,
+   "damaged_share_upland": 0.0049,
+   "damaged_share_wetland": 0.0094
+  },
+  {
+   "from_km": 80.0,
+   "to_km": 90.0,
+   "forest_cells": 551499,
+   "damaged_share": 0.0207,
+   "damaged_share_upland": 0.0159,
+   "damaged_share_wetland": 0.0377
+  },
+  {
+   "from_km": 90.0,
+   "to_km": 100.0,
+   "forest_cells": 257450,
+   "damaged_share": 0.0262,
+   "damaged_share_upland": 0.0182,
+   "damaged_share_wetland": 0.0517
+  },
+  {
+   "from_km": 100.0,
+   "to_km": 110.0,
+   "forest_cells": 227756,
+   "damaged_share": 0.0308,
+   "damaged_share_upland": 0.0208,
+   "damaged_share_wetland": 0.0614
+  },
+  {
+   "from_km": 110.0,
+   "to_km": 120.0,
+   "forest_cells": 618315,
+   "damaged_share": 0.0626,
+   "damaged_share_upland": 0.0338,
+   "damaged_share_wetland": 0.1185
+  },
+  {
+   "from_km": 120.0,
+   "to_km": 130.0,
+   "forest_cells": 725451,
+   "damaged_share": 0.0479,
+   "damaged_share_upland": 0.0305,
+   "damaged_share_wetland": 0.0673
+  },
+  {
+   "from_km": 130.0,
+   "to_km": 140.0,
+   "forest_cells": 779473,
+   "damaged_share": 0.0256,
+   "damaged_share_upland": 0.0203,
+   "damaged_share_wetland": 0.0212
+  },
+  {
+   "from_km": 140.0,
+   "to_km": 150.0,
+   "forest_cells": 753742,
+   "damaged_share": 0.0188,
+   "damaged_share_upland": 0.0162,
+   "damaged_share_wetland": 0.0208
+  },
+  {
+   "from_km": 150.0,
+   "to_km": 160.0,
+   "forest_cells": 405214,
+   "damaged_share": 0.0142,
+   "damaged_share_upland": 0.008,
+   "damaged_share_wetland": 0.0282
+  },
+  {
+   "from_km": 160.0,
+   "to_km": 170.0,
+   "forest_cells": 25112,
+   "damaged_share": 0.0476,
+   "damaged_share_upland": 0.0694,
+   "damaged_share_wetland": 0.0059
+  }
+ ],
+ "damage_signed_distance_km_quantiles": {
+  "10": -70.4,
+  "25": -65.7,
+  "50": -59.5,
+  "75": -51.6,
+  "90": -45.0
+ },
+ "forest_signed_distance_km_quantiles": {
+  "10": -91.2,
+  "25": -76.7,
+  "50": -48.2,
+  "75": -25.7,
+  "90": -13.7
+ },
+ "stations": [
+  {
+   "name": "Jay (UF FAWN station 110)",
+   "short": "Jay",
+   "network": "UF FAWN",
+   "lat": 30.77516,
+   "lon": -87.14015,
+   "location_source": "FAWN station location table, https://fawn.ifas.ufl.edu/tour/location_info.php",
+   "gust_kt": 102.2,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts; also 'peak wind gusts of 102 kts ... at a UF FAWN station in Jay' in NWS Mobile, County Impacts Associated with Hurricane Isaias (PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf, 10/23/2026)",
+   "independent_check": "FAWN public 15-minute file (fawnpub/15_minute_obs/BY_STATION/Jay_110/2026.csv) has no gust column; its peak 15-minute mean wind on 9-10 Oct is 72.59 mph = 63.1 kt at 2026-10-09 20:15 (FAWN local time), matching the NWS sustained value for Jay FAWN (63.1 kt). The 102.2 kt gust itself could not be checked against FAWN's public data.",
+   "signed_distance_km": -56.1,
+   "inside_study_grid": true
+  },
+  {
+   "name": "Oriole Beach (Texas Tech StickNet 0217A)",
+   "short": "Oriole Beach",
+   "network": "TTU StickNet (deployable, 2.25 m)",
+   "lat": 30.373,
+   "lon": -87.091,
+   "location_approximate": true,
+   "location_source": "approximate location of the Oriole Beach community (Gulf Breeze peninsula); the StickNet's own coordinates were not found",
+   "gust_kt": 101.3,
+   "gust_source": "NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts; 'gusts measured 101 kts' at Oriole Beach in NWS Mobile, County Impacts Associated with Hurricane Isaias (PSHMOB_2026AL09_Isaias_ImpactNarratives.pdf, 10/23/2026)",
+   "independent_check": "none found (StickNet data not located)",
+   "signed_distance_km": -48.4,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Whiting Field South (KNDZ, AWOS)",
+   "short": "Whiting Field South",
+   "network": "ASOS/AWOS",
+   "lat": 30.7044,
+   "lon": -87.0231,
+   "location_source": "IEM station metadata",
+   "gust_kt": 99.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-10 01:56 UTC; matches 'Whiting Field S 99.0 kt' in NWS Mobile, Post Tropical Cyclone Report Isaias (PSHMOB_2026AL09_Isaias_Summary.pdf, updated 10/23/2026), Highest 10 Land Gusts",
+   "n_obs_9_11_oct": 58,
+   "n_obs_22Z_to_06Z": 17,
+   "signed_distance_km": -44.4,
+   "inside_study_grid": true
+  },
+  {
+   "name": "Pensacola Regional (KPNS)",
+   "short": "Pensacola",
+   "network": "ASOS/AWOS",
+   "lat": 30.4781,
+   "lon": -87.1869,
+   "location_source": "IEM station metadata",
+   "gust_kt": 80.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:53 UTC",
+   "n_obs_9_11_oct": 80,
+   "n_obs_22Z_to_06Z": 19,
+   "signed_distance_km": -58.4,
+   "inside_study_grid": true
+  },
+  {
+   "name": "Pensacola NAS (KNPA)",
+   "short": "Pensacola NAS",
+   "network": "ASOS/AWOS",
+   "lat": 30.3533,
+   "lon": -87.318,
+   "location_source": "IEM station metadata",
+   "gust_kt": 55.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-09 21:56 UTC",
+   "n_obs_9_11_oct": 61,
+   "n_obs_22Z_to_06Z": 4,
+   "signed_distance_km": -70.1,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Hurlburt Field (KHRT)",
+   "short": "Hurlburt Field",
+   "network": "ASOS/AWOS",
+   "lat": 30.4278,
+   "lon": -86.6893,
+   "location_source": "IEM station metadata",
+   "gust_kt": 47.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 22:00 UTC",
+   "n_obs_9_11_oct": 69,
+   "n_obs_22Z_to_06Z": 2,
+   "signed_distance_km": -10.4,
+   "inside_study_grid": true
+  },
+  {
+   "name": "Eglin AFB (KVPS)",
+   "short": "Eglin AFB",
+   "network": "ASOS/AWOS",
+   "lat": 30.4833,
+   "lon": -86.5254,
+   "location_source": "IEM station metadata",
+   "gust_kt": 71.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-10 01:55 UTC",
+   "n_obs_9_11_oct": 172,
+   "n_obs_22Z_to_06Z": 61,
+   "signed_distance_km": 4.9,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Destin-Fort Walton Beach (KDTS)",
+   "short": "Destin",
+   "network": "ASOS/AWOS",
+   "lat": 30.3934,
+   "lon": -86.4674,
+   "location_source": "IEM station metadata",
+   "gust_kt": 66.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:12 UTC",
+   "n_obs_9_11_oct": 78,
+   "n_obs_22Z_to_06Z": 25,
+   "signed_distance_km": 11.2,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Duke Field (KEGI)",
+   "short": "Duke Field",
+   "network": "ASOS/AWOS",
+   "lat": 30.6503,
+   "lon": -86.5229,
+   "location_source": "IEM station metadata",
+   "gust_kt": 39.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 22:10 UTC",
+   "n_obs_9_11_oct": 75,
+   "n_obs_22Z_to_06Z": 2,
+   "signed_distance_km": 3.8,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Crestview (KCEW)",
+   "short": "Crestview",
+   "network": "ASOS/AWOS",
+   "lat": 30.78,
+   "lon": -86.52,
+   "location_source": "IEM station metadata",
+   "gust_kt": 38.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); peak_wind_gust at 2026-10-09 23:44 UTC",
+   "n_obs_9_11_oct": 73,
+   "n_obs_22Z_to_06Z": 20,
+   "signed_distance_km": 3.1,
+   "inside_study_grid": false
+  },
+  {
+   "name": "Evergreen AL (KGZH)",
+   "short": "Evergreen AL",
+   "network": "ASOS/AWOS",
+   "lat": 31.4158,
+   "lon": -87.0441,
+   "location_source": "IEM station metadata",
+   "gust_kt": 38.0,
+   "gust_source": "Iowa Environmental Mesonet ASOS/AWOS archive (data/wind/sources/iem_asos_isaias.csv; max of 'gust' and 'peak_wind_gust', 2026-10-09..11 UTC); gust at 2026-10-09 23:53 UTC",
+   "n_obs_9_11_oct": 28,
+   "n_obs_22Z_to_06Z": 5,
+   "signed_distance_km": -50.5,
+   "inside_study_grid": true
+  }
+ ]
+}
