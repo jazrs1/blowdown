@@ -2,26 +2,68 @@
 From docs/site/site_numbers.json (controls numbers recomputed with the held-out block and aerial tip excluded) and
 docs/wind/wind.json (also excluding them). Writes site/figures/*.png at 2x."""
 import json, os
-import numpy as np, matplotlib
+import numpy as np, matplotlib, matplotlib.text
 matplotlib.use("Agg"); import matplotlib.pyplot as plt
 os.makedirs("site/figures", exist_ok=True)
 PAPER, INK, BODY, MUTED, RULE, HAIR, ACC, MOD, WET = "#EDEDE7", "#22201C", "#4A463E", "#6E6859", "#B6B2A5", "#D6D2C6", "#7D5F33", "#8C4A32", "#2F5F73"
 plt.rcParams.update({"font.family": ["Georgia", "DejaVu Serif"], "font.size": 10.5, "axes.facecolor": PAPER, "figure.facecolor": PAPER, "savefig.facecolor": PAPER,
                      "axes.edgecolor": RULE, "axes.labelcolor": BODY, "xtick.color": MUTED, "ytick.color": MUTED, "axes.spines.top": False, "axes.spines.right": False,
                      "axes.grid": True, "grid.color": HAIR, "grid.linewidth": 0.8, "axes.axisbelow": True, "legend.frameon": False})
-def save(fig, name): fig.savefig(f"site/figures/{name}", dpi=200, bbox_inches="tight"); plt.close(fig)
+def check(fig, name):
+    """Overlap check before saving: every legend must sit outside every plot area and inside the figure's width; no two
+    texts may overlap; no in-plot text may touch a bar, a data line or marker, or cross the axes frame. Grid lines are ignored."""
+    fig.canvas.draw(); r = fig.canvas.get_renderer(); probs = []
+    axes = fig.axes; abox = [a.get_window_extent(r) for a in axes]
+    legs = [l for l in [a.get_legend() for a in axes] + fig.legends if l is not None]
+    texts = []
+    for a in axes:
+        texts += [(t, "plot") for t in a.texts] + [(t.label1 if side == 1 else t.label2, "tick") for ax_, (lo, hi) in ((a.xaxis, sorted(a.get_xlim())), (a.yaxis, sorted(a.get_ylim()))) if ax_.get_visible() for t in ax_.get_major_ticks() if lo - 1e-9 <= t.get_loc() <= hi + 1e-9 for side in (1, 2) if (t.label1 if side == 1 else t.label2).get_visible()] + [(t, "label") for t in (a.xaxis.label, a.yaxis.label, a.title)]
+    texts += [(t, "fig") for t in fig.texts]
+    for l in legs: texts += [(t, "legend") for t in l.get_texts()]
+    texts = [(t, k, matplotlib.text.Text.get_window_extent(t, r)) for t, k in texts if t.get_visible() and t.get_text().strip()]
+    for l in legs:
+        lb = l.get_window_extent(r)
+        for a, b in zip(axes, abox):
+            if lb.overlaps(b): probs.append(f"legend overlaps plot area of '{a.get_title() or a.get_ylabel()}'")
+        for t, k, tb in texts:
+            if k != "legend" and lb.overlaps(tb): probs.append(f"legend overlaps text '{t.get_text()}'")
+        fw = fig.bbox.width; x0 = min(b.x0 for b in abox + [t[2] for t in texts if t[1] != "legend"])
+        x1 = max(b.x1 for b in abox + [t[2] for t in texts if t[1] != "legend"])
+        if lb.x0 < x0 - 1 or lb.x1 > x1 + 1: probs.append(f"legend runs past the chart edge ({lb.x0:.0f}-{lb.x1:.0f} vs {x0:.0f}-{x1:.0f} px)")
+    for i in range(len(texts)):
+        for j in range(i + 1, len(texts)):
+            if texts[i][2].overlaps(texts[j][2]): probs.append(f"text '{texts[i][0].get_text()}' overlaps '{texts[j][0].get_text()}'")
+    for t, k, tb in texts:
+        if k != "plot": continue
+        ax_ = t.axes; b = ax_.get_window_extent(r)
+        if not (b.x0 <= tb.x0 and tb.x1 <= b.x1 and b.y0 <= tb.y0 and tb.y1 <= b.y1): probs.append(f"text '{t.get_text()}' crosses the axes frame")
+        for a in axes:
+            for p_ in a.patches:
+                if p_.get_window_extent(r).overlaps(tb) and p_.get_window_extent(r).height < b.height * 0.99 and p_.get_window_extent(r).width < b.width * 0.99:
+                    probs.append(f"text '{t.get_text()}' touches a bar")
+            for ln in a.lines:
+                if hasattr(t, "xy") and len(ln.get_xdata()) == 1 and np.allclose([ln.get_xdata()[0], ln.get_ydata()[0]], t.xy): continue   # its own marker
+                xy = ln.get_transform().transform(np.column_stack(ln.get_data()).astype(float))
+                pts = np.concatenate([np.linspace(xy[q], xy[q + 1], 200) for q in range(len(xy) - 1)]) if len(xy) > 1 and ln.get_linestyle() not in ("None", "") else xy
+                rad = (ln.get_markersize() / 2 if ln.get_marker() not in (None, "None", "") else 0) * fig.dpi / 72 + 1.5 * fig.dpi / 72   # 1.5 pt clearance
+                hit = ((pts[:, 0] > tb.x0 - rad) & (pts[:, 0] < tb.x1 + rad) & (pts[:, 1] > tb.y0 - rad) & (pts[:, 1] < tb.y1 + rad)).any()
+                if hit: probs.append(f"text '{t.get_text()}' touches a line/marker ({ln.get_label()})")
+    print(name, "OK" if not probs else "PROBLEMS: " + "; ".join(sorted(set(probs))), flush=True)
+    return probs
+def save(fig, name): check(fig, name); fig.savefig(f"site/figures/{name}", dpi=200, bbox_inches="tight"); plt.close(fig)
 # 1. storm vs no-storm (NISAR HV, track 76 single 12-day pairs)
 N = json.load(open("docs/site/site_numbers.json"))   # held-out block and aerial tip excluded (site_numbers.py)
 sv = N["storm_vs_control_HV"]
 g = lambda dom, res: (sv[f"storm | {dom} | {res} m"], sv[f"nostorm_2026 | {dom} | {res} m"], sv[f"nostorm_2025 | {dom} | {res} m"])
 groups = [("All forest, 100 m",) + g("all forest", 100), ("Upland forest, 100 m",) + g("strict upland", 100), ("All forest, 30 m",) + g("all forest", 30)]
-fig, ax = plt.subplots(figsize=(7.2, 3.4)); w = 0.26
+fig, ax = plt.subplots(figsize=(7.6, 3.5)); w = 0.26
 for k, (lab, a, c, b) in enumerate(groups):
     for j, (v, col, nm) in enumerate(((a, MOD, "Storm pair, 5 to 17 Oct 2026"), (c, MUTED, "No storm, 11 to 23 Sep 2026"), (b, RULE, "No storm, 22 Oct to 3 Nov 2025"))):
         ax.bar(k + (j - 1) * w, v - 0.5, w * 0.92, bottom=0.5, color=col, label=nm if k == 0 else None)
         ax.text(k + (j - 1) * w, v + 0.008, f"{v:.2f}", ha="center", fontsize=8.5, color=BODY)
 ax.set_xticks(range(len(groups)), [g[0] for g in groups]); ax.set_ylim(0.45, 0.88); ax.axhline(0.5, color=INK, lw=0.8)
-ax.set_ylabel("AUC, damage vs intact"); ax.legend(fontsize=8.5, loc="upper right"); ax.grid(axis="x", visible=False)
+ax.set_ylabel("AUC, damage vs intact"); ax.grid(axis="x", visible=False)
+ax.legend(fontsize=8.5, loc="lower left", bbox_to_anchor=(0, 1.03), ncol=3, borderaxespad=0, handlelength=1.2, columnspacing=1.2)   # one row above the bars
 save(fig, "storm_vs_control.png")
 # 2. persistence
 PN = N["persistence_30m"]
@@ -39,7 +81,7 @@ for a, dom, title in zip(axs, ("upland | 30 m", "woody_wetland | 30 m"), ("Uplan
     a.plot([day("10-17"), day("10-29")], [rec["NISAR HH t76 2026-10-17 (pre 10-05)"][0], rec["NISAR HH t76 2026-10-29 (pre 10-05)"][0]], "--o", color=MOD, lw=1.2, ms=3.5, label="NISAR HH")
     a.plot([day("10-27"), day("11-08")], [rec["S1 VH o92 2026-10-27"][0], rec["S1 VH o92 2026-11-08"][0]], "-s", color=WET, lw=1.6, ms=3.5, label="Sentinel-1 VH, orbit 92")
     lo = min(rec["NISAR HV no-storm B (2025)"][0], rec["NISAR HV no-storm C (2026 pre)"][0]); hi = max(rec["NISAR HV no-storm B (2025)"][0], rec["NISAR HV no-storm C (2026 pre)"][0])
-    a.axhspan(lo - 0.02, hi + 0.02, color=HAIR, lw=0); a.text(day("11-08"), hi + 0.035, "NISAR HV, no-storm pairs", fontsize=8, color=MUTED, ha="right")
+    a.axhspan(lo - 0.02, hi + 0.02, color=HAIR, lw=0); a.text(day("11-08"), (lo + hi) / 2, "NISAR HV, no-storm pairs", fontsize=8, color=MUTED, ha="right", va="center")   # inside the band, clear of the 8 Nov point
     a.axhline(0, color=INK, lw=0.7); a.set_title(title, fontsize=11, color=INK, loc="left")
     a.set_xticks([day(x) for x in ("10-17", "10-29", "11-08")], ["17 Oct", "29 Oct", "8 Nov"], fontsize=8.5)
 axs[0].set_ylabel("damage minus intact (dB)")
@@ -59,11 +101,14 @@ for s in W["stations"]:
     a2.plot(s["signed_distance_km"], s["gust_kt"], "^", ms=6.5, mfc="none" if sparse else MOD, mec=MOD)
 for s in W["stations"]:
     if s["short"] in ("Jay", "Oriole Beach", "Whiting Field South", "Eglin AFB", "Destin"):
+        if s["short"] == "Jay":   # left of the wetland peak, with a leader, clear of Oriole Beach
+            a2.annotate("Jay", (s["signed_distance_km"], s["gust_kt"]), xytext=(-40, 8), textcoords="offset points", fontsize=8, color=MOD, arrowprops=dict(arrowstyle="-", color=MOD, lw=0.6, shrinkB=4)); continue
         off = (4, -12) if s["short"] == "Whiting Field South" else (4, 4)
         a2.annotate(s["short"].replace("Whiting Field South", "Whiting Field"), (s["signed_distance_km"], s["gust_kt"]), xytext=off, textcoords="offset points", fontsize=8, color=MOD)
 a2.set_ylim(0, 120); a2.set_ylabel("peak gust (kt), triangles", color=MOD); a2.tick_params(colors=MOD)
 ax.set_xlabel("distance from the best track (km), negative = west, positive = east"); ax.set_ylabel("forest in damage mask (%)")
-ax.set_ylim(0, 50); ax.legend(fontsize=8.5, loc="upper right"); ax.set_xlim(-108, 76)
+ax.set_ylim(0, 50); ax.set_xlim(-108, 76)
+ax.legend(fontsize=8.5, loc="lower left", bbox_to_anchor=(0, 1.03), ncol=3, borderaxespad=0, handlelength=1.8, columnspacing=1.6)   # one row above the plot
 save(fig, "wind_distance.png")
 # ---- narrow versions for phones (served below 620 px by <picture>), same data, larger relative type
 plt.rcParams.update({"font.size": 10})
@@ -74,7 +119,7 @@ for k, (lab, a, c, b) in enumerate(groups):
         ax.bar(k + (j - 1) * w, v - 0.5, w * 0.92, bottom=0.5, color=col, label=nm if k == 0 else None)
         ax.text(k + (j - 1) * w, v + 0.008, f"{v:.2f}", ha="center", fontsize=7.5, color=BODY)
 ax.set_xticks(range(3), short); ax.set_ylim(0.45, 0.88); ax.axhline(0.5, color=INK, lw=0.8); ax.grid(axis="x", visible=False)
-ax.set_ylabel("AUC, damage vs intact"); ax.legend(fontsize=8.5, loc="upper center", bbox_to_anchor=(0.5, -0.2), ncol=1)
+ax.set_ylabel("AUC, damage vs intact"); ax.legend(fontsize=8.5, loc="lower left", bbox_to_anchor=(0, 1.03), ncol=1, borderaxespad=0, handlelength=1.4)   # stacked above the bars
 save(fig, "storm_vs_control_narrow.png")
 fig, axs = plt.subplots(2, 1, figsize=(3.9, 6.2), sharex=True)
 for a, dom, title in zip(axs, ("upland | 30 m", "woody_wetland | 30 m"), ("Upland forest", "Woody wetland")):
@@ -83,7 +128,7 @@ for a, dom, title in zip(axs, ("upland | 30 m", "woody_wetland | 30 m"), ("Uplan
     a.plot([day("10-17"), day("10-29")], [rec["NISAR HH t76 2026-10-17 (pre 10-05)"][0], rec["NISAR HH t76 2026-10-29 (pre 10-05)"][0]], "--o", color=MOD, lw=1.2, ms=3.5, label="NISAR HH")
     a.plot([day("10-27"), day("11-08")], [rec["S1 VH o92 2026-10-27"][0], rec["S1 VH o92 2026-11-08"][0]], "-s", color=WET, lw=1.6, ms=3.5, label="Sentinel-1 VH, orbit 92")
     lo = min(rec["NISAR HV no-storm B (2025)"][0], rec["NISAR HV no-storm C (2026 pre)"][0]); hi = max(rec["NISAR HV no-storm B (2025)"][0], rec["NISAR HV no-storm C (2026 pre)"][0])
-    a.axhspan(lo - 0.02, hi + 0.02, color=HAIR, lw=0); a.text(day("11-08"), hi + 0.04, "NISAR HV, no storm", fontsize=8, color=MUTED, ha="right")
+    a.axhspan(lo - 0.02, hi + 0.02, color=HAIR, lw=0); a.text(day("11-08"), (lo + hi) / 2, "NISAR HV, no storm", fontsize=8, color=MUTED, ha="right", va="center")
     a.axhline(0, color=INK, lw=0.7); a.set_title(title, fontsize=10.5, color=INK, loc="left"); a.set_ylim(-0.08, 1.1)
     a.set_ylabel("damage − intact (dB)")
 axs[1].set_xticks([day(x) for x in ("10-17", "10-29", "11-08")], ["17 Oct", "29 Oct", "8 Nov"])
