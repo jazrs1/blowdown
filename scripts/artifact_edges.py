@@ -34,8 +34,11 @@ for a0 in np.round(np.arange(30.45, 31.75, 0.05), 2):
     for nm, arr in (("composite", cn), ("single", sn)):
         v = arr[rows]; w_ = np.nanmean(np.where(m[:, jw], v[:, jw], np.nan)); e_ = np.nanmean(np.where(m[:, je], v[:, je], np.nan))
         rec[f"{nm}_east_minus_west"] = None if not (np.isfinite(w_) and np.isfinite(e_)) else round(float(e_ - w_), 4)
+    dmk = RG["damage"][rows]
+    w_ = dmk[:, jw][m[:, jw]].mean() if m[:, jw].any() else np.nan; e_ = dmk[:, je][m[:, je]].mean() if m[:, je].any() else np.nan
+    rec["damaged_share_east_minus_west"] = None if not (np.isfinite(w_) and np.isfinite(e_)) else round(float(e_ - w_), 4)
     out["step_at_x500km"].append(rec)
-for k in ("composite", "single"):
+for k in ("composite", "single", "damaged_share"):
     t = [r[f"{k}_east_minus_west"] for r in out["step_at_x500km"] if r["band_touches_line"] is False and r[f"{k}_east_minus_west"] is not None]
     b = [r[f"{k}_east_minus_west"] for r in out["step_at_x500km"] if r["band_touches_line"] is True and r[f"{k}_east_minus_west"] is not None]
     out[f"step_summary_{k}"] = {"strips_without_band": len(t), "median_step_without_band": round(float(np.median(t)), 4) if t else None, "max_abs_step_without_band": round(float(np.max(np.abs(t))), 4) if t else None,

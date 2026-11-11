@@ -105,10 +105,14 @@ fig = plt.figure(figsize=(16, 11), constrained_layout=True); gs = fig.add_gridsp
 ext = [G.X0 / 1e3, (G.X0 + W3 * R) / 1e3, (G.Y1 - H3 * R) / 1e3, G.Y1 / 1e3]
 def base_img():
     img = np.ones((H3, W3, 3)); img[forest] = (0.86, 0.86, 0.82); img[forest & dmg] = (0.68, 0.17, 0.11); img[ex] = (0.62, 0.62, 0.62); return img[::3, ::3]
+from heldout_mask import band_outline_ll
+_blo, _bla, _Bs, _ = band_outline_ll()
+_BX, _BY = ll2u(*np.meshgrid(_blo, _bla))
 def band_outline(ax):
-    B = np.load("data/extent_band.npy"); e = np.load("data/extent_ee.npz"); bx0, by0, bx1, by1 = e["extent"]; res_ = float(e["res"])
-    lo = bx0 + (np.arange(B.shape[1]) + 0.5) * res_; la = by1 - (np.arange(B.shape[0]) + 0.5) * res_; LO, LA = np.meshgrid(lo, la); X, Y = ll2u(LO, LA)
-    ax.contour(X / 1e3, Y / 1e3, B.astype(float), levels=[0.5], colors="k", linewidths=0.8)
+    ax.contour(_BX / 1e3, _BY / 1e3, _Bs, levels=[0.3], colors="k", linewidths=1.0)
+# 200 m held-out mask for the composite-statistics panels
+_x2 = G.X0 + (np.arange(ST["pre_n"].shape[1]) + 0.5) * 200; _y2 = G.Y1 - (np.arange(ST["pre_n"].shape[0]) + 0.5) * 200
+_ii = np.clip(((G.Y1 - _y2) // R).astype(int), 0, H3 - 1); _jj = np.clip(((_x2 - G.X0) // R).astype(int), 0, W3 - 1); EX200 = ex[np.ix_(_ii, _jj)]
 ax = fig.add_subplot(gs[0, 0:2]); ax.imshow(base_img(), extent=ext, interpolation="nearest"); band_outline(ax)
 sty = {"S2 orbit 40 swath edge": ("C0", "-", 1.6), "S2 orbit 83 swath edge": ("C1", "-", 1.6), "S2 MGRS tile edge": ("0.35", ":", 1.0),
        "S1 orbit 19 swath edge": ("C2", "--", 1.4), "S1 orbit 92 swath edge": ("C4", "--", 1.4), "NISAR track 076 frame edge": ("k", "-.", 1.4), "NISAR track 055 frame edge": ("0.45", "-.", 1.4)}
@@ -121,8 +125,8 @@ for q in ok: ax.plot(*[v / 1e3 for v in ll2u(q["lon"], q["lat"])], "o", ms=3, c=
 ax.set_xlim(ext[0], ext[1]); ax.set_ylim(ext[2], ext[3]); ax.legend(fontsize=7, loc="lower left", framealpha=0.9)
 ax.set_title("Acquisition geometry over the damage mask (red)" + chr(10) + "black = band outline, yellow = edge points, grey = held out", fontsize=9)
 for k, (nm, ttl) in enumerate((("pre_doy_median", "pre composite: median acquisition day of year"), ("post_doy_median", "post composite: median acquisition day of year"))):
-    a = fig.add_subplot(gs[0, 2 + k]); v = ST[nm].copy()
-    im = a.imshow(v, extent=ext, cmap="viridis", interpolation="nearest"); band_outline(a); fig.colorbar(im, ax=a, shrink=0.6); a.set_title(ttl, fontsize=9)
+    a = fig.add_subplot(gs[0, 2 + k]); v = ST[nm].copy().astype(float); v[EX200] = np.nan
+    im = a.imshow(v, extent=ext, cmap="viridis", interpolation="nearest"); a.imshow(np.where(EX200, 1.0, np.nan), extent=ext, cmap=ListedColormap(["#9e9e9e"]), interpolation="nearest"); band_outline(a); fig.colorbar(im, ax=a, shrink=0.6); a.set_title(ttl, fontsize=9)
 cmapd = matplotlib.colormaps["BrBG"]
 for k, (arr, ttl) in enumerate(((cn, "composite dNDVI" + chr(10) + "(1 Sep-8 Oct vs 11 Oct-9 Nov medians)"), (sn, "single-date dNDVI" + chr(10) + f"({SD['chosen']['pre']['date']} vs {SD['chosen']['post']['date']}, orbit {SD['chosen']['rel_orbit']})"))):
     a = fig.add_subplot(gs[1, k]); v = np.where(forest & ~ex, arr, np.nan); im = a.imshow(v[::3, ::3], extent=ext, cmap=cmapd, vmin=-0.25, vmax=0.25, interpolation="nearest")

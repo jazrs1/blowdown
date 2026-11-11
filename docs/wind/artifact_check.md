@@ -12,7 +12,7 @@ Numbers: [artifact_check.json](artifact_check.json), [artifact_edges.json](artif
 
 ![artifact check](fig_artifact_check.png)
 
-**Answer: no.** Neither edge of the band follows a swath edge, a frame edge or a change in composite acquisition date. The band and both edges survive a rebuild from one clear pre scene and one clear post scene. The tile-free radar sensors put the band in the same place.
+**Answer: no.** Part of the east edge runs close to a Sentinel-2 tile boundary and swath edge, and the band's northern tip close to a NISAR frame edge. But there's no step at the tile line where the band is absent, the band and both edges survive a rebuild from one clear pre scene and one clear post scene on a single orbit, and the tile-free radar sensors put the band in the same place.
 
 ## What went into the composites
 
@@ -23,7 +23,7 @@ Numbers: [artifact_check.json](artifact_check.json), [artifact_edges.json](artif
 | Sentinel-1 (ascending, IW) | 14 slices | orbit 19 on 28 Sep, 22 Oct and 3 Nov; orbit 92 on 21 Sep, 3 Oct, 27 Oct and 8 Nov |
 | NISAR GCOV | 8 frames | track 76 frame 17 and track 55 frame 73, four dates each |
 
-Footprints, dates and orbits are in `data/artifact/inventory.json`.
+Footprints, dates and orbits are in `data/artifact/inventory.json`. The scene dates by orbit are tabulated below.
 
 ## Do the band's edges coincide with acquisition boundaries?
 
@@ -39,15 +39,39 @@ The band's west and east edges were taken in each 0.05° latitude strip outside 
 | NISAR track 76 frame edge | 54 km | 1 / 2 |
 | NISAR track 55 frame edge | 60 km | 0 / 0 |
 
-The one close match is the **MGRS tile edge**. Between about 30.65°N and 30.95°N, the band's east edge runs within 1–5 km of the column boundary at easting 500,000 m (87.0°W). Three checks say that's a coincidence of position, not a processing artefact:
+Three boundaries come close to the band's edges at some points:
 
-1. **No step at the tile line where the band is absent.**
-   - In the 17 strips where the band doesn't reach 87.0°W, Sentinel-2 change barely moves across the line: median step 0.003 NDVI in the composite (largest 0.015), 0.003 in the single-date difference (largest 0.03).
-   - Where the band does reach the line, the step is 0.02, the same size and sign as the band's edge gradient.
-2. **The single-date rebuild has the same edge.** Each date is one acquisition across both tiles. Its edge sits within 1 km of the composite's (median shift 0 km on the west edge, 1 km on the east).
-3. **Radar has no tiles and agrees.** Per strip, the NISAR HV and Sentinel-1 VH east-west profiles are best aligned with the Sentinel-2 profile at a median shift of 1 km (0.5–1 km in 30.65–30.95°N), with median correlations of 0.53 and 0.70. In the figure's profile panel, both radar profiles drop at the same longitude as Sentinel-2 near 87.0°W.
+1. **The MGRS tile edge at easting 500,000 m (87.0°W).** Between about 30.65°N and 30.95°N the band's east edge runs within 1–5 km of it.
+2. **The Sentinel-2 orbit 83 swath edge**, 1.5–5 km from the same east-edge points (30.72–30.93°N).
+3. **The NISAR track 76 frame edge**, 0.6–1.6 km from the band's northern tip (31.55–31.60°N).
 
-**No date or count jump across the edges.** Across each edge (2 km outside vs 2 km inside), the composites' median acquisition day and clear-observation count change by a median of 0. Changes of 2 or more occur at 55% (pre date), 62% (pre count), 21% (post date) and 31% (post count) of edge points. Random 4 km east-west pairs anywhere in the scene give 47%, 50%, 12% and 28%. With only 29 edge points, that's within noise.
+None of them explains the band:
+
+- **NISAR frame edge.** The band outline is built from Sentinel-2 alone (pipeline step 1), so a NISAR frame edge can't shape it. It only means NISAR track 76 coverage ends near the band's northern tip.
+- **Orbit 83 swath edge.** The single-date rebuild uses relative orbit 40 alone, whose swath covers the whole band, and it reproduces the edge within 1 km.
+- **Tile edge,** three checks:
+  1. **No step at the tile line where the band is absent.** In the 17 strips where the band doesn't reach 87.0°W, the step across the line is close to zero:
+
+     | Measure | Median step | Largest |
+     |---|---|---|
+     | Composite NDVI change | 0.003 | 0.015 |
+     | Single-date NDVI change | 0.003 | 0.03 |
+     | Damaged share (the mask itself) | −0.0004 | 0.03 |
+
+     Where the band reaches the line, the damaged share drops by 0.13 going east: the band's own edge.
+  2. **The single-date rebuild has the same edge.** Each date is one acquisition across both tiles, and its edge sits within 1 km of the composite's (median shift 0 km west, 1 km east).
+  3. **Radar has no tiles and agrees.** Per strip, the NISAR HV and Sentinel-1 VH east-west profiles align best with the Sentinel-2 profile at a median shift of 1 km (0.5–1 km in 30.65–30.95°N), with median correlations of 0.53 and 0.70. In the figure's profile panel, both radar profiles drop at the same longitude as Sentinel-2 near 87.0°W.
+
+**Composite dates and counts across the edges.** Across each edge (2 km outside against 2 km inside), the composites' median acquisition day and clear-observation count change by a median of 0. Changes of 2 or more occur at 55% (pre date), 62% (pre count), 21% (post date) and 31% (post count) of edge points. Random 4 km east-west pairs anywhere in the scene give 47%, 50%, 12% and 28%.
+
+**One local step.** At the east edge between 30.72°N and 30.83°N, the post composite has 4–7 fewer clear observations just inside the band than just outside. Its cause wasn't identified. The likely one is the nearby orbit 83 swath edge: east of it both orbits observe, inside the band only orbit 40 does. It can't make the band, because the orbit-40-only single-date rebuild shows the same band and edge.
+
+**Scene dates by relative orbit** (study area; all six MGRS tiles: 16RDU, 16RDV, 16REU, 16REV, 16SDA, 16SEA):
+
+| Window | Orbit 40 | Orbit 83 |
+|---|---|---|
+| Pre (1 Sep–8 Oct) | 5, 10, 15, 17, 20, 25, 30 Sep; 5, 7 Oct | 3, 8, 10, 13, 18, 23, 28, 30 Sep; 3, 8 Oct |
+| Post (11 Oct–9 Nov) | 15, 20, 25, 27, 30 Oct; 4, 9 Nov | 13, 18, 20, 23, 28 Oct; 2, 7, 9 Nov |
 
 ## Single-date rebuild
 

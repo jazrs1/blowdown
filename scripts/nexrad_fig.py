@@ -11,6 +11,8 @@ gd = Geod(ellps="WGS84"); J = json.load(open("docs/wind/nexrad.json"))
 from scipy.ndimage import uniform_filter
 B = np.load("data/extent_band.npy"); Bs = uniform_filter(B.astype(float), 15); e = np.load("data/extent_ee.npz"); bx0, by0, bx1, by1 = e["extent"]; rb = float(e["res"])
 blo = bx0 + (np.arange(B.shape[1]) + 0.5) * rb; bla = by1 - (np.arange(B.shape[0]) + 0.5) * rb
+from heldout_mask import band_outline_ll
+_blo, _bla, _Bs, _ = band_outline_ll()
 held = json.load(open("site/data/heldout.geojson")); from shapely.geometry import shape; from shapely import contains_xy
 HP = [shape(f["geometry"]) for f in held["features"]]
 fx = []
@@ -35,7 +37,7 @@ for col, site in enumerate(("KMOB", "KEVX")):
                             "median_time_of_max_in_band_h_from_00Z": round(float(np.nanmedian(tm[inb])), 2)}
     for row, (arr, cmap, vmin, vmax, lab) in enumerate(((v, "magma_r", 20, 60, "2nd-highest |radial velocity| (m/s), lowest sweep"), (tm, "twilight_shifted", -2, 6, "time of the highest accepted value (h from 00Z)"))):
         ax = axs[row, col]; im = ax.pcolormesh(lo, la, arr, cmap=cmap, vmin=vmin, vmax=vmax, shading="auto")
-        ax.contour(blo, bla, Bs, levels=[0.3], colors="#2F5F73", linewidths=1.3)
+        ax.contour(_blo, _bla, _Bs, levels=[0.3], colors="#2F5F73", linewidths=1.3)
         for g in HP:
             c = np.array(g.exterior.coords); ax.fill(c[:, 0], c[:, 1], color="#9e9e9e", ec="#555", lw=0.6)
         ax.plot([q[2] for q in fx], [q[1] for q in fx], "-", c="k", lw=1.4)

@@ -27,6 +27,8 @@ th, fla, flo = np.array([f[0] for f in fx]), np.array([f[1] for f in fx]), np.ar
 B_ = np.load("data/extent_band.npy"); e = np.load("data/extent_ee.npz"); bx0, by0, bx1, by1 = e["extent"]; rb = float(e["res"])
 blo = bx0 + (np.arange(B_.shape[1]) + 0.5) * rb; bla = by1 - (np.arange(B_.shape[0]) + 0.5) * rb
 held = json.load(open("site/data/heldout.geojson"))
+from heldout_mask import band_outline_ll
+_blo, _bla, _Bs, _ = band_outline_ll()
 out = {"files": [], "sector_mean_BT_K_40_120km": {}}
 fig, axs = plt.subplots(3, 3, figsize=(13, 12.5), constrained_layout=True)
 for ax, (fp, hr) in zip(axs.ravel(), files):
@@ -48,7 +50,7 @@ for ax, (fp, hr) in zip(axs.ravel(), files):
     sec = {q: round(float(np.nanmean(bt[ring & m])), 1) for q, m in (("NE", azm < 90), ("SE", (azm >= 90) & (azm < 180)), ("SW", (azm >= 180) & (azm < 270)), ("NW", azm >= 270))}
     out["sector_mean_BT_K_40_120km"][f"{hr:+.2f} h"] = sec; out["files"].append(os.path.basename(fp))
     im = ax.pcolormesh(lo_, la_, bt, cmap="gist_yarg_r" if False else "Greys", vmin=215, vmax=265, shading="auto")
-    ax.contour(blo, bla, B_.astype(float), levels=[0.5], colors="#8C4A32", linewidths=1)
+    ax.contour(_blo, _bla, _Bs, levels=[0.3], colors="#8C4A32", linewidths=1.2)
     for f_ in held["features"]:
         c = np.array(f_["geometry"]["coordinates"][0]); ax.fill(c[:, 0], c[:, 1], color="#9e9e9e", ec="#555", lw=0.6)
     sel = (th >= -24) & (th <= 18); ax.plot(flo[sel], fla[sel], "-", c="C3", lw=1); ax.plot(clo, cla, "o", c="C3", ms=6, mec="w")
